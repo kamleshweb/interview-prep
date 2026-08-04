@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GraphQL Interview Guide — Kamlesh Kumar</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">KK</div>
+      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
+    </div>
+    <input id="search-box" type="text" placeholder="Search topics…">
+    <div class="nav-group"><div class="nav-group-title">Start Here</div>
+      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
+    <div class="nav-group"><div class="nav-group-title">Core Language</div>
+      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
+      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
+    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
+      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
+      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
+      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
+      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
+    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
+      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
+      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
+      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
+    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
+      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
+      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
+      <a class="nav-link done active" href="graphql.html"><span class="dot"></span> GraphQL</a>
+      <a class="nav-link done" href="ai-integration.html"><span class="dot"></span> AI / LLM Integration</a></div>
+    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
+      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
+      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
+      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
+      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a>
+      <a class="nav-link done" href="debugging-and-tools.html"><span class="dot"></span> Debugging & Dev Tools</a></div>
+    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
+      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
+    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
+      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
+      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
+      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
+    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
+      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
+      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
+    <div class="nav-group"><div class="nav-group-title">Process</div>
+      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
+  </aside>
+
+  <div>
+    <div class="topbar">
+      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> GraphQL</div>
+      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
+    </div>
+
+    <main>
+      <div class="content-wrap">
+        <div class="prose">
+          <div class="hero">
+            <h1>GraphQL Interview Guide</h1>
+            <p class="lead">Schema-first API design, the over/under-fetching problem it solves, the N+1 problem it introduces, and how client-side caching actually differs from REST's.</p>
+          </div>
+
+          <h2 id="overview">1. Overview</h2>
+          <p>GraphQL is a query language and runtime for APIs where the client specifies exactly what data shape it needs in a single request, resolved against a strongly-typed schema on the server. It's not a replacement for REST everywhere — it solves a specific problem (client-driven, flexible data shapes for complex UIs) at the cost of some genuine trade-offs (caching complexity, a new class of performance problem). Interviewers care whether you understand those trade-offs concretely, not just that GraphQL exists.</p>
+          <div class="tag">Schema & Resolvers</div><div class="tag">Queries / Mutations / Subscriptions</div><div class="tag">N+1 Problem</div><div class="tag">Caching (Apollo/normalized cache)</div><div class="tag">Fragments</div><div class="tag">REST vs GraphQL</div>
+
+          <h2 id="basic">2. Basic questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What problem does GraphQL actually solve over REST?</summary>
+            <div class="qa-body">
+              <p>Two related problems: <strong>over-fetching</strong> (a REST endpoint returns a fixed shape — if you only need a user's name, you still get their entire profile object) and <strong>under-fetching</strong> (a single view needs data from several REST endpoints, requiring multiple round-trips, or a custom aggregating endpoint built just for that one screen). GraphQL lets the client specify precisely which fields it needs, across what would otherwise be several REST resources, in a single request — a genuinely different fit for UIs with many different views each needing a different data slice from the same underlying entities.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> Query vs Mutation vs Subscription — what's each for?</summary>
+            <div class="qa-body">
+              <p><strong>Query</strong>: read data (the GraphQL equivalent of a REST GET). <strong>Mutation</strong>: write/modify data (equivalent of POST/PUT/PATCH/DELETE) — mutations execute sequentially, one at a time, even when multiple are sent in one request, specifically so that side-effecting operations don't race each other. <strong>Subscription</strong>: a long-lived connection (typically over WebSockets) that pushes updates to the client whenever the subscribed data changes — the real-time equivalent, used for live updates rather than the client polling repeatedly.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What's a GraphQL schema, and what problem does its strong typing solve?</summary>
+            <div class="qa-body">
+              <p>The schema is a contract, written in GraphQL's Schema Definition Language, declaring every type, field, and its exact type (including nullability) available in the API — the single source of truth both client and server code-generation tools can rely on. This is what enables tooling like GraphQL Codegen (mentioned in the TypeScript guide) to generate accurate client-side types directly from the schema, closing the "hand-typed API response drifts from reality" gap that plain REST + hand-written types is prone to.</p>
+            </div>
+          </details>
+
+          <h2 id="intermediate">3. Intermediate questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Explain the N+1 query problem and how it's typically solved.</summary>
+            <div class="qa-body">
+<pre><code>query {
+  trades {        # 1 query to fetch all trades
+    id
+    counterparty { # naive resolver: 1 additional query PER trade
+      name
+    }
+  }
+}</code></pre>
+              <p>If the resolver for <code>counterparty</code> naively runs its own database query every time it's called, fetching 100 trades triggers 1 query for the trades plus 100 more (one per trade) for their counterparties — the "N+1" problem. The standard fix is a <strong>DataLoader</strong> pattern: within a single request, batch all the individual counterparty lookups that were triggered during that tick into one combined query (<code>WHERE id IN (...)</code>) and cache the results per request, so 100 trades cost 2 queries total instead of 101. This is a server-side/resolver-implementation concern, but it's frequently asked of frontend candidates too since understanding it explains why a poorly-implemented GraphQL API can be slower than the REST equivalent it replaced.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Why is GraphQL caching harder than REST caching, and how does Apollo Client's normalized cache address it?</summary>
+            <div class="qa-body">
+              <p>REST's HTTP caching (covered in the REST APIs guide — ETags, <code>Cache-Control</code>) works because each GET request has a stable, predictable URL identifying exactly one resource. GraphQL typically sends all requests as POST to a single endpoint with a query body that varies per call — there's no stable URL for an HTTP cache/CDN to key on. Apollo Client instead maintains its own <strong>normalized, in-memory cache</strong>: every object returned by any query is stored by its type + ID (e.g. <code>Trade:t4521</code>), so if two different queries both return data about the same trade, they share one cached entry — updating it in one place (e.g. after a mutation) automatically reflects everywhere that trade is displayed, without needing a full refetch.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> What are GraphQL fragments, and why do they matter for a component-based UI?</summary>
+            <div class="qa-body">
+<pre><code>fragment TradeRowFields on Trade {
+  id
+  notional
+  ccyPair
+  status
+}
+
+query TradeList {
+  trades { ...TradeRowFields }
+}</code></pre>
+              <p>A fragment declares a reusable set of fields, typically colocated with the React component that actually needs them — the <code>TradeRow</code> component owns and declares exactly the fields it renders, and a parent query composes fragments from all its children rather than a screen-level query awkwardly listing every descendant's fields in one place. This keeps data requirements colocated with the component that uses them (similar in spirit to colocating styles/logic with components) instead of a top-level query becoming a dumping ground that's hard to trace back to what actually needs each field.</p>
+            </div>
+          </details>
+
+          <h2 id="advanced">4. Advanced questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How would you implement optimistic UI updates for a GraphQL mutation, and what happens if the mutation fails?</summary>
+            <div class="qa-body">
+              <p>Apollo Client (and similar clients) let a mutation call specify an <code>optimisticResponse</code> — a client-predicted result applied to the cache immediately, before the server actually responds, so the UI updates instantly (marking a trade as "confirmed" the moment the user clicks, rather than waiting on the round-trip). If the real server response later differs from the optimistic guess, the cache reconciles to the real data; if the mutation fails outright, the client rolls the cache back to its pre-optimistic state. This is the same pattern discussed for REST APIs' concurrency handling — the interesting design decision is what the user sees during that rollback (a toast explaining the action failed and reverted, not a silent, confusing snap-back).</p>
+            </div>
+          </details>
+
+          <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: a single dashboard query has grown to request dozens of fields across deeply nested relationships, and it's now slow and hard to reason about. How do you fix this at the API/architecture level?</summary>
+            <div class="qa-body">
+              <p>This is the GraphQL-specific version of "one screen's needs bloated a shared contract." Fixes: (1) split the mega-query into fragments colocated per component (as above) so each piece's cost is visible and attributable, rather than one opaque top-level query; (2) add query complexity/depth limiting on the server so a single query can't recursively traverse arbitrarily deep relationships unbounded — a common real production safeguard, and also a security consideration (an unbounded nested query is a potential denial-of-service vector); (3) consider whether some of the deeply nested data actually needs to load eagerly with the rest, or could be deferred to a separate, lazily-triggered query once the user actually expands that section of the UI (the GraphQL equivalent of code-splitting a data requirement, not just a JS bundle).</p>
+            </div>
+          </details>
+
+          <h2 id="mistakes">6. Common mistakes & debugging</h2>
+          <div class="callout warn"><strong>Frequent review comments</strong>
+            Not batching resolver-level data access, causing N+1 query storms; treating GraphQL as a drop-in replacement for every REST endpoint rather than reserving it for genuinely complex, flexible-shape UI needs; giant, un-fragmented top-level queries that make it impossible to tell which component needs which field; no query depth/complexity limiting, leaving the API open to expensive or abusive nested queries; assuming the normalized cache "just works" without understanding cache-key collisions when types lack a stable, unique ID field.
+          </div>
+
+          <h2 id="company">7. Frequently asked at top product companies</h2>
+          <ul>
+            <li><strong>General senior-level:</strong> "When would you choose GraphQL over REST for a new feature, and when would you not?" — tests genuine trade-off reasoning, not a blanket preference.</li>
+            <li><strong>Backend-leaning interviewers:</strong> "Explain the N+1 problem and how you'd fix it" — near-universal for any GraphQL-touching role.</li>
+            <li><strong>Data-viz/dashboard-heavy companies (relevant to your background):</strong> "How would you keep a dashboard's GraphQL query maintainable as more widgets are added over time?" — tests fragment colocation reasoning.</li>
+          </ul>
+
+          <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+          <table>
+            <tr><th>Concept</th><th>One-line recall</th></tr>
+            <tr><td>Solves</td><td>Over-fetching and under-fetching vs fixed-shape REST endpoints</td></tr>
+            <tr><td>Query/Mutation/Subscription</td><td>Read / write (sequential) / real-time push</td></tr>
+            <tr><td>N+1 problem</td><td>Naive per-item resolvers — fix with DataLoader batching</td></tr>
+            <tr><td>Caching</td><td>No stable URL like REST — normalized cache keyed by type+ID instead</td></tr>
+            <tr><td>Fragments</td><td>Colocate field requirements with the component that needs them</td></tr>
+            <tr><td>Depth/complexity limiting</td><td>Prevents runaway nested queries — a performance AND security concern</td></tr>
+          </table>
+
+          <p class="lead">Related: builds directly on <a href="rest-api.html">REST APIs</a> for the comparison, and <a href="typescript.html">TypeScript</a> for schema-driven code generation.</p>
+
+          <div class="page-nav">
+            <a class="prev" href="css3.html"><span class="dir">← Previous</span>CSS3 / SASS Interview Guide</a>
+            <a class="next" href="ai-integration.html"><span class="dir">Next →</span>AI / LLM Integration Guide</a>
+          </div>
+        </div>
+
+        <nav class="toc">
+          <div class="toc-title">On this page</div>
+          <a href="#overview">Overview</a>
+          <a href="#basic">Basic</a>
+          <a href="#intermediate">Intermediate</a>
+          <a href="#advanced">Advanced</a>
+          <a href="#expert">Expert & scenarios</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#company">Company questions</a>
+          <a href="#cheatsheet">Cheat sheet</a>
+        </nav>
+      </div>
+    </main>
+    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
+  </div>
+</div>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,613 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Router Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
+          </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done active" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link" data-status="planned" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link" data-status="planned" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a
+            class="nav-link"
+            data-status="planned"
+            href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link" data-status="planned" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link" data-status="planned" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link" data-status="planned" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link" data-status="planned" href="jest-rtl.html"
+            ><span class="dot"></span> Jest & RTL</a
+          >
+          <a class="nav-link" data-status="planned" href="cypress-cucumber.html"
+            ><span class="dot"></span> Cypress & Cucumber</a
+          >
+          <a class="nav-link" data-status="planned" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link" data-status="planned" href="aws.html"
+            ><span class="dot"></span> AWS</a
+          >
+          <a class="nav-link" data-status="planned" href="cicd.html"
+            ><span class="dot"></span> CI/CD</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a
+            class="nav-link"
+            data-status="planned"
+            href="frontend-architecture.html"
+            ><span class="dot"></span> Frontend Architecture</a
+          >
+          <a class="nav-link" data-status="planned" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends</a
+          >
+          <a class="nav-link" data-status="planned" href="design-patterns.html"
+            ><span class="dot"></span> Design Patterns</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link" data-status="planned" href="performance.html"
+            ><span class="dot"></span> Web Performance</a
+          >
+          <a class="nav-link" data-status="planned" href="accessibility.html"
+            ><span class="dot"></span> Accessibility (WCAG)</a
+          >
+          <a class="nav-link" data-status="planned" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link" data-status="planned" href="agile.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
+
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> React Router
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
+          </div>
+        </div>
+
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>React Router Interview Guide</h1>
+                <p class="lead">
+                  Client-side routing, nested layouts, data loading, guarded
+                  routes, and the trade-offs of SPA routing vs full page
+                  navigation.
+                </p>
+              </div>
+
+              <h2 id="overview">1. Technology overview</h2>
+              <p>
+                React Router is the de facto client-side routing library for
+                React SPAs. It intercepts navigation (link clicks, back/forward,
+                programmatic navigation) using the History API and renders the
+                matching component tree without a full page reload. Modern
+                versions (v6.4+/v7 "data routers") also own data
+                loading/mutations per route
+                (<code>loader</code>/<code>action</code>), blurring the line
+                between "router" and "framework." For an enterprise dashboard
+                with role-gated sections (e.g. a trade blotter only certain
+                roles can edit), the interesting questions are less about basic
+                route matching and more about nested layouts, protected routes,
+                and code-splitting per route.
+              </p>
+              <div class="tag">Nested Routes</div>
+              <div class="tag">Dynamic Segments</div>
+              <div class="tag">Protected Routes</div>
+              <div class="tag">Data Loaders</div>
+              <div class="tag">Lazy Loading</div>
+              <div class="tag">useNavigate / useParams</div>
+
+              <h2 id="basic">2. Basic questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> How does
+                  client-side routing actually work without hitting the server
+                  for every navigation?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    The router listens to the browser's History API
+                    (<code>pushState</code>/<code>replaceState</code>/<code>popstate</code>).
+                    Clicking a <code>&lt;Link&gt;</code> calls
+                    <code>event.preventDefault()</code> on the native anchor
+                    click, then calls <code>history.pushState</code> to change
+                    the URL bar without a network request, and the router's
+                    internal state update triggers React to render whatever
+                    component is registered for the new path. The server is only
+                    ever hit again on a hard refresh or a direct URL entry —
+                    which is why SPA routing requires server-side (or CDN)
+                    fallback configuration to always serve
+                    <code>index.html</code> for unknown paths, or deep links
+                    404.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span>
+                  <code>&lt;Link&gt;</code> vs a plain
+                  <code>&lt;a&gt;</code> tag — why does it matter?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    A plain <code>&lt;a href&gt;</code> triggers a full browser
+                    navigation — the entire app unmounts, JS
+                    re-downloads/re-parses, and all client state is lost.
+                    <code>&lt;Link&gt;</code> intercepts the click and performs
+                    the in-app transition described above, preserving the SPA's
+                    loaded state (e.g. Redux store, in-memory caches) for
+                    anything outside the unmounted route.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> How do
+                  you read a dynamic segment like <code>/trades/:tradeId</code>?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>&lt;Route path="/trades/:tradeId" element={&lt;TradeDetail /&gt;} /&gt;
+
+function TradeDetail() {
+  const { tradeId } = useParams();
+  // fetch or select trade by tradeId
+}</code></pre>
+                </div>
+              </details>
+
+              <h2 id="intermediate">3. Intermediate questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Explain nested routes and layout routes — why are they better
+                  than manually composing layout components?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>&lt;Route path="/dashboard" element={&lt;DashboardLayout /&gt;}&gt;
+  &lt;Route index element={&lt;Overview /&gt;} /&gt;
+  &lt;Route path="trades" element={&lt;Trades /&gt;} /&gt;
+  &lt;Route path="trades/:tradeId" element={&lt;TradeDetail /&gt;} /&gt;
+&lt;/Route&gt;
+
+function DashboardLayout() {
+  return (
+    &lt;div&gt;
+      &lt;Sidebar /&gt;
+      &lt;Outlet /&gt;  {/* renders whichever child route matched */}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                  <p>
+                    Nested routes co-locate the URL structure with the component
+                    tree structure — the shared sidebar/header only mounts once
+                    and stays mounted across child-route navigation, instead of
+                    every "page" component re-importing and re-rendering its own
+                    copy of the layout. This also means layout-level state (an
+                    open sidebar section, a scroll position) survives navigating
+                    between child routes.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you implement a protected/role-gated route?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>function RequireAuth({ roles, children }) {
+  const { user } = useAuth();
+  const location = useLocation();
+  if (!user) {
+    return &lt;Navigate to="/login" state={{ from: location }} replace /&gt;;
+  }
+  if (roles &amp;&amp; !roles.some(r =&gt; user.roles.includes(r))) {
+    return &lt;Navigate to="/403" replace /&gt;;
+  }
+  return children;
+}
+
+&lt;Route path="/trades/:id/edit" element={
+  &lt;RequireAuth roles={['trader']}&gt;&lt;EditTrade /&gt;&lt;/RequireAuth&gt;
+} /&gt;</code></pre>
+                  <p>
+                    <strong>Why <code>replace</code> matters:</strong> using
+                    <code>replace</code> instead of a normal push means the
+                    redirected-from URL doesn't sit in browser history, so
+                    hitting "back" after login doesn't bounce the user back into
+                    the guard.
+                    <strong
+                      >Why pass <code>state={{ from: location }}</code>:</strong
+                    >
+                    so the login page can redirect back to where the user was
+                    actually headed, not always to a hardcoded dashboard.
+                  </p>
+                  <h5>Common mistake</h5>
+                  <p>
+                    Treating a client-side route guard as real security — it
+                    only hides UI. The actual authorization check must also
+                    happen server-side on every API call; a route guard is UX,
+                    not a security boundary.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you code-split by route?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>const TradeDetail = React.lazy(() =&gt; import('./TradeDetail'));
+
+&lt;Route path="trades/:id" element={
+  &lt;Suspense fallback={&lt;Spinner /&gt;}&gt;&lt;TradeDetail /&gt;&lt;/Suspense&gt;
+} /&gt;</code></pre>
+                  <p>
+                    Each route becomes its own JS chunk, fetched only when the
+                    user actually navigates there — critical for a large
+                    multi-module dashboard (FX, Rates, Commodities, Collateral)
+                    where no single user session needs every module's code
+                    upfront.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="advanced">4. Advanced questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  Explain the newer data-router APIs (<code>loader</code>,
+                  <code>action</code>, <code>useLoaderData</code>) and how they
+                  change the fetch-on-render pattern.
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Traditionally, a route component renders first (often with a
+                    loading state), then fires a <code>useEffect</code> to fetch
+                    data — a "render-then-fetch" waterfall. Data routers let a
+                    route declare a <code>loader</code> function that the router
+                    calls <em>before</em> rendering the component, so
+                    data-fetching starts as soon as navigation is triggered (in
+                    parallel with fetching the route's code chunk if
+                    lazy-loaded), and the component reads the result
+                    synchronously via <code>useLoaderData()</code> with no
+                    loading-state juggling for the initial render.
+                  </p>
+                  <pre><code>{
+  path: 'trades/:id',
+  loader: ({ params }) =&gt; fetchTrade(params.id),
+  element: &lt;TradeDetail /&gt;
+}
+function TradeDetail() {
+  const trade = useLoaderData(); // already resolved before this renders
+}</code></pre>
+                  <p>
+                    <code>action</code> functions play the same role for
+                    mutations (form submissions) — the router calls the action,
+                    then re-runs relevant loaders to refresh data, all without
+                    manual refetch logic scattered across components.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  do you handle scroll restoration and preventing "flash of
+                  previous route" during navigation?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    By default, SPA routers don't restore scroll position the
+                    way native browser navigation does. React Router ships a
+                    <code>&lt;ScrollRestoration /&gt;</code> component
+                    (data-router APIs) that stores/restores per-location scroll
+                    position, falling back to scroll-to-top on new locations.
+                    For "flash of stale content" (briefly showing the old
+                    route's UI while the new one's data loads), the fix is
+                    either the loader-based pre-fetch above, or wrapping
+                    transitions in <code>useTransition</code>/<code
+                      >startTransition</code
+                    >
+                    so React can keep showing the old UI until the new one is
+                    ready instead of an abrupt unmount/loading-spinner flash.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  users report that deep-linking directly to
+                  <code>/trades/T-4521</code> (e.g. from a shared Slack link)
+                  sometimes shows a blank page or a 404, even though the trade
+                  exists and the in-app link works fine. Diagnose.
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Two most likely causes, both classic SPA-routing gaps: (1)
+                    <strong>Server-side fallback misconfiguration</strong> — the
+                    hosting layer (CDN/Nginx/S3+CloudFront) isn't rewriting
+                    unknown paths to <code>index.html</code>, so a direct hit to
+                    <code>/trades/T-4521</code> asks the server for a resource
+                    that doesn't exist as a literal file and gets a real 404
+                    before React Router ever loads. (2)
+                    <strong
+                      >Missing loader/guard handling for a fresh page
+                      load</strong
+                    >
+                    — code that assumes some global state (auth token already in
+                    Redux, a previously-fetched trade list already in memory) is
+                    present because it normally is when navigating
+                    <em>within</em> the app, but on a hard refresh/direct load
+                    that state hasn't been populated yet, so the component reads
+                    <code>undefined</code> and renders blank instead of
+                    triggering its own fetch. The fix for (1) is a server/CDN
+                    rewrite rule; for (2), every route that can be a valid entry
+                    point must be able to bootstrap its own required data
+                    independently, not assume it was navigated-to from within
+                    the app.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span>
+                  Output-based: why might this route configuration cause an
+                  infinite redirect loop?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>function RequireAuth({ children }) {
+  const { user, loading } = useAuth();
+  if (loading) return null; // BUG
+  if (!user) return &lt;Navigate to="/login" /&gt;;
+  return children;
+}</code></pre>
+                  <p>
+                    If <code>loading</code> starts as <code>false</code> before
+                    the auth check has actually resolved (a common initial-state
+                    bug), <code>user</code> reads as <code>null</code> on the
+                    very first render, triggering a redirect to
+                    <code>/login</code> before the real auth state has loaded —
+                    then once auth resolves to a valid user, the app may
+                    redirect back, creating a loop under certain effect-ordering
+                    timings. The fix is ensuring the auth hook's initial
+                    <code>loading</code> state truly reflects "haven't checked
+                    yet" (<code>true</code> until the check completes), and
+                    rendering a loading UI — not <code>null</code>, and not
+                    proceeding to the redirect check — until that resolves.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">6. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong> Using
+                <code>&lt;a href&gt;</code> instead of
+                <code>&lt;Link&gt;</code>/<code>navigate()</code> for in-app
+                links, causing full reloads; forgetting <code>replace</code> on
+                redirect-after-login flows, polluting history; not memoizing
+                route-level components passed inline as
+                <code>element={&lt;Foo /&gt;}</code> where
+                <code>Foo</code> itself is expensive and doesn't need to remount
+                on every parent re-render; treating route guards as a security
+                boundary instead of a UX convenience.
+              </div>
+
+              <h2 id="company">7. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>Amazon/Microsoft style:</strong> "Implement a
+                  protected route wrapper with role-based access" — almost
+                  always asked as a live-coding exercise.
+                </li>
+                <li>
+                  <strong>Meta/Airbnb style:</strong> "How would you preserve
+                  scroll position and avoid content flash when navigating a
+                  large list → detail page?"
+                </li>
+                <li>
+                  <strong>General senior-level:</strong> "Walk through
+                  everything that happens from clicking a
+                  <code>&lt;Link&gt;</code> to the new page being interactive" —
+                  tests the full pipeline: click intercepted → pushState → route
+                  match → (optional) loader fetch → code-split chunk load →
+                  render → paint.
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>Client routing</td>
+                  <td>
+                    Intercepts clicks, uses History API, no network round-trip
+                  </td>
+                </tr>
+                <tr>
+                  <td>Nested routes</td>
+                  <td>
+                    Shared layout stays mounted;
+                    <code>&lt;Outlet/&gt;</code> renders the matched child
+                  </td>
+                </tr>
+                <tr>
+                  <td>Protected routes</td>
+                  <td>
+                    UX-level only — real auth must still be enforced server-side
+                  </td>
+                </tr>
+                <tr>
+                  <td>Loaders</td>
+                  <td>
+                    Fetch before render, parallel with code-split chunk loading
+                  </td>
+                </tr>
+                <tr>
+                  <td>Code splitting</td>
+                  <td>
+                    Lazy-load per route so users only download the modules they
+                    visit
+                  </td>
+                </tr>
+                <tr>
+                  <td>Deep-link bugs</td>
+                  <td>
+                    Usually a server rewrite-rule gap or a "state assumed
+                    already loaded" bug
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: pairs with
+                <a href="redux.html">Redux / Redux Toolkit</a> for global state
+                that survives route changes, and
+                <a href="react.html">React.js</a> for the Suspense/lazy
+                mechanics behind route-level code splitting.
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="redux.html"
+                  ><span class="dir">← Previous</span>Redux / Redux Toolkit
+                  Interview Guide</a
+                >
+                <a class="next" href="nextjs.html"
+                  ><span class="dir">Next →</span>Next.js Interview Guide</a
+                >
+              </div>
+            </div>
+
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
+          </div>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
+      </div>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

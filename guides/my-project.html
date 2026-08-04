@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Project Walkthrough — Kamlesh Kumar</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">KK</div>
+      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
+    </div>
+    <input id="search-box" type="text" placeholder="Search topics…">
+    <div class="nav-group"><div class="nav-group-title">Start Here</div>
+      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a>
+      <a class="nav-link done active" href="my-project.html"><span class="dot"></span> My Project Walkthrough</a></div>
+    <div class="nav-group"><div class="nav-group-title">Core Language</div>
+      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
+      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
+    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
+      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
+      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
+      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
+      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
+    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
+      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
+      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
+      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
+    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
+      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
+      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
+      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a>
+      <a class="nav-link done" href="ai-integration.html"><span class="dot"></span> AI / LLM Integration</a></div>
+    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
+      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
+      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
+      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
+      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a>
+      <a class="nav-link done" href="debugging-and-tools.html"><span class="dot"></span> Debugging & Dev Tools</a></div>
+    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
+      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
+    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
+      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
+      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
+      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
+    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
+      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
+      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
+    <div class="nav-group"><div class="nav-group-title">Process</div>
+      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
+  </aside>
+
+  <div>
+    <div class="topbar">
+      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> My Project Walkthrough</div>
+      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
+    </div>
+
+    <main>
+      <div class="content-wrap">
+        <div class="prose">
+          <div class="hero">
+            <h1>My Project Walkthrough</h1>
+            <p class="lead">Your own words for the question every interview opens with — "tell me about yourself" and "walk me through your current project." Rehearse this until it's natural, not memorized-sounding.</p>
+          </div>
+
+          <h2 id="intro">1. Self-introduction</h2>
+          <div class="qa">
+            <div class="qa-body" style="margin-top:0;border-top:none;padding-top:0;">
+              <p>Hello, my name is Kamlesh Kumar. I have 12 years of overall experience in software development, including 7 years of hands-on experience in React.js. Throughout my career, I have worked across multiple domains such as Banking, E-commerce, and E-learning, which has given me exposure to different business requirements and application architectures. Currently, I am working as an Associate Specialist at Synechron, where I am working for the U.S. Bank client.</p>
+            </div>
+          </div>
+
+          <h2 id="overview">2. Project overview — Regulatory Reporting Application</h2>
+          <div class="qa">
+            <div class="qa-body" style="margin-top:0;border-top:none;padding-top:0;">
+              <p>It is a regulatory reporting web application used by banks to report financial trades to regulators. The application supports multiple asset classes such as Foreign Exchange (FX), Interest Rates, Commodities, and Collateral.</p>
+              <p>Whenever a trade is executed, the bank is required to submit the trade details to the regulator. The regulator then validates the report and either accepts it, which is acknowledged as <strong>ACK</strong>, or rejects it, which is acknowledged as <strong>NACK</strong>. If a trade is rejected, the bank needs to identify the reason for the rejection, correct or modify the trade details, and replay the report.</p>
+              <p>Our application provides different dashboards and reports where users can monitor ACKs, NACKs, Data Mismatches, Trade Mismatches, and perform trade validation through a Reconciliation page.</p>
+            </div>
+          </div>
+
+          <h3 id="flow">Trade lifecycle, at a glance</h3>
+          <table>
+            <tr><th>Step</th><th>What happens</th></tr>
+            <tr><td>1. Trade executed</td><td>Bank executes a trade in FX, Interest Rates, Commodities, or Collateral</td></tr>
+            <tr><td>2. Report submitted</td><td>Trade details are reported to the regulator</td></tr>
+            <tr><td>3. Regulator validates</td><td>Regulator checks the report and responds</td></tr>
+            <tr><td>4a. ACK</td><td>Report accepted — no further action needed</td></tr>
+            <tr><td>4b. NACK</td><td>Report rejected — bank identifies the reason, corrects the trade, and replays the report</td></tr>
+            <tr><td>5. Monitoring</td><td>Users track ACKs, NACKs, data mismatches, and trade mismatches via dashboards and the Reconciliation page</td></tr>
+          </table>
+
+          <h2 id="responsibilities">3. Responsibilities</h2>
+          <div class="qa">
+            <div class="qa-body" style="margin-top:0;border-top:none;padding-top:0;">
+              <p>I have been involved in the complete frontend development lifecycle. My responsibilities include:</p>
+              <ul>
+                <li>Developing new features using React.js</li>
+                <li>Integrating REST APIs with the frontend</li>
+                <li>Implementing searching, filtering, sorting, and pagination using AG Grid</li>
+                <li>Writing end-to-end automation test cases using Cypress</li>
+                <li>Collaborating closely with backend developers to finalize API contracts and resolve integration issues</li>
+                <li>Fixing production issues and providing quick support during releases</li>
+                <li>Deploying applications through the Shield Pipeline</li>
+              </ul>
+            </div>
+          </div>
+
+          <h2 id="challenge">4. Key challenge — AG Grid Server-Side Row Model</h2>
+          <div class="qa">
+            <div class="qa-body" style="margin-top:0;border-top:none;padding-top:0;">
+              <p>One of the most challenging tasks I worked on was implementing the AG Grid Server-Side Row Model. Initially, we faced several challenges because the frontend and backend needed to work together efficiently for server-side pagination, filtering, and sorting.</p>
+              <p>I spent time studying the AG Grid documentation in depth, created a detailed implementation document, and discussed the required backend API changes with the backend team. After the backend APIs were updated, I implemented the frontend changes, including server-side pagination, sorting, filtering, and data loading.</p>
+              <p>As a result, the feature worked successfully and significantly improved the application's performance by loading only the required data instead of the entire dataset.</p>
+            </div>
+          </div>
+
+          <h2 id="closing">5. Closing statement</h2>
+          <div class="qa">
+            <div class="qa-body" style="margin-top:0;border-top:none;padding-top:0;">
+              <p>Overall, I enjoy solving complex frontend problems, improving application performance, and building scalable React applications while collaborating effectively with cross-functional teams.</p>
+            </div>
+          </div>
+
+          <h2 id="delivery-tips">6. Delivery tips for the interview</h2>
+          <div class="callout">
+            <strong>Timing</strong>
+            The full walkthrough above runs 2-3 minutes read aloud at a natural pace — about right for an opening "tell me about yourself." If asked specifically about a challenge (a very common follow-up), the AG Grid section alone is already shaped as a complete STAR answer — see the <a href="agile-leadership.html">Agile &amp; Leadership</a> guide's STAR framework: Situation (frontend/backend needed to coordinate for server-side operations), Task (design and implement the Server-Side Row Model), Action (studied docs, wrote an implementation doc, aligned on API changes, built the frontend), Result (major performance improvement from loading only required data).
+          </div>
+          <div class="callout">
+            <strong>Where interviewers will probe deeper</strong>
+            Be ready for follow-ups on: how AG Grid's Server-Side Row Model actually works under the hood (block-based lazy loading, the datasource interface) — cross-reference the <a href="system-design.html">Frontend System Design</a> guide's data-grid worked example for the underlying virtualization/pagination mechanics; how you structured the REST API contract for server-side filtering/sorting — see <a href="rest-api.html">REST APIs</a> (pagination); and how you validated the feature — mention your Cypress E2E coverage, linking to <a href="testing.html">Testing</a>.
+          </div>
+          <div class="callout">
+            <strong>Keep it conversational</strong>
+            This is written out in full so you can internalize the shape and the specific details (ACK/NACK, the four asset classes, Shield Pipeline) — but avoid reciting it verbatim in the room. Interviewers can tell, and a slightly looser, more natural retelling that hits the same beats lands better than a memorized script.
+          </div>
+
+          <div class="page-nav">
+            <a class="prev" href="../index.html"><span class="dir">← Back</span>Home / Roadmap</a>
+            <a class="next" href="javascript.html"><span class="dir">Next →</span>JavaScript (ES6+) Interview Guide</a>
+          </div>
+        </div>
+
+        <nav class="toc">
+          <div class="toc-title">On this page</div>
+          <a href="#intro">Self-introduction</a>
+          <a href="#overview">Project overview</a>
+          <a href="#responsibilities">Responsibilities</a>
+          <a href="#challenge">Key challenge</a>
+          <a href="#closing">Closing statement</a>
+          <a href="#delivery-tips">Delivery tips</a>
+        </nav>
+      </div>
+    </main>
+    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
+  </div>
+</div>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>

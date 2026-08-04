@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Next.js Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
+          </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done active" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link" data-status="planned" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link" data-status="planned" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a
+            class="nav-link"
+            data-status="planned"
+            href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link" data-status="planned" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link" data-status="planned" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link" data-status="planned" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link" data-status="planned" href="jest-rtl.html"
+            ><span class="dot"></span> Jest & RTL</a
+          >
+          <a class="nav-link" data-status="planned" href="cypress-cucumber.html"
+            ><span class="dot"></span> Cypress & Cucumber</a
+          >
+          <a class="nav-link" data-status="planned" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link" data-status="planned" href="aws.html"
+            ><span class="dot"></span> AWS</a
+          >
+          <a class="nav-link" data-status="planned" href="cicd.html"
+            ><span class="dot"></span> CI/CD</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a
+            class="nav-link"
+            data-status="planned"
+            href="frontend-architecture.html"
+            ><span class="dot"></span> Frontend Architecture</a
+          >
+          <a class="nav-link" data-status="planned" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends</a
+          >
+          <a class="nav-link" data-status="planned" href="design-patterns.html"
+            ><span class="dot"></span> Design Patterns</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link" data-status="planned" href="performance.html"
+            ><span class="dot"></span> Web Performance</a
+          >
+          <a class="nav-link" data-status="planned" href="accessibility.html"
+            ><span class="dot"></span> Accessibility (WCAG)</a
+          >
+          <a class="nav-link" data-status="planned" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link" data-status="planned" href="agile.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
+
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> Next.js
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
+          </div>
+        </div>
+
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>Next.js Interview Guide</h1>
+                <p class="lead">
+                  Rendering strategies, the App Router's Server/Client Component
+                  split, data fetching, and the performance wins Next.js gives
+                  you over a plain client-rendered React SPA.
+                </p>
+              </div>
+
+              <h2 id="overview">1. Technology overview</h2>
+              <p>
+                Next.js is a React framework that adds file-system-based
+                routing, multiple rendering strategies (SSR, SSG, ISR, client
+                rendering), and a built-in build/runtime pipeline (bundling,
+                image optimization, API routes) on top of React. It exists
+                because a plain client-rendered SPA ships a blank HTML shell and
+                does all rendering in the browser — bad for SEO and slow "time
+                to first paint" on a content-heavy site. At the senior level,
+                interviewers care whether you can correctly choose
+                <em>which</em> rendering strategy fits a given page, and whether
+                you understand the App Router's Server Components model well
+                enough to avoid shipping unnecessary client JS.
+              </p>
+              <div class="tag">SSR / SSG / ISR</div>
+              <div class="tag">App Router</div>
+              <div class="tag">Server Components</div>
+              <div class="tag">Data Fetching</div>
+              <div class="tag">API Routes</div>
+              <div class="tag">Image/Font Optimization</div>
+              <div class="tag">Middleware</div>
+
+              <h2 id="basic">2. Basic questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What
+                  problem does Next.js solve that a plain Create-React-App style
+                  SPA doesn't?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    A pure client-rendered SPA sends a near-empty HTML file; the
+                    browser has to download, parse, and execute the JS bundle
+                    before anything meaningful appears — bad for SEO crawlers
+                    that don't execute JS well, and bad for perceived
+                    performance on slow connections/devices. Next.js renders
+                    HTML on the server (or at build time) so the browser gets
+                    meaningful content immediately, then "hydrates" it with
+                    React to make it interactive. It also removes the need to
+                    hand-roll routing, code-splitting, and bundling
+                    configuration.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> SSR vs
+                  SSG vs ISR vs CSR — what's the actual difference?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th>Strategy</th>
+                      <th>When HTML is generated</th>
+                      <th>Best for</th>
+                    </tr>
+                    <tr>
+                      <td>CSR (client-side rendering)</td>
+                      <td>In the browser, after JS loads</td>
+                      <td>
+                        Highly interactive, non-SEO-critical views (internal
+                        dashboards)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>SSR (server-side rendering)</td>
+                      <td>On every request, on the server</td>
+                      <td>
+                        Pages needing fresh, per-request data (a user's account
+                        page)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>SSG (static generation)</td>
+                      <td>Once, at build time</td>
+                      <td>
+                        Content that rarely changes (marketing pages, docs)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>ISR (incremental static regen.)</td>
+                      <td>
+                        At build time, then re-generated in the background after
+                        a set interval
+                      </td>
+                      <td>
+                        Mostly-static content that changes occasionally (a
+                        product catalog)
+                      </td>
+                    </tr>
+                  </table>
+                  <p>
+                    <strong>Common mistake:</strong> defaulting every page to
+                    SSR "to be safe" — this adds server load and latency to
+                    pages that don't need per-request freshness; picking the
+                    right strategy per route is the actual skill being tested.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What is
+                  hydration, and why can it cause a "flash" or console warning?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Hydration is React attaching event listeners and internal
+                    state to the server-rendered HTML in the browser, without
+                    re-creating the DOM from scratch. A "hydration mismatch"
+                    warning happens when the server-rendered markup and the
+                    client's first render don't match exactly (e.g. using
+                    <code>Date.now()</code> or
+                    <code>Math.random()</code> directly in render, or checking
+                    <code>typeof window</code> to conditionally render
+                    something) — React then has to discard and rebuild the
+                    mismatched portion, which can cause a visible flash and
+                    defeats the purpose of SSR.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="intermediate">3. Intermediate questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Explain Server Components vs Client Components in the App
+                  Router — this is the most important conceptual shift from
+                  Pages Router.
+                </summary>
+                <div class="qa-body">
+                  <h5>What</h5>
+                  <p>
+                    In the App Router, every component is a
+                    <strong>Server Component</strong> by default: it renders on
+                    the server (or at build time), never ships its own JS to the
+                    browser, and can directly access backend resources
+                    (databases, file system, secrets) without an API layer. Add
+                    the <code>'use client'</code> directive at the top of a file
+                    to opt a component (and everything it imports) into being a
+                    <strong>Client Component</strong> — one that hydrates in the
+                    browser and can use hooks, state, effects, and browser APIs.
+                  </p>
+                  <pre><code>// app/trades/page.jsx — Server Component (default, no directive needed)
+async function TradesPage() {
+  const trades = await db.trades.findMany(); // direct data access, no API round-trip
+  return &lt;TradeTable trades={trades} /&gt;;
+}
+
+// TradeTable.jsx
+'use client';
+function TradeTable({ trades }) {
+  const [sortBy, setSortBy] = useState('date'); // needs client interactivity
+  // ...
+}</code></pre>
+                  <h5>Why it matters</h5>
+                  <p>
+                    Server Components ship zero JS for anything that's purely
+                    presentational or read-only — for a large enterprise
+                    dashboard, this can meaningfully shrink the client bundle by
+                    keeping data-fetching, formatting, and static layout on the
+                    server, and only marking the genuinely interactive leaves
+                    (sortable headers, editable cells, filters) as Client
+                    Components.
+                  </p>
+                  <h5>Common mistake</h5>
+                  <p>
+                    Slapping <code>'use client'</code> on a high-level layout
+                    component "just in case" — because the directive propagates
+                    to everything imported beneath it, this silently converts an
+                    entire subtree back into client-rendered JS, defeating the
+                    whole benefit.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How does data fetching work in the App Router compared to
+                  <code>getServerSideProps</code>/<code>getStaticProps</code> in
+                  the Pages Router?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Pages Router: each page file exports a special function
+                    (<code>getServerSideProps</code> for per-request SSR,
+                    <code>getStaticProps</code> for build-time SSG, optionally
+                    with <code>revalidate</code> for ISR) that Next.js calls
+                    before rendering the page. App Router: Server Components
+                    fetch data directly with <code>async/await</code> inside the
+                    component itself — no special exported function — and
+                    caching/revalidation behavior is controlled via
+                    <code>fetch</code> options (<code
+                      >{ cache: 'force-cache' | 'no-store', next: { revalidate:
+                      60 } }</code
+                    >) rather than a separate API.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  What are API routes / Route Handlers, and when would you use
+                  one instead of calling your backend directly from the client?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Route Handlers (<code>app/api/.../route.js</code>) let you
+                    write backend endpoints inside the Next.js app itself. Use
+                    them when: you need to hide an API key/secret that can't be
+                    exposed to the browser, you need to aggregate/transform data
+                    from multiple backend services before sending a single
+                    response to the client, or you need a webhook endpoint. For
+                    a straightforward "call our existing REST API," calling it
+                    directly from a Server Component (or via a typed client) is
+                    usually simpler than adding an extra hop through a Next.js
+                    API route.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="advanced">4. Advanced questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  does Next.js's built-in image optimization actually improve
+                  performance, and what are the trade-offs?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <code>next/image</code> automatically serves
+                    correctly-sized, modern-format (WebP/AVIF) images based on
+                    the requesting device's viewport, lazy-loads images below
+                    the fold by default, and prevents layout shift by requiring
+                    explicit width/height (reserving space before the image
+                    loads — directly improving Cumulative Layout Shift, a Core
+                    Web Vital). Trade-off: it requires either Next.js's own
+                    image optimization API (adds a server/edge processing cost
+                    per unique size requested) or a configured external loader
+                    (e.g. Cloudinary/Imgix) for full control in a self-hosted or
+                    CDN-heavy setup.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  Explain Next.js Middleware and a realistic enterprise use
+                  case.
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Middleware runs at the edge, before a request completes, and
+                    can rewrite, redirect, or modify the response — before any
+                    page or API route code executes. A realistic use case for an
+                    enterprise banking-style app: reading an auth cookie in
+                    middleware and redirecting unauthenticated users to
+                    <code>/login</code> for any route under
+                    <code>/dashboard</code>, without needing every single Server
+                    Component to duplicate that check — while still treating it
+                    as a UX layer, not a substitute for real server-side
+                    authorization on the actual data endpoints.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  you're migrating an internal financial dashboard (heavy client
+                  interactivity — grids, real-time price ticks, role-based
+                  editing) from a CRA-style SPA to Next.js. Which pages benefit
+                  from SSR/SSG, and which should stay effectively
+                  client-rendered?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Not every page benefits equally. Pages with genuinely static
+                    or slow-changing shell content (a landing/help page, a
+                    static report template) are good SSG/ISR candidates. A
+                    logged-in-only trade blotter with per-request, per-user,
+                    permission-filtered data is a reasonable SSR candidate for
+                    the <em>initial</em> data (skip an extra client-side loading
+                    spinner on first load), but the live-updating, highly
+                    interactive grid itself (WebSocket ticks, inline editing,
+                    virtualization) is inherently a Client Component — there's
+                    no SEO or first-paint benefit to server-rendering data
+                    that's about to be overwritten by a live feed a second
+                    later. The honest answer in an interview: identify each
+                    page's actual requirement (SEO? first-paint speed?
+                    auth-gated? real-time?) rather than assuming "Next.js means
+                    everything should be SSR now."
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span>
+                  Output-based: why does this Server Component throw a runtime
+                  error, and what's the fix?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>// app/trades/page.jsx (Server Component, no 'use client')
+function TradesPage() {
+  const [filter, setFilter] = useState('all'); // Error: useState in a Server Component
+  return &lt;div&gt;{filter}&lt;/div&gt;;
+}</code></pre>
+                  <p>
+                    Server Components render on the server (or at build time)
+                    and never re-render on the client in response to interaction
+                    — there's no "instance" of them living in the browser to
+                    hold state, so React hooks that depend on client-side
+                    lifecycle (<code>useState</code>, <code>useEffect</code>,
+                    event handlers) simply aren't available there. The fix is to
+                    extract the interactive piece into its own file with
+                    <code>'use client'</code> at the top, and pass
+                    server-fetched data into it as props.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">6. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong> Adding
+                <code>'use client'</code> too high in the tree, converting large
+                subtrees back to client-rendered JS unnecessarily; using SSR by
+                default for pages that don't need per-request freshness, adding
+                needless server load; causing hydration mismatches with
+                non-deterministic render output (random IDs, current time)
+                without guarding them behind a client-only effect; fetching data
+                client-side with <code>useEffect</code> inside what could've
+                been a Server Component, re-introducing the render-then-fetch
+                waterfall Next.js is meant to avoid.
+              </div>
+
+              <h2 id="company">7. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>Vercel-adjacent/startup style:</strong> "Explain when
+                  you'd choose SSR vs SSG vs ISR for three different pages of
+                  the same app" — always a scenario question, not a definition
+                  question.
+                </li>
+                <li>
+                  <strong>General senior-level:</strong> "What's the difference
+                  between a Server Component and 'server-side rendering' —
+                  aren't they the same thing?" (They're related but distinct:
+                  SSR is about <em>when</em> HTML is generated; Server
+                  Components are about
+                  <em
+                    >where a component's code runs and whether its JS ships to
+                    the client at all</em
+                  >.)
+                </li>
+                <li>
+                  <strong>Performance-focused companies:</strong> "How would you
+                  reduce a Next.js app's client bundle size?" — Server
+                  Components for non-interactive subtrees, dynamic
+                  <code>import()</code> for heavy client-only libraries, and
+                  auditing third-party script usage.
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>SSR</td>
+                  <td>HTML generated per request, on the server</td>
+                </tr>
+                <tr>
+                  <td>SSG</td>
+                  <td>HTML generated once, at build time</td>
+                </tr>
+                <tr>
+                  <td>ISR</td>
+                  <td>Static + periodic background regeneration</td>
+                </tr>
+                <tr>
+                  <td>Server Component (default)</td>
+                  <td>Renders server-side, ships zero JS to the browser</td>
+                </tr>
+                <tr>
+                  <td>Client Component</td>
+                  <td>
+                    <code>'use client'</code> — hydrates, can use
+                    hooks/state/events
+                  </td>
+                </tr>
+                <tr>
+                  <td>Hydration mismatch</td>
+                  <td>
+                    Server & first client render disagree — usually
+                    non-deterministic output
+                  </td>
+                </tr>
+                <tr>
+                  <td>Middleware</td>
+                  <td>
+                    Runs at the edge before the route — good for auth redirects,
+                    not data authorization
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: builds on <a href="react.html">React.js</a> (Suspense,
+                component model) and
+                <a href="react-router.html">React Router</a> (Next.js's
+                file-system router solves the same problem differently, without
+                a separate routing library).
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="react-router.html"
+                  ><span class="dir">← Previous</span>React Router Interview
+                  Guide</a
+                >
+                <a class="next" href="system-design.html"
+                  ><span class="dir">Next →</span>Frontend System Design
+                  Interview Guide</a
+                >
+              </div>
+            </div>
+
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
+          </div>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
+      </div>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

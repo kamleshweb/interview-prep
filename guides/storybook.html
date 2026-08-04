@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Storybook Interview Guide — Kamlesh Kumar</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">KK</div>
+      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
+    </div>
+    <input id="search-box" type="text" placeholder="Search topics…">
+    <div class="nav-group"><div class="nav-group-title">Start Here</div>
+      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
+    <div class="nav-group"><div class="nav-group-title">Core Language</div>
+      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
+      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
+    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
+      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
+      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
+      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
+      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
+    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
+      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
+      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
+      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
+    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
+      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
+      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
+      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a>
+      <a class="nav-link done" href="ai-integration.html"><span class="dot"></span> AI / LLM Integration</a></div>
+    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
+      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
+      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
+      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
+      <a class="nav-link done active" href="storybook.html"><span class="dot"></span> Storybook</a>
+      <a class="nav-link done" href="debugging-and-tools.html"><span class="dot"></span> Debugging & Dev Tools</a></div>
+    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
+      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
+    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
+      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
+      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
+      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
+    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
+      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
+      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
+    <div class="nav-group"><div class="nav-group-title">Process</div>
+      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
+  </aside>
+
+  <div>
+    <div class="topbar">
+      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Storybook</div>
+      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
+    </div>
+
+    <main>
+      <div class="content-wrap">
+        <div class="prose">
+          <div class="hero">
+            <h1>Storybook Interview Guide</h1>
+            <p class="lead">Component-driven development, isolating components from app context, and how Storybook becomes the backbone of a design system's documentation and visual regression testing.</p>
+          </div>
+
+          <h2 id="overview">1. Overview</h2>
+          <p>Storybook is a tool for building and viewing UI components in isolation, outside the context of a full running app — each component is documented as one or more "stories" (a specific rendered state, given specific props/args). It matters at the senior/lead level mainly for what it enables organizationally: a living, browsable catalog of a design system, a sandbox for building components without needing the whole app's routing/data layer running, and a foundation for automated visual regression testing.</p>
+          <div class="tag">Component-Driven Development</div><div class="tag">Stories & Args</div><div class="tag">Addons</div><div class="tag">Visual Regression Testing</div><div class="tag">Design System Docs</div>
+
+          <h2 id="basic">2. Basic questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What is component-driven development, and what problem does building in Storybook first solve?</summary>
+            <div class="qa-body">
+              <p>Component-driven development means building UI bottom-up — starting with the smallest, most isolated pieces (a Button, an Input) and composing upward, rather than building a whole page and extracting components later. Building a component in Storybook first forces you to define its props/API in isolation, without the crutch of "it works because the page around it happens to provide the right data" — which surfaces missing edge cases (empty states, error states, very long text) far earlier than discovering them only when a real page happens to hit that scenario.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What's a "story," and what are "args"?</summary>
+            <div class="qa-body">
+<pre><code>// Button.stories.js
+export default { component: Button };
+
+export const Primary = { args: { label: 'Save', variant: 'primary' } };
+export const Disabled = { args: { label: 'Save', variant: 'primary', disabled: true } };</code></pre>
+              <p>A story is one specific, named rendering of a component with a specific set of props ("args"). Args are Storybook's term for the props passed into that rendering — exposing them as controls in the UI lets anyone browsing Storybook (not just engineers) interactively tweak props and see the component respond live, without touching code.</p>
+            </div>
+          </details>
+
+          <h2 id="intermediate">3. Intermediate questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you handle a component that depends on Context (Redux store, Router, theme) inside Storybook, where none of that app-level setup exists by default?</summary>
+            <div class="qa-body">
+<pre><code>// .storybook/preview.js — global decorator wraps every story
+export const decorators = [
+  (Story) =&gt; (
+    &lt;Provider store={mockStore}&gt;
+      &lt;ThemeProvider theme={defaultTheme}&gt;
+        &lt;Story /&gt;
+      &lt;/ThemeProvider&gt;
+    &lt;/Provider&gt;
+  ),
+];</code></pre>
+              <p>Storybook "decorators" wrap every story (or specific ones) in whatever providers the component needs — a mock Redux store with representative fake data, a Router wrapper for components using <code>useNavigate</code>/<code>Link</code>, a ThemeProvider. This is exactly the same problem the Testing guide's RTL examples solve for unit tests — Storybook needs the same kind of "fake the surrounding app context" setup, just for visual browsing instead of assertions.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> What are addons, and name a couple that matter for a design-system-focused team?</summary>
+            <div class="qa-body">
+              <p>Addons extend Storybook's UI with extra panels/functionality. Ones that matter most for a design-system team: the <strong>a11y addon</strong> (runs automated accessibility checks against every story, surfacing violations right in the component-authoring workflow rather than downstream); the <strong>controls addon</strong> (auto-generates interactive prop controls from a component's TypeScript types/PropTypes); and <strong>Chromatic</strong> (technically a separate hosted service, but tightly integrated) for visual regression testing across every story.</p>
+            </div>
+          </details>
+
+          <h2 id="advanced">4. Advanced questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How does visual regression testing (Chromatic or similar) actually work, and what's the workflow when it flags a change?</summary>
+            <div class="qa-body">
+              <p>On each build, every story is rendered and screenshotted (typically across multiple browsers/viewports); the new screenshots are pixel-diffed against the last-accepted baseline for that story. If any pixels differ beyond a configured threshold, the build is flagged for human review rather than auto-passing or auto-failing — because not every visual diff is a bug; some are intentional design changes. The reviewer (often the PR author or a design-system owner) either accepts the new screenshots as the new baseline (if the change was intentional) or rejects/fixes the code (if it was an accidental regression). This turns "did my change accidentally break some other component's spacing" from a manual, easy-to-miss QA pass into an automated, per-PR gate.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How would you use Storybook to help enforce a shared component library's public API discipline (referencing the Design Patterns &amp; Architecture guide's governance concerns)?</summary>
+            <div class="qa-body">
+              <p>Storybook's auto-generated docs (from TypeScript prop types/JSDoc comments) become the de facto, always-up-to-date public API reference for every component — since it's generated directly from the same types the compiler enforces, it can't silently drift out of sync with the real component the way a hand-maintained README can. Combined with Chromatic visual regression testing in CI, this gives consuming teams two concrete guarantees before a new library version ships: the documented prop API is accurate, and no existing story's visual output changed unexpectedly. That's a meaningfully stronger contract than "we wrote good docs and hope nothing broke," directly addressing the governance problem raised in the architecture guide.</p>
+            </div>
+          </details>
+
+          <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: your team's Storybook has grown to hundreds of stories and visual regression checks now take 20+ minutes in CI, slowing every PR. How do you address it?</summary>
+            <div class="qa-body">
+              <p>Similar to the E2E-suite scaling problem from the Testing guide: (1) run visual regression only against stories that changed, or that belong to components whose dependency graph actually changed, rather than re-snapshotting every story on every PR unconditionally — most visual regression tools (Chromatic) support this kind of change-detection/TurboSnap-style optimization out of the box; (2) parallelize snapshot rendering across workers; (3) periodically audit and prune genuinely redundant stories (multiple stories that differ only in a prop value that doesn't meaningfully change visual output) rather than treating "more stories" as an unconditional good — story count should track meaningfully distinct states, not exhaustively enumerate every prop permutation.</p>
+            </div>
+          </details>
+
+          <h2 id="mistakes">6. Common mistakes & debugging</h2>
+          <div class="callout warn"><strong>Frequent review comments</strong>
+            Building a component directly in the app first and writing stories as an afterthought (loses the "surfaces edge cases early" benefit entirely); missing decorators for Context-dependent components, causing confusing runtime errors in Storybook that don't reflect a real component bug; treating visual regression flags as noise to auto-approve without review, defeating their purpose; letting the story count balloon with near-duplicate states instead of covering genuinely distinct, meaningful component states.
+          </div>
+
+          <h2 id="company">7. Frequently asked at top product companies</h2>
+          <ul>
+            <li><strong>Design-system-focused companies:</strong> "How do you keep a shared component library's documentation from going stale?" — tests whether you know Storybook's docs can be type-generated rather than hand-maintained.</li>
+            <li><strong>General senior-level:</strong> "How would you test that a component still looks correct after a refactor, beyond functional unit tests?" — tests visual regression testing awareness specifically.</li>
+          </ul>
+
+          <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+          <table>
+            <tr><th>Concept</th><th>One-line recall</th></tr>
+            <tr><td>Component-driven dev</td><td>Build isolated components first — surfaces edge cases early</td></tr>
+            <tr><td>Story / args</td><td>One named rendering with a specific prop set; args = the props themselves</td></tr>
+            <tr><td>Decorators</td><td>Wrap stories with Context providers the component depends on</td></tr>
+            <tr><td>Visual regression</td><td>Pixel-diff every story against a baseline; human review on any diff</td></tr>
+            <tr><td>Auto-generated docs</td><td>Generated from real types — can't silently drift from the actual component</td></tr>
+          </table>
+
+          <p class="lead">Related: builds on <a href="testing.html">Testing</a> (visual regression as a testing layer) and <a href="design-patterns-architecture.html">Design Patterns &amp; Architecture</a> (design-system governance).</p>
+
+          <div class="page-nav">
+            <a class="prev" href="ai-integration.html"><span class="dir">← Previous</span>AI / LLM Integration Guide</a>
+            <a class="next" href="debugging-and-tools.html"><span class="dir">Next →</span>Debugging &amp; Developer Tools Guide</a>
+          </div>
+        </div>
+
+        <nav class="toc">
+          <div class="toc-title">On this page</div>
+          <a href="#overview">Overview</a>
+          <a href="#basic">Basic</a>
+          <a href="#intermediate">Intermediate</a>
+          <a href="#advanced">Advanced</a>
+          <a href="#expert">Expert & scenarios</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#company">Company questions</a>
+          <a href="#cheatsheet">Cheat sheet</a>
+        </nav>
+      </div>
+    </main>
+    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
+  </div>
+</div>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>

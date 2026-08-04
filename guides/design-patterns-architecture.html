@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Patterns & Frontend Architecture Interview Guide — Kamlesh Kumar</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">KK</div>
+      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
+    </div>
+    <input id="search-box" type="text" placeholder="Search topics…">
+    <div class="nav-group"><div class="nav-group-title">Start Here</div>
+      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
+    <div class="nav-group"><div class="nav-group-title">Core Language</div>
+      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
+      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
+    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
+      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
+      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
+      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
+      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
+    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
+      <a class="nav-link" data-status="planned" href="html5.html"><span class="dot"></span> HTML5</a>
+      <a class="nav-link" data-status="planned" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
+      <a class="nav-link" data-status="planned" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
+    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
+      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
+      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
+      <a class="nav-link" data-status="planned" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
+    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
+      <a class="nav-link" data-status="planned" href="git.html"><span class="dot"></span> Git</a>
+      <a class="nav-link" data-status="planned" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
+      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
+      <a class="nav-link" data-status="planned" href="storybook.html"><span class="dot"></span> Storybook</a></div>
+    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
+      <a class="nav-link" data-status="planned" href="aws.html"><span class="dot"></span> AWS</a>
+      <a class="nav-link" data-status="planned" href="cicd.html"><span class="dot"></span> CI/CD</a></div>
+    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
+      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
+      <a class="nav-link done active" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
+      <a class="nav-link" data-status="planned" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
+    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
+      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
+      <a class="nav-link" data-status="planned" href="security.html"><span class="dot"></span> Security & Auth</a></div>
+    <div class="nav-group"><div class="nav-group-title">Process</div>
+      <a class="nav-link" data-status="planned" href="agile.html"><span class="dot"></span> Agile & Leadership</a></div>
+  </aside>
+
+  <div>
+    <div class="topbar">
+      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Design Patterns & Architecture</div>
+      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
+    </div>
+
+    <main>
+      <div class="content-wrap">
+        <div class="prose">
+          <div class="hero">
+            <h1>Design Patterns & Frontend Architecture Interview Guide</h1>
+            <p class="lead">Reusable component patterns (compound components, render props, provider pattern) and the organizational patterns that keep a large app maintainable as a team grows — the "how do you structure things" questions senior/lead interviews lean on heavily.</p>
+          </div>
+
+          <h2 id="overview">1. Overview — two related but distinct skill areas</h2>
+          <p><strong>Design patterns</strong> here means reusable solutions to recurring component-design problems in JS/React — not always the classic Gang-of-Four patterns verbatim, but their spirit adapted to a component-tree, hooks-based world. <strong>Frontend architecture</strong> is the layer above individual components: how code is organized across files/folders/repos, how teams avoid stepping on each other, and how a codebase stays navigable at 100,000+ lines. Interviewers ask about both because a candidate at the 12-year/lead level is expected to make these calls for a team, not just for their own PRs.</p>
+          <div class="tag">Compound Components</div><div class="tag">Render Props</div><div class="tag">Provider Pattern</div><div class="tag">Composition</div><div class="tag">Feature-Folder Structure</div><div class="tag">Monorepo</div><div class="tag">Design System Governance</div>
+
+          <h2 id="patterns-basic">2. Design patterns — basic</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What's the "composition over inheritance" principle, and why does React lean on it so heavily?</summary>
+            <div class="qa-body">
+              <p>React deliberately has no class-inheritance-based component reuse mechanism (you never <code>extend</code> one component from another to reuse UI logic) — instead, you build complex components by composing smaller ones together (nesting, passing components as props/children). This avoids the classic inheritance problem of a deep, fragile hierarchy where a change to a base class ripples unpredictably through every subclass — composition keeps each piece independently understandable and swappable.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> Container/Presentational pattern — is it still relevant with hooks?</summary>
+            <div class="qa-body">
+              <p>The classic split — a "container" component owns data/logic, a "presentational" component only renders UI from props — predates hooks, which now let you extract the logic into a custom hook instead of a wrapping container component. The underlying principle (separate "what data/logic" from "how it looks") is still exactly right and still asked about; the mechanism has just shifted from container components to custom hooks + purely presentational components consuming them.</p>
+            </div>
+          </details>
+
+          <h2 id="patterns-intermediate">3. Design patterns — intermediate</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Explain the Compound Components pattern with a real example.</summary>
+            <div class="qa-body">
+              <h5>What</h5>
+              <p>A set of components that work together implicitly, sharing state via Context, giving the consumer flexible control over layout while the components manage their own coordination internally — much like native <code>&lt;select&gt;</code> and <code>&lt;option&gt;</code>.</p>
+<pre><code>&lt;Tabs defaultValue="summary"&gt;
+  &lt;Tabs.List&gt;
+    &lt;Tabs.Trigger value="summary"&gt;Summary&lt;/Tabs.Trigger&gt;
+    &lt;Tabs.Trigger value="trades"&gt;Trades&lt;/Tabs.Trigger&gt;
+  &lt;/Tabs.List&gt;
+  &lt;Tabs.Panel value="summary"&gt;...&lt;/Tabs.Panel&gt;
+  &lt;Tabs.Panel value="trades"&gt;...&lt;/Tabs.Panel&gt;
+&lt;/Tabs&gt;</code></pre>
+              <h5>Why</h5>
+              <p>The consumer can reorder, omit, or insert extra markup between the sub-components freely — far more flexible than a single monolithic <code>&lt;Tabs tabs={[...]} /&gt;</code> prop-driven API, while <code>Tabs</code> still owns the actual active-tab state internally via Context, so consumers don't have to wire that up themselves.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Render Props vs Custom Hooks — is the render props pattern dead?</summary>
+            <div class="qa-body">
+<pre><code>// Render props (older pattern)
+&lt;MousePosition render={({ x, y }) =&gt; &lt;span&gt;{x}, {y}&lt;/span&gt;} /&gt;
+
+// Custom hook (modern equivalent)
+function Cursor() {
+  const { x, y } = useMousePosition();
+  return &lt;span&gt;{x}, {y}&lt;/span&gt;;
+}</code></pre>
+              <p>Custom hooks solve the exact same problem (sharing stateful logic without a wrapper component) with less nesting and better composability — you can combine multiple hooks freely, whereas nesting several render-prop components creates the notorious "callback hell"-style pyramid. Render props aren't strictly dead — some library APIs still use them for genuinely render-time flexibility (e.g. a virtualization library needing to control exactly what gets rendered per row) — but for sharing logic, hooks have almost entirely replaced them.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> The Provider Pattern — when is it the right tool, and when is it overused?</summary>
+            <div class="qa-body">
+              <p>Wrapping a subtree in a Context Provider is right for genuinely cross-cutting, infrequently-changing values consumed deep in the tree without prop-drilling — theme, current user, locale, feature flags. It's overused when reached for as a general state-management solution for frequently-changing data (as covered in the Redux guide, every value change re-renders every consumer with no built-in selector granularity) — that's a sign a dedicated state library or moving the state lower in the tree is the better fit.</p>
+            </div>
+          </details>
+
+          <h2 id="patterns-advanced">4. Design patterns — advanced</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> Explain the "state reducer pattern" and why a component library author might expose it.</summary>
+            <div class="qa-body">
+<pre><code>function useToggle({ reducer = defaultReducer } = {}) {
+  const [state, dispatch] = useReducer(reducer, { on: false });
+  const toggle = () =&gt; dispatch({ type: 'TOGGLE' });
+  return { on: state.on, toggle };
+}
+
+// Consumer can override the default behavior for one specific case
+function customReducer(state, action) {
+  if (action.type === 'TOGGLE' && state.locked) return state; // block toggling
+  return defaultReducer(state, action);
+}
+useToggle({ reducer: customReducer });</code></pre>
+              <p>Instead of a component library trying to anticipate every possible customization with more and more props (prop explosion), the state reducer pattern hands the consumer the actual state-transition logic to override, letting them intercept or modify specific transitions without forking the component. This is an advanced, library-author-facing pattern — most product-code interviews won't require you to build one from scratch, but recognizing it (and explaining why it beats endless boolean props) signals real component-API design maturity.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> Design a reusable, flexible Modal API — what are the competing concerns, and how do you balance them?</summary>
+            <div class="qa-body">
+              <p>Competing concerns: simplicity for the common case (one line to open a confirm dialog) vs flexibility for complex cases (a modal with custom footer actions, size variants, nested modals). A layered API often resolves this well: a simple imperative helper (<code>confirm({title, message})</code>) built on top of a more flexible compound-component API (<code>&lt;Modal&gt;&lt;Modal.Header/&gt;&lt;Modal.Body/&gt;&lt;Modal.Footer/&gt;&lt;/Modal&gt;</code>) for anything beyond the common case — so 90% of call sites use the simple helper, and the remaining 10% aren't blocked by it. Also worth naming: focus trap and return-focus-on-close (from the Accessibility guide), and a single global modal root/portal so z-index and stacking-context bugs don't accumulate across the app.</p>
+            </div>
+          </details>
+
+          <h2 id="architecture">5. Frontend architecture — structuring a large codebase</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Architecture</span> Feature-folder structure vs type-folder structure — which do you recommend, and why?</summary>
+            <div class="qa-body">
+<pre><code>// Type-folder (organized by what kind of file it is)
+/components  /hooks  /reducers  /services
+
+// Feature-folder (organized by what part of the product it is)
+/features/trades/{components,hooks,api,slice}.js
+/features/reconciliation/{components,hooks,api,slice}.js</code></pre>
+              <p>Type-folder structure scales poorly past a small app — working on one feature means jumping across four or five top-level folders, and it's hard to tell what's safe to delete when a feature is removed. Feature-folder structure keeps everything related to one part of the product together, makes ownership boundaries between teams visible in the file tree itself, and lets you delete a whole feature by deleting one folder. Shared, truly cross-feature code (design-system components, generic utilities) still gets its own top-level <code>/shared</code> or <code>/common</code> folder — the goal isn't zero shared code, it's making the exception explicit rather than the default.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Architecture</span> How do you enforce module boundaries so features don't quietly become tangled with each other as a team grows?</summary>
+            <div class="qa-body">
+              <p>File structure alone is a convention, not an enforcement mechanism — nothing stops someone importing directly from another feature's internals. Enforce it with lint rules (e.g. <code>eslint-plugin-boundaries</code> or path-based import restrictions) that fail CI if <code>features/trades</code> imports directly from <code>features/reconciliation/internal/...</code> instead of through an explicit public entry point (each feature exporting only what it wants to expose via an <code>index.js</code>). This turns "please don't do that" tribal knowledge into a build failure, which scales far better across a 10+ engineer team than code-review vigilance alone.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Architecture</span> Monorepo vs polyrepo for multiple related frontend apps — trade-offs?</summary>
+            <div class="qa-body">
+              <table>
+                <tr><th></th><th>Monorepo</th><th>Polyrepo</th></tr>
+                <tr><td>Shared code changes</td><td>One atomic commit/PR across app + shared lib</td><td>Requires publishing a new package version and bumping it in each consumer separately</td></tr>
+                <tr><td>Tooling</td><td>Needs investment (Nx/Turborepo/Lerna) for fast, selective builds</td><td>Simpler individually, but cross-repo refactors are painful and easy to leave inconsistent</td></tr>
+                <tr><td>Team autonomy</td><td>Shared CI/lint/versioning conventions across teams</td><td>Each team fully owns their own release cadence and tooling choices</td></tr>
+              </table>
+              <p>For closely related apps sharing a design system and frequently coordinated releases (typical of a large product suite under one org), a monorepo with proper build-caching tooling usually wins on developer experience once the initial tooling investment is made. For genuinely independent products/teams with little shared code, the coordination overhead of a monorepo may not be worth it.</p>
+            </div>
+          </details>
+
+          <h2 id="expert">6. Expert-level & scenario-based</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: your team's shared component library keeps breaking downstream product teams whenever a component's internal behavior changes, even without an intentional breaking API change. How do you fix the underlying process?</summary>
+            <div class="qa-body">
+              <p>This is usually a symptom of an implicit, undocumented contract — consuming teams depend on incidental behavior (exact DOM structure for their own CSS overrides, a specific re-render timing) that was never part of the component's declared public API. Fixes: (1) explicitly document and version the actual public API (props, slots, exposed CSS variables) and treat anything else as a private implementation detail that can change without a major version bump; (2) add visual-regression testing (Chromatic or similar) to the library's CI so unintended visual changes are caught before publishing, not after a downstream team notices in production; (3) adopt semantic versioning strictly and give consuming teams a deprecation window for anything that must change, rather than silent behavior shifts in a patch release.</p>
+            </div>
+          </details>
+
+          <h2 id="mistakes">7. Common mistakes & debugging</h2>
+          <div class="callout warn"><strong>Frequent review comments</strong>
+            Reaching for a generic pattern (HOC, render props, provider) out of habit instead of matching the pattern to the actual problem; type-folder structure that forces every feature change to touch five unrelated top-level folders; shared component libraries with no enforced public API, so downstream teams depend on internals that then can't safely change; premature micro-frontend or monorepo adoption before the team/product scale actually justifies the tooling overhead.
+          </div>
+
+          <h2 id="company">8. Frequently asked at top product companies</h2>
+          <ul>
+            <li><strong>General senior/lead style:</strong> "Design a reusable Table/Modal/Form component API that multiple teams will consume" — tests compound components + prop-API design judgment together.</li>
+            <li><strong>Staff-level style:</strong> "How would you restructure a 5-year-old codebase that's become hard to navigate, without a full rewrite?" — expects an incremental strategy (introduce boundaries/lint rules, migrate feature-by-feature) rather than a big-bang answer.</li>
+            <li><strong>Leadership-adjacent (relevant to your 12 years mentoring teams):</strong> "How do you get buy-in from a team to adopt a new architectural convention?" — tests whether you can drive change beyond your own code, not just design it.</li>
+          </ul>
+
+          <h2 id="cheatsheet">9. Cheat sheet / quick revision</h2>
+          <table>
+            <tr><th>Concept</th><th>One-line recall</th></tr>
+            <tr><td>Composition over inheritance</td><td>React has no component inheritance — nest/compose instead</td></tr>
+            <tr><td>Compound components</td><td>Sub-components share state via Context; consumer controls layout</td></tr>
+            <tr><td>Render props → hooks</td><td>Hooks share logic without nesting/wrapper components</td></tr>
+            <tr><td>Provider pattern</td><td>Right for rarely-changing cross-cutting values, not high-frequency state</td></tr>
+            <tr><td>State reducer pattern</td><td>Expose transition logic itself instead of endless override props</td></tr>
+            <tr><td>Feature-folder structure</td><td>Organize by product feature, not by file type</td></tr>
+            <tr><td>Module boundaries</td><td>Enforce with lint rules, not just convention</td></tr>
+            <tr><td>Monorepo</td><td>Wins for shared-code velocity once tooling investment is made</td></tr>
+          </table>
+
+          <p class="lead">Related: builds on <a href="react.html">React.js</a> (hooks mechanics) and <a href="system-design.html">Frontend System Design</a> (the design-system governance and micro-frontend trade-off questions overlap directly).</p>
+
+          <div class="page-nav">
+            <a class="prev" href="performance-accessibility.html"><span class="dir">← Previous</span>Web Performance &amp; Accessibility Interview Guide</a>
+            <a class="next" href="../index.html"><span class="dir">Next →</span>Back to Roadmap</a>
+          </div>
+        </div>
+
+        <nav class="toc">
+          <div class="toc-title">On this page</div>
+          <a href="#overview">Overview</a>
+          <a href="#patterns-basic">Patterns: basic</a>
+          <a href="#patterns-intermediate">Patterns: intermediate</a>
+          <a href="#patterns-advanced">Patterns: advanced</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#expert">Expert & scenarios</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#company">Company questions</a>
+          <a href="#cheatsheet">Cheat sheet</a>
+        </nav>
+      </div>
+    </main>
+    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
+  </div>
+</div>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>

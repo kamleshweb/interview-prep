@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debugging & Developer Tools Guide — Kamlesh Kumar</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">KK</div>
+      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
+    </div>
+    <input id="search-box" type="text" placeholder="Search topics…">
+    <div class="nav-group"><div class="nav-group-title">Start Here</div>
+      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
+    <div class="nav-group"><div class="nav-group-title">Core Language</div>
+      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
+      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
+    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
+      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
+      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
+      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
+      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
+    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
+      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
+      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
+      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
+    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
+      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
+      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
+      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
+    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
+      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
+      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
+      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
+      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a>
+      <a class="nav-link done active" href="debugging-and-tools.html"><span class="dot"></span> Debugging & Dev Tools</a></div>
+    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
+      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
+    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
+      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
+      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
+      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
+    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
+      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
+      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
+    <div class="nav-group"><div class="nav-group-title">Process</div>
+      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
+  </aside>
+
+  <div>
+    <div class="topbar">
+      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Debugging & Dev Tools</div>
+      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
+    </div>
+
+    <main>
+      <div class="content-wrap">
+        <div class="prose">
+          <div class="hero">
+            <h1>Debugging & Developer Tools Guide</h1>
+            <p class="lead">React DevTools, browser DevTools, Redux DevTools, network debugging, profiling, logging strategy, and VS Code — the practical toolkit behind every "how would you debug this" question, and the daily workflow underneath your production-support responsibilities.</p>
+          </div>
+
+          <h2 id="overview">1. Overview</h2>
+          <p>Debugging questions test something different from algorithm or concept questions — they're checking whether you have a genuine, repeatable <em>process</em> for narrowing down an unfamiliar bug, and whether you actually know your tools well enough to move fast under pressure (directly relevant to your production-support responsibilities on a regulated financial platform, where a fast, correct diagnosis matters). The core discipline this whole guide builds toward: form a hypothesis, use the right tool to confirm or rule it out, and narrow the search space — never just poke around randomly hoping to spot the bug.</p>
+          <div class="tag">React DevTools</div><div class="tag">Chrome DevTools</div><div class="tag">Redux DevTools</div><div class="tag">Network Debugging</div><div class="tag">Profiling</div><div class="tag">Logging</div><div class="tag">VS Code Debugger</div><div class="tag">Error Boundaries</div>
+
+          <h2 id="react-devtools">2. React Developer Tools</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What can you actually do in the Components tab beyond just viewing the tree?</summary>
+            <div class="qa-body">
+              <p>The Components tab shows the live component tree with each component's current props, state, hooks (in call order, with their current values), and context values — all of it <strong>editable in place</strong>. You can click into a state value or prop and change it directly to see how the UI reacts, without touching code or adding a temporary button — invaluable for reproducing an edge case (an empty array, a null user) that's awkward to trigger through the actual UI. Selecting a component also exposes it as <code>$r</code> in the browser console (see the Browser DevTools section below), letting you call its instance methods or inspect it further from the console directly.</p>
+              <p><strong>Common mistake:</strong> not realizing hook values are listed in call order with generic labels (<code>State</code>, <code>Ref</code>, <code>Memo</code>) rather than variable names — for a component with many hooks, this makes it easy to misidentify which hook is which; naming custom hooks clearly and keeping the number of hooks per component reasonable makes this dramatically easier to read.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you read the Profiler tab's flame graph and ranked chart to find what's actually slow?</summary>
+            <div class="qa-body">
+              <p>Record a profiling session (the record button, then interact with the app, then stop), and the Profiler shows every commit that happened during that window. The <strong>flame graph</strong> for a selected commit shows the component tree with each bar's width representing render duration and color intensity representing relative cost — wide, brightly-colored bars are your slow components. The <strong>ranked chart</strong> re-sorts the same commit's components by render time, skipping the tree structure entirely, which is faster for answering "what's the single slowest thing in this commit" without visually hunting through the tree. Hovering a bar shows exactly why that component rendered (which prop/state/hook changed) when the "Record why each component rendered" setting is enabled — this is the single most useful setting to turn on before profiling, since it turns "this re-rendered" into "this re-rendered because of X," which is what actually tells you what to fix.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How do you use "Highlight updates when components render" to spot wasted renders in a large tree, and what's the follow-up once you find one?</summary>
+            <div class="qa-body">
+              <p>This DevTools setting outlines every component with a colored flash the instant it re-renders — leave it on while casually using the app, and any component flashing far more often than its visible content is actually changing is a strong, fast signal of a wasted render, without needing to record a full Profiler session first. It's a good first-pass triage tool precisely because it requires zero setup — you just watch the page while interacting normally.</p>
+              <p>Once you've spotted a suspiciously over-flashing component, the follow-up is exactly the workflow from the React guide's memoization and infinite-re-render questions: confirm with the Profiler's "why did this render" info whether it's an unstable prop reference (object/array/function literal recreated every parent render), then apply <code>React.memo</code>/<code>useMemo</code>/<code>useCallback</code> only once you've confirmed the specific unstable reference causing it — not preemptively, since memoization has its own cost and only pays off on a confirmed, measured problem.</p>
+            </div>
+          </details>
+
+          <h2 id="browser-devtools">3. Browser DevTools essentials</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> Beyond <code>console.log</code>, which console methods actually earn a place in your debugging workflow?</summary>
+            <div class="qa-body">
+              <table>
+                <tr><th>Method</th><th>Use for</th></tr>
+                <tr><td><code>console.table(data)</code></td><td>Arrays/objects of records — renders a sortable table instead of a wall of nested braces</td></tr>
+                <tr><td><code>console.group()</code> / <code>groupEnd()</code></td><td>Nesting related logs together, collapsible in the console — great for logging each step of a multi-stage process</td></tr>
+                <tr><td><code>console.trace()</code></td><td>Prints a full stack trace at that point — answers "who actually called this function"</td></tr>
+                <tr><td><code>console.assert(condition, msg)</code></td><td>Logs only when the condition is false — quieter than a manual <code>if</code> + log</td></tr>
+                <tr><td><code>console.time()</code> / <code>timeEnd()</code></td><td>Quick, no-setup timing of a code block without reaching for the full Performance tab</td></tr>
+                <tr><td><code>%c</code> string formatting</td><td>Color/style-code specific log lines so they stand out visually in a noisy console</td></tr>
+              </table>
+              <p><strong>Common mistake:</strong> leaving <code>console.log</code> statements in production code — beyond the noise, they carry a real (if usually small) performance cost and can leak sensitive data into a shipped bundle's runtime output; a build-time Babel/Webpack plugin that strips console statements from production builds is the reliable fix, rather than relying on remembering to delete them all manually.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do conditional breakpoints and logpoints in the Sources panel beat sprinkling <code>console.log</code> through your code?</summary>
+            <div class="qa-body">
+              <p>A <strong>conditional breakpoint</strong> (right-click a line number → "Add conditional breakpoint") only pauses execution when a JS expression you supply evaluates truthy — e.g. <code>trade.id === 'T-4521'</code> on a line inside a loop processing thousands of trades, so you stop exactly once, on the one you care about, instead of stepping through every iteration manually. A <strong>logpoint</strong> (same menu) logs an expression to the console every time that line executes, <em>without</em> pausing execution or requiring you to edit the source at all — functionally similar to a <code>console.log</code>, but it disappears when you're done and never risks accidentally being committed. Both survive a page reload as long as DevTools stays open, unlike an in-code <code>console.log</code> you have to remember to remove.</p>
+              <p><strong>Blackboxing</strong> (right-click a file in Sources → "Blackbox script") tells the debugger to skip stepping into that file entirely — essential for skipping over React/library internals and <code>node_modules</code> noise when step-debugging your own application code, so "step into" doesn't drop you into React's own source.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you inspect a selected DOM element's actual React fiber/component from the console, and what's <code>$r</code> for?</summary>
+            <div class="qa-body">
+              <p>After selecting a component in the React DevTools Components tab, that component instance becomes available in the browser console as <code>$r</code> — you can then run <code>$r.props</code>, <code>$r.state</code>, or call a class instance method directly from the console without adding any temporary code. Separately, selecting a DOM node in the Elements panel makes it available as <code>$0</code> (the previously-selected one as <code>$1</code>, and so on) — useful for quickly checking computed styles or triggering a DOM API call against exactly the element you're looking at, without writing a full <code>document.querySelector</code>.</p>
+            </div>
+          </details>
+
+          <h2 id="network">4. Network debugging</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What does the Network tab's waterfall actually break down, and how do you read a slow request?</summary>
+            <div class="qa-body">
+              <p>Each request's timing bar splits into distinct phases — queuing, DNS lookup, initial connection/TLS handshake, request sent, "waiting" (Time to First Byte — time spent on the server actually generating the response), and content download. A request that's slow because of a large <strong>waiting</strong segment points at a slow backend/database query, not a frontend problem at all; a slow <strong>content download</strong> segment points at payload size or a slow network, which pagination or compression could address; a slow <strong>connection/TLS</strong> segment on an otherwise-fast backend often points at missing connection reuse (e.g. hitting many different subdomains instead of one, defeating HTTP connection pooling). Filtering by type (Fetch/XHR, JS, CSS, Img) and sorting by time are the fastest way to find the actual bottleneck request in a busy waterfall instead of scanning visually.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you debug a request/response pair directly, and how do you simulate real-world network conditions?</summary>
+            <div class="qa-body">
+              <p>The Sources panel supports <strong>XHR/fetch breakpoints</strong> — pause execution the instant any (or a URL-matching) fetch/XHR call fires, letting you inspect the exact request being constructed before it's sent, which is often faster than guessing from application code where a malformed request originates. On the response side, the Network tab's request detail view shows headers, payload, response, timing, and (for failed requests) the exact status code and response body without needing any application-level error logging at all.</p>
+              <p>The <strong>Network conditions</strong> panel (throttling presets: Fast 3G, Slow 3G, or a custom profile) simulates real-world latency/bandwidth — critical for catching race conditions and loading-state bugs that only manifest when requests take long enough to overlap in ways they never do on a fast office network. "Offline" mode is the fastest way to verify your app degrades reasonably (a clear error state, not a silent hang) rather than assuming network failures are rare enough not to matter.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you debug a frontend issue when the backend response itself is the variable you need to control, without waiting on a real backend change?</summary>
+            <div class="qa-body">
+              <p>Two levels, cheapest first: (1) Chrome DevTools' <strong>Local Overrides</strong> (Network tab → right-click a response → "Override content") lets you save a modified version of a specific response locally and have DevTools serve your edited version on every subsequent request to that URL — perfect for quickly testing "what does the UI do with this exact malformed payload" without touching any code. (2) For anything needing more structure or repeated use across a team (a whole suite of mocked API scenarios for local development or Storybook), Mock Service Worker (from the Testing guide) intercepts at the network layer in a way that's shared, version-controlled, and reusable across dev, Storybook, and tests — Local Overrides are for one-off, throwaway investigation; MSW is for anything durable.</p>
+            </div>
+          </details>
+
+          <h2 id="redux-devtools">5. Redux DevTools</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What does the Redux DevTools extension actually show you, beyond just the current state?</summary>
+            <div class="qa-body">
+              <p>A chronological log of every dispatched action, and for each one: the action's exact payload, a diff of what changed in the store as a result, and the full state tree at that point in time. This turns "why is this value wrong" from a guessing exercise into a literal, readable timeline — you can find the exact action that introduced a bad value by scanning the diffs, rather than sprinkling <code>console.log</code> calls through reducers.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How does time-travel debugging work mechanically, and how would you use action export/import to reproduce a bug a teammate reported?</summary>
+            <div class="qa-body">
+              <p>Time-travel works because Redux state transitions are pure and deterministic — the DevTools extension can "jump" to any point in the action history by simply re-running the reducer over the recorded action list up to that point, since replaying the same actions against the same initial state always produces the same result. Dragging the DevTools slider backward doesn't undo anything magically; it recomputes state from scratch up to that action index.</p>
+              <p>For reproducing a teammate's bug: Redux DevTools supports exporting the full recorded action history as JSON, which a teammate can send you and you can <strong>import</strong> directly into your own local DevTools session — replaying their exact sequence of actions against your own running app, without needing them to describe the repro steps in words or you needing access to their environment/data at all. This is one of the more underused but genuinely powerful debugging techniques available for a Redux-based app.</p>
+            </div>
+          </details>
+
+          <h2 id="profiling">6. Profiling & performance analysis</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How do you use Chrome's Performance tab to find a long task blocking the main thread, distinct from the React Profiler?</summary>
+            <div class="qa-body">
+              <p>The React Profiler only shows React's own render/commit work — it's blind to non-React JS (a heavy synchronous computation, a third-party script, JSON parsing a huge payload) that's also blocking the main thread. Chrome's Performance tab records <em>everything</em> happening on the main thread — record a session, interact with the app, and the resulting flame chart shows every function call with its actual wall-clock cost, JS execution highlighted separately from layout/paint/composite work (tying directly back to the Browser Internals guide's rendering pipeline). Tasks over 50ms are flagged in red as "long tasks" — these are exactly what hurts INP (from the Performance guide), since a long task can't be interrupted to handle a user's click until it finishes. The workflow: find the widest red-flagged block, expand its call stack to find which specific function is actually responsible, then decide whether it needs to be optimized, chunked into smaller pieces (yielding back to the browser between chunks), or moved to a Web Worker (from the HTML5 guide).</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How would you use the Memory tab to confirm and diagnose a suspected memory leak?</summary>
+            <div class="qa-body">
+              <p>Take a heap snapshot, perform the suspected leaking action several times (navigate to a page and back, open/close a modal repeatedly), force garbage collection (the trash-can icon — ensures you're not looking at objects that are simply pending routine collection), then take a second snapshot. The <strong>comparison view</strong> between the two snapshots shows exactly which object types grew and by how much — a detached DOM node count that keeps climbing, or a specific class instance count that never returns to baseline after the action supposedly finished, points directly at the leak, tying back to the JavaScript guide's memory-leak root causes (unremoved listeners, uncleared timers, closures holding large objects). The <strong>allocation timeline</strong> tool records allocations over time as a real-time chart, useful for correlating a specific user interaction with a memory spike that doesn't get released.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> What does the <code>why-did-you-render</code> library add that the built-in Profiler doesn't?</summary>
+            <div class="qa-body">
+              <p>The React Profiler tells you a component re-rendered and roughly why (which prop/state changed), but you have to actively record a session and inspect it. <code>why-did-you-render</code> patches React in development to automatically log a detailed console warning the instant a tracked component re-renders <em>avoidably</em> — specifically flagging cases where props/state are shallow-equal but the component re-rendered anyway (usually because of an unstable object/array/function reference), which is precisely the class of bug the React guide's memo+useCallback pitfall question covers. It's most useful for continuously monitoring a known-expensive component (a large data grid row) during everyday development, rather than a one-off investigation you'd reach for the Profiler for.</p>
+            </div>
+          </details>
+
+          <h2 id="logging">7. Logging strategy & error boundaries</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How should production error logging differ from your local development console.log habits?</summary>
+            <div class="qa-body">
+              <p>Local <code>console.log</code> debugging is fine for development but useless in production — you're not watching a user's console. Production needs errors captured and shipped somewhere you can actually see them: an error-tracking service (Sentry or similar) capturing the error, a stack trace, and <strong>breadcrumbs</strong> (a trail of recent user actions/network calls/console output leading up to the error, reconstructed automatically) so you can understand what led to the failure without being able to reproduce it live. Two things worth being deliberate about: (1) scrub sensitive data (trade details, PII) before it's sent to a third-party logging service — most tools support a <code>beforeSend</code>-style hook for exactly this; (2) attach enough context (user ID, current route, relevant feature flags) to make a reported error actually actionable, not just "TypeError: Cannot read properties of undefined" with no surrounding information.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you wire an Error Boundary into production error reporting, and how granular should boundaries be?</summary>
+            <div class="qa-body">
+<pre><code>class ErrorBoundary extends React.Component {
+  state = { hasError: false };
+  static getDerivedStateFromError() { return { hasError: true }; }
+  componentDidCatch(error, info) {
+    logErrorToService(error, { componentStack: info.componentStack });
+  }
+  render() {
+    if (this.state.hasError) return this.props.fallback;
+    return this.props.children;
+  }
+}
+
+// Usage — scoped per widget, not one boundary around the whole app
+&lt;ErrorBoundary fallback={&lt;WidgetError /&gt;}&gt;
+  &lt;TradeChart /&gt;
+&lt;/ErrorBoundary&gt;</code></pre>
+              <p><code>componentDidCatch</code> is exactly where you hook into the same error-reporting service from the question above — the caught error plus React's <code>componentStack</code> (which shows the component hierarchy, distinct from the JS stack trace) gives far more actionable context than an unhandled error would. On granularity: one single boundary around the entire app means <em>any</em> error blanks the whole page — for a dashboard with several independent widgets, scoping a boundary per widget means a bug in one chart shows a small inline error there while the rest of the dashboard keeps working normally, which is almost always the better user experience for a page composed of independent sections.</p>
+            </div>
+          </details>
+
+          <h2 id="vscode">8. Debugging in VS Code</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you set up VS Code to debug a running React app directly, with real breakpoints in your actual source files?</summary>
+            <div class="qa-body">
+<pre><code>// .vscode/launch.json
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Debug React app in Chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/src"
+    }
+  ]
+}</code></pre>
+              <p>This launches Chrome under VS Code's control and maps browser-side source-mapped files back to your actual source in the editor — a breakpoint set directly in a <code>.jsx</code> file in VS Code pauses execution there, with the same variable inspection, call stack, and watch-expression panels as Chrome's own Sources panel, but without leaving the editor. This depends entirely on accurate source maps being generated (from the Webpack &amp; Babel guide) — if breakpoints show as "unbound" (a hollow circle) instead of solid red, that's almost always a source-map mismatch, not a VS Code configuration problem.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you debug a failing Jest test directly in VS Code instead of squinting at console output?</summary>
+            <div class="qa-body">
+<pre><code>// .vscode/launch.json
+{
+  "type": "node",
+  "request": "launch",
+  "name": "Debug Jest Tests",
+  "program": "${workspaceFolder}/node_modules/.bin/jest",
+  "args": ["--runInBand", "--no-coverage"],
+  "console": "integratedTerminal"
+}</code></pre>
+              <p><code>--runInBand</code> runs tests serially in the same process instead of Jest's default parallel worker processes — necessary for the debugger to actually attach to and step through the test, since a breakpoint can't reliably follow execution across worker processes. Combined with the Jest extension (which adds inline pass/fail indicators and a "debug this test" code-lens directly above each test), this turns "add a bunch of console.logs to a failing test and re-run" into a real step-through debugging session with full variable inspection at the exact point the assertion fails.</p>
+            </div>
+          </details>
+
+          <h2 id="scenarios">9. Common debugging scenarios, worked end to end</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: a component isn't re-rendering when you'd expect it to, even though the data it displays has clearly changed. Walk the full diagnostic path.</summary>
+            <div class="qa-body">
+              <p>1) Confirm the state actually changed — Redux DevTools' action log (or a quick <code>console.log</code> in the reducer) to verify the new value is really in the store, ruling out "the update never happened" before assuming it's a rendering problem at all. 2) Confirm the component is actually subscribed to that specific piece of state — a <code>useSelector</code> reading the wrong slice, or a prop not being passed down through an intermediate component, is a common and easy-to-miss cause. 3) Check for a mutation instead of a new reference — React DevtTools' Components tab showing the "old" value even though you know the underlying array/object was pushed-into rather than replaced is the classic tell (from the Redux guide's mutation-outside-Immer mistake). 4) If all of the above check out, use the Profiler's "why did this render" to confirm whether the component rendered at all but displayed stale data (a memoization bug — check <code>React.memo</code>'s comparison and any <code>useMemo</code> in the render path) versus never rendering at all (a subscription/prop-passing bug from step 2).</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: the app worked fine yesterday, a teammate says "it works on my machine," and the bug reproduces reliably for you. What do you check before assuming it's a real code bug?</summary>
+            <div class="qa-body">
+              <p>Before diving into application logic: (1) <strong>stale build cache</strong> — clear the bundler's cache (Webpack/Vite cache directories) and <code>node_modules</code>, then reinstall from the lockfile; a surprising number of "it works on my machine" bugs are actually two developers running different cached build artifacts from before a dependency bump. (2) <strong>Node/package version drift</strong> — compare <code>node --version</code> and the actual installed <code>node_modules</code> versions (not just what's in <code>package.json</code>, which can float) between machines; an <code>.nvmrc</code> and a committed lockfile are the two things that prevent this class of bug entirely, so their absence is itself a signal. (3) <strong>Environment/config differences</strong> — a local <code>.env</code> file, a feature flag defaulting differently, or browser extension interference (test in an Incognito/clean profile first) can all produce a real, reproducible difference that has nothing to do with the code itself. Only once these environmental explanations are ruled out does it make sense to start treating it as an actual application logic bug and reach for the React/Redux DevTools workflow above.</p>
+            </div>
+          </details>
+
+          <h2 id="mistakes">10. Common mistakes & anti-patterns</h2>
+          <div class="callout warn"><strong>Frequent review comments</strong>
+            Leaving <code>console.log</code> statements in production code instead of a build-time strip step or a proper logging service; guessing and changing code speculatively ("let me just try this") instead of forming a hypothesis and confirming it with a tool first; profiling in development mode, where React's extra checks and warnings make everything slower than production — always profile a production build for real performance numbers; one giant error boundary around the whole app instead of scoping boundaries to independent sections; not attaching enough context (user, route, recent actions) to production error reports, making them nearly unactionable; debugging network issues by reading application code instead of just checking the Network tab first, which is almost always faster.
+          </div>
+
+          <h2 id="company">11. Frequently asked at top product companies</h2>
+          <ul>
+            <li><strong>General senior-level:</strong> "Walk me through how you'd debug a component that's re-rendering way more than expected in production" — tests the full Profiler + why-did-you-render + memoization workflow together.</li>
+            <li><strong>Fintech-style (relevant to your background):</strong> "A user reports a data mismatch they can't reproduce for you — how do you investigate without access to their exact session?" — tests Redux DevTools action export/import and production error-reporting context together.</li>
+            <li><strong>Performance-focused companies:</strong> "The app feels janky on a specific interaction, but React's Profiler shows nothing unusual — where do you look next?" — tests knowing Chrome's Performance tab catches non-React work the React Profiler is blind to.</li>
+          </ul>
+
+          <h2 id="cheatsheet">12. Cheat sheet / quick revision</h2>
+          <table>
+            <tr><th>Tool</th><th>One-line recall</th></tr>
+            <tr><td>React DevTools Components</td><td>Live-editable props/state/hooks; selected component becomes <code>$r</code> in console</td></tr>
+            <tr><td>React Profiler</td><td>Flame graph + ranked chart; enable "why did this render" before recording</td></tr>
+            <tr><td>Highlight updates</td><td>Fast first-pass triage for wasted renders, no recording needed</td></tr>
+            <tr><td>Conditional breakpoint</td><td>Pauses only when your expression is true — skip irrelevant iterations</td></tr>
+            <tr><td>Logpoint</td><td>Console-logs without pausing or editing source — cleaner than console.log</td></tr>
+            <tr><td>Blackboxing</td><td>Skip stepping into node_modules/library internals</td></tr>
+            <tr><td>Network waterfall</td><td>Waiting = backend slow; download = payload/network slow</td></tr>
+            <tr><td>Local Overrides</td><td>One-off edited response for throwaway investigation; MSW for anything durable</td></tr>
+            <tr><td>Redux time-travel</td><td>Recomputes state by replaying actions — deterministic because reducers are pure</td></tr>
+            <tr><td>Redux action export/import</td><td>Reproduce a teammate's exact bug without their environment</td></tr>
+            <tr><td>Performance tab</td><td>Sees ALL main-thread work — catches non-React long tasks the Profiler misses</td></tr>
+            <tr><td>Memory heap snapshots</td><td>Compare two snapshots after forcing GC — growth points at the leak</td></tr>
+            <tr><td>Error boundary granularity</td><td>Scope per independent section, not one boundary around the whole app</td></tr>
+            <tr><td>Profile production builds</td><td>Dev mode's extra checks make every measurement misleadingly slow</td></tr>
+          </table>
+
+          <p class="lead">Related: draws on <a href="react.html">React.js</a> (memoization, re-render debugging), <a href="redux.html">Redux/Redux Toolkit</a> (DevTools mechanics), <a href="browser-internals.html">Browser Internals</a> (rendering pipeline), and <a href="performance-accessibility.html">Performance &amp; Accessibility</a> (Core Web Vitals these tools help you fix).</p>
+
+          <div class="page-nav">
+            <a class="prev" href="storybook.html"><span class="dir">← Previous</span>Storybook Interview Guide</a>
+            <a class="next" href="security.html"><span class="dir">Next →</span>Security &amp; Auth Interview Guide</a>
+          </div>
+        </div>
+
+        <nav class="toc">
+          <div class="toc-title">On this page</div>
+          <a href="#overview">Overview</a>
+          <a href="#react-devtools">React DevTools</a>
+          <a href="#browser-devtools">Browser DevTools</a>
+          <a href="#network">Network debugging</a>
+          <a href="#redux-devtools">Redux DevTools</a>
+          <a href="#profiling">Profiling</a>
+          <a href="#logging">Logging & error boundaries</a>
+          <a href="#vscode">VS Code debugging</a>
+          <a href="#scenarios">Worked scenarios</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#company">Company questions</a>
+          <a href="#cheatsheet">Cheat sheet</a>
+        </nav>
+      </div>
+    </main>
+    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
+  </div>
+</div>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>

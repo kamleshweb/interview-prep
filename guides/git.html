@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Git Interview Guide — Kamlesh Kumar</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">KK</div>
+      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
+    </div>
+    <input id="search-box" type="text" placeholder="Search topics…">
+    <div class="nav-group"><div class="nav-group-title">Start Here</div>
+      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
+    <div class="nav-group"><div class="nav-group-title">Core Language</div>
+      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
+      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
+    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
+      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
+      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
+      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
+      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
+    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
+      <a class="nav-link" data-status="planned" href="html5.html"><span class="dot"></span> HTML5</a>
+      <a class="nav-link" data-status="planned" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
+      <a class="nav-link" data-status="planned" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
+    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
+      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
+      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
+      <a class="nav-link" data-status="planned" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
+    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
+      <a class="nav-link done active" href="git.html"><span class="dot"></span> Git</a>
+      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
+      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
+      <a class="nav-link" data-status="planned" href="storybook.html"><span class="dot"></span> Storybook</a></div>
+    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
+      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
+    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
+      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
+      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
+      <a class="nav-link" data-status="planned" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
+    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
+      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
+      <a class="nav-link" data-status="planned" href="security.html"><span class="dot"></span> Security & Auth</a></div>
+    <div class="nav-group"><div class="nav-group-title">Process</div>
+      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
+  </aside>
+
+  <div>
+    <div class="topbar">
+      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Git</div>
+      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
+    </div>
+
+    <main>
+      <div class="content-wrap">
+        <div class="prose">
+          <div class="hero">
+            <h1>Git Interview Guide</h1>
+            <p class="lead">Branching strategy, rebase vs merge, and the recovery commands that separate someone who's memorized Git from someone who's actually broken and fixed a repo under pressure.</p>
+          </div>
+
+          <h2 id="overview">1. Overview</h2>
+          <p>Git questions in a senior interview aren't really about command syntax — they're a proxy for how you work with a team: do you keep history readable, do you understand what a rebase actually does before you use it on shared branches, and can you recover from a mistake without panicking. Given 12 years and cross-team collaboration on your resume, expect scenario-based questions more than "what does <code>git status</code> do."</p>
+          <div class="tag">Branching Strategy</div><div class="tag">Rebase vs Merge</div><div class="tag">Cherry-pick</div><div class="tag">Conflict Resolution</div><div class="tag">Bisect</div><div class="tag">Hooks</div>
+
+          <h2 id="basic">2. Basic questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What's the difference between <code>git fetch</code> and <code>git pull</code>?</summary>
+            <div class="qa-body">
+              <p><code>git fetch</code> downloads the remote's latest commits/branches into your local repo's remote-tracking branches (e.g. <code>origin/main</code>) without touching your working branch at all — safe to run anytime. <code>git pull</code> is <code>fetch</code> followed immediately by a <code>merge</code> (or <code>rebase</code>, if configured) of the fetched changes into your current branch — it actually changes your working branch, which is why pulling on a branch with uncommitted or diverged local work can trigger a merge conflict you weren't expecting.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What does <code>git rebase</code> actually do, mechanically?</summary>
+            <div class="qa-body">
+              <p>It takes the commits unique to your branch, temporarily sets them aside, moves your branch pointer to the tip of the target branch, then replays each of your commits one by one on top — producing new commits (new hashes) with the same changes but a different parent. This creates a linear history (no merge commit) but rewrites commit identity, which is exactly why rebasing commits that have already been pushed and shared is dangerous — anyone who already has the old commits now has a diverged, conflicting history.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What's a fast-forward merge, and when does Git do one automatically?</summary>
+            <div class="qa-body">
+              <p>If the target branch has had no new commits since your feature branch diverged from it, merging just moves the target branch's pointer forward to your branch's tip — no merge commit is created because there's nothing to actually reconcile. Once the target branch has moved on with its own new commits, a fast-forward isn't possible and Git creates a real merge commit (or requires a rebase first) to combine the two diverged histories.</p>
+            </div>
+          </details>
+
+          <h2 id="intermediate">3. Intermediate questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Merge vs rebase for integrating a feature branch — what would you actually recommend for a team, and why?</summary>
+            <div class="qa-body">
+              <table>
+                <tr><th></th><th>Merge</th><th>Rebase</th></tr>
+                <tr><td>History</td><td>Preserves exactly what happened, including a merge commit</td><td>Linear, easier to read/bisect, loses the "this was a branch" record</td></tr>
+                <tr><td>Safety on shared branches</td><td>Safe — never rewrites existing commits</td><td>Unsafe on branches others have already pulled — rewrites history</td></tr>
+                <tr><td>Common convention</td><td>Merge feature branches into <code>main</code> via PR (keeps a clear record of what landed together)</td><td>Rebase your own feature branch onto <code>main</code> before opening/updating a PR, to keep your branch's own history clean before it's shared</td></tr>
+              </table>
+              <p>A common, safe convention: rebase freely on your <em>own</em> branch to clean it up before pushing/opening a PR, but always merge (never rebase) when integrating into a shared branch like <code>main</code> that other people have already pulled from.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> What's <code>git cherry-pick</code>, and give a real scenario where you'd use it?</summary>
+            <div class="qa-body">
+              <p><code>git cherry-pick &lt;commit-hash&gt;</code> applies the changes from one specific commit onto your current branch, without bringing along anything else from the source branch. Real scenario: a critical bug fix was committed to <code>main</code>, but a release branch already cut from an earlier point also needs that exact fix without pulling in every other unrelated commit that's landed on <code>main</code> since — cherry-picking the single fix commit onto the release branch is the clean way to backport it.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you resolve a merge conflict, step by step, and what actually causes one?</summary>
+            <div class="qa-body">
+              <p>A conflict happens when Git can't automatically reconcile the same lines of a file changed differently on both branches (or one side deleted a file the other modified). Git marks the conflicting sections in the file with <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> / <code>=======</code> / <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-name</code> markers; you manually edit the file to the correct final content, remove the markers, then <code>git add</code> the resolved file and <code>git commit</code> (for a merge) or <code>git rebase --continue</code> (for a rebase in progress). For anything non-trivial, it's worth re-running the test suite on the resolved result before pushing — a syntactically clean resolution can still be logically wrong.</p>
+            </div>
+          </details>
+
+          <h2 id="advanced">4. Advanced questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How does <code>git bisect</code> work, and when is it the right tool over just reading commit history?</summary>
+            <div class="qa-body">
+              <p><code>git bisect</code> performs an automated binary search through commit history: you mark a known-good commit and a known-bad one, and Git checks out the midpoint for you to test; you mark it good or bad, and it narrows the range by half each time until it identifies the exact commit that introduced the regression. It's the right tool when a regression's cause isn't obvious from reading the log (dozens/hundreds of commits between the last known-good state and now, or a bug that isn't tied to any commit message mentioning the affected area) — bisecting turns "search through 200 commits" into roughly <code>log2(200) ≈ 8</code> actual test cycles. Combined with <code>git bisect run &lt;test-script&gt;</code>, this can be fully automated against your test suite.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> What's the difference between <code>git reset</code>, <code>git revert</code>, and <code>git checkout</code>/<code>restore</code> for undoing changes, and which is safe on a shared branch?</summary>
+            <div class="qa-body">
+              <table>
+                <tr><th>Command</th><th>Effect</th><th>Safe on shared/pushed branches?</th></tr>
+                <tr><td><code>git reset --hard &lt;commit&gt;</code></td><td>Moves the branch pointer back, discarding later commits and working directory changes</td><td>No — rewrites history; force-push required, breaks anyone else's clone</td></tr>
+                <tr><td><code>git revert &lt;commit&gt;</code></td><td>Creates a NEW commit that undoes the changes of a previous commit</td><td>Yes — history is never rewritten, just added to</td></tr>
+                <tr><td><code>git restore &lt;file&gt;</code></td><td>Discards uncommitted local changes to a specific file</td><td>N/A — only affects your local working directory</td></tr>
+              </table>
+              <p>The rule of thumb interviewers want to hear: once something is pushed and others may have it, undo with <code>revert</code> (adds a correcting commit) rather than <code>reset</code> (rewrites/destroys history), unless you've explicitly coordinated a force-push with the whole team.</p>
+            </div>
+          </details>
+
+          <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: you accidentally force-pushed and overwrote three days of a teammate's commits on a shared branch. Walk through how you'd recover them.</summary>
+            <div class="qa-body">
+              <p>First, don't panic and don't push again. Git rarely deletes commit data immediately — check <code>git reflog</code> on the machine where the force-push originated (or your own local clone if you had already fetched/pulled the branch before it was overwritten) — the reflog records every position <code>HEAD</code>/branches have pointed to recently, including the commit that existed before the force-push. Once you find the lost commit's hash in the reflog, you can create a new branch at that point (<code>git branch recovery &lt;hash&gt;</code>) and then merge or cherry-pick the recovered work back into the shared branch. If the reflog on the original machine has already expired (default ~90 days, but can be pruned) and no other clone has the commits, they may be genuinely unrecoverable — which is exactly the argument for protecting shared branches (branch protection rules requiring PRs, disallowing force-push) so this class of accident becomes structurally impossible rather than relying on individual carefulness.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Design a branching strategy for a team of 10+ engineers shipping continuously to production, with the ability to hotfix urgently.</summary>
+            <div class="qa-body">
+              <p>Trunk-based development (or a lightweight GitHub-flow variant) generally scales better for continuous delivery than long-lived Git-flow-style <code>develop</code>/<code>release</code> branches: short-lived feature branches off <code>main</code>, merged via PR behind feature flags if the work isn't ready to ship yet (decoupling merge from release), with <code>main</code> always deployable. For urgent hotfixes: branch directly off the current production tag/commit, fix, PR-review on an expedited basis, merge to <code>main</code>, and deploy — feature flags mean the hotfix doesn't have to wait for unrelated in-progress feature branches to also be release-ready. The trade-off to name explicitly: trunk-based development requires strong CI (fast, reliable tests) and feature-flag discipline to be safe; without those, teams often fall back to Git-flow's more isolated branches at the cost of slower integration and bigger, riskier merges.</p>
+            </div>
+          </details>
+
+          <h2 id="mistakes">6. Common mistakes & debugging</h2>
+          <div class="callout warn"><strong>Frequent review comments</strong>
+            Rebasing or force-pushing a branch other people have already pulled from, silently breaking their local history; committing generated files (build output, <code>node_modules</code>) due to a missing/incomplete <code>.gitignore</code>; giant, unreviewable PRs instead of small, incremental ones; vague commit messages ("fix", "wip") that make <code>git blame</code>/<code>bisect</code> far less useful months later; resolving a merge conflict syntactically without re-running tests, shipping a logically broken resolution.
+          </div>
+
+          <h2 id="company">7. Frequently asked at top product companies</h2>
+          <ul>
+            <li><strong>General senior-level:</strong> "Walk through your branching strategy and why" — near-universal, especially at companies practicing continuous deployment.</li>
+            <li><strong>Amazon/Google style:</strong> "How would you find which commit introduced a regression across 300 commits with no useful commit messages?" — tests <code>git bisect</code> directly.</li>
+            <li><strong>Team-lead style (relevant to your 12 years):</strong> "A teammate keeps force-pushing to shared branches — how do you address it, both technically and as a lead?" — tests both Git knowledge (branch protection rules) and people/process judgment.</li>
+          </ul>
+
+          <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+          <table>
+            <tr><th>Concept</th><th>One-line recall</th></tr>
+            <tr><td>fetch vs pull</td><td>fetch is read-only; pull = fetch + merge/rebase into your branch</td></tr>
+            <tr><td>Rebase</td><td>Rewrites commit history — safe on your own unshared branch only</td></tr>
+            <tr><td>Merge vs rebase policy</td><td>Rebase your own branch before PR; merge (never rebase) into shared branches</td></tr>
+            <tr><td>Cherry-pick</td><td>Apply one specific commit elsewhere — classic hotfix-backport tool</td></tr>
+            <tr><td>Bisect</td><td>Binary search through history to find a regression's commit</td></tr>
+            <tr><td>Revert vs reset</td><td>Revert adds an undo commit (safe, shared); reset rewrites history (local/unshared only)</td></tr>
+            <tr><td>Reflog</td><td>Recovery net for "lost" commits after a bad reset/force-push</td></tr>
+          </table>
+
+          <p class="lead">Related: pairs directly with <a href="cicd-aws.html">CI/CD &amp; AWS</a> for how branch strategy maps onto deployment pipelines.</p>
+
+          <div class="page-nav">
+            <a class="prev" href="design-patterns-architecture.html"><span class="dir">← Previous</span>Design Patterns &amp; Frontend Architecture Interview Guide</a>
+            <a class="next" href="webpack-babel.html"><span class="dir">Next →</span>Webpack &amp; Babel Interview Guide</a>
+          </div>
+        </div>
+
+        <nav class="toc">
+          <div class="toc-title">On this page</div>
+          <a href="#overview">Overview</a>
+          <a href="#basic">Basic</a>
+          <a href="#intermediate">Intermediate</a>
+          <a href="#advanced">Advanced</a>
+          <a href="#expert">Expert & scenarios</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#company">Company questions</a>
+          <a href="#cheatsheet">Cheat sheet</a>
+        </nav>
+      </div>
+    </main>
+    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
+  </div>
+</div>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>

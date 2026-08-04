@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>React.js Interview Guide — Kamlesh Kumar</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="nav-group"><div class="nav-group-title">Start Here</div>
+      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
+    <div class="nav-group"><div class="nav-group-title">Core Language</div>
+      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
+      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
+    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
+      <a class="nav-link done active" href="react.html"><span class="dot"></span> React.js</a>
+      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
+      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
+      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
+    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
+      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
+      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
+      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
+    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
+      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
+      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
+      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
+    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
+      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
+      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
+      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
+      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a></div>
+    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
+      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
+    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
+      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
+      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
+      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
+    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
+      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
+      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
+    <div class="nav-group"><div class="nav-group-title">Process</div>
+      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
+  </aside>
+
+  <div>
+    <div class="topbar">
+      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> React.js</div>
+      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
+    </div>
+
+    <main>
+      <div class="content-wrap">
+        <div class="prose">
+          <div class="hero">
+            <h1>React.js Interview Guide</h1>
+            <p class="lead">Hooks, reconciliation, memoization, and the architecture decisions behind data-heavy dashboards — framed around real banking-UI work (AG Grid, trade lifecycle data, MTM reporting).</p>
+          </div>
+
+          <h2 id="overview">1. Technology overview</h2>
+          <p>React is a declarative UI library built around a component tree and a reconciliation algorithm ("the diffing algorithm") that decides the minimum set of DOM mutations needed when state changes. Modern React is almost entirely function components + hooks. At the senior/lead level, interviewers care less about "what does <code>useState</code> do" and more about: do you understand <em>why</em> re-renders happen, can you architect a large data-heavy app (your AG Grid / trade-data background is exactly this), and can you make correct trade-offs under performance pressure.</p>
+          <div class="tag">Hooks</div><div class="tag">Reconciliation / Fiber</div><div class="tag">Memoization</div><div class="tag">Context</div><div class="tag">Custom Hooks</div><div class="tag">Error Boundaries</div><div class="tag">Concurrent Rendering</div><div class="tag">Code Splitting</div><div class="tag">AG Grid / large tables</div>
+
+          <h2 id="basic">2. Basic questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What is the Virtual DOM and why does React use it?</summary>
+            <div class="qa-body">
+              <h5>What</h5>
+              <p>The Virtual DOM is a lightweight in-memory tree of plain JS objects that mirrors the real DOM. On state change, React builds a new virtual tree, diffs it against the previous one (reconciliation), and computes the minimal set of real-DOM operations needed — then applies them in one batch.</p>
+              <h5>Why</h5>
+              <p>Direct DOM manipulation is expensive (layout/reflow); batching minimal updates through a JS-object diff is far cheaper than naively re-rendering the whole page, especially for a grid rendering thousands of trade rows.</p>
+              <h5>Common mistake</h5>
+              <p>Saying "Virtual DOM makes React faster than vanilla JS" unconditionally — a hand-tuned vanilla-JS update can beat React; the VDOM's real win is developer ergonomics (write declarative code, get reasonable performance for free) not raw speed.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> Controlled vs uncontrolled components?</summary>
+            <div class="qa-body">
+              <p>Controlled: the form element's value is driven by React state (<code>value</code> + <code>onChange</code>) — single source of truth, easy validation, but a re-render per keystroke. Uncontrolled: the DOM holds its own state, read via a <code>ref</code> when needed — less re-rendering, useful for simple forms or integrating non-React widgets (e.g. wrapping a third-party grid input).</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What problem do keys solve in lists?</summary>
+            <div class="qa-body">
+              <p>Keys give React a stable identity for each list item across renders so it can match old and new elements correctly instead of diffing by index. Using array index as a key breaks when items are reordered/inserted/deleted — React will misattribute state (e.g. a text input's focus/value jumps to the wrong row) because it thinks "item at index 2" is the same element even though the underlying data moved.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What is JSX, and how does it actually get compiled?</summary>
+            <div class="qa-body">
+              <p>JSX is syntax sugar with no native browser support — Babel (or the compiler built into your bundler) transforms it into plain function calls before it ever reaches the browser. Historically this meant <code>React.createElement(type, props, ...children)</code> calls; the newer JSX transform (default since React 17) compiles to calls against a dedicated <code>react/jsx-runtime</code> import instead, which no longer requires <code>React</code> to be in scope in every file just to use JSX. Either way, JSX itself produces plain JS objects describing the element tree — it's the Virtual DOM's actual data shape, not markup.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> Do you still need to know class components, and how do their lifecycle methods map to hooks?</summary>
+            <div class="qa-body">
+              <p>Functional components + hooks are the standard for all new code, but class components still turn up in legacy codebases, and — importantly — <strong>error boundaries still require a class</strong>, since <code>componentDidCatch</code>/<code>static getDerivedStateFromError</code> have no hook equivalent. <code>PureComponent</code> is the class-component equivalent of <code>React.memo</code>: both perform a shallow comparison of props (and, for <code>PureComponent</code>, state) to skip unnecessary re-renders.</p>
+<pre><code>useEffect(() =&gt; {
+  console.log('mounted');                // ~ componentDidMount
+  return () =&gt; console.log('unmounted'); // ~ componentWillUnmount
+}, []);
+
+useEffect(() =&gt; {
+  console.log('data changed');           // ~ componentDidUpdate, scoped to `data`
+}, [data]);</code></pre>
+              <p>This isn't a strict 1:1 mapping conceptually — a single <code>useEffect</code> with cleanup models "synchronize with this dependency," which subsumes mount/update/unmount rather than mirroring them as three separate lifecycle events. Dan Abramov's framing is worth stating explicitly if asked: <em>effects synchronize, they don't run on lifecycle events.</em></p>
+            </div>
+          </details>
+
+          <h2 id="intermediate">3. Intermediate questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> What are the Rules of Hooks, and why do they exist mechanically (not just "because the docs say so")?</summary>
+            <div class="qa-body">
+              <p>Two rules: only call hooks at the top level (never inside conditionals, loops, or nested functions), and only call them from React function components or other custom hooks. The mechanical reason: React doesn't track hook state by name — it tracks it by <strong>call order</strong>, associating each <code>useState</code>/<code>useEffect</code> call with a slot in an internal linked list attached to that component's fiber. If a hook call is skipped conditionally on one render but not another, every subsequent hook's position shifts by one, and React silently reads/writes the wrong slot — corrupting state without necessarily throwing an error immediately. This is also why the ESLint <code>react-hooks/rules-of-hooks</code> plugin is treated as close to non-negotiable on a real team: the failure mode is subtle state corruption, not a clean crash.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Explain the dependency array in <code>useEffect</code> — and the stale closure trap.</summary>
+            <div class="qa-body">
+              <h5>What</h5>
+              <p>The dependency array tells React when to re-run the effect. Omit it → runs after every render. Empty array → runs once on mount. With values → re-runs when any listed value changes (by <code>Object.is</code> comparison).</p>
+              <h5>The trap</h5>
+<pre><code>function Timer() {
+  const [count, setCount] = useState(0);
+  useEffect(() =&gt; {
+    const id = setInterval(() =&gt; {
+      setCount(count + 1); // always uses count from the render that registered this effect
+    }, 1000);
+    return () =&gt; clearInterval(id);
+  }, []); // stale closure — count is frozen at 0 forever
+}</code></pre>
+              <p>Fix: use the functional updater <code>setCount(c =&gt; c + 1)</code>, which doesn't depend on the captured <code>count</code> at all, or add <code>count</code> to the dependency array (recreating the interval each tick).</p>
+              <h5>Follow-up</h5>
+              <p>"When would you intentionally suppress the exhaustive-deps lint rule?" — rarely, and only with a written comment explaining why (e.g. an effect that should only run once but reads a ref/prop that's stable in practice).</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> <code>useMemo</code> vs <code>useCallback</code> vs <code>React.memo</code> — when does each actually help?</summary>
+            <div class="qa-body">
+              <table>
+                <tr><th>Tool</th><th>Memoizes</th><th>Use when</th></tr>
+                <tr><td><code>useMemo</code></td><td>A computed value</td><td>Expensive calculation (sorting/filtering thousands of grid rows)</td></tr>
+                <tr><td><code>useCallback</code></td><td>A function reference</td><td>Passing a callback to a memoized child, or as an effect dependency</td></tr>
+                <tr><td><code>React.memo</code></td><td>A component's render output</td><td>Child re-renders often with the same props</td></tr>
+              </table>
+              <p><strong>Common mistake:</strong> memoizing everything by default — each memo has its own comparison cost, so wrapping cheap components/values in <code>useMemo</code>/<code>React.memo</code> can make things <em>slower</em>. Profile first (React DevTools Profiler), then memoize the actual bottleneck — for you, that's typically grid row renderers and derived/sorted datasets, not every small presentational component.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Custom hooks vs Higher-Order Components (HOCs) — when to reach for which?</summary>
+            <div class="qa-body">
+              <p>Both share cross-cutting logic (data fetching, subscriptions, permissions checks). HOCs wrap a component and inject props — they predate hooks and cause "wrapper hell" (deeply nested component trees, prop name collisions, harder debugging in DevTools). Custom hooks share <em>stateful logic</em> without adding to the component tree at all — you call <code>useAuth()</code> inside the component and get exactly the values you need. In new code, prefer custom hooks; HOCs still show up in older codebases and libraries (e.g. some HOC-based patterns in class-based legacy code), so you should be able to read and migrate them.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Context API vs Redux — how do you decide?</summary>
+            <div class="qa-body">
+              <p>Context is built-in dependency injection for values that rarely change (theme, current user, locale) — every consumer re-renders whenever the Context value changes, with no built-in selector/memoization, which makes it a poor fit for high-frequency state. Redux (or RTK/Zustand) adds a predictable store, middleware (thunks/sagas for side effects), time-travel debugging, and — critically — selector-based subscriptions so components only re-render when the specific slice they read changes. For a trading/reconciliation dashboard with frequently updating tables, Redux-style selector subscriptions usually outperform raw Context. This same reasoning applies to <strong>prop drilling</strong> more broadly — the three usual fixes, in order of how often they're reached for: Context (broadly-needed, infrequently-changing data), a state library (complex cross-cutting state), or plain component composition (passing components as <code>children</code>/props instead of threading data through layers that don't use it) — composition is the simplest fix and is frequently overlooked.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> <code>useEffect</code> vs <code>useLayoutEffect</code> — when does the difference actually matter?</summary>
+            <div class="qa-body">
+              <p><code>useEffect</code> runs <em>after</em> the browser has painted — asynchronously, so it never blocks the visual update. <code>useLayoutEffect</code> runs <em>synchronously, before</em> the browser paints, blocking the visual update until it finishes. Reach for <code>useLayoutEffect</code> specifically when you need to measure the DOM (e.g. <code>getBoundingClientRect()</code>) and synchronously adjust something based on that measurement <em>before</em> the user sees anything — a tooltip repositioning itself based on its own rendered size, for example. Using <code>useEffect</code> for that same case causes a visible one-frame flicker: the tooltip briefly renders in the wrong position, then jumps. For anything that doesn't need to block paint (data fetching, subscriptions, logging), <code>useEffect</code> is the correct default — <code>useLayoutEffect</code> used unnecessarily costs real performance since it blocks the browser from painting at all until it completes.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> What is <code>useRef</code> actually for, beyond DOM access?</summary>
+            <div class="qa-body">
+              <p><code>useRef</code> returns a mutable <code>{ current: ... }</code> box that persists across renders <strong>without triggering a re-render when it changes</strong> — this is its defining property, distinct from state. It's used for two different things: (1) direct DOM node access (<code>inputRef.current.focus()</code>), and (2) holding any mutable value you deliberately don't want tied to the render cycle — a debounce timer ID, a previous-value snapshot for comparison, a flag tracking whether a component is still mounted inside an async callback. Reaching for a ref instead of state for something that should actually trigger a re-render (e.g. a value shown in the UI) is a common mistake — if the UI needs to reflect the value, it has to be state; refs are for values the render output doesn't depend on.</p>
+            </div>
+          </details>
+
+          <h2 id="advanced">4. Advanced questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> Explain reconciliation and the diffing heuristics React actually uses.</summary>
+            <div class="qa-body">
+              <p>React's diff is O(n) instead of the theoretical O(n³) for general tree diffing, because it makes two simplifying assumptions: (1) elements of <em>different types</em> at the same position produce entirely different trees — React tears down the old subtree and builds a new one rather than diffing children; (2) elements of the <em>same type</em> are compared prop-by-prop and children are diffed using the key-based list algorithm. This is why swapping a <code>&lt;div&gt;</code> for a <code>&lt;section&gt;</code> at the same position remounts everything below it (losing state), while keeping the same tag and changing props is cheap.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> What is Fiber, and how do concurrent features (<code>useTransition</code>, <code>useDeferredValue</code>) actually improve perceived performance?</summary>
+            <div class="qa-body">
+              <p>Fiber (since React 16) reworked reconciliation into an incremental, <strong>interruptible</strong> process — each Fiber node represents one unit of work, and React can pause, abort, or resume work instead of walking the whole tree synchronously in one uninterruptible pass. This is the foundation concurrent rendering builds on: React can start rendering an update, and if something more urgent arrives (the user typing), pause the in-progress low-priority render and handle the urgent one first.</p>
+              <p><code>useTransition</code> lets you mark a state update as non-urgent ("this can render whenever, don't block typing") — React keeps showing the old UI (optionally with an <code>isPending</code> flag you can render a subtle loading indicator from) while the transition renders in the background, then swaps in the new UI once ready. <code>useDeferredValue</code> does the same thing but for a value rather than a state setter — useful when you don't own the state update itself (e.g. a value passed down as a prop) but still want to defer the expensive re-render it triggers. Both solve the same real problem: a large, expensive re-render (filtering 50,000 grid rows on every keystroke) blocking the input from feeling responsive.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How did React 18 change automatic batching, and why does that matter for code that worked fine in React 17?</summary>
+            <div class="qa-body">
+              <p>Batching means React groups multiple state updates from the same event into a single re-render instead of re-rendering after each individual <code>setState</code> call. Before React 18, this only happened automatically inside React's own event handlers — state updates inside a <code>setTimeout</code>, a native (non-React) event listener, or a resolved Promise each triggered a separate synchronous re-render. React 18's automatic batching extends this to <em>all</em> updates by default, regardless of where they originate.</p>
+<pre><code>// React 17: two re-renders (setTimeout is outside React's batching)
+// React 18: one re-render (batched automatically)
+setTimeout(() =&gt; {
+  setCount(c =&gt; c + 1);
+  setFlag(f =&gt; !f);
+}, 1000);</code></pre>
+              <p>This is mostly a transparent performance win, but it can surface a latent bug: code that relied on reading a state value <em>between</em> two setState calls (assuming a synchronous re-render happened in between) now sees stale values, since both updates are batched into a single render pass. If you genuinely need to force a synchronous, unbatched update, <code>flushSync</code> from <code>react-dom</code> opts a specific update out of batching — rarely needed, but worth knowing exists.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How would you virtualize a table with 50,000 rows (relevant to your AG Grid experience)?</summary>
+            <div class="qa-body">
+              <h5>Approach</h5>
+              <p>Never render all 50,000 DOM rows. Render only the rows visible in the viewport (plus a small overscan buffer), absolutely position them using a calculated <code>transform: translateY()</code>, and keep a single tall "spacer" element so the scrollbar reflects the full logical height. On scroll, recompute which row indices are visible and swap the rendered slice — this is exactly what AG Grid, <code>react-window</code>, and <code>react-virtualized</code> do internally.</p>
+              <h5>Trade-offs</h5>
+              <p>Virtualization adds complexity (variable row heights are harder; browser find-in-page and screen readers see fewer DOM nodes than logical rows, hurting naive accessibility unless you add ARIA live-region/announcement handling). For financial data grids with column pinning, grouping, and cell editing, a mature library (AG Grid) is usually the right call over hand-rolling it — which maps directly to your production choice at US Bank.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> Error boundaries — what do they catch, and critically, what do they NOT catch?</summary>
+            <div class="qa-body">
+              <p>Error boundaries (class components implementing <code>componentDidCatch</code>/<code>getDerivedStateFromError</code> — no hook equivalent exists yet) catch render-phase errors, lifecycle errors, and errors in constructors of the tree below them. They do <strong>not</strong> catch: errors in event handlers (use plain try/catch there), errors in async code (setTimeout/promises), server-side rendering errors, or errors thrown in the boundary itself. This gap is a common "gotcha" question — many candidates assume boundaries catch everything.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> Walk through debugging an infinite re-render loop caused by a <code>useEffect</code> with an object literal dependency.</summary>
+            <div class="qa-body">
+<pre><code>function Widget({ userId }) {
+  const [data, setData] = useState(null);
+  const options = { userId, includeArchived: false }; // NEW object every render
+
+  useEffect(() =&gt; {
+    fetchData(options).then(setData);
+  }, [options]); // "changes" every render — infinite loop
+}</code></pre>
+              <p>Object/array/function literals are compared by reference, not value — <code>{ userId, includeArchived: false }</code> creates a brand-new object on every render, so <code>Object.is</code> (what the dependency array uses) always reports it as "changed," re-running the effect, which triggers a state update, which triggers another render, which creates another new object — the loop. React DevTools' Profiler or a simple <code>console.log</code> inside the effect showing it firing every render is usually how this gets spotted in practice. <strong>Fix:</strong> either move the object construction inside the effect itself (so it's not a dependency at all), destructure to only the primitive values actually needed (<code>[userId]</code> instead of <code>[options]</code>), or wrap it in <code>useMemo</code> if it genuinely needs to be a stable reference elsewhere too.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How can <code>React.memo</code> combined with <code>useCallback</code> still fail to prevent re-renders?</summary>
+            <div class="qa-body">
+<pre><code>function Parent() {
+  const [count, setCount] = useState(0);
+  const handleClick = useCallback(() =&gt; console.log('clicked'), []);
+
+  return (
+    &lt;MemoChild
+      onClick={handleClick}
+      config={{ theme: 'dark' }} // NEW object every render — breaks memo anyway
+    /&gt;
+  );
+}
+const MemoChild = React.memo(function Child({ onClick, config }) { /* ... */ });</code></pre>
+              <p><code>React.memo</code> does a shallow comparison of <em>all</em> props — memoizing the function with <code>useCallback</code> only stabilizes that one prop. Any other prop that's a fresh object/array/inline-function literal each render (like <code>config</code> here) still fails the shallow-equality check and forces <code>MemoChild</code> to re-render anyway, silently defeating the whole optimization. The fix is the same principle as the infinite-loop question above: every reference-type prop passed to a memoized component needs its own stable identity (via <code>useMemo</code> for objects/arrays, <code>useCallback</code> for functions) — memoizing only some of them doesn't help.</p>
+            </div>
+          </details>
+
+          <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: users report a form losing typed input intermittently. Diagnose.</summary>
+            <div class="qa-body">
+              <p>Three usual suspects, roughly in order of likelihood: (1) the component is <strong>remounting</strong> rather than re-rendering — a changing <code>key</code> prop, or a parent conditionally rendering the form via a ternary that swaps between different component types, forces React to tear down and rebuild the whole subtree (per the reconciliation rules above), wiping local state entirely; (2) a <strong>controlled input's value is being overwritten by a race condition</strong> — an async/debounced source (a save-draft API call, a WebSocket update) resolves after the user has already typed further and stomps the field's value with stale data; (3) for an <strong>uncontrolled</strong> input specifically, a parent re-render resetting the <code>defaultValue</code> prop does nothing after mount (uncontrolled inputs only read <code>defaultValue</code> once), so that's rarely the actual cause — but a parent conditionally re-mounting the uncontrolled input itself would reset it. Isolate which of the three by checking: does the DOM node identity change (React DevTools "highlight updates"), is there an async write racing the user's typing, or is a key/conditional render swapping component types.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: design the state management for a dashboard combining a user session, feature flags, several independently-loading server-fetched widgets, and a multi-step wizard's local form state.</summary>
+            <div class="qa-body">
+              <p>The right answer isn't "put it all in Redux" — it's scoping each piece of state to the tool actually suited to it: <strong>session and feature flags</strong> rarely change and are needed broadly → Context. <strong>Widget data</strong> is server state with its own per-widget loading/error/refetch needs → React Query or RTK Query, which already solves caching and invalidation rather than reinventing it in a manually-managed Redux slice. The <strong>wizard's form state</strong> is local, short-lived, and irrelevant outside that one flow → a <code>useReducer</code> scoped to the wizard component itself, not the global store. Good state-management design is fundamentally about <strong>scoping state to where it's actually needed</strong> rather than defaulting everything into one global store "to be safe" — the interviewer is listening for exactly this framing, not a specific library choice.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: your reconciliation dashboard re-renders the entire trade table on every WebSocket price tick, causing visible jank. How do you fix it at an architectural level?</summary>
+            <div class="qa-body">
+              <p>1) Isolate high-frequency state: move the price/tick state out of the parent and into the individual row component (or a dedicated store slice with per-row selectors) so only the affected row re-renders, not the whole table. 2) Batch ticks — if updates arrive faster than the browser can paint, throttle/coalesce them to animation-frame boundaries with <code>requestAnimationFrame</code>. 3) Use windowing/virtualization so off-screen rows never re-render regardless. 4) Confirm with the Profiler which component is actually the bottleneck before optimizing — this is the same production trade-off you'd have hit reconciling FX/MTM data in real time.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Output-based: what's wrong with this code, and what will the user actually see?</summary>
+            <div class="qa-body">
+<pre><code>function Search({ query }) {
+  const [results, setResults] = useState([]);
+  useEffect(() =&gt; {
+    fetchResults(query).then(setResults);
+  }, [query]);
+  return &lt;List items={results} /&gt;;
+}</code></pre>
+              <p>If the user types quickly, multiple fetches fire and there's no guarantee they resolve in the order they were sent — a slow response for an earlier keystroke can overwrite a fresher result (the same race condition covered in the JS guide). Fix with a cleanup flag/AbortController inside the effect, or delegate to a data-fetching library (React Query/SWR) that handles request cancellation and de-duplication out of the box.</p>
+            </div>
+          </details>
+
+          <h2 id="architecture">6. Architecture & design questions</h2>
+          <ul>
+            <li><strong>"Design the component structure for a trade blotter with filtering, sorting, inline editing, and row-level permissions."</strong> — talk through: container/presentational split, where filter/sort state lives (URL params vs local state vs store), memoized selectors for derived/filtered data, virtualization, and how permission checks gate editable cells without duplicating logic per column.</li>
+            <li><strong>"How do you structure a large React app for a team of 10+ engineers?"</strong> — feature-folder structure over type-folder structure, a shared design-system/component library, strict boundaries via lint rules (no cross-feature imports), and a documented state-management convention (what goes in Redux vs local state vs server-cache library).</li>
+            <li><strong>"How would you migrate a large class-component codebase to hooks incrementally, without a big-bang rewrite?"</strong> — convert leaf/simple components first; keep lifecycle-heavy, complex components as classes until the custom-hook replacement is proven on simpler cases; add solid test coverage before migrating each component so a regression is caught immediately; use a codemod for repetitive, mechanical patterns; and avoid mixing class and hook patterns within a single component's own logic, since that makes review diffs much harder to reason about even if the app as a whole is mid-migration.</li>
+          </ul>
+
+          <h2 id="coding">7. Coding challenges</h2>
+          <div class="qa">
+            <div class="qa-body" style="margin-top:0;border-top:none;padding-top:0;">
+              <h5>Problem: implement <code>useDebounce(value, delay)</code> — a debounced version of a fast-changing value, without debouncing the keystroke handler itself</h5>
+<pre><code>function useDebounce(value, delay = 300) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() =&gt; {
+    const timer = setTimeout(() =&gt; setDebouncedValue(value), delay);
+    return () =&gt; clearTimeout(timer); // cancels the pending update if value changes again first
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
+// Usage — the input itself stays instantly responsive; only the search fires debounced
+function Search() {
+  const [query, setQuery] = useState('');
+  const debouncedQuery = useDebounce(query, 300);
+
+  useEffect(() =&gt; {
+    if (!debouncedQuery) return;
+    fetchResults(debouncedQuery);
+  }, [debouncedQuery]);
+
+  return &lt;input value={query} onChange={e =&gt; setQuery(e.target.value)} /&gt;;
+}</code></pre>
+              <p><strong>Explanation:</strong> every keystroke updates <code>query</code> immediately, keeping the input controlled and responsive — but the effect's cleanup function cancels the pending timeout each time <code>value</code> changes again before <code>delay</code> elapses. That cancel-and-reschedule cycle <em>is</em> the debounce mechanism, expressed declaratively via effect cleanup instead of a manually managed timer ref. <strong>Common mistakes:</strong> debouncing the <code>onChange</code> handler directly instead of the derived value (makes the input itself feel laggy); forgetting the cleanup function (multiple stale updates fire); missing <code>delay</code> in the dependency array if it can change at runtime. <strong>Follow-up:</strong> "How would you support an immediate/leading-edge option?" — fire once immediately on the first call, then apply the normal trailing-edge debounce to subsequent calls within the window (same pattern as the JavaScript guide's throttle follow-up).</p>
+
+              <h5>Problem: build a reusable <code>useFetch(url)</code> hook that cancels stale requests</h5>
+<pre><code>function useFetch(url) {
+  const [state, setState] = useState({ data: null, error: null, loading: true });
+
+  useEffect(() =&gt; {
+    const controller = new AbortController();
+    setState({ data: null, error: null, loading: true });
+
+    fetch(url, { signal: controller.signal })
+      .then(res =&gt; {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(data =&gt; setState({ data, error: null, loading: false }))
+      .catch(error =&gt; {
+        if (error.name !== 'AbortError') {
+          setState({ data: null, error, loading: false });
+        }
+      });
+
+    return () =&gt; controller.abort();
+  }, [url]);
+
+  return state;
+}</code></pre>
+              <p><strong>Explanation:</strong> <code>AbortController</code> cancels the in-flight request on unmount or whenever <code>url</code> changes again before the previous request resolves — this is what prevents both the classic "setState on an unmounted component" warning and the race condition where a slow, stale response overwrites a newer one (the same class of bug covered in the JavaScript and Redux guides' race-condition questions). The <code>AbortError</code> case is deliberately excluded from the error state, since a cancellation isn't a real failure the UI should surface. <strong>Common mistakes:</strong> not aborting on cleanup at all (race conditions, memory leaks); setting the loading state outside the effect (captures a stale closure); not distinguishing an intentional abort from a genuine network error. <strong>Follow-up:</strong> "How would you add caching so repeated calls to the same URL don't refetch?" — this is essentially the exact problem React Query/RTK Query already solve; a good answer names that as the point where you'd reach for a library instead of continuing to hand-roll it.</p>
+            </div>
+          </div>
+
+          <h2 id="performance">8. Performance optimization</h2>
+          <table>
+            <tr><th>Technique</th><th>Solves</th></tr>
+            <tr><td>Code splitting (<code>React.lazy</code> + <code>Suspense</code>)</td><td>Large initial bundle / slow first load</td></tr>
+            <tr><td>Virtualization</td><td>Huge lists/tables (your AG Grid domain)</td></tr>
+            <tr><td><code>useMemo</code>/<code>useCallback</code>/<code>React.memo</code></td><td>Unnecessary re-renders of expensive subtrees</td></tr>
+            <tr><td>Selector-based state (Redux/Zustand)</td><td>Global state causing wide re-render blast radius</td></tr>
+            <tr><td>Debounced inputs</td><td>Excessive API calls / renders per keystroke</td></tr>
+          </table>
+
+          <h2 id="mistakes">9. Common mistakes & debugging</h2>
+          <div class="callout warn"><strong>Frequent production bugs</strong>
+            Mutating state directly (<code>state.push(x)</code> instead of returning a new array) — React won't detect the change; missing cleanup functions in <code>useEffect</code> causing "can't update state on an unmounted component" warnings; using array index as key on reorderable lists; overusing Context for frequently-changing values and causing app-wide re-renders; overusing <code>useEffect</code> to compute derived values that could just be calculated directly during render; storing server data in local component state instead of a proper cache layer (React Query/RTK Query), causing duplication and staleness bugs.
+          </div>
+
+          <h2 id="company">10. Frequently asked at top product companies</h2>
+          <ul>
+            <li><strong>Meta/Google style:</strong> "Implement <code>useDebounce</code> as a custom hook" or "Build a typeahead/autocomplete component from scratch."</li>
+            <li><strong>Amazon style:</strong> System-design-flavored — "design an infinite-scroll product list" (ties directly into your virtualization/AG Grid depth above).</li>
+            <li><strong>Airbnb/Uber style:</strong> "Build a controlled multi-step form with validation and back/forward state preservation."</li>
+          </ul>
+          <p>Machine-coding rounds also draw from a fairly consistent pool of "build this from scratch" prompts: a Kanban board with draggable cards, a lazy-loading file-explorer tree, tic-tac-toe/minesweeper (logic/UI separation is what's actually graded), a JSON-schema-driven form generator, or a rate-limited cancellable typeahead with results caching. What separates a senior/lead answer isn't finishing fastest — it's clear separation of concerns (presentational vs. container, logic extracted into custom hooks), naming edge cases out loud before being asked (empty/loading/error/race conditions), and stating trade-offs explicitly ("I'm using array state here for simplicity; in production I'd normalize this by id").</p>
+
+          <h2 id="cheatsheet">11. Cheat sheet / quick revision</h2>
+          <table>
+            <tr><th>Concept</th><th>One-line recall</th></tr>
+            <tr><td>Reconciliation</td><td>Same type → diff props/children; different type → tear down & rebuild</td></tr>
+            <tr><td>Keys</td><td>Stable identity across renders — never array index for reorderable lists</td></tr>
+            <tr><td>Rules of Hooks</td><td>Call order = state slot identity — never call conditionally</td></tr>
+            <tr><td>useEffect deps</td><td>Missing deps → stale closures; use functional updaters to dodge them</td></tr>
+            <tr><td>useEffect vs useLayoutEffect</td><td>After paint (async) vs before paint (sync, blocks — only for DOM measurement)</td></tr>
+            <tr><td>useRef</td><td>Mutable box that survives renders WITHOUT triggering one</td></tr>
+            <tr><td>useMemo/useCallback</td><td>Only pays off on measured, expensive work — profile first</td></tr>
+            <tr><td>memo + useCallback</td><td>Any other unstable prop (object/array) still breaks memo — stabilize ALL of them</td></tr>
+            <tr><td>React 18 batching</td><td>Now batches everywhere (timeouts, promises, native handlers), not just React events</td></tr>
+            <tr><td>useTransition/useDeferredValue</td><td>Mark low-priority updates so urgent ones (typing) aren't blocked</td></tr>
+            <tr><td>Error boundaries</td><td>Catch render/lifecycle errors only — not events, not async</td></tr>
+            <tr><td>Virtualization</td><td>Render only visible rows + overscan; absolutely position; fake full-height spacer</td></tr>
+          </table>
+
+          <p class="lead">Related: see <a href="javascript.html">JavaScript (ES6+)</a> for the closures/event-loop foundations behind hooks; Redux/RTK, React Router, and Next.js guides are next on the roadmap.</p>
+
+          <div class="page-nav">
+            <a class="prev" href="typescript.html"><span class="dir">← Previous</span>TypeScript Interview Guide</a>
+            <a class="next" href="redux.html"><span class="dir">Next →</span>Redux / Redux Toolkit Interview Guide</a>
+          </div>
+        </div>
+
+        <nav class="toc">
+          <div class="toc-title">On this page</div>
+          <a href="#overview">Overview</a>
+          <a href="#basic">Basic</a>
+          <a href="#intermediate">Intermediate</a>
+          <a href="#advanced">Advanced</a>
+          <a href="#expert">Expert & scenarios</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#coding">Coding challenges</a>
+          <a href="#performance">Performance</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#company">Company questions</a>
+          <a href="#cheatsheet">Cheat sheet</a>
+        </nav>
+      </div>
+    </main>
+    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
+  </div>
+</div>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,616 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Node.js & Express Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
+          </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link" data-status="planned" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link" data-status="planned" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a
+            class="nav-link"
+            data-status="planned"
+            href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done active" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link" data-status="planned" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link" data-status="planned" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link" data-status="planned" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link" data-status="planned" href="jest-rtl.html"
+            ><span class="dot"></span> Jest & RTL</a
+          >
+          <a class="nav-link" data-status="planned" href="cypress-cucumber.html"
+            ><span class="dot"></span> Cypress & Cucumber</a
+          >
+          <a class="nav-link" data-status="planned" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link" data-status="planned" href="aws.html"
+            ><span class="dot"></span> AWS</a
+          >
+          <a class="nav-link" data-status="planned" href="cicd.html"
+            ><span class="dot"></span> CI/CD</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a
+            class="nav-link"
+            data-status="planned"
+            href="frontend-architecture.html"
+            ><span class="dot"></span> Frontend Architecture</a
+          >
+          <a class="nav-link" data-status="planned" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends</a
+          >
+          <a class="nav-link" data-status="planned" href="design-patterns.html"
+            ><span class="dot"></span> Design Patterns</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link" data-status="planned" href="performance.html"
+            ><span class="dot"></span> Web Performance</a
+          >
+          <a class="nav-link" data-status="planned" href="accessibility.html"
+            ><span class="dot"></span> Accessibility (WCAG)</a
+          >
+          <a class="nav-link" data-status="planned" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link" data-status="planned" href="agile.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
+
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> Node.js & Express
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
+          </div>
+        </div>
+
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>Node.js & Express Interview Guide</h1>
+                <p class="lead">
+                  The event loop under the hood, middleware pipelines, streams,
+                  and the backend-adjacent knowledge that separates a frontend
+                  engineer from a "full-stack-capable" senior candidate.
+                </p>
+              </div>
+
+              <h2 id="overview">1. Technology overview</h2>
+              <p>
+                Node.js runs JavaScript outside the browser on the V8 engine
+                plus libuv, a C library that provides the event loop and
+                non-blocking I/O. Express is the thin, unopinionated web
+                framework layered on top — routing, middleware chain,
+                request/response helpers. Given your resume shows working
+                knowledge of Node.js/Express (REST API integration, CI/CD, some
+                backend exposure alongside a primarily frontend role),
+                interviewers typically probe just deep enough to confirm you can
+                reason about async I/O correctly and aren't just
+                pattern-matching Express boilerplate.
+              </p>
+              <div class="tag">Event Loop / libuv</div>
+              <div class="tag">Non-blocking I/O</div>
+              <div class="tag">Middleware</div>
+              <div class="tag">Streams</div>
+              <div class="tag">Error Handling</div>
+              <div class="tag">Auth (JWT/Sessions)</div>
+              <div class="tag">Clustering</div>
+
+              <h2 id="basic">2. Basic questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> Why is
+                  Node.js described as "single-threaded" when it can clearly
+                  handle many concurrent requests?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    JavaScript execution itself runs on one thread (the event
+                    loop), but I/O operations (file system, network, DNS) are
+                    delegated to the OS or to libuv's thread pool, and their
+                    callbacks are queued back onto the single JS thread when
+                    they complete. So Node handles concurrency by never blocking
+                    that one thread on I/O — it's concurrent (many operations in
+                    flight) but not parallel (only one line of JS executes at a
+                    time) unless you explicitly use worker threads or child
+                    processes for CPU-bound work.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What's
+                  the difference between <code>module.exports</code> (CommonJS)
+                  and ES Modules <code>export</code>?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    CommonJS (<code>require</code>/<code>module.exports</code>)
+                    loads synchronously and resolves modules at runtime — Node's
+                    original module system. ES Modules
+                    (<code>import</code>/<code>export</code>) are statically
+                    analyzable (imports are resolved before execution), support
+                    tree-shaking, and are the standard used across the frontend
+                    tooling ecosystem. Node supports both today, but mixing them
+                    in the same project without proper configuration (<code
+                      >"type": "module"</code
+                    >, file extensions) is a common source of build errors.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What
+                  does Express middleware actually do, and what's the
+                  significance of calling <code>next()</code>?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>app.use((req, res, next) =&gt; {
+  console.log(req.method, req.url);
+  next(); // hands off to the next middleware/route handler
+});</code></pre>
+                  <p>
+                    Middleware functions run in the order they're registered,
+                    each receiving <code>(req, res, next)</code>. Calling
+                    <code>next()</code> passes control to the next function in
+                    the chain; not calling it (without sending a response)
+                    leaves the request hanging forever — a very common beginner
+                    bug. Middleware can short-circuit the chain entirely by
+                    sending a response instead of calling
+                    <code>next()</code> (e.g. an auth-check middleware returning
+                    401 and never calling <code>next()</code>).
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="intermediate">3. Intermediate questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Walk through the event loop's phases — what actually happens
+                  after <code>server.listen()</code> and a request comes in?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    The event loop cycles through phases each tick:
+                    <strong>timers</strong> (due <code>setTimeout</code>/<code
+                      >setInterval</code
+                    >
+                    callbacks) → <strong>pending callbacks</strong> (deferred
+                    I/O callbacks from the previous cycle) →
+                    <strong>poll</strong> (retrieve new I/O events, execute
+                    their callbacks — this is where most request handling
+                    happens) → <strong>check</strong> (<code>setImmediate</code>
+                    callbacks) → <strong>close callbacks</strong>. Between every
+                    phase transition, Node drains the microtask queue (Promise
+                    callbacks, <code>process.nextTick</code> — which actually
+                    runs even before other microtasks). For a typical Express
+                    request: the poll phase picks up the incoming connection's
+                    data event, your route handler runs (synchronously, or
+                    scheduling further async work like a DB query), and the
+                    response is written back once that resolves.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you handle errors in async Express route handlers
+                  correctly?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>// Express 4 does NOT catch rejected promises automatically
+app.get('/trades/:id', async (req, res, next) =&gt; {
+  try {
+    const trade = await tradeService.findById(req.params.id);
+    res.json(trade);
+  } catch (err) {
+    next(err); // hands off to the error-handling middleware
+  }
+});
+
+// Centralized error handler — must have 4 args for Express to recognize it
+app.use((err, req, res, next) =&gt; {
+  console.error(err);
+  res.status(err.statusCode || 500).json({ message: err.message });
+});</code></pre>
+                  <p>
+                    <strong>Common mistake:</strong> throwing inside an async
+                    handler without a try/catch and without
+                    <code>next(err)</code> — in Express 4, an unhandled
+                    rejection in a route handler doesn't automatically reach the
+                    error middleware and can crash the process or hang the
+                    request (Express 5 fixes this by catching rejected promises
+                    automatically, but many production codebases are still on
+                    Express 4).
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Streams — why would you use one instead of reading a whole
+                  file/response into memory?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    A stream processes data in chunks as it arrives instead of
+                    buffering the entire payload in memory first — critical for
+                    large files or responses (exports, CSV downloads, large
+                    trade-history reports) where loading everything into memory
+                    would spike RAM usage and delay the first byte sent to the
+                    client.
+                    <code>fs.createReadStream(file).pipe(res)</code> starts
+                    sending data to the client as soon as the first chunk is
+                    read, rather than waiting for the whole file to load.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="advanced">4. Advanced questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> Your
+                  Node service does CPU-intensive work (e.g. generating a large
+                  PDF/report) and it's blocking other requests. How do you fix
+                  it?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Because JS runs on one thread, a synchronous CPU-bound
+                    operation blocks the entire event loop — no other request
+                    can be processed until it finishes, even ones that don't
+                    touch the same data. Fixes: (1) offload the work to a
+                    <code>worker_thread</code> (true parallel execution on a
+                    separate thread, communicating via message passing) so the
+                    main thread stays free to handle other requests; (2) move
+                    the work to a separate background job/queue (e.g. a job
+                    processed by a worker service) and return a "processing"
+                    response immediately, notifying the client when done; (3)
+                    for the cluster level, run multiple Node processes (via the
+                    <code>cluster</code> module or a process manager like PM2)
+                    behind a load balancer so one busy process doesn't block all
+                    traffic — though this doesn't fix a single blocked request,
+                    it limits the blast radius.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> JWT
+                  vs session-based authentication — trade-offs for a
+                  banking-style app?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th></th>
+                      <th>Session-based</th>
+                      <th>JWT</th>
+                    </tr>
+                    <tr>
+                      <td>State</td>
+                      <td>Server-side (session store: Redis/DB)</td>
+                      <td>Stateless — all claims in the token</td>
+                    </tr>
+                    <tr>
+                      <td>Revocation</td>
+                      <td>Instant (delete server-side session)</td>
+                      <td>
+                        Hard — token valid until expiry unless you maintain a
+                        blocklist (which reintroduces server state)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Scaling</td>
+                      <td>Needs a shared session store across instances</td>
+                      <td>Naturally stateless across instances</td>
+                    </tr>
+                    <tr>
+                      <td>Payload exposure</td>
+                      <td>Opaque session ID only</td>
+                      <td>
+                        Decodable (not encrypted) — never put secrets in the
+                        payload
+                      </td>
+                    </tr>
+                  </table>
+                  <p>
+                    For a financial application where instant session revocation
+                    (a compromised device, an offboarded employee) genuinely
+                    matters, session-based auth or short-lived JWTs with a
+                    refresh-token rotation strategy (and a server-side
+                    revocation list for refresh tokens) is usually preferred
+                    over long-lived stateless JWTs.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  a Node API's memory usage climbs steadily over days until it's
+                  restarted. How do you diagnose a memory leak in production?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Take heap snapshots at intervals (via
+                    <code>--inspect</code> and Chrome DevTools, or
+                    <code>heapdump</code>) and diff them to see which object
+                    types keep growing. Common culprits in Express apps: an
+                    in-memory cache/Map with no eviction policy accumulating
+                    entries forever; event listeners added per-request but never
+                    removed; a module-level array/array-like structure (e.g. a
+                    request log) that's appended to but never trimmed; closures
+                    in long-lived middleware capturing large per-request
+                    objects. Add process-level monitoring (memory/CPU metrics
+                    scraped over time) so a leak shows up as a trend before it
+                    causes an outage, not just as a post-mortem investigation.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span>
+                  Output-based: what will this log, and why does the order
+                  matter here?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>console.log('start');
+setTimeout(() =&gt; console.log('timeout'), 0);
+setImmediate(() =&gt; console.log('immediate'));
+process.nextTick(() =&gt; console.log('nextTick'));
+Promise.resolve().then(() =&gt; console.log('promise'));
+console.log('end');
+// start, end, nextTick, promise, timeout OR immediate (order between these two is not guaranteed outside I/O cycles)</code></pre>
+                  <p>
+                    <code>process.nextTick</code> callbacks run before the
+                    Promise microtask queue, and both run before the event loop
+                    moves to any phase (timers or check).
+                    <code>setTimeout(fn, 0)</code> vs
+                    <code>setImmediate</code> ordering is actually
+                    non-deterministic when called from the main module (it
+                    depends on process performance/timing), but becomes
+                    deterministic (<code>immediate</code> always first) when
+                    both are scheduled from inside an I/O callback, because
+                    <code>setImmediate</code> runs in the check phase
+                    immediately after the poll phase where I/O callbacks fire.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">6. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong> Using synchronous
+                fs/crypto methods (<code>fs.readFileSync</code>,
+                <code>bcrypt.hashSync</code>) on the request path, blocking the
+                event loop for every concurrent request; not
+                validating/sanitizing request bodies, opening SQL/NoSQL
+                injection or prototype-pollution risks; storing secrets in JWT
+                payloads (they're base64-decodable, not encrypted); missing
+                centralized error-handling middleware, leaking stack traces to
+                clients in production; not setting appropriate CORS and security
+                headers (<code>helmet</code>).
+              </div>
+
+              <h2 id="company">7. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>Amazon/general backend-adjacent style:</strong>
+                  "Explain the event loop phases and where
+                  <code>process.nextTick</code> fits" — near-universal question.
+                </li>
+                <li>
+                  <strong>Fintech-style (relevant to your background):</strong>
+                  "How would you design authentication/session handling for a
+                  banking dashboard with strict revocation requirements?"
+                </li>
+                <li>
+                  <strong>Systems-leaning companies:</strong> "How do you scale
+                  a Node service horizontally, and what state has to move out of
+                  process memory to make that safe?" (sessions, in-memory
+                  caches, rate-limit counters → move to Redis/shared store).
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>Single-threaded</td>
+                  <td>
+                    One JS thread; I/O delegated to libuv/OS, callbacks queued
+                    back
+                  </td>
+                </tr>
+                <tr>
+                  <td>Event loop order</td>
+                  <td>nextTick → microtasks → timers → poll → check → close</td>
+                </tr>
+                <tr>
+                  <td>Middleware</td>
+                  <td>
+                    Runs in registration order; must call <code>next()</code> or
+                    send a response
+                  </td>
+                </tr>
+                <tr>
+                  <td>Async errors (Express 4)</td>
+                  <td>
+                    Must manually try/catch and call <code>next(err)</code>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Streams</td>
+                  <td>
+                    Process data in chunks — avoids buffering huge payloads in
+                    memory
+                  </td>
+                </tr>
+                <tr>
+                  <td>CPU-bound work</td>
+                  <td>
+                    Blocks the whole event loop — offload to worker_threads or a
+                    job queue
+                  </td>
+                </tr>
+                <tr>
+                  <td>JWT</td>
+                  <td>
+                    Stateless, hard to revoke early — decodable, never put
+                    secrets in payload
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: pairs with <a href="rest-api.html">REST APIs</a> for
+                how these Express routes should actually be designed and
+                versioned.
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="system-design.html"
+                  ><span class="dir">← Previous</span>Frontend System Design
+                  Interview Guide</a
+                >
+                <a class="next" href="rest-api.html"
+                  ><span class="dir">Next →</span>REST APIs Interview Guide</a
+                >
+              </div>
+            </div>
+
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
+          </div>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
+      </div>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

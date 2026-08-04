@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript (ES6+) Interview Guide — Kamlesh Kumar</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="nav-group"><div class="nav-group-title">Start Here</div>
+      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a>
+      <a class="nav-link done" href="my-project.html"><span class="dot"></span> My Project Walkthrough</a></div>
+    <div class="nav-group"><div class="nav-group-title">Core Language</div>
+      <a class="nav-link done active" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
+      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
+    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
+      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
+      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
+      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
+      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
+    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
+      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
+      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
+      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
+    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
+      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
+      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
+      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a>
+      <a class="nav-link done" href="ai-integration.html"><span class="dot"></span> AI / LLM Integration</a></div>
+    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
+      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
+      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
+      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
+      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a>
+      <a class="nav-link done" href="debugging-and-tools.html"><span class="dot"></span> Debugging & Dev Tools</a></div>
+    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
+      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
+    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
+      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
+      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
+      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
+    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
+      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
+      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
+    <div class="nav-group"><div class="nav-group-title">Process</div>
+      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
+  </aside>
+
+  <div>
+    <div class="topbar">
+      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> JavaScript (ES6+)</div>
+      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
+    </div>
+
+    <main>
+      <div class="content-wrap">
+        <div class="prose">
+          <div class="hero">
+            <h1>JavaScript (ES6+) Interview Guide</h1>
+            <p class="lead">Everything from closures to the event loop to hand-rolled polyfills — the language layer under every React interview question you'll get.</p>
+          </div>
+
+          <h2 id="overview">1. Technology overview</h2>
+          <p>JavaScript is a single-threaded, event-driven, prototype-based language with a non-blocking I/O model built on an event loop. For a 12-year React specialist, interviewers use JS questions to test two things: whether you understand what's happening <em>underneath</em> the frameworks you use daily, and whether you can reason precisely about asynchronous code — since almost every production bug you've debugged (race conditions, stale closures in `useEffect`, memory leaks) traces back to one of the fundamentals below.</p>
+          <div class="tag">Closures</div><div class="tag">Event Loop</div><div class="tag">Prototypes</div><div class="tag">Async/Await</div><div class="tag">Hoisting</div><div class="tag">Scope</div><div class="tag">call/apply/bind</div><div class="tag">WeakMap/WeakSet</div><div class="tag">Debounce/Throttle</div><div class="tag">Polyfills</div>
+
+          <h2 id="basic">2. Basic questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What's the difference between <code>var</code>, <code>let</code>, and <code>const</code>?</summary>
+            <div class="qa-body">
+              <h5>What</h5>
+              <p><code>var</code> is function-scoped and hoisted with an <code>undefined</code> initialization. <code>let</code> and <code>const</code> are block-scoped and hoisted into a "temporal dead zone" (TDZ) — accessing them before declaration throws a <code>ReferenceError</code> instead of silently returning <code>undefined</code>. <code>const</code> additionally forbids reassignment of the binding (not deep immutability of the value).</p>
+              <h5>Why it matters</h5>
+              <p>Block scoping is what makes closures inside loops behave correctly — the classic interview trap below depends on this.</p>
+<pre><code>for (var i = 0; i &lt; 3; i++) {
+  setTimeout(() =&gt; console.log(i), 0); // 3, 3, 3
+}
+for (let j = 0; j &lt; 3; j++) {
+  setTimeout(() =&gt; console.log(j), 0); // 0, 1, 2
+}</code></pre>
+              <p><code>var</code> creates one shared binding across all iterations; <code>let</code> creates a fresh binding per iteration.</p>
+              <h5>Common mistakes</h5>
+              <p>Saying "<code>const</code> makes objects immutable" — it only locks the reference, not the object's contents (<code>Object.freeze</code> is needed for that, and only shallowly).</p>
+              <h5>Follow-up</h5>
+              <p>"What is the TDZ and why does it exist?" — it exists so that <code>let</code>/<code>const</code> catch usage-before-declaration bugs that <code>var</code> hides.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> Explain hoisting.</summary>
+            <div class="qa-body">
+              <h5>What</h5>
+              <p>Before execution, the JS engine scans each scope and allocates memory for variable and function declarations — this is hoisting. <code>function</code> declarations are hoisted fully (name + body), <code>var</code> is hoisted as <code>undefined</code>, and <code>let</code>/<code>const</code>/<code>class</code> are hoisted but left in the TDZ.</p>
+              <h5>Real-world example</h5>
+              <p>Function declarations can be called before their textual position; function expressions and arrow functions assigned to <code>const</code> cannot.</p>
+              <h5>Common mistakes</h5>
+              <p>Thinking hoisting "moves code to the top" — nothing moves; only the declaration's memory allocation happens early, not the assignment.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What is an Execution Context, and how does it relate to the Call Stack?</summary>
+            <div class="qa-body">
+              <h5>What</h5>
+              <p>An execution context is the environment in which JS code is evaluated — it tracks variables, function declarations, and the value of <code>this</code> for that specific chunk of code. There are three types: the <strong>global execution context</strong> (created once, when the script first runs), a <strong>function execution context</strong> (created fresh every time a function is called), and an <strong>eval execution context</strong> (rare in practice). Each one is created in two phases: a <strong>creation phase</strong> (hoisting happens here — memory is allocated for variables/functions before any code runs) followed by an <strong>execution phase</strong> (code actually runs line by line).</p>
+              <h5>How it connects to the Call Stack</h5>
+              <p>The call stack is simply the stack data structure that tracks which execution context is currently running. Calling a function pushes a new execution context onto the stack; returning from it pops that context off. The engine always executes whatever context sits on top of the stack.</p>
+<pre><code>function multiply(a, b) { return a * b; }
+function square(n) { return multiply(n, n); }
+function printSquare(n) { console.log(square(n)); }
+printSquare(5);
+// Stack grows: global → printSquare → square → multiply
+// Stack unwinds in reverse as each function returns</code></pre>
+              <h5>Follow-up</h5>
+              <p>"What is a Stack Overflow?" — the call stack has a fixed size; a function that keeps calling itself without a base case (uncontrolled recursion) keeps pushing new contexts until the stack's memory limit is exceeded, throwing a <code>RangeError: Maximum call stack size exceeded</code>.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What is a closure?</summary>
+            <div class="qa-body">
+              <h5>What</h5>
+              <p>A closure is a function bundled with references to its surrounding (lexical) scope, so it keeps access to those variables even after the outer function has returned.</p>
+<pre><code>function makeCounter() {
+  let count = 0;
+  return () =&gt; ++count;
+}
+const counter = makeCounter();
+counter(); // 1
+counter(); // 2</code></pre>
+              <h5>Real-world example</h5>
+              <p>Every custom React hook that keeps internal state between calls (before <code>useState</code> existed, module-level closures were how you'd memoize expensive calculations), debounced event handlers, and private-variable patterns all rely on closures.</p>
+              <h5>Common mistakes</h5>
+              <p>Not recognizing that closures capture <em>variables</em>, not values — this is exactly the <code>var</code>-in-loop bug above.</p>
+              <h5>Follow-up</h5>
+              <p>"Can closures cause memory leaks?" — yes, if a closure holds a reference to a large object (e.g. a DOM node) that's never released because the closure itself is long-lived (an event listener that's never removed). "What's the difference between scope and a closure?" — scope is the general rule for where a variable is visible; a closure is the specific, concrete result of a function "remembering" the variables from its scope even after the outer function has finished executing.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What are the types of scope in JavaScript, and what's the difference between lexical scope and the scope chain?</summary>
+            <div class="qa-body">
+              <h5>What</h5>
+              <p>Three types: <strong>global scope</strong> (declared outside any function/block, accessible everywhere), <strong>function scope</strong> (variables declared with <code>var</code> are visible anywhere inside the enclosing function, regardless of nested blocks), and <strong>block scope</strong> (<code>let</code>/<code>const</code> are confined to the nearest <code>{ }</code>, including <code>if</code>/<code>for</code> blocks — this is exactly why the <code>var</code>-in-loop bug from the earlier question happens: <code>var</code> ignores the loop's block entirely).</p>
+              <h5>Lexical scope vs scope chain</h5>
+              <p><strong>Lexical scope</strong> means a function's available variables are determined by where it's <em>written</em> in the source code, not where it's called from. The <strong>scope chain</strong> is the mechanism that enforces this at lookup time: when a variable isn't found in the current scope, the engine walks outward through each enclosing lexical scope until it's found (or throws a <code>ReferenceError</code> at the global scope).</p>
+<pre><code>const outer = 'outer-value';
+function a() {
+  const inner = 'inner-value';
+  function b() {
+    console.log(inner, outer); // walks the scope chain outward to find both
+  }
+  b();
+}</code></pre>
+              <h5>Common mistakes</h5>
+              <p>Confusing lexical (static, determined at write-time) scope with dynamic scope (which JS doesn't have) — this is also why arrow functions' <code>this</code> is "lexical": it's resolved the same way a variable lookup would be, by walking outward through the enclosing scope, not by how the function is called.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> Difference between <code>==</code> and <code>===</code>?</summary>
+            <div class="qa-body">
+              <p><code>==</code> performs type coercion before comparing (<code>'5' == 5</code> is <code>true</code>); <code>===</code> compares both type and value with no coercion. Production code should default to <code>===</code>; the only common accepted use of <code>==</code> is <code>x == null</code> to check for both <code>null</code> and <code>undefined</code> at once.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What are truthy/falsy values?</summary>
+            <div class="qa-body">
+              <p>Falsy: <code>false</code>, <code>0</code>, <code>-0</code>, <code>0n</code>, <code>''</code>, <code>null</code>, <code>undefined</code>, <code>NaN</code>. Everything else is truthy — including <code>'0'</code>, <code>[]</code>, and <code>{}</code>, which trips people up in conditionals.</p>
+            </div>
+          </details>
+
+          <h2 id="intermediate">3. Intermediate questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Explain the event loop, call stack, and task queues.</summary>
+            <div class="qa-body">
+              <h5>What</h5>
+              <p>JS runs on a single call stack. Async work (timers, I/O, promises) is delegated to the browser/Node APIs; when it completes, its callback is placed on a queue. The event loop's only job is: run the stack to empty, then pull the next callback in. There are two queues that matter: the <strong>microtask queue</strong> (Promise callbacks, <code>queueMicrotask</code>) and the <strong>macrotask queue</strong> (<code>setTimeout</code>, DOM events, I/O). After every single macrotask, the engine drains the <em>entire</em> microtask queue before moving to rendering or the next macrotask.</p>
+<pre><code>console.log('1');
+setTimeout(() =&gt; console.log('2'), 0);
+Promise.resolve().then(() =&gt; console.log('3'));
+console.log('4');
+// Output: 1, 4, 3, 2</code></pre>
+              <h5>Why it matters</h5>
+              <p>This is the single most-asked JS conceptual question at product companies because it directly explains bugs like "why did my state update render before my API call resolved."</p>
+              <h5>Common mistakes</h5>
+              <p>Saying "promises run immediately" — the executor runs synchronously, but <code>.then()</code> callbacks are always deferred to the microtask queue, even for an already-resolved promise.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> What is prototypal inheritance? How do Object.create(), constructor functions, and ES6 classes relate to it?</summary>
+            <div class="qa-body">
+              <h5>What</h5>
+              <p>Every object has an internal <code>[[Prototype]]</code> link (accessible via <code>Object.getPrototypeOf</code> or the legacy <code>__proto__</code>) to another object it delegates lookups to. When you access a property, the engine walks this prototype chain until it finds the property or reaches <code>null</code>.</p>
+<pre><code>function Animal(name){ this.name = name; }
+Animal.prototype.speak = function(){ return `${this.name} makes a sound`; };
+const dog = new Animal('Rex');
+dog.speak(); // found via prototype chain, not own property</code></pre>
+              <h5>Three ways to set up the same inheritance</h5>
+              <p><strong>Object.create()</strong> builds an object with a specific prototype directly, with no constructor function involved at all: <code>const dog = Object.create(animalProto)</code>. <strong>Constructor functions</strong> (above) use <code>new</code> plus a shared <code>.prototype</code> object. <strong>ES6 <code>class</code></strong> syntax is sugar over the exact same constructor-function mechanism — <code>class Dog extends Animal</code> sets <code>Dog.prototype.__proto__ = Animal.prototype</code> under the hood, and <code>super(...)</code> inside a subclass constructor calls the parent's constructor before <code>this</code> can be used.</p>
+<pre><code>class Animal {
+  constructor(name) { this.name = name; }
+  speak() { return `${this.name} makes a sound`; }
+}
+class Dog extends Animal {
+  speak() { return `${super.speak()} (a bark, specifically)`; }
+}
+const rex = new Dog('Rex');
+rex instanceof Animal;        // true — walks the prototype chain
+rex.hasOwnProperty('name');   // true — set directly on the instance in the constructor
+rex.hasOwnProperty('speak');  // false — speak lives on Dog.prototype, not the instance</code></pre>
+              <h5><code>__proto__</code> vs <code>prototype</code></h5>
+              <p>These are two different things that are easy to conflate: <code>prototype</code> is a property that exists only on <em>functions</em> (including classes) — it's the object that instances created with <code>new</code> will link to. <code>__proto__</code> exists on every <em>object</em> (including function objects themselves) and is the actual live link to that object's own prototype. So <code>rex.__proto__ === Dog.prototype</code> is <code>true</code>, but <code>rex.prototype</code> is <code>undefined</code> (instances don't have their own <code>.prototype</code>).</p>
+              <h5>Common mistakes</h5>
+              <p>Using <code>for...in</code> to iterate an object's properties without a <code>hasOwnProperty</code> check — it also picks up enumerable properties inherited from the prototype chain, not just the object's own properties.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Explain <code>this</code> binding rules.</summary>
+            <div class="qa-body">
+              <p>Resolved in this priority order: <strong>new binding</strong> (constructor call → new object), <strong>explicit binding</strong> (<code>call</code>/<code>apply</code>/<code>bind</code>), <strong>implicit binding</strong> (called as <code>obj.method()</code> → <code>this</code> is <code>obj</code>), then <strong>default binding</strong> (plain function call → <code>undefined</code> in strict mode, global object otherwise). Arrow functions have no own <code>this</code> — they lexically inherit it from the enclosing scope, which is exactly why arrow functions are the default choice for React class-method-style callbacks and array callbacks.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> <code>call()</code> vs <code>apply()</code> vs <code>bind()</code> — what's the difference?</summary>
+            <div class="qa-body">
+              <p>All three explicitly set what <code>this</code> refers to inside a function, but differ in when the function runs and how arguments are passed:</p>
+              <table>
+                <tr><th>Method</th><th>Invokes immediately?</th><th>Arguments</th></tr>
+                <tr><td><code>call(thisArg, a, b, c)</code></td><td>Yes</td><td>Passed individually, comma-separated</td></tr>
+                <tr><td><code>apply(thisArg, [a, b, c])</code></td><td>Yes</td><td>Passed as a single array</td></tr>
+                <tr><td><code>bind(thisArg, a, b)</code></td><td>No — returns a new function</td><td>Individually; can be partially applied and called later</td></tr>
+              </table>
+<pre><code>function greet(greeting, punctuation) {
+  return `${greeting}, ${this.name}${punctuation}`;
+}
+const user = { name: 'Kamlesh' };
+greet.call(user, 'Hi', '!');           // 'Hi, Kamlesh!' — runs now
+greet.apply(user, ['Hi', '!']);        // same, args as an array
+const greetUser = greet.bind(user, 'Hi'); // returns a new function, not yet run
+greetUser('!');                        // 'Hi, Kamlesh!' — runs when called</code></pre>
+              <p><strong>Common mistake:</strong> reaching for <code>apply</code> out of habit when the spread operator (<code>fn(...args)</code>) now covers most of the "pass an array as arguments" use case that <code>apply</code> used to be needed for.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Promises vs async/await — what's actually different?</summary>
+            <div class="qa-body">
+              <p>Nothing at the mechanism level — <code>async/await</code> is syntactic sugar over promises; an <code>async function</code> always returns a promise, and <code>await</code> pauses execution of that function (not the whole thread) until the awaited promise settles. The practical difference is readability and error handling: <code>await</code> lets you use plain <code>try/catch</code> instead of chained <code>.then/.catch</code>, but it's easy to accidentally serialize independent async calls with sequential <code>await</code>s when they should run in parallel via <code>Promise.all</code>.</p>
+<pre><code>// Bad: sequential, ~2x slower
+const user = await fetchUser();
+const posts = await fetchPosts();
+
+// Good: parallel
+const [user, posts] = await Promise.all([fetchUser(), fetchPosts()]);</code></pre>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you create a Promise from scratch, and what are its lifecycle states?</summary>
+            <div class="qa-body">
+              <h5>Lifecycle</h5>
+              <p>A Promise starts <strong>pending</strong>, and settles exactly once into either <strong>fulfilled</strong> (via <code>resolve()</code>) or <strong>rejected</strong> (via <code>reject()</code>) — it can never change state again after settling, and any <code>.then</code>/<code>.catch</code> attached later still fires with that same final result.</p>
+<pre><code>function delay(ms, value) {
+  return new Promise((resolve, reject) =&gt; {
+    if (ms &lt; 0) return reject(new Error('negative delay'));
+    setTimeout(() =&gt; resolve(value), ms);
+  });
+}
+
+delay(1000, 'done')
+  .then(result =&gt; { console.log(result); return result.toUpperCase(); })
+  .then(upper =&gt; console.log(upper))   // chaining: each .then gets the previous return value
+  .catch(err =&gt; console.error(err))
+  .finally(() =&gt; console.log('cleanup, runs either way'));</code></pre>
+              <h5>Why chaining works</h5>
+              <p>Each <code>.then()</code> returns a brand-new promise wrapping whatever its callback returns — a plain value gets auto-wrapped in a resolved promise, and if the callback returns another promise, the chain "flattens" and waits on it automatically. This is what lets you chain <code>.then</code> calls sequentially instead of nesting callbacks.</p>
+              <h5>Common mistakes</h5>
+              <p>Forgetting to <code>return</code> inside a <code>.then()</code> callback that itself does async work — without the <code>return</code>, the outer chain doesn't actually wait for that inner promise, and the next <code>.then</code> fires prematurely with the wrong value.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> What's the difference between debouncing and throttling?</summary>
+            <div class="qa-body">
+              <p><strong>Debounce</strong> delays execution until a pause in events (fires once, after the burst ends) — used for search-as-you-type or resize-end handlers. <strong>Throttle</strong> guarantees execution at most once per fixed interval, regardless of how many events fire — used for scroll position tracking or button-click spam prevention. Full implementations are in the coding section below.</p>
+            </div>
+          </details>
+
+          <h2 id="advanced">4. Advanced questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> Walk through exactly how <code>Promise.all</code>, <code>Promise.race</code>, <code>Promise.allSettled</code>, and <code>Promise.any</code> differ, including failure semantics.</summary>
+            <div class="qa-body">
+              <table>
+                <tr><th>Method</th><th>Resolves when</th><th>Rejects when</th></tr>
+                <tr><td><code>Promise.all</code></td><td>All promises fulfill</td><td>Any one rejects (fails fast)</td></tr>
+                <tr><td><code>Promise.allSettled</code></td><td>All settle (fulfilled or rejected)</td><td>Never — always resolves with a status array</td></tr>
+                <tr><td><code>Promise.race</code></td><td>First promise to settle (fulfilled)</td><td>First promise to settle (rejected)</td></tr>
+                <tr><td><code>Promise.any</code></td><td>First one to fulfill</td><td>Only if <em>all</em> reject (AggregateError)</td></tr>
+              </table>
+              <p>In production, <code>allSettled</code> is the right choice for dashboards that fetch from multiple independent widgets/APIs where one failure shouldn't blank the whole page.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How does garbage collection work, and how do memory leaks happen in a long-running SPA?</summary>
+            <div class="qa-body">
+              <h5>Stack vs Heap</h5>
+              <p>Primitives (numbers, strings, booleans, etc.) are stored on the <strong>stack</strong> — fixed-size, fast to allocate/deallocate, and copied by value on assignment. Objects, arrays, and functions live on the <strong>heap</strong> — a much larger, less structured memory region — and variables referencing them hold a pointer to that heap location, which is why assigning an object to a new variable copies the <em>reference</em>, not the object itself.</p>
+              <h5>How the GC decides what to collect</h5>
+              <p>Older engines used <strong>reference counting</strong> (collect an object once nothing points to it anymore) — simple, but it fails on circular references (two objects referencing each other stay "referenced" forever even if nothing else points to either). V8 uses <strong>mark-and-sweep</strong> instead: starting from a set of roots (the global object, the current call stack, active closures), the engine marks every object reachable by following references, then sweeps away anything left unmarked — this correctly collects circular references that are unreachable from any root, unlike naive reference counting.</p>
+              <h5>Where leaks actually come from in a SPA</h5>
+              <p>Leaks typically come from: (1) event listeners attached to <code>window</code>/<code>document</code> never removed on unmount, (2) timers (<code>setInterval</code>) not cleared, (3) closures capturing large objects held by a long-lived cache, (4) detached DOM nodes still referenced from JS after removal from the tree. In React specifically, this is why every <code>useEffect</code> that subscribes to something must return a cleanup function.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> What are <code>WeakMap</code> and <code>WeakSet</code>, and when would you reach for them over <code>Map</code>/<code>Set</code>?</summary>
+            <div class="qa-body">
+              <p>A regular <code>Map</code>/<code>Set</code> holds a <strong>strong reference</strong> to its keys/values — an object used as a key stays alive in memory as long as the Map itself exists, even if nothing else in the app references it anymore. <code>WeakMap</code>/<code>WeakSet</code> hold <strong>weak references</strong> instead: if an object key has no other references left, the garbage collector is free to reclaim it, and the entry is automatically removed — closing exactly the kind of leak the mark-and-sweep question above describes.</p>
+<pre><code>const cache = new WeakMap();
+function process(domNode) {
+  if (cache.has(domNode)) return cache.get(domNode);
+  const result = expensiveComputation(domNode);
+  cache.set(domNode, result);
+  return result;
+}
+// If domNode is later removed from the DOM and has no other references,
+// its cache entry is automatically eligible for garbage collection —
+// a regular Map would keep it (and the DOM node) alive forever.</code></pre>
+              <p><strong>Trade-off:</strong> WeakMap/WeakSet keys must be objects (not primitives), and they're deliberately not iterable — you can't list their contents or get a size, since entries can disappear at any time via GC. Use them specifically for metadata/caching tied to an object's lifetime; use regular Map/Set for everything else.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> Explain currying and partial application, with a real use case.</summary>
+            <div class="qa-body">
+              <p>Currying transforms <code>f(a, b, c)</code> into <code>f(a)(b)(c)</code> — each call returns a new function until all arguments are supplied. It's useful for building specialized functions from general ones, e.g. a generic <code>validate(rule, value)</code> curried into <code>validateRequired = validate('required')</code> reused across form fields.</p>
+<pre><code>const curry = fn =&gt; (...args) =&gt;
+  args.length &gt;= fn.length
+    ? fn(...args)
+    : (...more) =&gt; curry(fn)(...args, ...more);
+
+const add3 = curry((a, b, c) =&gt; a + b + c);
+add3(1)(2)(3); // 6
+add3(1, 2)(3); // 6</code></pre>
+            </div>
+          </details>
+
+          <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: A production dashboard occasionally shows stale data from a previous API call after the user rapidly switches tabs. Diagnose and fix.</summary>
+            <div class="qa-body">
+              <h5>Diagnosis</h5>
+              <p>Classic race condition: tab A's fetch is slower than tab B's, and resolves after the user has already switched, overwriting B's fresher data with A's stale response.</p>
+              <h5>Fix options</h5>
+              <p>1) Track a request ID/ref and ignore responses that don't match the latest request. 2) Use <code>AbortController</code> to cancel the in-flight request when the tab changes. 3) If using React Query/SWR, this is handled for you via automatic cancellation and query keys.</p>
+<pre><code>useEffect(() =&gt; {
+  const controller = new AbortController();
+  fetch(url, { signal: controller.signal })
+    .then(res =&gt; res.json())
+    .then(setData)
+    .catch(err =&gt; { if (err.name !== 'AbortError') throw err; });
+  return () =&gt; controller.abort();
+}, [url]);</code></pre>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Output-based: what does this log, and why?</summary>
+            <div class="qa-body">
+<pre><code>async function foo() {
+  console.log('A');
+  await null;
+  console.log('B');
+}
+console.log('start');
+foo();
+console.log('end');
+// start, A, end, B</code></pre>
+              <p>The function body runs synchronously up to the first <code>await</code> — so <code>'A'</code> logs immediately. <code>await</code> then yields control back to the caller (queuing the rest as a microtask), so <code>'end'</code> logs before <code>'B'</code>, even though <code>await null</code> has "nothing to wait for."</p>
+            </div>
+          </details>
+
+          <h2 id="coding">6. Coding challenges (with approach, complexity, follow-ups)</h2>
+
+          <div class="qa">
+            <div class="qa-body" style="margin-top:0;border-top:none;padding-top:0;">
+              <h5>Problem: implement <code>debounce</code></h5>
+<pre><code>function debounce(fn, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() =&gt; fn.apply(this, args), delay);
+  };
+}</code></pre>
+              <p><strong>Time:</strong> O(1) per call. <strong>Space:</strong> O(1). <strong>Follow-up:</strong> add a <code>cancel()</code> method and an <code>immediate</code> (leading-edge) flag. <strong>Common mistake:</strong> using an arrow function for the returned function, which breaks `this` binding for object-method use cases.</p>
+
+              <h5>Problem: implement <code>throttle</code></h5>
+<pre><code>function throttle(fn, limit) {
+  let inThrottle = false;
+  return function (...args) {
+    if (!inThrottle) {
+      fn.apply(this, args);
+      inThrottle = true;
+      setTimeout(() =&gt; (inThrottle = false), limit);
+    }
+  };
+}</code></pre>
+              <p><strong>Follow-up:</strong> implement the trailing-edge variant that also fires once more after the window closes if a call was suppressed.</p>
+
+              <h5>Problem: deep clone an object (handling nested objects/arrays, not circular refs)</h5>
+<pre><code>function deepClone(obj) {
+  if (obj === null || typeof obj !== 'object') return obj;
+  if (Array.isArray(obj)) return obj.map(deepClone);
+  return Object.fromEntries(
+    Object.entries(obj).map(([k, v]) =&gt; [k, deepClone(v)])
+  );
+}</code></pre>
+              <p><strong>Follow-up:</strong> "How would you handle circular references?" — keep a <code>WeakMap</code> of already-cloned source objects to their clones and return the cached clone when re-encountered. Mention <code>structuredClone()</code> as the modern built-in that already does this.</p>
+
+              <h5>Problem: polyfill <code>Array.prototype.flat(depth)</code></h5>
+<pre><code>function flatten(arr, depth = 1) {
+  return depth &gt; 0
+    ? arr.reduce((acc, val) =&gt;
+        acc.concat(Array.isArray(val) ? flatten(val, depth - 1) : val), [])
+    : arr.slice();
+}</code></pre>
+
+              <h5>Problem: polyfill <code>Promise.all</code></h5>
+<pre><code>function promiseAll(promises) {
+  return new Promise((resolve, reject) =&gt; {
+    const results = [];
+    let completed = 0;
+    if (promises.length === 0) return resolve(results);
+    promises.forEach((p, i) =&gt; {
+      Promise.resolve(p).then(val =&gt; {
+        results[i] = val;
+        if (++completed === promises.length) resolve(results);
+      }).catch(reject);
+    });
+  });
+}</code></pre>
+              <p><strong>Time:</strong> O(n). <strong>Common mistake:</strong> pushing results in resolution order instead of indexing by original position — order must match input, not completion time.</p>
+
+              <h5>Problem: implement your own <code>bind</code></h5>
+<pre><code>Function.prototype.myBind = function (ctx, ...boundArgs) {
+  const fn = this;
+  return function (...args) {
+    return fn.apply(ctx, [...boundArgs, ...args]);
+  };
+};</code></pre>
+            </div>
+          </div>
+
+          <h2 id="mistakes">7. Common mistakes & debugging</h2>
+          <div class="callout warn"><strong>Watch for these in your own code review comments</strong>
+            Mutating state directly instead of creating new references (breaks React's shallow-compare); comparing objects/arrays with <code>===</code> and expecting deep equality; forgetting <code>await</code> inside a <code>.map()</code> (returns an array of pending promises, not results — use <code>Promise.all(arr.map(async ...))</code>); relying on <code>for...in</code> on arrays (iterates enumerable keys including inherited/non-index ones — use <code>for...of</code> or array methods).
+          </div>
+
+          <h2 id="company">8. Frequently asked at top product companies</h2>
+          <ul>
+            <li><strong>Amazon/Google style:</strong> "Implement an LRU cache" (tests Map + doubly linked list, not JS trivia — but framed as a JS coding round).</li>
+            <li><strong>Meta style:</strong> Output-based questions stacking closures + event loop + hoisting in one snippet.</li>
+            <li><strong>Microsoft/Adobe style:</strong> "Polyfill <code>Array.prototype.reduce</code>" or "<code>Function.prototype.call</code>."</li>
+            <li><strong>Uber/Airbnb style:</strong> Debounce/throttle from scratch, then asked to adapt it live for a new requirement (e.g. "now make it cancelable").</li>
+          </ul>
+
+          <h2 id="cheatsheet">9. Cheat sheet / quick revision</h2>
+          <table>
+            <tr><th>Concept</th><th>One-line recall</th></tr>
+            <tr><td>Hoisting</td><td>Declarations allocated early; <code>var</code>→undefined, <code>let/const</code>→TDZ</td></tr>
+            <tr><td>Closure</td><td>Function + captured lexical scope, survives after outer returns</td></tr>
+            <tr><td>Scope chain</td><td>Lookup walks outward through enclosing lexical scopes</td></tr>
+            <tr><td>Event loop</td><td>Stack empties → drain ALL microtasks → one macrotask → repeat</td></tr>
+            <tr><td>this</td><td>new &gt; explicit (call/apply/bind) &gt; implicit (obj.method) &gt; default</td></tr>
+            <tr><td>call/apply/bind</td><td>call/apply run now (args list vs array); bind returns a function for later</td></tr>
+            <tr><td>__proto__ vs prototype</td><td>prototype lives on functions; __proto__ is every object's live link to it</td></tr>
+            <tr><td>Debounce</td><td>Fires once after silence</td></tr>
+            <tr><td>Throttle</td><td>Fires at most once per interval</td></tr>
+            <tr><td>Promise.all</td><td>Fails fast on first rejection</td></tr>
+            <tr><td>Promise.allSettled</td><td>Never rejects, gives status per item</td></tr>
+            <tr><td>Mark-and-sweep</td><td>Collects from unreachable roots — handles circular refs, unlike ref counting</td></tr>
+            <tr><td>WeakMap/WeakSet</td><td>Weak references — entries auto-GC'd when the key object is otherwise unreferenced</td></tr>
+          </table>
+
+          <p class="lead">Related: see <a href="react.html">React.js</a> for how these primitives show up inside hooks, and (once published) TypeScript for static typing on top of all of this.</p>
+
+          <div class="page-nav">
+            <a class="prev" href="my-project.html"><span class="dir">← Previous</span>My Project Walkthrough</a>
+            <a class="next" href="typescript.html"><span class="dir">Next →</span>TypeScript Interview Guide</a>
+          </div>
+        </div>
+
+        <nav class="toc">
+          <div class="toc-title">On this page</div>
+          <a href="#overview">Overview</a>
+          <a href="#basic">Basic</a>
+          <a href="#intermediate">Intermediate</a>
+          <a href="#advanced">Advanced</a>
+          <a href="#expert">Expert & scenarios</a>
+          <a href="#coding">Coding challenges</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#company">Company questions</a>
+          <a href="#cheatsheet">Cheat sheet</a>
+        </nav>
+      </div>
+    </main>
+    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
+  </div>
+</div>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>

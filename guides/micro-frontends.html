@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Micro Frontends Interview Guide (Deep Dive) — Kamlesh Kumar</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">KK</div>
+      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
+    </div>
+    <input id="search-box" type="text" placeholder="Search topics…">
+    <div class="nav-group"><div class="nav-group-title">Start Here</div>
+      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
+    <div class="nav-group"><div class="nav-group-title">Core Language</div>
+      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
+      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
+    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
+      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
+      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
+      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
+      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
+    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
+      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
+      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
+      <a class="nav-link" data-status="planned" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
+    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
+      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
+      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
+      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
+    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
+      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
+      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
+      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
+      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a></div>
+    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
+      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
+    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
+      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
+      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
+      <a class="nav-link done active" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
+    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
+      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
+      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
+    <div class="nav-group"><div class="nav-group-title">Process</div>
+      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
+  </aside>
+
+  <div>
+    <div class="topbar">
+      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Micro Frontends</div>
+      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
+    </div>
+
+    <main>
+      <div class="content-wrap">
+        <div class="prose">
+          <div class="hero">
+            <h1>Micro Frontends Interview Guide (Deep Dive)</h1>
+            <p class="lead">Beyond "when to use them" (covered in System Design) — the actual mechanics: Module Federation, shared dependencies, cross-MFE routing, styling isolation, and independent deployment.</p>
+          </div>
+
+          <h2 id="overview">1. Overview</h2>
+          <p>The System Design guide covers <em>when</em> micro-frontends make organizational sense. This guide goes one layer deeper into <em>how</em> they actually work — the specific technical mechanisms (Module Federation being the dominant modern approach) that let independently-built, independently-deployed frontend applications compose into one cohesive product at runtime.</p>
+          <div class="tag">Module Federation</div><div class="tag">Shared Dependencies</div><div class="tag">Cross-MFE Routing</div><div class="tag">Styling Isolation</div><div class="tag">Independent Deployment</div><div class="tag">Contract Versioning</div>
+
+          <h2 id="basic">2. Basic questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What is Webpack Module Federation, at a mechanical level?</summary>
+            <div class="qa-body">
+<pre><code>// Remote app's webpack config — exposes a module
+new ModuleFederationPlugin({
+  name: 'tradesApp',
+  exposes: { './TradeGrid': './src/TradeGrid' },
+  shared: ['react', 'react-dom'],
+});
+
+// Host app's webpack config — consumes it
+new ModuleFederationPlugin({
+  remotes: { tradesApp: 'tradesApp@https://trades.example.com/remoteEntry.js' },
+});
+
+// Host app code — dynamic import, resolved at RUNTIME, not build time
+const TradeGrid = React.lazy(() =&gt; import('tradesApp/TradeGrid'));</code></pre>
+              <p>Module Federation lets one independently-built and independently-deployed application (the "remote") expose specific modules that another application (the "host") can import and render at runtime, without either being compiled together at build time. This is the key architectural shift from older micro-frontend approaches (iframes, or build-time npm package composition): the actual code is fetched and integrated live, in the browser, from wherever each piece was independently deployed.</p>
+            </div>
+          </details>
+
+          <h2 id="intermediate">3. Intermediate questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How does Module Federation avoid every micro-frontend shipping its own separate copy of React?</summary>
+            <div class="qa-body">
+              <p>The <code>shared</code> config option declares dependencies that should be shared across host and remotes rather than duplicated. At runtime, Module Federation negotiates versions: if the host and a remote both need React and their version ranges are compatible, only one copy is actually loaded and both use it; if versions are genuinely incompatible, each falls back to loading its own copy (at the cost of duplicated bytes, but without breaking). This negotiation is what keeps a multi-team micro-frontend product from shipping five copies of React to every user by default — but it does require teams to actively coordinate on shared-dependency version ranges, which is itself an ongoing cross-team discipline, not something that happens for free.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you handle routing across multiple independently-deployed micro-frontends so the URL bar and browser history behave like one cohesive app?</summary>
+            <div class="qa-body">
+              <p>Typically, one "shell" or "host" application owns the top-level router and overall page chrome (nav, header); each route maps to loading a specific remote micro-frontend's exposed component into a designated slot in the shell's layout. The remotes themselves generally shouldn't own top-level browser routing — they render into wherever the shell places them, and if a remote needs internal sub-routing of its own (nested routes within its section), it typically uses the shell's router instance (passed down) rather than instantiating a second, competing router, which would otherwise fight the shell for control of the URL and browser history.</p>
+            </div>
+          </details>
+
+          <h2 id="advanced">4. Advanced questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How do you achieve CSS isolation between micro-frontends built by different teams, potentially with different styling approaches (one team uses SASS/BEM, another uses CSS-in-JS)?</summary>
+            <div class="qa-body">
+              <p>This is the same global-CSS-collision problem from the CSS guide, amplified across team boundaries with potentially different tooling entirely. Options, in increasing isolation strength: (1) strict naming convention discipline (BEM with a mandatory per-team namespace prefix) — cheapest, but relies entirely on discipline holding across teams who may not even share a lint config; (2) CSS Modules per micro-frontend, so each team's class names are hashed/scoped at build time regardless of naming convention; (3) Shadow DOM, wrapping each micro-frontend's rendered output in genuine browser-level style encapsulation — the strongest guarantee, immune to any global CSS regardless of what any other team does, at the cost of extra complexity for anything that needs to intentionally share styling (a common design system) across that boundary. For a design-system-governed product (tying back to the Design Patterns &amp; Architecture guide), CSS Modules combined with a shared, versioned design-system package for anything that must look identical across MFEs is usually the pragmatic middle ground.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How do teams cross-communicate between micro-frontends without tightly coupling their internal implementations?</summary>
+            <div class="qa-body">
+              <p>The anti-pattern to avoid is one MFE directly importing another's internal state/store — that recreates tight coupling and defeats independent deployability (a breaking internal change in one MFE now breaks another team's code with no warning). Common patterns instead: a shared, versioned event bus/pub-sub mechanism where MFEs emit and listen for well-defined, documented events (<code>trade:selected</code>) without knowing anything about each other's internals; or a shared, minimal global store (holding only genuinely cross-cutting state like the current user/session, not feature-specific state) that every MFE can read but each team's own feature state stays private to their MFE. The underlying principle is the same "explicit public API, private internals" boundary discussed in the Design Patterns &amp; Architecture guide, just enforced across independently-deployed applications instead of within one codebase.</p>
+            </div>
+          </details>
+
+          <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: Team A deploys a breaking change to a shared component their micro-frontend exposes, and Team B's micro-frontend (which consumes it via Module Federation) breaks in production immediately, with no warning. How do you prevent this systemically?</summary>
+            <div class="qa-body">
+              <p>This is the direct micro-frontend analog of the shared-component-library breakage scenario in the Design Patterns &amp; Architecture guide, but worse — because Module Federation resolves at runtime, a breaking change can propagate to consumers the instant it's deployed, with no build-time warning at all (Team B's own CI never even ran against the new version). Systemic fixes: (1) treat every exposed module as a versioned, semantically-versioned public contract, with an explicit deprecation policy — never silently change an exposed module's shape; (2) pin consumer-side remote versions explicitly rather than always resolving "latest," so a remote update is an opt-in action by the consuming team, not an automatic, unreviewed runtime surprise; (3) add contract/integration tests that run the actual composed application (host + real remotes) in CI before either team's deploy, catching a breaking change before it reaches production rather than after; (4) real-time production monitoring with fast rollback (from the CI/CD guide) as the last line of defense when the above still misses something. The core lesson: runtime composition is powerful specifically because it decouples deploys, but that same decoupling is what makes an explicit contract and pinned versions non-negotiable — without them, "independent deployment" becomes "unreviewed breaking changes across team boundaries."</p>
+            </div>
+          </details>
+
+          <h2 id="mistakes">6. Common mistakes & debugging</h2>
+          <div class="callout warn"><strong>Frequent review comments</strong>
+            Always resolving remotes to "latest" instead of pinning versions, turning every remote deploy into an unreviewed breaking-change risk for consumers; letting remotes instantiate their own competing router instead of using the shell's; no CSS isolation strategy at all across teams with different styling conventions, causing style leakage; tightly coupling MFEs by directly importing each other's internal store/state instead of a well-defined shared event/contract boundary; adopting micro-frontends before the team/organizational scale genuinely justifies the added deployment and coordination complexity (the premature-adoption point from the System Design guide).
+          </div>
+
+          <h2 id="company">7. Frequently asked at top product companies</h2>
+          <ul>
+            <li><strong>Platform/architecture-focused companies:</strong> "Walk through how Module Federation actually resolves a shared dependency at runtime" — tests real mechanical understanding, not just buzzword familiarity.</li>
+            <li><strong>Staff/principal-level style:</strong> "How would you design contract testing between independently-deployed micro-frontends to prevent breaking changes reaching production?"</li>
+            <li><strong>General senior-level:</strong> "How do you keep styling consistent across micro-frontends built by different teams?"</li>
+          </ul>
+
+          <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+          <table>
+            <tr><th>Concept</th><th>One-line recall</th></tr>
+            <tr><td>Module Federation</td><td>Runtime code sharing across independently-deployed apps, no build-time compile-together step</td></tr>
+            <tr><td>Shared deps</td><td>Version-negotiated at runtime — dedupes React etc. when versions are compatible</td></tr>
+            <tr><td>Routing</td><td>Shell/host owns top-level routing; remotes render into slots, reuse the shell's router for sub-routes</td></tr>
+            <tr><td>CSS isolation</td><td>Naming convention → CSS Modules → Shadow DOM, increasing isolation strength</td></tr>
+            <tr><td>Cross-MFE communication</td><td>Event bus or minimal shared store — never direct internal-state imports</td></tr>
+            <tr><td>Breaking-change risk</td><td>Pin versions, treat exposed modules as versioned public contracts, add contract tests</td></tr>
+          </table>
+
+          <p class="lead">This is the final guide in the complete roadmap — start over from <a href="javascript.html">JavaScript (ES6+)</a> or head back to the <a href="../index.html">home page</a> to browse everything.</p>
+
+          <div class="page-nav">
+            <a class="prev" href="security.html"><span class="dir">← Previous</span>Security &amp; Auth Interview Guide</a>
+            <a class="next" href="../index.html"><span class="dir">Next →</span>Back to Roadmap</a>
+          </div>
+        </div>
+
+        <nav class="toc">
+          <div class="toc-title">On this page</div>
+          <a href="#overview">Overview</a>
+          <a href="#basic">Basic</a>
+          <a href="#intermediate">Intermediate</a>
+          <a href="#advanced">Advanced</a>
+          <a href="#expert">Expert & scenarios</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#company">Company questions</a>
+          <a href="#cheatsheet">Cheat sheet</a>
+        </nav>
+      </div>
+    </main>
+    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
+  </div>
+</div>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>

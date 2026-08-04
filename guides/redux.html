@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redux / Redux Toolkit Interview Guide — Kamlesh Kumar</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="nav-group"><div class="nav-group-title">Start Here</div>
+      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
+    <div class="nav-group"><div class="nav-group-title">Core Language</div>
+      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
+      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
+    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
+      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
+      <a class="nav-link done active" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
+      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
+      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
+    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
+      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
+      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
+      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
+    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
+      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
+      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
+      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
+    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
+      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
+      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
+      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
+      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a></div>
+    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
+      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
+    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
+      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
+      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
+      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
+    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
+      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
+      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
+    <div class="nav-group"><div class="nav-group-title">Process</div>
+      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
+  </aside>
+
+  <div>
+    <div class="topbar">
+      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Redux / Redux Toolkit</div>
+      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
+    </div>
+
+    <main>
+      <div class="content-wrap">
+        <div class="prose">
+          <div class="hero">
+            <h1>Redux / Redux Toolkit Interview Guide</h1>
+            <p class="lead">Predictable state at scale — actions, reducers, middleware, normalization, and why Redux Toolkit replaced hand-written Redux almost everywhere.</p>
+          </div>
+
+          <h2 id="overview">1. Technology overview</h2>
+          <p>Redux is a predictable state container: a single store, a pure reducer function that computes the next state from the current state and an action, and a strict unidirectional data flow (dispatch → reducer → new state → re-render). Redux Toolkit (RTK) is the officially recommended way to write Redux today — it wraps the same core with <code>createSlice</code>, built-in Immer for "mutating" syntax that produces immutable updates, <code>createAsyncThunk</code> for async flows, and RTK Query for data fetching/caching. For a banking/data-heavy dashboard (trade blotters, reconciliation views), Redux's selector-based subscriptions are what let large tables re-render only the rows that actually changed.</p>
+          <div class="tag">Store/Reducer/Actions</div><div class="tag">Middleware</div><div class="tag">Immer</div><div class="tag">createSlice</div><div class="tag">createAsyncThunk</div><div class="tag">RTK Query</div><div class="tag">Selectors / Reselect</div><div class="tag">Normalization</div>
+
+          <h2 id="basic">2. Basic questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What are the three core principles of Redux?</summary>
+            <div class="qa-body">
+              <p>1) <strong>Single source of truth</strong> — the whole app state lives in one store/object tree. 2) <strong>State is read-only</strong> — the only way to change it is to dispatch an action describing what happened. 3) <strong>Changes are made with pure functions</strong> — reducers take <code>(state, action)</code> and return a new state without mutating the input or causing side effects.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What is a reducer, and why must it be pure?</summary>
+            <div class="qa-body">
+              <p>A reducer is <code>(state, action) =&gt; newState</code>. It must be pure (no API calls, no <code>Date.now()</code>/<code>Math.random()</code>, no mutation of its arguments) because Redux relies on this purity for predictability, time-travel debugging (replaying actions must always produce the same result), and for React-Redux's ability to detect changes via reference equality — mutating state in place means the reference never changes, so connected components silently fail to re-render.</p>
+<pre><code>// Wrong — mutates state
+function reducer(state, action) {
+  state.items.push(action.payload); // BUG: same reference returned
+  return state;
+}
+// Right — returns a new reference
+function reducer(state, action) {
+  return { ...state, items: [...state.items, action.payload] };
+}</code></pre>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What does <code>createSlice</code> give you over hand-written Redux?</summary>
+            <div class="qa-body">
+              <p><code>createSlice</code> generates action creators and action types automatically from a set of reducer functions, and lets you write "mutating" logic inside each case reducer (<code>state.value += 1</code>) because it wraps the whole thing in Immer under the hood — Immer produces a new immutable state from your mutation-style code via a structural-sharing draft object. This eliminates almost all of the original boilerplate (separate action type constants, switch statements, manual spread operators).</p>
+            </div>
+          </details>
+
+          <h2 id="intermediate">3. Intermediate questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Why does Redux need middleware at all — what problem does it solve?</summary>
+            <div class="qa-body">
+              <p>Reducers must be pure and synchronous, but real apps need side effects (API calls, logging, analytics). Middleware sits between <code>dispatch</code> and the reducer, intercepting every action, so it's the sanctioned place to run async logic, log actions, or even dispatch further actions — without breaking reducer purity. <code>redux-thunk</code> lets an action creator return a function (given <code>dispatch</code>/<code>getState</code>) instead of a plain object, so you can dispatch "pending/fulfilled/rejected" actions around an API call.</p>
+<pre><code>const fetchTrades = () =&gt; async (dispatch, getState) =&gt; {
+  dispatch({ type: 'trades/loading' });
+  try {
+    const data = await api.getTrades();
+    dispatch({ type: 'trades/success', payload: data });
+  } catch (err) {
+    dispatch({ type: 'trades/error', payload: err.message });
+  }
+};</code></pre>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Thunks vs Sagas vs RTK Query — how do you choose?</summary>
+            <div class="qa-body">
+              <table>
+                <tr><th>Tool</th><th>Model</th><th>Best for</th></tr>
+                <tr><td>Thunk</td><td>Plain async functions</td><td>Simple, imperative async flows — most CRUD apps</td></tr>
+                <tr><td>Saga</td><td>Generator-based effects, declarative & testable</td><td>Complex flows: debounced search, cancellation, race conditions, sequencing multiple sagas — common in large trading UIs with WebSocket streams</td></tr>
+                <tr><td>RTK Query</td><td>Declarative data-fetching + caching layer</td><td>Standard "fetch and cache server data" — replaces most hand-written thunks entirely</td></tr>
+              </table>
+              <p>Modern guidance: use RTK Query for server-state (the vast majority of API calls) and keep thunks/sagas only for genuinely complex orchestration RTK Query doesn't model well (e.g. reacting to a WebSocket stream and coordinating several dependent dispatches).</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do selectors work, and why does <code>reselect</code>/RTK's <code>createSelector</code> matter for performance?</summary>
+            <div class="qa-body">
+              <p>A selector is just a function that reads a slice of state: <code>selectTrades = state =&gt; state.trades.list</code>. The problem appears with <em>derived</em> data — <code>selectSortedTrades = state =&gt; [...state.trades.list].sort(...)</code> creates a brand-new array on every call, so a component subscribed via <code>useSelector</code> re-renders every time <em>any</em> unrelated state changes, even though the actual sorted content didn't change. <code>createSelector</code> memoizes on its input selectors' outputs — the sort only re-runs when <code>state.trades.list</code> itself changes by reference, not on every store update.</p>
+            </div>
+          </details>
+
+          <h2 id="advanced">4. Advanced questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> Explain state normalization and why it matters for a trade/reconciliation table.</summary>
+            <div class="qa-body">
+              <h5>What</h5>
+              <p>Instead of storing nested arrays of objects, normalize into a flat lookup: an <code>ids: string[]</code> array plus an <code>entities: { [id]: Trade }</code> map (this is exactly what RTK's <code>createEntityAdapter</code> generates for you).</p>
+<pre><code>// Nested (harder to update one trade efficiently)
+{ trades: [{ id: 't1', ccy: 'USD' }, { id: 't2', ccy: 'EUR' }] }
+
+// Normalized
+{ ids: ['t1', 't2'], entities: { t1: { id: 't1', ccy: 'USD' }, t2: { id: 't2', ccy: 'EUR' } } }</code></pre>
+              <h5>Why</h5>
+              <p>Updating a single trade in the nested shape means finding it in an array and rebuilding the whole array (O(n), and it changes the array reference so every consumer of the list re-renders). In the normalized shape, updating one entity only changes that one key in the map — the <code>ids</code> array reference is untouched, so components that only care about the list order don't re-render on a single trade's price tick.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How does React-Redux's <code>useSelector</code> decide whether to re-render, and how do you avoid unnecessary re-renders?</summary>
+            <div class="qa-body">
+              <p><code>useSelector</code> subscribes to the store and re-renders whenever the selector's return value is not <code>===</code> (by default, reference equality) to its previous return value, on every dispatched action. Two common mistakes: (1) returning a new object/array literal from the selector (<code>state =&gt; ({ a: state.a, b: state.b })</code>) — this is a new reference on every single dispatch, so the component re-renders on unrelated actions too; fix by either splitting into multiple <code>useSelector</code> calls or using <code>createSelector</code>/a shallow-equality comparator. (2) Selecting more of the state than the component needs — always select the narrowest slice possible.</p>
+            </div>
+          </details>
+
+          <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: a live reconciliation dashboard receives WebSocket price ticks for thousands of trades per second. The Redux store updates on every tick and the whole grid stutters. How do you redesign the state/update flow?</summary>
+            <div class="qa-body">
+              <p>1) Normalize entities so a tick only touches one entity's key, not a whole array reference. 2) Batch incoming ticks — buffer them for one animation frame and dispatch a single batched update instead of one action per tick (Redux itself batches renders inside React event handlers, but raw WebSocket callbacks fire outside that batching in older React versions, so you may need <code>unstable_batchedUpdates</code> or rely on React 18's automatic batching). 3) Make row components subscribe to their <em>own</em> entity via a memoized per-id selector (<code>createSelector</code> factory pattern) so a tick for trade <code>t500</code> only re-renders that row, not the table. 4) Consider whether every tick needs to hit Redux at all — for extremely high-frequency data, some teams keep the "live" price in local component state or a ref updated via a subscription, and only sync into Redux at a throttled interval for anything that needs global visibility (audit/reporting).</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Output-based: what's wrong with this slice, and how would RTK Query replace it?</summary>
+            <div class="qa-body">
+<pre><code>const tradesSlice = createSlice({
+  name: 'trades',
+  initialState: { list: [], loading: false, error: null },
+  reducers: {},
+  extraReducers: builder =&gt; {
+    builder
+      .addCase(fetchTrades.pending, state =&gt; { state.loading = true; })
+      .addCase(fetchTrades.fulfilled, (state, action) =&gt; {
+        state.loading = false;
+        state.list = action.payload; // no caching, no dedup, no invalidation
+      });
+  }
+});</code></pre>
+              <p>This hand-written thunk slice has no request de-duplication (calling <code>fetchTrades()</code> twice fires two network requests), no cache invalidation strategy, and no automatic refetch-on-focus/reconnect. RTK Query's <code>createApi</code> + <code>useGetTradesQuery()</code> gives you all of that for free — caching by query key, automatic loading/error states, and tag-based invalidation (e.g. invalidate the <code>Trades</code> tag after a mutation so the list refetches automatically) — replacing this entire slice with a few lines of endpoint definition.</p>
+            </div>
+          </details>
+
+          <h2 id="coding">6. Coding challenge</h2>
+          <div class="qa">
+            <div class="qa-body" style="margin-top:0;border-top:none;padding-top:0;">
+              <h5>Problem: write a Redux Toolkit async thunk with proper loading/error state handling</h5>
+<pre><code>// slice.js
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+
+export const fetchUser = createAsyncThunk('user/fetch', async (userId) =&gt; {
+  const res = await fetch(`/api/users/${userId}`);
+  if (!res.ok) throw new Error('Failed to fetch user');
+  return res.json();
+});
+
+const userSlice = createSlice({
+  name: 'user',
+  initialState: { data: null, status: 'idle', error: null },
+  reducers: {},
+  extraReducers: builder =&gt; {
+    builder
+      .addCase(fetchUser.pending, state =&gt; { state.status = 'loading'; state.error = null; })
+      .addCase(fetchUser.fulfilled, (state, action) =&gt; {
+        state.status = 'succeeded';
+        state.data = action.payload; // Immer allows this "mutation" syntax safely
+      })
+      .addCase(fetchUser.rejected, (state, action) =&gt; {
+        state.status = 'failed';
+        state.error = action.error.message;
+      });
+  },
+});
+
+export default userSlice.reducer;</code></pre>
+              <p><strong>Explanation:</strong> <code>createAsyncThunk</code> auto-generates <code>pending</code>/<code>fulfilled</code>/<code>rejected</code> action types from the single async function you give it; <code>extraReducers</code> handles each declaratively instead of you hand-writing three separate action creators and matching switch cases. Immer lets you write <code>state.data = ...</code> even though the reducer actually returns a brand-new, immutable state object under the hood via structural sharing.</p>
+              <p><strong>Common mistakes:</strong> forgetting to reset <code>error</code> back to <code>null</code> in the <code>pending</code> case — a stale error from a previous failed attempt stays visible during a retry, even though the retry hasn't failed yet; selecting the whole slice in <code>useSelector</code> (<code>useSelector(state =&gt; state.user)</code>) instead of the specific field actually needed (<code>useSelector(state =&gt; state.user.data)</code>) — causes re-renders on every field change in the slice, not just the one the component reads; not memoizing derived selectors built on top of this state.</p>
+              <p><strong>Follow-up:</strong> "How would you cancel a stale thunk if the user navigates away before it resolves?" — three options: call <code>.unwrap()</code> and catch the rejection from navigating away, wire an <code>AbortController</code> into the thunk's fetch call and abort it in a cleanup function, or use RTK Query instead, which handles request cancellation on unmount natively without any of this manual wiring.</p>
+            </div>
+          </div>
+
+          <h2 id="architecture">7. Architecture questions</h2>
+          <ul>
+            <li><strong>"How do you structure Redux state for a large app with 10+ feature teams?"</strong> — feature-folder slices (one slice per domain, colocated with the feature, not a single giant reducers folder), RTK Query for all server-state so feature teams stop hand-rolling loading/error booleans, and a documented convention for what belongs in Redux vs local component state vs URL state.</li>
+            <li><strong>"When would you NOT use Redux at all?"</strong> — small apps, or apps where most state is genuinely local/UI-only (form inputs, modal open/closed) — Context or plain <code>useState</code>/<code>useReducer</code> is simpler and avoids the overhead of wiring every value through the global store.</li>
+          </ul>
+
+          <h2 id="mistakes">8. Common mistakes & debugging</h2>
+          <div class="callout warn"><strong>Frequent review comments</strong>
+            Mutating state directly inside a hand-written reducer (outside <code>createSlice</code>'s Immer wrapper, this silently breaks change detection); creating new object/array references inside <code>useSelector</code> without memoization; storing derived/computed data in the store instead of computing it in a memoized selector (leads to state going out of sync); dispatching too many fine-grained actions per user interaction instead of one well-modeled action; treating <code>useMemo</code>/<code>useCallback</code> as free when memoizing selector results — they carry their own comparison cost, so only reach for them where they solve a measured problem.
+          </div>
+
+          <h2 id="company">9. Frequently asked at top product companies</h2>
+          <ul>
+            <li><strong>Amazon/Google style:</strong> "Design the Redux state shape for a shopping cart / order system" — tests normalization instincts directly.</li>
+            <li><strong>Meta/Uber style:</strong> "Walk through what happens, in order, from a component calling <code>dispatch</code> to the DOM updating" — tests middleware chain → reducer → store subscription → React-Redux re-render → reconciliation, end to end.</li>
+            <li><strong>Fintech-style (relevant to your background):</strong> "How would you keep a Redux-backed grid in sync with a real-time market data feed without janking the UI?"</li>
+          </ul>
+
+          <h2 id="cheatsheet">10. Cheat sheet / quick revision</h2>
+          <table>
+            <tr><th>Concept</th><th>One-line recall</th></tr>
+            <tr><td>Three principles</td><td>Single store, read-only state, pure reducers</td></tr>
+            <tr><td>createSlice</td><td>Immer-powered "mutating" syntax → real immutable updates</td></tr>
+            <tr><td>createAsyncThunk</td><td>Auto-generates pending/fulfilled/rejected — reset error on pending</td></tr>
+            <tr><td>Thunk</td><td>Action creator returns a function for async/imperative flows</td></tr>
+            <tr><td>Saga</td><td>Generator-based effects for complex/cancelable async orchestration</td></tr>
+            <tr><td>RTK Query</td><td>Declarative fetch + cache + invalidation — replaces most thunks</td></tr>
+            <tr><td>Normalization</td><td>ids[] + entities{} — update one item without touching the list reference</td></tr>
+            <tr><td>createSelector</td><td>Memoizes derived data so unrelated state changes don't re-render consumers</td></tr>
+          </table>
+
+          <p class="lead">Related: builds on <a href="react.html">React.js</a> (useSelector/useDispatch, re-render mechanics) and <a href="javascript.html">JavaScript (ES6+)</a> (closures behind thunks, immutability patterns).</p>
+
+          <div class="page-nav">
+            <a class="prev" href="react.html"><span class="dir">← Previous</span>React.js Interview Guide</a>
+            <a class="next" href="react-router.html"><span class="dir">Next →</span>React Router Interview Guide</a>
+          </div>
+        </div>
+
+        <nav class="toc">
+          <div class="toc-title">On this page</div>
+          <a href="#overview">Overview</a>
+          <a href="#basic">Basic</a>
+          <a href="#intermediate">Intermediate</a>
+          <a href="#advanced">Advanced</a>
+          <a href="#expert">Expert & scenarios</a>
+          <a href="#coding">Coding challenge</a>
+          <a href="#architecture">Architecture</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#company">Company questions</a>
+          <a href="#cheatsheet">Cheat sheet</a>
+        </nav>
+      </div>
+    </main>
+    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
+  </div>
+</div>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>

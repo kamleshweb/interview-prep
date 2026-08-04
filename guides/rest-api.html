@@ -1,0 +1,698 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REST API Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
+          </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link" data-status="planned" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link" data-status="planned" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a
+            class="nav-link"
+            data-status="planned"
+            href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done active" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link" data-status="planned" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link" data-status="planned" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link" data-status="planned" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link" data-status="planned" href="jest-rtl.html"
+            ><span class="dot"></span> Jest & RTL</a
+          >
+          <a class="nav-link" data-status="planned" href="cypress-cucumber.html"
+            ><span class="dot"></span> Cypress & Cucumber</a
+          >
+          <a class="nav-link" data-status="planned" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link" data-status="planned" href="aws.html"
+            ><span class="dot"></span> AWS</a
+          >
+          <a class="nav-link" data-status="planned" href="cicd.html"
+            ><span class="dot"></span> CI/CD</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a
+            class="nav-link"
+            data-status="planned"
+            href="frontend-architecture.html"
+            ><span class="dot"></span> Frontend Architecture</a
+          >
+          <a class="nav-link" data-status="planned" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends</a
+          >
+          <a class="nav-link" data-status="planned" href="design-patterns.html"
+            ><span class="dot"></span> Design Patterns</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link" data-status="planned" href="performance.html"
+            ><span class="dot"></span> Web Performance</a
+          >
+          <a class="nav-link" data-status="planned" href="accessibility.html"
+            ><span class="dot"></span> Accessibility (WCAG)</a
+          >
+          <a class="nav-link" data-status="planned" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link" data-status="planned" href="agile.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
+
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> REST APIs
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
+          </div>
+        </div>
+
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>REST API Interview Guide</h1>
+                <p class="lead">
+                  HTTP semantics, resource-oriented design, pagination,
+                  versioning, and the integration patterns you've actually used
+                  wiring React front-ends to bank-grade REST backends.
+                </p>
+              </div>
+
+              <h2 id="overview">1. Technology overview</h2>
+              <p>
+                REST (Representational State Transfer) is an architectural style
+                for HTTP APIs built around resources (nouns, not actions),
+                standard HTTP methods carrying the verb, and statelessness —
+                each request carries everything the server needs, with no
+                server-side session state tied to it. For a senior frontend
+                engineer, the bar isn't designing REST APIs from scratch (that's
+                often a backend concern) — it's demonstrating you understand
+                HTTP well enough to consume APIs correctly, design a sane
+                contract when you're the one specifying it, and reason about
+                caching, retries, and error handling on the client side.
+              </p>
+              <div class="tag">HTTP Methods & Status Codes</div>
+              <div class="tag">Statelessness</div>
+              <div class="tag">Pagination</div>
+              <div class="tag">Versioning</div>
+              <div class="tag">Idempotency</div>
+              <div class="tag">Caching</div>
+              <div class="tag">Error Contracts</div>
+
+              <h2 id="basic">2. Basic questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What
+                  makes an API "RESTful" — what are the actual constraints?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Client-server separation, statelessness (no session stored
+                    server-side between requests — auth must be re-sent, e.g. a
+                    token, on every call), a uniform interface (resources
+                    identified by URIs, manipulated through standard
+                    representations like JSON, using standard HTTP methods),
+                    cacheability (responses explicitly marked cacheable or not),
+                    and a layered system (client can't tell if it's talking
+                    directly to the origin server or through intermediaries like
+                    a gateway/CDN). Most "REST APIs" in the wild only loosely
+                    follow these (e.g. skip HATEOAS entirely) — which is fine
+                    and expected; interviewers care that you know the difference
+                    between practical REST and the formal constraints.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> GET vs
+                  POST vs PUT vs PATCH vs DELETE — what's the actual semantic
+                  difference, not just CRUD mapping?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th>Method</th>
+                      <th>Semantics</th>
+                      <th>Idempotent?</th>
+                      <th>Safe (no side effects)?</th>
+                    </tr>
+                    <tr>
+                      <td>GET</td>
+                      <td>Retrieve a representation</td>
+                      <td>Yes</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>POST</td>
+                      <td>Create a resource / non-idempotent action</td>
+                      <td>No</td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>PUT</td>
+                      <td>Replace a resource entirely</td>
+                      <td>Yes</td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>PATCH</td>
+                      <td>Partially update a resource</td>
+                      <td>Not guaranteed (depends on the patch semantics)</td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>DELETE</td>
+                      <td>Remove a resource</td>
+                      <td>Yes</td>
+                      <td>No</td>
+                    </tr>
+                  </table>
+                  <p>
+                    <strong>Idempotent</strong> means calling it once or ten
+                    times with the same input produces the same end state —
+                    <code>PUT /trades/5 {status: 'confirmed'}</code> called
+                    twice leaves the trade in the same confirmed state either
+                    way, whereas <code>POST /trades</code> called twice creates
+                    two trades.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What do
+                  the main HTTP status code ranges mean, and name a few you
+                  should actually know precisely?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    2xx success, 3xx redirection, 4xx client error, 5xx server
+                    error. Precisely: <code>200</code> OK,
+                    <code>201</code> Created (with a
+                    <code>Location</code> header pointing to the new resource),
+                    <code>204</code> No Content (success, empty body — common
+                    for DELETE), <code>400</code> Bad Request (malformed input),
+                    <code>401</code> Unauthorized (not authenticated —
+                    misleadingly named, it really means "unauthenticated"),
+                    <code>403</code> Forbidden (authenticated but not allowed),
+                    <code>404</code> Not Found, <code>409</code> Conflict (e.g.
+                    a version mismatch on update),
+                    <code>422</code> Unprocessable Entity (well-formed but
+                    semantically invalid), <code>429</code> Too Many Requests
+                    (rate limited), <code>500</code> Internal Server Error,
+                    <code>503</code> Service Unavailable.
+                  </p>
+                  <p>
+                    <strong>Common mistake:</strong> returning
+                    <code>200</code> with an error message in the body — this
+                    breaks HTTP-level tooling (caches, monitoring, generic
+                    error-handling middleware) that relies on status codes to
+                    know something went wrong.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="intermediate">3. Intermediate questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Offset pagination vs cursor-based pagination — trade-offs?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th></th>
+                      <th>Offset (<code>?page=3&amp;limit=20</code>)</th>
+                      <th>Cursor (<code>?after=abc123&amp;limit=20</code>)</th>
+                    </tr>
+                    <tr>
+                      <td>Simplicity</td>
+                      <td>Simple, supports "jump to page N"</td>
+                      <td>No arbitrary page jumps, only next/prev</td>
+                    </tr>
+                    <tr>
+                      <td>Consistency under writes</td>
+                      <td>
+                        Can skip or duplicate items if rows are inserted/deleted
+                        between page loads
+                      </td>
+                      <td>
+                        Stable — cursor is tied to a specific record, unaffected
+                        by inserts elsewhere
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Performance at scale</td>
+                      <td>
+                        Large offsets get slower (DB still scans/skips prior
+                        rows)
+                      </td>
+                      <td>Consistently fast regardless of position</td>
+                    </tr>
+                  </table>
+                  <p>
+                    For a live-updating trade list where new rows are constantly
+                    inserted, cursor pagination avoids the classic "same row
+                    appears twice across two pages" bug that offset pagination
+                    is prone to.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you version a REST API, and what are the trade-offs of
+                  each approach?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th>Approach</th>
+                      <th>Example</th>
+                      <th>Trade-off</th>
+                    </tr>
+                    <tr>
+                      <td>URI versioning</td>
+                      <td><code>/v2/trades</code></td>
+                      <td>
+                        Most explicit/discoverable; clutters the URI; "resource"
+                        identity technically changes across versions
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Header versioning</td>
+                      <td><code>Accept: application/vnd.bank.v2+json</code></td>
+                      <td>
+                        Keeps URIs clean; less discoverable, harder to test with
+                        just a browser/curl by hand
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Query param</td>
+                      <td><code>/trades?version=2</code></td>
+                      <td>Easy to add, easy to overlook/misuse as optional</td>
+                    </tr>
+                  </table>
+                  <p>
+                    Most production APIs (including large fintech ones) default
+                    to URI versioning for its simplicity and cache-friendliness,
+                    reserving header-based versioning for APIs needing finer
+                    content-negotiation control.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How should client code handle a flaky network — retries, and
+                  why aren't all requests safe to retry blindly?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Only retry <strong>idempotent</strong> requests (GET, PUT,
+                    DELETE) automatically — retrying a POST blindly can create
+                    duplicate resources (e.g. double-submitting a trade). For
+                    non-idempotent operations that must be safely retryable, the
+                    API should support an <strong>idempotency key</strong> (a
+                    client-generated unique ID sent in a header) that the server
+                    uses to detect and de-duplicate retried requests, returning
+                    the original result instead of creating a second resource.
+                    On the client, use exponential backoff with jitter for
+                    retries, and only retry on transient failures (network
+                    errors, 5xx, 429 with a <code>Retry-After</code> header) —
+                    never blindly retry a 4xx.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="advanced">4. Advanced questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  Design a consistent error response contract for an API — what
+                  should it include?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>{
+  "error": {
+    "code": "TRADE_VALIDATION_FAILED",
+    "message": "Notional amount must be greater than zero",
+    "field": "notional",
+    "requestId": "req_8f2a1c",
+    "details": [ { "field": "notional", "issue": "must be positive" } ]
+  }
+}</code></pre>
+                  <p>
+                    A machine-readable <code>code</code> (for programmatic
+                    handling, distinct from the human-readable
+                    <code>message</code> which may change wording), a
+                    <code>requestId</code> for correlating with server-side logs
+                    during support/debugging, and field-level detail for
+                    validation errors so a form can highlight the specific
+                    offending inputs instead of showing one generic banner.
+                    Consistency across every endpoint matters more than any
+                    specific shape — client error-handling code shouldn't need
+                    special cases per endpoint.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  does HTTP caching actually work for a REST API
+                  (<code>ETag</code>, <code>Cache-Control</code>, conditional
+                  requests)?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    The server returns an <code>ETag</code> (a hash/version
+                    identifier of the resource) alongside a
+                    <code>Cache-Control</code> directive. On the next request,
+                    the client sends <code>If-None-Match: &lt;etag&gt;</code>;
+                    if the resource hasn't changed, the server responds
+                    <code>304 Not Modified</code> with an empty body instead of
+                    re-sending the full payload — saving bandwidth while still
+                    letting the client confirm freshness rather than blindly
+                    trusting a TTL. This is also how optimistic-concurrency
+                    updates often work: sending
+                    <code>If-Match: &lt;etag&gt;</code> on a PUT/PATCH lets the
+                    server reject the update with <code>409 Conflict</code> if
+                    the resource changed since the client last read it,
+                    preventing a lost-update race.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  two users on a trade-editing screen both load the same trade,
+                  edit different fields, and save — the second save silently
+                  overwrites the first user's change. How do you fix this at the
+                  API level?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Classic lost-update problem. Fix with optimistic concurrency
+                    control: the GET response includes a version/ETag; the
+                    PUT/PATCH request must include that version (<code
+                      >If-Match</code
+                    >
+                    header or a <code>version</code> field in the body); if the
+                    server's current version doesn't match, it rejects with
+                    <code>409 Conflict</code> instead of silently overwriting,
+                    and the client can then re-fetch, show a merge/conflict UI,
+                    or ask the user to redo their change against the latest
+                    state. This is strictly better than a pessimistic locking
+                    approach (locking the record while one user edits) for a
+                    UI-driven workflow, since it doesn't leave a resource locked
+                    if a user simply navigates away mid-edit.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> REST vs
+                  GraphQL vs gRPC — how do you actually decide for a new
+                  internal API?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th></th>
+                      <th>REST</th>
+                      <th>GraphQL</th>
+                      <th>gRPC</th>
+                    </tr>
+                    <tr>
+                      <td>Best for</td>
+                      <td>
+                        Public/simple CRUD APIs, wide tooling/caching support
+                      </td>
+                      <td>
+                        Complex UIs needing flexible, client-driven data shapes
+                        (avoid over/under-fetching)
+                      </td>
+                      <td>
+                        High-performance internal service-to-service calls
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Caching</td>
+                      <td>Native HTTP caching (ETag, CDN-friendly)</td>
+                      <td>
+                        Harder — typically POST-based, needs custom caching
+                      </td>
+                      <td>N/A — not typically browser-facing</td>
+                    </tr>
+                    <tr>
+                      <td>Learning curve</td>
+                      <td>Low, ubiquitous</td>
+                      <td>Medium — schema, resolvers</td>
+                      <td>Higher — protobuf, HTTP/2, less browser-native</td>
+                    </tr>
+                  </table>
+                  <p>
+                    For a browser-facing dashboard with several distinct views
+                    each needing a different slice of trade data, GraphQL
+                    genuinely solves a real over-fetching problem. For a public
+                    or partner-facing API, REST's simplicity, caching, and
+                    tooling ubiquity usually win. The honest interview answer is
+                    scenario-dependent — naming the actual trade-off beats
+                    declaring a universal favorite.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">6. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong> Using verbs in URIs
+                (<code>/getTrades</code>) instead of resource nouns (<code
+                  >GET /trades</code
+                >); returning <code>200</code> for errors; not distinguishing
+                <code>401</code> from <code>403</code>; blindly retrying
+                non-idempotent POST requests on network failure, risking
+                duplicate creation; ignoring <code>Retry-After</code> on
+                <code>429</code> responses and hammering a rate-limited
+                endpoint; putting sensitive data in query strings (logged in
+                server/proxy access logs) instead of the body or headers.
+              </div>
+
+              <h2 id="company">7. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>Amazon/general style:</strong> "Design the REST API
+                  for a URL shortener / a bookmarking service" — tests resource
+                  modeling, status codes, and idempotency reasoning together.
+                </li>
+                <li>
+                  <strong
+                    >Fintech-specific (relevant to your background):</strong
+                  >
+                  "How would you prevent double-submission of a trade if a user
+                  double-clicks 'Confirm' or the network retries the request?" —
+                  tests idempotency keys directly.
+                </li>
+                <li>
+                  <strong>General senior-level:</strong> "Walk through what
+                  happens end-to-end when a PUT request updates a resource two
+                  clients are both viewing" — tests optimistic concurrency /
+                  ETag reasoning.
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>Statelessness</td>
+                  <td>
+                    No server-side session between requests — auth resent every
+                    time
+                  </td>
+                </tr>
+                <tr>
+                  <td>Idempotent</td>
+                  <td>
+                    Same result no matter how many times you call it —
+                    GET/PUT/DELETE, not POST
+                  </td>
+                </tr>
+                <tr>
+                  <td>201 vs 200 vs 204</td>
+                  <td>Created / OK with body / success no body</td>
+                </tr>
+                <tr>
+                  <td>401 vs 403</td>
+                  <td>Not authenticated vs authenticated-but-forbidden</td>
+                </tr>
+                <tr>
+                  <td>Cursor pagination</td>
+                  <td>
+                    Stable under concurrent writes; offset pagination isn't
+                  </td>
+                </tr>
+                <tr>
+                  <td>ETag / If-Match</td>
+                  <td>
+                    Conditional requests — enables caching AND optimistic
+                    concurrency
+                  </td>
+                </tr>
+                <tr>
+                  <td>Idempotency key</td>
+                  <td>
+                    Client-generated ID that makes a POST safely retryable
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: builds on
+                <a href="nodejs.html">Node.js &amp; Express</a> for how these
+                contracts get implemented server-side, and pairs with
+                <a href="redux.html">Redux/Redux Toolkit</a> (RTK Query) for how
+                a client consumes and caches this data.
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="nodejs.html"
+                  ><span class="dir">← Previous</span>Node.js &amp; Express
+                  Interview Guide</a
+                >
+                <a class="next" href="../index.html"
+                  ><span class="dir">Next →</span>Back to Roadmap</a
+                >
+              </div>
+            </div>
+
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
+          </div>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
+      </div>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
+</html>

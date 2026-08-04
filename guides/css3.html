@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS3 / SASS Interview Guide — Kamlesh Kumar</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">KK</div>
+      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
+    </div>
+    <input id="search-box" type="text" placeholder="Search topics…">
+    <div class="nav-group"><div class="nav-group-title">Start Here</div>
+      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
+    <div class="nav-group"><div class="nav-group-title">Core Language</div>
+      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
+      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
+    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
+      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
+      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
+      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
+      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
+    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
+      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
+      <a class="nav-link done active" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
+      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
+    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
+      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
+      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
+      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
+    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
+      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
+      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
+      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
+      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a></div>
+    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
+      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
+    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
+      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
+      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
+      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
+    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
+      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
+      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
+    <div class="nav-group"><div class="nav-group-title">Process</div>
+      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
+  </aside>
+
+  <div>
+    <div class="topbar">
+      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
+      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> CSS3 / SASS</div>
+      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
+    </div>
+
+    <main>
+      <div class="content-wrap">
+        <div class="prose">
+          <div class="hero">
+            <h1>CSS3 / SASS Interview Guide</h1>
+            <p class="lead">The box model, Flexbox/Grid layout reasoning, specificity, and the SASS features that keep a large stylesheet maintainable.</p>
+          </div>
+
+          <h2 id="overview">1. Overview</h2>
+          <p>CSS questions at the senior level are less about "name this property" and more about layout reasoning (why is this box shifted, why isn't this centered) and maintainability at scale (specificity wars, architecture). SASS is asked about mainly for its practical maintainability wins over plain CSS — variables, nesting, mixins — since your resume lists it directly alongside your core stack.</p>
+          <div class="tag">Box Model</div><div class="tag">Units (rem/em/vh/vw)</div><div class="tag">Flexbox / Grid</div><div class="tag">Specificity & Cascade</div><div class="tag">Stacking Context</div><div class="tag">Positioning</div><div class="tag">Container Queries</div><div class="tag">Animations / Transitions</div><div class="tag">SASS (variables, mixins, nesting)</div><div class="tag">BEM</div>
+
+          <h2 id="basic">2. Basic questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> Explain the CSS box model, and the difference <code>box-sizing: border-box</code> makes.</summary>
+            <div class="qa-body">
+              <p>Every element is a box: content → padding → border → margin, from inside out. By default (<code>content-box</code>), <code>width</code>/<code>height</code> apply only to the content area — padding and border are added on top, so a <code>width: 200px</code> box with <code>20px</code> padding actually renders 240px wide. <code>box-sizing: border-box</code> makes <code>width</code>/<code>height</code> include padding and border, so a 200px box stays 200px regardless of padding — most teams set this globally (<code>* { box-sizing: border-box; }</code>) because it makes sizing math far more predictable.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> <code>position: relative</code> vs <code>absolute</code> vs <code>fixed</code> vs <code>sticky</code>?</summary>
+            <div class="qa-body">
+              <p><code>relative</code>: positioned relative to its own normal position, and establishes a positioning context for absolute children. <code>absolute</code>: removed from normal flow, positioned relative to the nearest positioned (non-static) ancestor, or the viewport if none exists. <code>fixed</code>: positioned relative to the viewport, stays in place during scroll. <code>sticky</code>: behaves like <code>relative</code> until a scroll threshold is crossed, then behaves like <code>fixed</code> within its containing block — the mechanism behind sticky table headers.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> What's the difference between <code>em</code>, <code>rem</code>, <code>%</code>, <code>vh</code>/<code>vw</code>, and <code>px</code>?</summary>
+            <div class="qa-body">
+              <p><code>px</code> is an absolute unit — fixed regardless of context, doesn't scale with user font-size preferences unless the browser's own zoom is used. <code>em</code> is relative to the <em>current element's own</em> font-size (and compounds — nested elements each scaling off their parent's computed size can cause surprising growth). <code>rem</code> is relative to the <strong>root</strong> (<code>&lt;html&gt;</code>) element's font-size only, avoiding that compounding problem — most teams default to <code>rem</code> for spacing/typography for exactly this predictability. <code>%</code> is relative to the parent element's corresponding dimension. <code>vh</code>/<code>vw</code> are relative to 1% of the viewport's height/width — useful for full-bleed layout sections, but risky for font-sizing alone since it ignores the user's font-size preferences entirely (better combined with <code>clamp()</code> for fluid type that still respects accessibility settings).</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-beginner">Basic</span> <code>visibility: hidden</code> vs <code>display: none</code> vs <code>opacity: 0</code> — what actually differs?</summary>
+            <div class="qa-body">
+              <table>
+                <tr><th></th><th>Takes up layout space?</th><th>In accessibility tree?</th><th>Receives clicks/events?</th></tr>
+                <tr><td><code>display: none</code></td><td>No — removed from layout entirely</td><td>No</td><td>No</td></tr>
+                <tr><td><code>visibility: hidden</code></td><td>Yes — space reserved</td><td>No</td><td>No</td></tr>
+                <tr><td><code>opacity: 0</code></td><td>Yes — space reserved</td><td>Yes — still announced</td><td>Yes — still clickable/tabbable</td></tr>
+              </table>
+              <p><strong>Common mistake:</strong> using <code>opacity: 0</code> to "hide" something meant to be fully inert — it stays in the tab order and screen-reader flow, so a sighted user sees nothing but a keyboard/screen-reader user can still reach and interact with it, a confusing and inaccessible result.</p>
+            </div>
+          </details>
+
+          <h2 id="intermediate">3. Intermediate questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> What creates a new stacking context, and how do you debug a <code>z-index</code> that "isn't working"?</summary>
+            <div class="qa-body">
+              <p><code>z-index</code> only compares elements <em>within the same stacking context</em> — a new stacking context is created by <code>position</code> (relative/absolute/fixed/sticky) combined with a <code>z-index</code> value, but also by several properties that create one on their own regardless of <code>z-index</code>: <code>opacity</code> less than 1, <code>transform</code>, <code>filter</code>, and <code>will-change</code>. This is the classic debugging trap: a child element with <code>z-index: 9999</code> can still render behind something else if its parent has a lower stacking context and the sibling it's fighting isn't inside that same parent — no <code>z-index</code> value on the child can escape its parent's stacking context to compete directly with elements outside it.</p>
+              <p><strong>Debug approach:</strong> in DevTools, check each ancestor for the stacking-context-creating properties above; the fix is usually either removing an unintended stacking-context trigger on an ancestor, or restructuring the DOM so the two competing elements share a common stacking context.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> How is CSS specificity calculated, and how do you resolve a specificity conflict without reaching for <code>!important</code>?</summary>
+            <div class="qa-body">
+              <p>Specificity is roughly a 4-part tuple: inline styles &gt; ID selectors &gt; class/attribute/pseudo-class selectors &gt; element/pseudo-element selectors, compared left to right (higher category always wins regardless of how many of a lower category you stack). Instead of <code>!important</code> (which breaks the cascade for everyone downstream and is hard to override again later), resolve conflicts by: reducing selector specificity elsewhere (avoid ID selectors and deep nesting in the first place), using a consistent methodology (BEM) so selectors stay flat and predictable, or reordering rules so source order — the tie-breaker when specificity is equal — does the work instead.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> Flexbox vs Grid — how do you decide which to reach for?</summary>
+            <div class="qa-body">
+              <table>
+                <tr><th></th><th>Flexbox</th><th>Grid</th></tr>
+                <tr><td>Dimension</td><td>One-dimensional (a row OR a column at a time)</td><td>Two-dimensional (rows AND columns together)</td></tr>
+                <tr><td>Best for</td><td>Distributing items along a single axis — a toolbar, a nav bar, centering content</td><td>Overall page/component layout with both rows and columns — a dashboard grid, a card layout</td></tr>
+                <tr><td>Sizing driven by</td><td>Content size (items can grow/shrink to fill space)</td><td>Explicit track definitions (you define the grid structure upfront)</td></tr>
+              </table>
+              <p>They're not mutually exclusive — a very common real pattern is Grid for the overall page/dashboard layout, with Flexbox used inside individual grid cells/cards for aligning their internal content.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-intermediate">Intermediate</span> What SASS features give the biggest practical win over plain CSS, and what's the trade-off?</summary>
+            <div class="qa-body">
+              <p>Variables (a single source of truth for colors/spacing, though native CSS custom properties now cover much of this natively and are runtime-dynamic, unlike SASS variables which are compile-time only), nesting (mirrors component structure, reduces repetition — though over-nesting quietly inflates specificity and output size), and mixins (reusable property groups, e.g. a shared truncate-text or flex-center mixin). Trade-off: SASS requires a build step and its compile-time-only variables can't respond to runtime changes (a user-toggled theme) the way native CSS custom properties can — many modern codebases now use native CSS variables for theming and reserve SASS mainly for its authoring-time conveniences (nesting, mixins).</p>
+            </div>
+          </details>
+
+          <h2 id="advanced">4. Advanced questions</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> What does the CSS <code>contain</code> property do, and what performance problem does it solve?</summary>
+            <div class="qa-body">
+<pre><code>.widget {
+  contain: layout paint;
+}</code></pre>
+              <p><code>contain</code> tells the browser that a subtree's layout/paint/style is isolated from the rest of the page, so a change inside it can't affect anything outside its boundary. This lets the rendering engine skip recalculating layout/paint for the rest of the page when something changes only inside a contained element — for a dashboard with many independent widgets, wrapping each widget in <code>contain: layout paint</code> means a re-render inside one widget doesn't force the browser to reconsider layout for sibling widgets it otherwise couldn't be sure were unaffected. <code>content-visibility: auto</code> builds on this further, skipping rendering work entirely for off-screen content until it's about to become visible — similar in spirit to component virtualization, but at the browser's own rendering level.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> How does <code>will-change</code> affect animation performance, and what's the risk of overusing it?</summary>
+            <div class="qa-body">
+              <p><code>will-change: transform</code> (or similar) hints to the browser that an element is about to animate, letting it proactively promote that element to its own GPU-composited layer <em>before</em> the animation starts — avoiding a stutter on the first frame while the browser would otherwise be creating that layer reactively. <strong>The risk:</strong> each composited layer consumes GPU memory, and applying <code>will-change</code> liberally (or leaving it on indefinitely instead of toggling it on only just before an animation and removing it after) can create far more layers than the device can comfortably manage, actually degrading performance — especially on lower-end mobile devices with limited GPU memory. The correct pattern is to add <code>will-change</code> shortly before the animation starts (e.g. on hover-intent or just-in-time) and remove it once the animation completes, not leave it permanently on every animatable element "just in case."</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> Container queries vs media queries — when is each the right tool for a component library?</summary>
+            <div class="qa-body">
+<pre><code>.card-wrapper { container-type: inline-size; }
+
+@container (min-width: 400px) {
+  .card { flex-direction: row; }
+}</code></pre>
+              <p>Media queries respond to the <strong>viewport's</strong> size — they can't tell a component apart from its context, so a card component that needs to look different in a narrow sidebar vs a wide main column can't express that with media queries alone (the viewport is the same regardless of where the card is placed). Container queries (<code>@container</code>) respond to the size of a component's own <strong>containing element</strong> instead, letting the exact same component adapt correctly regardless of where it's placed in the layout — this is specifically why they matter for a shared component library (from the Design Patterns &amp; Architecture guide): components become genuinely reusable across different layout contexts without each consuming team needing to know and duplicate viewport-based breakpoint logic themselves.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> Explain the BEM naming convention and what specific maintainability problem it solves.</summary>
+            <div class="qa-body">
+<pre><code>.trade-card { }               /* Block */
+.trade-card__header { }       /* Element */
+.trade-card--highlighted { }  /* Modifier */</code></pre>
+              <p>BEM (Block, Element, Modifier) keeps every selector flat, single-class, and low-specificity — no nested descendant selectors that accidentally leak style onto unrelated elements sharing a tag name, and no specificity wars since every BEM class has identical specificity weight. The naming itself also documents component structure directly in the CSS/markup, so a new engineer can tell at a glance that <code>.trade-card__header</code> belongs to <code>.trade-card</code> without hunting through nested stylesheet rules. The trade-off: verbose class names, which most teams accept as worth it for the predictability at scale.</p>
+            </div>
+          </details>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-advanced">Advanced</span> CSS-in-JS vs SASS/BEM vs utility-first CSS (Tailwind) — what are the real trade-offs, not just style preference?</summary>
+            <div class="qa-body">
+              <table>
+                <tr><th></th><th>SASS/BEM</th><th>CSS-in-JS</th><th>Utility-first (Tailwind)</th></tr>
+                <tr><td>Coupling</td><td>Separate files, manual naming discipline</td><td>Styles co-located with component, scoped automatically</td><td>Styles inline in markup, no separate file</td></tr>
+                <tr><td>Runtime cost</td><td>None — pure CSS output</td><td>Some libraries add runtime style-injection overhead (though many now compile at build time)</td><td>None — pure CSS output, purged for unused classes</td></tr>
+                <tr><td>Consistency</td><td>Requires discipline (a design-token convention)</td><td>Easy to enforce via shared theme objects/props</td><td>Enforced by the fixed utility scale itself</td></tr>
+              </table>
+              <p>The honest answer for an interview: each solves the "avoid global CSS collisions and enforce consistency" problem differently, and the right choice often comes down to existing team convention and tooling more than any one being objectively superior — naming the actual trade-offs (runtime cost, verbosity, discoverability) is the signal interviewers want, not a declared favorite.</p>
+            </div>
+          </details>
+
+          <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+          <details class="qa">
+            <summary><span class="badge-level badge-expert">Expert</span> Scenario: a shared component library's CSS keeps leaking unexpected styles into consuming apps (or vice versa). How do you fix the isolation problem architecturally?</summary>
+            <div class="qa-body">
+              <p>This is almost always a global-scope leakage problem — plain class names with no scoping mechanism collide across a large app. Fixes, from lightest to heaviest: (1) adopt BEM strictly so class names are namespaced by component and collisions become statistically unlikely; (2) use CSS Modules (class names are hashed/scoped uniquely at build time, eliminating collision risk entirely without changing authoring style much); (3) use the Shadow DOM (genuine style encapsulation at the browser level, common in Web Components) for the strongest isolation guarantee, at the cost of some added complexity integrating with the rest of the app's styling/theming. For a shared design-system library specifically, CSS Modules or a scoped CSS-in-JS solution is usually the pragmatic middle ground between BEM's discipline-only approach and Shadow DOM's heavier isolation.</p>
+            </div>
+          </details>
+
+          <h2 id="coding">6. Coding challenge</h2>
+          <div class="qa">
+            <div class="qa-body" style="margin-top:0;border-top:none;padding-top:0;">
+              <h5>Problem: build a responsive card grid — 4 columns on desktop, 2 on tablet, 1 on mobile, equal-height cards, 16px gap, without duplicating breakpoints in media queries</h5>
+<pre><code>.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}</code></pre>
+              <p><strong>How it works:</strong> <code>auto-fit</code> collapses empty tracks and redistributes the freed space among the remaining columns, so the column count automatically drops from 4 → 2 → 1 as the viewport shrinks below multiples of <code>minmax</code>'s minimum (240px) — no explicit breakpoints needed at all. <code>1fr</code> ensures equal-width columns, and Grid rows are equal-height by default, so the cards line up without any extra height rule.</p>
+              <p><strong>Common mistake:</strong> confusing <code>auto-fit</code> with <code>auto-fill</code> — <code>auto-fill</code> leaves empty, invisible tracks (gaps) when there are fewer items than would fill a full row, which is visually different from <code>auto-fit</code> whenever the item count is small; also, hardcoding pixel breakpoints instead of leaning on this intrinsic sizing approach.</p>
+              <p><strong>Follow-up:</strong> "How would you make card height responsive to content while keeping every card in a row equal height?" — Grid rows are auto-equal-height by default (as used above); the Flexbox equivalent needs <code>align-items: stretch</code> on the flex container explicitly, since Flexbox doesn't equalize cross-axis size automatically the way Grid rows do.</p>
+            </div>
+          </div>
+
+          <h2 id="mistakes">7. Common mistakes & debugging</h2>
+          <div class="callout warn"><strong>Frequent review comments</strong>
+            Reaching for <code>!important</code> to win a specificity fight instead of fixing the actual selector structure; deeply nested SASS selectors that quietly balloon specificity and output size; mixing layout responsibilities (Flexbox for something that's really two-dimensional, forcing awkward wrapping hacks instead of Grid); global, unscoped class names in a component library, causing cross-app style leakage; animating properties that trigger layout/paint (<code>width</code>, <code>top</code>) instead of GPU-friendly ones (<code>transform</code>, <code>opacity</code>), hurting animation performance.
+          </div>
+
+          <h2 id="company">8. Frequently asked at top product companies</h2>
+          <ul>
+            <li><strong>General senior-level:</strong> "Center a div three different ways" — tests breadth (Flexbox, Grid, absolute positioning) plus knowing the trade-offs of each.</li>
+            <li><strong>Frontend-architecture-focused companies:</strong> "How do you prevent CSS from becoming unmaintainable as a design system scales across many teams?"</li>
+            <li><strong>Performance-focused companies:</strong> "Why do some CSS animations feel janky while others don't?" (tests the transform/opacity vs layout-triggering properties distinction).</li>
+          </ul>
+
+          <h2 id="cheatsheet">9. Cheat sheet / quick revision</h2>
+          <table>
+            <tr><th>Concept</th><th>One-line recall</th></tr>
+            <tr><td>border-box</td><td>width/height include padding+border — predictable sizing</td></tr>
+            <tr><td>rem vs em</td><td>rem = relative to root only (predictable); em compounds through nesting</td></tr>
+            <tr><td>display:none vs visibility:hidden vs opacity:0</td><td>Removes from layout / keeps space+removes from a11y tree / stays fully interactive</td></tr>
+            <tr><td>Specificity order</td><td>inline &gt; ID &gt; class/attr/pseudo-class &gt; element — never reach for !important</td></tr>
+            <tr><td>Stacking context</td><td>position+z-index, opacity&lt;1, transform, filter, will-change all create one</td></tr>
+            <tr><td>Flexbox vs Grid</td><td>One axis vs two axes at once</td></tr>
+            <tr><td>BEM</td><td>Flat, low-specificity, self-documenting class structure</td></tr>
+            <tr><td>SASS vs CSS variables</td><td>SASS = compile-time only; CSS custom properties = runtime-dynamic</td></tr>
+            <tr><td>contain</td><td>Isolates a subtree's layout/paint so changes don't ripple page-wide</td></tr>
+            <tr><td>will-change</td><td>Pre-promotes a layer before animating — toggle on/off, don't leave it permanent</td></tr>
+            <tr><td>Container queries</td><td>Respond to a component's own container size, not the viewport</td></tr>
+            <tr><td>Animation performance</td><td>Prefer transform/opacity over layout-triggering properties</td></tr>
+          </table>
+
+          <p class="lead">Related: pairs with <a href="html5.html">HTML5</a> and <a href="design-patterns-architecture.html">Design Patterns &amp; Architecture</a> for component-library CSS isolation strategy.</p>
+
+          <div class="page-nav">
+            <a class="prev" href="html5.html"><span class="dir">← Previous</span>HTML5 Interview Guide</a>
+            <a class="next" href="graphql.html"><span class="dir">Next →</span>GraphQL Interview Guide</a>
+          </div>
+        </div>
+
+        <nav class="toc">
+          <div class="toc-title">On this page</div>
+          <a href="#overview">Overview</a>
+          <a href="#basic">Basic</a>
+          <a href="#intermediate">Intermediate</a>
+          <a href="#advanced">Advanced</a>
+          <a href="#expert">Expert & scenarios</a>
+          <a href="#coding">Coding challenge</a>
+          <a href="#mistakes">Common mistakes</a>
+          <a href="#company">Company questions</a>
+          <a href="#cheatsheet">Cheat sheet</a>
+        </nav>
+      </div>
+    </main>
+    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
+  </div>
+</div>
+<button id="back-to-top" title="Back to top">↑</button>
+<script src="../assets/app.js"></script>
+</body>
+</html>
