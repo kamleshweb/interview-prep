@@ -1,89 +1,222 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI / LLM Integration Guide — Kamlesh Kumar</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="logo">KK</div>
-      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
-    </div>
-    <input id="search-box" type="text" placeholder="Search topics…">
-    <div class="nav-group"><div class="nav-group-title">Start Here</div>
-      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
-    <div class="nav-group"><div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
-    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
-    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
-    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a>
-      <a class="nav-link done active" href="ai-integration.html"><span class="dot"></span> AI / LLM Integration</a></div>
-    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a>
-      <a class="nav-link done" href="debugging-and-tools.html"><span class="dot"></span> Debugging & Dev Tools</a></div>
-    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
-    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
-    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
-    <div class="nav-group"><div class="nav-group-title">Process</div>
-      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
-  </aside>
-
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> AI / LLM Integration</div>
-      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
-    </div>
-
-    <main>
-      <div class="content-wrap">
-        <div class="prose">
-          <div class="hero">
-            <h1>AI / LLM Integration Guide</h1>
-            <p class="lead">Building a production chatbot feature on top of OpenAI's API — architecture, streaming, prompt engineering, cost control, and the security mistakes that matter most when an LLM is wired into a real application.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI / LLM Integration Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link done" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link done" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a class="nav-link done" href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link done" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+          <a class="nav-link done active" href="ai-integration.html"
+            ><span class="dot"></span> AI / LLM Integration</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done" href="testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link done" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+          <a class="nav-link done" href="debugging-and-tools.html"
+            ><span class="dot"></span> Debugging & Dev Tools</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done" href="cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a class="nav-link done" href="design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link done" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done" href="performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link done" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done" href="agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
 
-          <h2 id="overview">1. Overview</h2>
-          <p>This is one of the fastest-growing "so tell me about a project" topics in interviews right now, and it's on your resume directly (OpenAI/ChatGPT integration — a conversational assistant feature) — expect a genuine follow-up conversation here, not just trivia. Unlike most of this site, LLM-integration questions blend frontend concerns (streaming UI, chat state, loading/error UX) with backend and security concerns (never exposing an API key client-side, rate limiting, cost control) — interviewers use this topic specifically to see whether you understand the <em>system</em> around the API call, not just that you can call <code>fetch</code> against an endpoint.</p>
-          <div class="tag">Chat Architecture</div><div class="tag">Streaming (SSE)</div><div class="tag">Prompt Engineering</div><div class="tag">Function/Tool Calling</div><div class="tag">Rate Limiting & Cost</div><div class="tag">Security</div><div class="tag">Hallucination Handling</div>
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> AI / LLM Integration
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
+          </div>
+        </div>
 
-          <h2 id="basic">2. Basic questions</h2>
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>AI / LLM Integration Guide</h1>
+                <p class="lead">
+                  Building a production chatbot feature on top of OpenAI's API —
+                  architecture, streaming, prompt engineering, cost control, and
+                  the security mistakes that matter most when an LLM is wired
+                  into a real application.
+                </p>
+              </div>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> Why can't you call the OpenAI API directly from the browser, and what's the correct architecture?</summary>
-            <div class="qa-body">
-              <p>An API key placed in frontend code — even "hidden" in an environment variable at build time — ends up embedded in the shipped JS bundle, fully readable by anyone who opens DevTools. The correct architecture is always: <strong>browser → your own backend → OpenAI</strong>. Your backend holds the API key as a genuine server-side secret, and exposes your own endpoint (e.g. <code>POST /api/chat</code>) that the frontend calls instead — this is the same principle as the REST APIs and Security guides' "never ship secrets to the client" rule, just applied to an LLM key specifically. This also gives you a natural place to enforce rate limiting, logging, content moderation, and cost controls before a request ever reaches OpenAI.</p>
-            </div>
-          </details>
+              <h2 id="overview">1. Overview</h2>
+              <p>
+                This is one of the fastest-growing "so tell me about a project"
+                topics in interviews right now, and it's on your resume directly
+                (OpenAI/ChatGPT integration — a conversational assistant
+                feature) — expect a genuine follow-up conversation here, not
+                just trivia. Unlike most of this site, LLM-integration questions
+                blend frontend concerns (streaming UI, chat state, loading/error
+                UX) with backend and security concerns (never exposing an API
+                key client-side, rate limiting, cost control) — interviewers use
+                this topic specifically to see whether you understand the
+                <em>system</em> around the API call, not just that you can call
+                <code>fetch</code> against an endpoint.
+              </p>
+              <div class="tag">Chat Architecture</div>
+              <div class="tag">Streaming (SSE)</div>
+              <div class="tag">Prompt Engineering</div>
+              <div class="tag">Function/Tool Calling</div>
+              <div class="tag">Rate Limiting & Cost</div>
+              <div class="tag">Security</div>
+              <div class="tag">Hallucination Handling</div>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What does the basic request/response shape of a chat completion actually look like?</summary>
-            <div class="qa-body">
-<pre><code>// Your backend calls OpenAI like this
+              <h2 id="basic">2. Basic questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> Why
+                  can't you call the OpenAI API directly from the browser, and
+                  what's the correct architecture?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    An API key placed in frontend code — even "hidden" in an
+                    environment variable at build time — ends up embedded in the
+                    shipped JS bundle, fully readable by anyone who opens
+                    DevTools. The correct architecture is always:
+                    <strong>browser → your own backend → OpenAI</strong>. Your
+                    backend holds the API key as a genuine server-side secret,
+                    and exposes your own endpoint (e.g.
+                    <code>POST /api/chat</code>) that the frontend calls instead
+                    — this is the same principle as the REST APIs and Security
+                    guides' "never ship secrets to the client" rule, just
+                    applied to an LLM key specifically. This also gives you a
+                    natural place to enforce rate limiting, logging, content
+                    moderation, and cost controls before a request ever reaches
+                    OpenAI.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What
+                  does the basic request/response shape of a chat completion
+                  actually look like?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>// Your backend calls OpenAI like this
 const response = await openai.chat.completions.create({
   model: 'gpt-4o',
   messages: [
@@ -92,17 +225,32 @@ const response = await openai.chat.completions.create({
   ],
 });
 const reply = response.choices[0].message.content;</code></pre>
-              <p>The <code>messages</code> array is the entire conversation history sent on <em>every</em> request — the API itself is stateless; there's no server-side session remembering earlier turns unless you're using a newer stateful API variant. This is a fairly common point of confusion: your own application is responsible for accumulating and re-sending the conversation history each time, not the LLM provider.</p>
-            </div>
-          </details>
+                  <p>
+                    The <code>messages</code> array is the entire conversation
+                    history sent on <em>every</em> request — the API itself is
+                    stateless; there's no server-side session remembering
+                    earlier turns unless you're using a newer stateful API
+                    variant. This is a fairly common point of confusion: your
+                    own application is responsible for accumulating and
+                    re-sending the conversation history each time, not the LLM
+                    provider.
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="intermediate">3. Intermediate questions</h2>
+              <h2 id="intermediate">3. Intermediate questions</h2>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you implement streaming responses so the chatbot's reply appears token-by-token instead of all at once?</summary>
-            <div class="qa-body">
-              <h5>Backend — proxy the stream through</h5>
-<pre><code>// Express route
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you implement streaming responses so the chatbot's
+                  reply appears token-by-token instead of all at once?
+                </summary>
+                <div class="qa-body">
+                  <h5>Backend — proxy the stream through</h5>
+                  <pre><code>// Express route
 app.post('/api/chat', async (req, res) =&gt; {
   res.setHeader('Content-Type', 'text/event-stream');
   const stream = await openai.chat.completions.create({
@@ -116,8 +264,10 @@ app.post('/api/chat', async (req, res) =&gt; {
   }
   res.end();
 });</code></pre>
-              <h5>Frontend — consume it and append tokens as they arrive</h5>
-<pre><code>const res = await fetch('/api/chat', { method: 'POST', body: JSON.stringify({ messages }) });
+                  <h5>
+                    Frontend — consume it and append tokens as they arrive
+                  </h5>
+                  <pre><code>const res = await fetch('/api/chat', { method: 'POST', body: JSON.stringify({ messages }) });
 const reader = res.body.getReader();
 const decoder = new TextDecoder();
 let fullText = '';
@@ -130,49 +280,150 @@ while (true) {
   fullText += token;
   setMessages(prev =&gt; updateLastMessage(prev, fullText)); // re-render with each token
 }</code></pre>
-              <p>Streaming matters for perceived performance specifically — an LLM response can take several seconds to fully generate; showing tokens as they arrive (the familiar "typing" effect) makes the wait feel dramatically shorter than a blank loading spinner followed by the whole answer appearing at once, even though the total time to completion is identical either way.</p>
-            </div>
-          </details>
+                  <p>
+                    Streaming matters for perceived performance specifically —
+                    an LLM response can take several seconds to fully generate;
+                    showing tokens as they arrive (the familiar "typing" effect)
+                    makes the wait feel dramatically shorter than a blank
+                    loading spinner followed by the whole answer appearing at
+                    once, even though the total time to completion is identical
+                    either way.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you manage conversation history and the context window as a chat gets long?</summary>
-            <div class="qa-body">
-              <p>Every model has a maximum context window (a token budget covering the system prompt, the entire message history, and the response) — a long-running conversation will eventually exceed it, causing a request error. Common strategies, from simplest to most sophisticated: (1) a simple sliding window — keep only the last N messages, dropping the oldest; (2) periodic summarization — when the history grows past a threshold, ask the model to summarize the conversation so far into a compact system message, then continue from there instead of the full verbatim history; (3) retrieval — store the full history elsewhere (a database) and only pull in the most relevant prior messages for the current turn, rather than assuming recency is always what's relevant. For a support chatbot specifically, resetting context per session (rather than one infinitely-growing conversation) is usually the right default — it caps cost and avoids irrelevant, stale context bleeding into later questions.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you manage conversation history and the context window
+                  as a chat gets long?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Every model has a maximum context window (a token budget
+                    covering the system prompt, the entire message history, and
+                    the response) — a long-running conversation will eventually
+                    exceed it, causing a request error. Common strategies, from
+                    simplest to most sophisticated: (1) a simple sliding window
+                    — keep only the last N messages, dropping the oldest; (2)
+                    periodic summarization — when the history grows past a
+                    threshold, ask the model to summarize the conversation so
+                    far into a compact system message, then continue from there
+                    instead of the full verbatim history; (3) retrieval — store
+                    the full history elsewhere (a database) and only pull in the
+                    most relevant prior messages for the current turn, rather
+                    than assuming recency is always what's relevant. For a
+                    support chatbot specifically, resetting context per session
+                    (rather than one infinitely-growing conversation) is usually
+                    the right default — it caps cost and avoids irrelevant,
+                    stale context bleeding into later questions.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> What's prompt engineering in practice, and what does a well-structured system prompt for a support chatbot actually look like?</summary>
-            <div class="qa-body">
-<pre><code>const systemPrompt = `You are a support assistant for a bank's trade reporting platform.
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  What's prompt engineering in practice, and what does a
+                  well-structured system prompt for a support chatbot actually
+                  look like?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>const systemPrompt = `You are a support assistant for a bank's trade reporting platform.
 Scope: only answer questions about trade status, ACK/NACK meanings, and how to use the reconciliation dashboard.
 If asked about anything outside this scope, politely redirect the user to the appropriate team.
 Never invent a trade status or reference number — only state what appears in the provided context.
 If you don't have enough information to answer, say so and suggest checking the dashboard directly.`;</code></pre>
-              <p>A good system prompt does three things: constrains <strong>scope</strong> (what the assistant should and shouldn't attempt to answer), sets <strong>tone/format</strong> (concise, no unnecessary hedging, matching the product's voice), and — critically for anything touching real data — explicitly instructs the model not to fabricate specifics it wasn't given, which is the frontline defense against hallucination for a support-style assistant.</p>
-            </div>
-          </details>
+                  <p>
+                    A good system prompt does three things: constrains
+                    <strong>scope</strong> (what the assistant should and
+                    shouldn't attempt to answer), sets
+                    <strong>tone/format</strong> (concise, no unnecessary
+                    hedging, matching the product's voice), and — critically for
+                    anything touching real data — explicitly instructs the model
+                    not to fabricate specifics it wasn't given, which is the
+                    frontline defense against hallucination for a support-style
+                    assistant.
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="advanced">4. Advanced questions</h2>
+              <h2 id="advanced">4. Advanced questions</h2>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How would you ground a chatbot's answers in real, current data instead of relying purely on the model's own knowledge (RAG, at a practical level)?</summary>
-            <div class="qa-body">
-              <p>Retrieval-Augmented Generation: before calling the LLM, retrieve the actually-relevant data for the user's question (a specific trade's real status from your database, the exact rejection reason from the reconciliation system) and inject it into the prompt as context, then instruct the model to answer <em>only</em> from that provided context. For a support chatbot on a trade reporting platform, this might mean: parse the user's question for a trade ID, look it up via your existing REST API, and include the real record in the system/context message before the model ever generates a response — rather than asking the model to "know" trade statuses from training data, which it fundamentally can't, since that data doesn't exist anywhere in its training set and is constantly changing anyway. This is the single most important pattern for making an LLM feature trustworthy in a data-driven application — the model's job becomes summarizing/explaining real data fetched by your own code, not recalling facts from memory.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  would you ground a chatbot's answers in real, current data
+                  instead of relying purely on the model's own knowledge (RAG,
+                  at a practical level)?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Retrieval-Augmented Generation: before calling the LLM,
+                    retrieve the actually-relevant data for the user's question
+                    (a specific trade's real status from your database, the
+                    exact rejection reason from the reconciliation system) and
+                    inject it into the prompt as context, then instruct the
+                    model to answer <em>only</em> from that provided context.
+                    For a support chatbot on a trade reporting platform, this
+                    might mean: parse the user's question for a trade ID, look
+                    it up via your existing REST API, and include the real
+                    record in the system/context message before the model ever
+                    generates a response — rather than asking the model to
+                    "know" trade statuses from training data, which it
+                    fundamentally can't, since that data doesn't exist anywhere
+                    in its training set and is constantly changing anyway. This
+                    is the single most important pattern for making an LLM
+                    feature trustworthy in a data-driven application — the
+                    model's job becomes summarizing/explaining real data fetched
+                    by your own code, not recalling facts from memory.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How do you control and predict the cost of an LLM-powered feature in production?</summary>
-            <div class="qa-body">
-              <p>Cost scales with tokens in (the full conversation history sent every request) plus tokens out (the response length) — a naive implementation that resends an ever-growing conversation history on every turn has cost that grows roughly quadratically over a long conversation, not linearly. Concrete controls: (1) apply the context-window management strategies above (sliding window/summarization) — this is a cost lever as much as a technical necessity; (2) set an explicit <code>max_tokens</code> cap on responses so a single reply can't balloon unexpectedly; (3) choose the smallest model that reliably handles the task — a lighter/cheaper model for simple classification or short support answers, reserving a larger model only for genuinely complex reasoning; (4) rate-limit per user/session server-side, both for cost predictability and to prevent one user (or a bug causing a retry loop) from generating runaway spend; (5) cache identical/near-identical queries (a common FAQ-style question) rather than re-generating a fresh response every time.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  do you control and predict the cost of an LLM-powered feature
+                  in production?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Cost scales with tokens in (the full conversation history
+                    sent every request) plus tokens out (the response length) —
+                    a naive implementation that resends an ever-growing
+                    conversation history on every turn has cost that grows
+                    roughly quadratically over a long conversation, not
+                    linearly. Concrete controls: (1) apply the context-window
+                    management strategies above (sliding window/summarization) —
+                    this is a cost lever as much as a technical necessity; (2)
+                    set an explicit <code>max_tokens</code> cap on responses so
+                    a single reply can't balloon unexpectedly; (3) choose the
+                    smallest model that reliably handles the task — a
+                    lighter/cheaper model for simple classification or short
+                    support answers, reserving a larger model only for genuinely
+                    complex reasoning; (4) rate-limit per user/session
+                    server-side, both for cost predictability and to prevent one
+                    user (or a bug causing a retry loop) from generating runaway
+                    spend; (5) cache identical/near-identical queries (a common
+                    FAQ-style question) rather than re-generating a fresh
+                    response every time.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> What is function/tool calling, and when would you use it instead of just parsing the model's free-text response?</summary>
-            <div class="qa-body">
-<pre><code>const response = await openai.chat.completions.create({
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> What
+                  is function/tool calling, and when would you use it instead of
+                  just parsing the model's free-text response?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>const response = await openai.chat.completions.create({
   model: 'gpt-4o',
   messages,
   tools: [{
@@ -191,77 +442,242 @@ if (toolCall?.function.name === 'getTradeStatus') {
   const status = await fetchTradeStatus(tradeId); // your own real API call
   // send the result back to the model as a follow-up message to generate the final natural-language reply
 }</code></pre>
-              <p>Function calling lets the model emit a structured, schema-validated request for your application to fulfill (a real database lookup, an API call) instead of trying to parse an intention out of free-form text with regex or string matching — which is exactly the fragile pattern function calling replaces. It's the standard mechanism for wiring RAG-style data lookups into a conversation cleanly: the model decides <em>when</em> a lookup is needed based on the user's question, your code executes the actual lookup, and the model then turns the real result into a natural-language answer.</p>
+                  <p>
+                    Function calling lets the model emit a structured,
+                    schema-validated request for your application to fulfill (a
+                    real database lookup, an API call) instead of trying to
+                    parse an intention out of free-form text with regex or
+                    string matching — which is exactly the fragile pattern
+                    function calling replaces. It's the standard mechanism for
+                    wiring RAG-style data lookups into a conversation cleanly:
+                    the model decides <em>when</em> a lookup is needed based on
+                    the user's question, your code executes the actual lookup,
+                    and the model then turns the real result into a
+                    natural-language answer.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  your support chatbot for a banking platform confidently gives
+                  a wrong answer about a trade's status. How do you both prevent
+                  this and handle it when it happens anyway?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <strong>Prevention:</strong> the RAG pattern above — never
+                    let the model answer factual questions about specific, real,
+                    changing data from its own "knowledge"; always inject the
+                    actual current record and instruct it to answer only from
+                    that context. A well-scoped system prompt (from the
+                    intermediate section) that explicitly forbids inventing
+                    specifics is a second line of defense, not a substitute for
+                    grounding.
+                    <strong>Handling it when it happens anyway:</strong> for a
+                    regulated, financial context specifically, any AI-generated
+                    answer touching real account/trade data should be clearly
+                    labeled as AI-generated and, for anything consequential,
+                    paired with a direct link to the authoritative source (the
+                    actual trade record in the dashboard) so the user can verify
+                    rather than blindly trust the chat answer. Log every
+                    conversation (with appropriate data-scrubbing per the
+                    Security guide) so a reported bad answer can actually be
+                    investigated and used to refine the prompt or retrieval
+                    logic, rather than being an unreproducible one-off
+                    complaint.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  how would you test a chatbot feature, given that LLM responses
+                  aren't deterministic the way normal application code is?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Split what you're actually testing: (1)
+                    <strong>the deterministic parts</strong> — your API
+                    integration layer, streaming logic, conversation-history
+                    management, function-calling dispatch, error/rate-limit
+                    handling — are ordinary code and testable exactly like
+                    anything else in the Testing guide (mock the OpenAI client
+                    the same way you'd mock any external API, per the
+                    MSW-vs-module-mock guidance there). (2)
+                    <strong>The model's actual output quality</strong> can't be
+                    asserted with exact-match tests since wording varies between
+                    calls — instead, evaluate a curated set of representative
+                    test prompts against criteria that don't depend on exact
+                    wording: does the response stay within scope, does it
+                    correctly refuse out-of-scope questions, does it correctly
+                    ground itself in provided context rather than inventing
+                    details, does a function call get triggered for the right
+                    kinds of questions. Some teams use a second LLM call as an
+                    automated "judge" scoring responses against these criteria
+                    at a coarse pass/fail level for regression testing across
+                    many prompts; for anything higher-stakes, periodic human
+                    review of a sample of real conversations remains necessary —
+                    this is the LLM-feature equivalent of the "automated scan
+                    misses reading order" gap the Testing and Performance &amp;
+                    Accessibility guides describe for accessibility.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">6. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong> Putting the API key in
+                frontend code or a public environment variable, exposing it in
+                the shipped bundle; sending the entire unbounded conversation
+                history forever, letting cost grow unchecked; no
+                <code>max_tokens</code> cap, letting a single response balloon
+                in length and cost; no rate limiting, leaving a retry loop or a
+                single abusive user able to generate large, unexpected spend;
+                asking the model to answer factual questions about real, current
+                data from its own "knowledge" instead of grounding it via RAG;
+                treating a confident-sounding response as automatically correct
+                instead of designing for the fact that hallucination is a real,
+                expected failure mode, not a rare edge case.
+              </div>
+
+              <h2 id="company">7. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>General senior-level:</strong> "Walk me through the
+                  architecture of an LLM-powered feature end to end, client to
+                  provider and back" — tests whether the
+                  API-key/proxy/streaming/cost fundamentals are second nature,
+                  not memorized.
+                </li>
+                <li>
+                  <strong
+                    >Fintech-specific (directly relevant to your
+                    background):</strong
+                  >
+                  "How would you prevent a support chatbot from giving incorrect
+                  information about a customer's real account/trade data?" —
+                  tests RAG and grounding specifically.
+                </li>
+                <li>
+                  <strong>Staff/Lead-level:</strong> "How would you control and
+                  forecast the cost of an AI feature before it ships, and
+                  monitor it afterward?" — tests the token-cost mechanics and
+                  rate-limiting design together.
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>API key placement</td>
+                  <td>
+                    Backend only, always — never in frontend code or a public
+                    env var
+                  </td>
+                </tr>
+                <tr>
+                  <td>Stateless API</td>
+                  <td>
+                    Your app resends the full conversation history every request
+                    — the provider remembers nothing
+                  </td>
+                </tr>
+                <tr>
+                  <td>Streaming</td>
+                  <td>
+                    Improves perceived speed, not actual total completion time
+                  </td>
+                </tr>
+                <tr>
+                  <td>Context window management</td>
+                  <td>
+                    Sliding window or summarization — also a direct cost lever,
+                    not just a technical limit
+                  </td>
+                </tr>
+                <tr>
+                  <td>System prompt</td>
+                  <td>
+                    Constrain scope, set tone, explicitly forbid inventing
+                    specifics
+                  </td>
+                </tr>
+                <tr>
+                  <td>RAG</td>
+                  <td>
+                    Inject real, current data into the prompt — never rely on
+                    the model "knowing" your data
+                  </td>
+                </tr>
+                <tr>
+                  <td>Function/tool calling</td>
+                  <td>
+                    Structured, schema-validated request for your code to
+                    fulfill — replaces fragile text parsing
+                  </td>
+                </tr>
+                <tr>
+                  <td>Cost control</td>
+                  <td>
+                    max_tokens cap, smallest sufficient model, rate limiting,
+                    caching common queries
+                  </td>
+                </tr>
+                <tr>
+                  <td>Testing</td>
+                  <td>
+                    Mock the client for deterministic code; evaluate criteria
+                    (not exact wording) for model output
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: builds on <a href="rest-api.html">REST APIs</a> (proxy
+                architecture, streaming) and
+                <a href="security.html">Security &amp; Auth</a> (why the key can
+                never reach the client); testing approach pairs with
+                <a href="testing.html">Testing</a>.
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="graphql.html"
+                  ><span class="dir">← Previous</span>GraphQL Interview Guide</a
+                >
+                <a class="next" href="storybook.html"
+                  ><span class="dir">Next →</span>Storybook Interview Guide</a
+                >
+              </div>
             </div>
-          </details>
 
-          <h2 id="expert">5. Expert-level & scenario-based</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: your support chatbot for a banking platform confidently gives a wrong answer about a trade's status. How do you both prevent this and handle it when it happens anyway?</summary>
-            <div class="qa-body">
-              <p><strong>Prevention:</strong> the RAG pattern above — never let the model answer factual questions about specific, real, changing data from its own "knowledge"; always inject the actual current record and instruct it to answer only from that context. A well-scoped system prompt (from the intermediate section) that explicitly forbids inventing specifics is a second line of defense, not a substitute for grounding. <strong>Handling it when it happens anyway:</strong> for a regulated, financial context specifically, any AI-generated answer touching real account/trade data should be clearly labeled as AI-generated and, for anything consequential, paired with a direct link to the authoritative source (the actual trade record in the dashboard) so the user can verify rather than blindly trust the chat answer. Log every conversation (with appropriate data-scrubbing per the Security guide) so a reported bad answer can actually be investigated and used to refine the prompt or retrieval logic, rather than being an unreproducible one-off complaint.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: how would you test a chatbot feature, given that LLM responses aren't deterministic the way normal application code is?</summary>
-            <div class="qa-body">
-              <p>Split what you're actually testing: (1) <strong>the deterministic parts</strong> — your API integration layer, streaming logic, conversation-history management, function-calling dispatch, error/rate-limit handling — are ordinary code and testable exactly like anything else in the Testing guide (mock the OpenAI client the same way you'd mock any external API, per the MSW-vs-module-mock guidance there). (2) <strong>The model's actual output quality</strong> can't be asserted with exact-match tests since wording varies between calls — instead, evaluate a curated set of representative test prompts against criteria that don't depend on exact wording: does the response stay within scope, does it correctly refuse out-of-scope questions, does it correctly ground itself in provided context rather than inventing details, does a function call get triggered for the right kinds of questions. Some teams use a second LLM call as an automated "judge" scoring responses against these criteria at a coarse pass/fail level for regression testing across many prompts; for anything higher-stakes, periodic human review of a sample of real conversations remains necessary — this is the LLM-feature equivalent of the "automated scan misses reading order" gap the Testing and Performance &amp; Accessibility guides describe for accessibility.</p>
-            </div>
-          </details>
-
-          <h2 id="mistakes">6. Common mistakes & debugging</h2>
-          <div class="callout warn"><strong>Frequent review comments</strong>
-            Putting the API key in frontend code or a public environment variable, exposing it in the shipped bundle; sending the entire unbounded conversation history forever, letting cost grow unchecked; no <code>max_tokens</code> cap, letting a single response balloon in length and cost; no rate limiting, leaving a retry loop or a single abusive user able to generate large, unexpected spend; asking the model to answer factual questions about real, current data from its own "knowledge" instead of grounding it via RAG; treating a confident-sounding response as automatically correct instead of designing for the fact that hallucination is a real, expected failure mode, not a rare edge case.
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
           </div>
-
-          <h2 id="company">7. Frequently asked at top product companies</h2>
-          <ul>
-            <li><strong>General senior-level:</strong> "Walk me through the architecture of an LLM-powered feature end to end, client to provider and back" — tests whether the API-key/proxy/streaming/cost fundamentals are second nature, not memorized.</li>
-            <li><strong>Fintech-specific (directly relevant to your background):</strong> "How would you prevent a support chatbot from giving incorrect information about a customer's real account/trade data?" — tests RAG and grounding specifically.</li>
-            <li><strong>Staff/Lead-level:</strong> "How would you control and forecast the cost of an AI feature before it ships, and monitor it afterward?" — tests the token-cost mechanics and rate-limiting design together.</li>
-          </ul>
-
-          <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
-          <table>
-            <tr><th>Concept</th><th>One-line recall</th></tr>
-            <tr><td>API key placement</td><td>Backend only, always — never in frontend code or a public env var</td></tr>
-            <tr><td>Stateless API</td><td>Your app resends the full conversation history every request — the provider remembers nothing</td></tr>
-            <tr><td>Streaming</td><td>Improves perceived speed, not actual total completion time</td></tr>
-            <tr><td>Context window management</td><td>Sliding window or summarization — also a direct cost lever, not just a technical limit</td></tr>
-            <tr><td>System prompt</td><td>Constrain scope, set tone, explicitly forbid inventing specifics</td></tr>
-            <tr><td>RAG</td><td>Inject real, current data into the prompt — never rely on the model "knowing" your data</td></tr>
-            <tr><td>Function/tool calling</td><td>Structured, schema-validated request for your code to fulfill — replaces fragile text parsing</td></tr>
-            <tr><td>Cost control</td><td>max_tokens cap, smallest sufficient model, rate limiting, caching common queries</td></tr>
-            <tr><td>Testing</td><td>Mock the client for deterministic code; evaluate criteria (not exact wording) for model output</td></tr>
-          </table>
-
-          <p class="lead">Related: builds on <a href="rest-api.html">REST APIs</a> (proxy architecture, streaming) and <a href="security.html">Security &amp; Auth</a> (why the key can never reach the client); testing approach pairs with <a href="testing.html">Testing</a>.</p>
-
-          <div class="page-nav">
-            <a class="prev" href="graphql.html"><span class="dir">← Previous</span>GraphQL Interview Guide</a>
-            <a class="next" href="storybook.html"><span class="dir">Next →</span>Storybook Interview Guide</a>
-          </div>
-        </div>
-
-        <nav class="toc">
-          <div class="toc-title">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#basic">Basic</a>
-          <a href="#intermediate">Intermediate</a>
-          <a href="#advanced">Advanced</a>
-          <a href="#expert">Expert & scenarios</a>
-          <a href="#mistakes">Common mistakes</a>
-          <a href="#company">Company questions</a>
-          <a href="#cheatsheet">Cheat sheet</a>
-        </nav>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
       </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
-  </div>
-</div>
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="../assets/app.js"></script>
-</body>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
 </html>

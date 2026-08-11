@@ -1,103 +1,267 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Browser Internals Interview Guide — Kamlesh Kumar</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="logo">KK</div>
-      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
-    </div>
-    <input id="search-box" type="text" placeholder="Search topics…">
-    <div class="nav-group"><div class="nav-group-title">Start Here</div>
-      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
-    <div class="nav-group"><div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
-    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
-    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link done active" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
-    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
-    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a></div>
-    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
-    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
-    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
-    <div class="nav-group"><div class="nav-group-title">Process</div>
-      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
-  </aside>
-
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Browser Internals</div>
-      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
-    </div>
-
-    <main>
-      <div class="content-wrap">
-        <div class="prose">
-          <div class="hero">
-            <h1>Browser Internals Interview Guide</h1>
-            <p class="lead">What actually happens between a URL being entered and pixels on screen — process architecture, the rendering pipeline, and the JS engine mechanics underneath everything else in this site.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browser Internals Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link done" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link done" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a class="nav-link done active" href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link done" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done" href="testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link done" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done" href="cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a class="nav-link done" href="design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link done" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done" href="performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link done" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done" href="agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
 
-          <h2 id="overview">1. Overview</h2>
-          <p>This guide is the connective tissue behind several others: the event loop mechanics from the JavaScript guide, the Core Web Vitals from Performance, and the Same-Origin Policy from Security all come from the same underlying browser architecture covered here. At the senior level, this comes up less as standalone trivia and more as the "why" behind other answers — being able to explain <em>why</em> a layout thrash is slow, not just that it is, is what this guide is for.</p>
-          <div class="tag">Multi-Process Architecture</div><div class="tag">Rendering Pipeline</div><div class="tag">Reflow vs Repaint</div><div class="tag">V8 / JS Engine</div><div class="tag">Critical Rendering Path</div><div class="tag">Service Workers</div>
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> Browser Internals
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
+          </div>
+        </div>
 
-          <h2 id="basic">2. Basic questions</h2>
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>Browser Internals Interview Guide</h1>
+                <p class="lead">
+                  What actually happens between a URL being entered and pixels
+                  on screen — process architecture, the rendering pipeline, and
+                  the JS engine mechanics underneath everything else in this
+                  site.
+                </p>
+              </div>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What happens, at a high level, between typing a URL and seeing the page?</summary>
-            <div class="qa-body">
-              <p>DNS resolution (domain name → IP address) → TCP connection (and TLS handshake for HTTPS) → the browser sends the HTTP request and receives the HTML response → the renderer process parses HTML into the DOM while discovering and fetching linked resources (CSS, JS, images) → CSS is parsed into the CSSOM → DOM + CSSOM combine into the render tree (visible elements only, with their computed styles) → layout (compute exact position/size of every element) → paint (fill in pixels) → composite (layers combined onto the screen, using the GPU). The last four steps together are usually called the "rendering pipeline" or "critical rendering path."</p>
-            </div>
-          </details>
+              <h2 id="overview">1. Overview</h2>
+              <p>
+                This guide is the connective tissue behind several others: the
+                event loop mechanics from the JavaScript guide, the Core Web
+                Vitals from Performance, and the Same-Origin Policy from
+                Security all come from the same underlying browser architecture
+                covered here. At the senior level, this comes up less as
+                standalone trivia and more as the "why" behind other answers —
+                being able to explain <em>why</em> a layout thrash is slow, not
+                just that it is, is what this guide is for.
+              </p>
+              <div class="tag">Multi-Process Architecture</div>
+              <div class="tag">Rendering Pipeline</div>
+              <div class="tag">Reflow vs Repaint</div>
+              <div class="tag">V8 / JS Engine</div>
+              <div class="tag">Critical Rendering Path</div>
+              <div class="tag">Service Workers</div>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> Why is modern Chrome a multi-process application instead of one single process?</summary>
-            <div class="qa-body">
-              <p>Chrome runs a separate process for the browser UI itself, a separate renderer process per tab (roughly — modern browsers also isolate by site for security), a GPU process for compositing, and separate processes for extensions/plugins. This gives crash isolation (one tab crashing doesn't take down the whole browser or other tabs), security isolation (a compromised renderer process is sandboxed away from the rest of the system — the basis of "site isolation"), and lets the OS schedule CPU/memory across processes more effectively than one giant single-process application could.</p>
-            </div>
-          </details>
+              <h2 id="basic">2. Basic questions</h2>
 
-          <h2 id="intermediate">3. Intermediate questions</h2>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What
+                  happens, at a high level, between typing a URL and seeing the
+                  page?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    DNS resolution (domain name → IP address) → TCP connection
+                    (and TLS handshake for HTTPS) → the browser sends the HTTP
+                    request and receives the HTML response → the renderer
+                    process parses HTML into the DOM while discovering and
+                    fetching linked resources (CSS, JS, images) → CSS is parsed
+                    into the CSSOM → DOM + CSSOM combine into the render tree
+                    (visible elements only, with their computed styles) → layout
+                    (compute exact position/size of every element) → paint (fill
+                    in pixels) → composite (layers combined onto the screen,
+                    using the GPU). The last four steps together are usually
+                    called the "rendering pipeline" or "critical rendering
+                    path."
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> What's the difference between reflow (layout) and repaint, and why does reflow cost more?</summary>
-            <div class="qa-body">
-              <p><strong>Reflow/layout</strong> recalculates the geometry (position, size) of elements — triggered by changes that affect layout (changing <code>width</code>, adding/removing DOM nodes, changing text content, reading certain layout properties like <code>offsetHeight</code>). <strong>Repaint</strong> just redraws pixels for elements whose appearance changed but not their geometry (a color or visibility change). Reflow is more expensive because a layout change to one element can cascade — the browser may need to recompute layout for ancestors, siblings, and descendants, not just the changed element, whereas repaint only redraws the specific pixels affected. This is exactly why the Performance guide recommends animating <code>transform</code>/<code>opacity</code> (composite-only, no layout or paint needed) instead of <code>width</code>/<code>top</code> (triggers a full reflow every frame).</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> Why is
+                  modern Chrome a multi-process application instead of one
+                  single process?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Chrome runs a separate process for the browser UI itself, a
+                    separate renderer process per tab (roughly — modern browsers
+                    also isolate by site for security), a GPU process for
+                    compositing, and separate processes for extensions/plugins.
+                    This gives crash isolation (one tab crashing doesn't take
+                    down the whole browser or other tabs), security isolation (a
+                    compromised renderer process is sandboxed away from the rest
+                    of the system — the basis of "site isolation"), and lets the
+                    OS schedule CPU/memory across processes more effectively
+                    than one giant single-process application could.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> What is "layout thrashing," and how does it happen in seemingly innocent React/JS code?</summary>
-            <div class="qa-body">
-<pre><code>// Bad: forces a synchronous reflow on every iteration
+              <h2 id="intermediate">3. Intermediate questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  What's the difference between reflow (layout) and repaint, and
+                  why does reflow cost more?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <strong>Reflow/layout</strong> recalculates the geometry
+                    (position, size) of elements — triggered by changes that
+                    affect layout (changing <code>width</code>, adding/removing
+                    DOM nodes, changing text content, reading certain layout
+                    properties like <code>offsetHeight</code>).
+                    <strong>Repaint</strong> just redraws pixels for elements
+                    whose appearance changed but not their geometry (a color or
+                    visibility change). Reflow is more expensive because a
+                    layout change to one element can cascade — the browser may
+                    need to recompute layout for ancestors, siblings, and
+                    descendants, not just the changed element, whereas repaint
+                    only redraws the specific pixels affected. This is exactly
+                    why the Performance guide recommends animating
+                    <code>transform</code>/<code>opacity</code> (composite-only,
+                    no layout or paint needed) instead of
+                    <code>width</code>/<code>top</code> (triggers a full reflow
+                    every frame).
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  What is "layout thrashing," and how does it happen in
+                  seemingly innocent React/JS code?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>// Bad: forces a synchronous reflow on every iteration
 elements.forEach(el =&gt; {
   const height = el.offsetHeight; // READ — forces pending layout to flush
   el.style.height = height + 10 + 'px'; // WRITE — invalidates layout again
@@ -106,91 +270,275 @@ elements.forEach(el =&gt; {
 // Good: batch all reads, then all writes
 const heights = elements.map(el =&gt; el.offsetHeight); // all reads first
 elements.forEach((el, i) =&gt; { el.style.height = heights[i] + 10 + 'px'; }); // then all writes</code></pre>
-              <p>Layout thrashing happens when code repeatedly interleaves reading a layout-dependent property (which forces the browser to synchronously flush any pending layout recalculation to give an accurate answer) with writing a layout-affecting change (which invalidates layout again) — in a loop, this can force dozens of forced synchronous reflows instead of one batched layout pass. The fix is always the same pattern: separate all reads from all writes.</p>
+                  <p>
+                    Layout thrashing happens when code repeatedly interleaves
+                    reading a layout-dependent property (which forces the
+                    browser to synchronously flush any pending layout
+                    recalculation to give an accurate answer) with writing a
+                    layout-affecting change (which invalidates layout again) —
+                    in a loop, this can force dozens of forced synchronous
+                    reflows instead of one batched layout pass. The fix is
+                    always the same pattern: separate all reads from all writes.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How does V8 (Chrome/Node's JS engine) execute JavaScript —
+                  interpreted, or compiled?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Both, via a JIT (Just-In-Time) pipeline. V8 first parses JS
+                    into an AST and quickly generates unoptimized bytecode via
+                    an interpreter (Ignition) to start executing immediately
+                    with minimal startup delay. While running, V8's profiler
+                    watches for "hot" functions called repeatedly with stable
+                    argument shapes, and recompiles those specific functions
+                    into highly optimized machine code (via the optimizing
+                    compiler, TurboFan) — this is why a function can run
+                    measurably faster after being called many times ("warming
+                    up"). If the optimized assumptions turn out wrong later (a
+                    function suddenly receives an object shape it didn't
+                    expect), V8 "deoptimizes" back to the interpreted version
+                    for that call.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="advanced">4. Advanced questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  does the browser's back-forward cache (bfcache) work, and why
+                  can it silently break a page's behavior?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    When navigating away, instead of fully destroying the page,
+                    the browser can freeze the entire page (JS execution paused,
+                    but the full DOM/JS state kept in memory) so that pressing
+                    back/forward can restore it instantly, without a real
+                    reload. This breaks assumptions in code that expects a fresh
+                    page load every time — a WebSocket connection opened on load
+                    may now be stale/closed when the page is restored from
+                    bfcache without re-running the load logic that would
+                    normally reconnect it. Pages can opt out via an
+                    <code>unload</code> handler (though this itself disables
+                    bfcache eligibility, a real performance trade-off) or
+                    properly handle the <code>pageshow</code> event's
+                    <code>persisted</code> flag to detect a bfcache restoration
+                    and re-establish anything that needs it (reconnecting a
+                    socket, refetching stale data).
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  What's the difference between
+                  <code>requestAnimationFrame</code> and
+                  <code>setTimeout(fn, 16)</code> for animation code?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <code>requestAnimationFrame</code> schedules a callback to
+                    run right before the browser's next repaint, synchronized
+                    with the display's actual refresh rate — so it naturally
+                    adapts to 60Hz, 120Hz, or a throttled/backgrounded tab
+                    (browsers pause <code>rAF</code> callbacks in inactive tabs
+                    to save battery/CPU, which <code>setTimeout</code> does not
+                    do to the same degree). <code>setTimeout</code> has no
+                    awareness of the paint cycle at all — a fixed 16ms delay is
+                    only an approximation of 60fps, and will drift out of sync
+                    with the actual refresh rate, causing visibly janky
+                    animation. This is exactly the mechanism the Performance
+                    guide's "batch high-frequency ticks to animation-frame
+                    boundaries" advice for real-time trading dashboards relies
+                    on.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  a data grid updates smoothly with a handful of rows changing,
+                  but becomes visibly janky once hundreds of cells update per
+                  tick, even though each individual style change is tiny.
+                  Explain what's actually happening at the rendering-pipeline
+                  level, and how you'd fix it.
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Even small style changes still require the browser to walk
+                    the affected portion of the render tree, recompute styles,
+                    and — if any of those changes affect layout (not just
+                    paint-only properties) — potentially reflow, repaint, and
+                    recomposite hundreds of individual regions within a single
+                    16ms frame budget; at high element counts this adds up even
+                    when no single change looks expensive in isolation. Fixes
+                    align directly with the System Design guide's virtualization
+                    section and the Performance guide's animation-property
+                    advice: (1) confirm the updating cells are only changing
+                    composite-safe properties
+                    (<code>transform</code>/<code>opacity</code>) rather than
+                    anything layout-affecting; (2) batch the DOM writes for all
+                    changed cells into a single synchronous block (never
+                    interleaved with reads, per the layout-thrashing question
+                    above) so the browser does one layout/paint/composite pass
+                    per frame instead of many; (3) if the grid is virtualized,
+                    confirm updates to off-screen (unmounted) rows aren't still
+                    triggering unnecessary work; (4) as a last resort for truly
+                    extreme update volume, consider moving the highest-frequency
+                    visual updates to a Canvas-rendered overlay (from the HTML5
+                    guide) instead of hundreds of live DOM nodes, trading some
+                    interactivity/accessibility for raw throughput.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">6. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong> Reading a layout
+                property (<code>offsetHeight</code>,
+                <code>getBoundingClientRect</code>) inside a loop that also
+                writes styles, causing layout thrashing; animating
+                layout-affecting properties instead of transform/opacity; not
+                handling bfcache restoration for pages with WebSocket/polling
+                connections, leaving them silently stale after back-navigation;
+                assuming JS execution and rendering happen in true parallel on
+                the main thread, when in fact they compete for the same thread
+                and rendering can be blocked by long-running JS.
+              </div>
+
+              <h2 id="company">7. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>General senior-level:</strong> "Walk me through what
+                  happens from typing a URL to seeing the page render" — a
+                  classic, near-universal systems-literacy question.
+                </li>
+                <li>
+                  <strong>Performance-focused companies:</strong> "Why is this
+                  animation janky?" — usually a layout-thrashing or
+                  wrong-property-animated bug to diagnose live.
+                </li>
+                <li>
+                  <strong
+                    >Data-viz/dashboard-heavy companies (relevant to your
+                    background):</strong
+                  >
+                  "Why does updating hundreds of small DOM elements per second
+                  cause jank even though each update is tiny?"
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>Rendering pipeline</td>
+                  <td>
+                    Parse → DOM/CSSOM → render tree → layout → paint → composite
+                  </td>
+                </tr>
+                <tr>
+                  <td>Multi-process architecture</td>
+                  <td>
+                    Isolates crashes and security per tab/renderer, not a single
+                    monolith
+                  </td>
+                </tr>
+                <tr>
+                  <td>Reflow vs repaint</td>
+                  <td>
+                    Reflow recalculates geometry (expensive, cascades); repaint
+                    just redraws pixels
+                  </td>
+                </tr>
+                <tr>
+                  <td>Layout thrashing</td>
+                  <td>
+                    Interleaved reads/writes force repeated synchronous reflow —
+                    batch reads then writes
+                  </td>
+                </tr>
+                <tr>
+                  <td>V8 JIT</td>
+                  <td>
+                    Interpreter for fast startup, optimizing compiler for hot
+                    functions, deopt on broken assumptions
+                  </td>
+                </tr>
+                <tr>
+                  <td>bfcache</td>
+                  <td>
+                    Freezes the whole page for instant back/forward — can leave
+                    sockets/connections stale
+                  </td>
+                </tr>
+                <tr>
+                  <td>requestAnimationFrame</td>
+                  <td>
+                    Syncs to actual repaint cycle, unlike a fixed setTimeout
+                    interval
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: underlies
+                <a href="javascript.html">JavaScript (ES6+)</a> (event loop),
+                <a href="performance-accessibility.html"
+                  >Performance &amp; Accessibility</a
+                >
+                (Core Web Vitals), and
+                <a href="system-design.html">Frontend System Design</a>
+                (virtualization).
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="micro-frontends.html"
+                  ><span class="dir">← Previous</span>Micro Frontends Interview
+                  Guide (Deep Dive)</a
+                >
+                <a class="next" href="../index.html"
+                  ><span class="dir">Next →</span>Back to Roadmap</a
+                >
+              </div>
             </div>
-          </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How does V8 (Chrome/Node's JS engine) execute JavaScript — interpreted, or compiled?</summary>
-            <div class="qa-body">
-              <p>Both, via a JIT (Just-In-Time) pipeline. V8 first parses JS into an AST and quickly generates unoptimized bytecode via an interpreter (Ignition) to start executing immediately with minimal startup delay. While running, V8's profiler watches for "hot" functions called repeatedly with stable argument shapes, and recompiles those specific functions into highly optimized machine code (via the optimizing compiler, TurboFan) — this is why a function can run measurably faster after being called many times ("warming up"). If the optimized assumptions turn out wrong later (a function suddenly receives an object shape it didn't expect), V8 "deoptimizes" back to the interpreted version for that call.</p>
-            </div>
-          </details>
-
-          <h2 id="advanced">4. Advanced questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How does the browser's back-forward cache (bfcache) work, and why can it silently break a page's behavior?</summary>
-            <div class="qa-body">
-              <p>When navigating away, instead of fully destroying the page, the browser can freeze the entire page (JS execution paused, but the full DOM/JS state kept in memory) so that pressing back/forward can restore it instantly, without a real reload. This breaks assumptions in code that expects a fresh page load every time — a WebSocket connection opened on load may now be stale/closed when the page is restored from bfcache without re-running the load logic that would normally reconnect it. Pages can opt out via an <code>unload</code> handler (though this itself disables bfcache eligibility, a real performance trade-off) or properly handle the <code>pageshow</code> event's <code>persisted</code> flag to detect a bfcache restoration and re-establish anything that needs it (reconnecting a socket, refetching stale data).</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> What's the difference between <code>requestAnimationFrame</code> and <code>setTimeout(fn, 16)</code> for animation code?</summary>
-            <div class="qa-body">
-              <p><code>requestAnimationFrame</code> schedules a callback to run right before the browser's next repaint, synchronized with the display's actual refresh rate — so it naturally adapts to 60Hz, 120Hz, or a throttled/backgrounded tab (browsers pause <code>rAF</code> callbacks in inactive tabs to save battery/CPU, which <code>setTimeout</code> does not do to the same degree). <code>setTimeout</code> has no awareness of the paint cycle at all — a fixed 16ms delay is only an approximation of 60fps, and will drift out of sync with the actual refresh rate, causing visibly janky animation. This is exactly the mechanism the Performance guide's "batch high-frequency ticks to animation-frame boundaries" advice for real-time trading dashboards relies on.</p>
-            </div>
-          </details>
-
-          <h2 id="expert">5. Expert-level & scenario-based</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: a data grid updates smoothly with a handful of rows changing, but becomes visibly janky once hundreds of cells update per tick, even though each individual style change is tiny. Explain what's actually happening at the rendering-pipeline level, and how you'd fix it.</summary>
-            <div class="qa-body">
-              <p>Even small style changes still require the browser to walk the affected portion of the render tree, recompute styles, and — if any of those changes affect layout (not just paint-only properties) — potentially reflow, repaint, and recomposite hundreds of individual regions within a single 16ms frame budget; at high element counts this adds up even when no single change looks expensive in isolation. Fixes align directly with the System Design guide's virtualization section and the Performance guide's animation-property advice: (1) confirm the updating cells are only changing composite-safe properties (<code>transform</code>/<code>opacity</code>) rather than anything layout-affecting; (2) batch the DOM writes for all changed cells into a single synchronous block (never interleaved with reads, per the layout-thrashing question above) so the browser does one layout/paint/composite pass per frame instead of many; (3) if the grid is virtualized, confirm updates to off-screen (unmounted) rows aren't still triggering unnecessary work; (4) as a last resort for truly extreme update volume, consider moving the highest-frequency visual updates to a Canvas-rendered overlay (from the HTML5 guide) instead of hundreds of live DOM nodes, trading some interactivity/accessibility for raw throughput.</p>
-            </div>
-          </details>
-
-          <h2 id="mistakes">6. Common mistakes & debugging</h2>
-          <div class="callout warn"><strong>Frequent review comments</strong>
-            Reading a layout property (<code>offsetHeight</code>, <code>getBoundingClientRect</code>) inside a loop that also writes styles, causing layout thrashing; animating layout-affecting properties instead of transform/opacity; not handling bfcache restoration for pages with WebSocket/polling connections, leaving them silently stale after back-navigation; assuming JS execution and rendering happen in true parallel on the main thread, when in fact they compete for the same thread and rendering can be blocked by long-running JS.
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
           </div>
-
-          <h2 id="company">7. Frequently asked at top product companies</h2>
-          <ul>
-            <li><strong>General senior-level:</strong> "Walk me through what happens from typing a URL to seeing the page render" — a classic, near-universal systems-literacy question.</li>
-            <li><strong>Performance-focused companies:</strong> "Why is this animation janky?" — usually a layout-thrashing or wrong-property-animated bug to diagnose live.</li>
-            <li><strong>Data-viz/dashboard-heavy companies (relevant to your background):</strong> "Why does updating hundreds of small DOM elements per second cause jank even though each update is tiny?"</li>
-          </ul>
-
-          <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
-          <table>
-            <tr><th>Concept</th><th>One-line recall</th></tr>
-            <tr><td>Rendering pipeline</td><td>Parse → DOM/CSSOM → render tree → layout → paint → composite</td></tr>
-            <tr><td>Multi-process architecture</td><td>Isolates crashes and security per tab/renderer, not a single monolith</td></tr>
-            <tr><td>Reflow vs repaint</td><td>Reflow recalculates geometry (expensive, cascades); repaint just redraws pixels</td></tr>
-            <tr><td>Layout thrashing</td><td>Interleaved reads/writes force repeated synchronous reflow — batch reads then writes</td></tr>
-            <tr><td>V8 JIT</td><td>Interpreter for fast startup, optimizing compiler for hot functions, deopt on broken assumptions</td></tr>
-            <tr><td>bfcache</td><td>Freezes the whole page for instant back/forward — can leave sockets/connections stale</td></tr>
-            <tr><td>requestAnimationFrame</td><td>Syncs to actual repaint cycle, unlike a fixed setTimeout interval</td></tr>
-          </table>
-
-          <p class="lead">Related: underlies <a href="javascript.html">JavaScript (ES6+)</a> (event loop), <a href="performance-accessibility.html">Performance &amp; Accessibility</a> (Core Web Vitals), and <a href="system-design.html">Frontend System Design</a> (virtualization).</p>
-
-          <div class="page-nav">
-            <a class="prev" href="micro-frontends.html"><span class="dir">← Previous</span>Micro Frontends Interview Guide (Deep Dive)</a>
-            <a class="next" href="../index.html"><span class="dir">Next →</span>Back to Roadmap</a>
-          </div>
-        </div>
-
-        <nav class="toc">
-          <div class="toc-title">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#basic">Basic</a>
-          <a href="#intermediate">Intermediate</a>
-          <a href="#advanced">Advanced</a>
-          <a href="#expert">Expert & scenarios</a>
-          <a href="#mistakes">Common mistakes</a>
-          <a href="#company">Company questions</a>
-          <a href="#cheatsheet">Cheat sheet</a>
-        </nav>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
       </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
-  </div>
-</div>
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="../assets/app.js"></script>
-</body>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
 </html>

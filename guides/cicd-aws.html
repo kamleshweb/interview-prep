@@ -1,201 +1,580 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CI/CD & AWS Interview Guide — Kamlesh Kumar</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="logo">KK</div>
-      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
-    </div>
-    <input id="search-box" type="text" placeholder="Search topics…">
-    <div class="nav-group"><div class="nav-group-title">Start Here</div>
-      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
-    <div class="nav-group"><div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
-    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
-    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link" data-status="planned" href="html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link" data-status="planned" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link" data-status="planned" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
-    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link" data-status="planned" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
-    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link" data-status="planned" href="storybook.html"><span class="dot"></span> Storybook</a></div>
-    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done active" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
-    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link" data-status="planned" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
-    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link" data-status="planned" href="security.html"><span class="dot"></span> Security & Auth</a></div>
-    <div class="nav-group"><div class="nav-group-title">Process</div>
-      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
-  </aside>
-
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> CI/CD & AWS</div>
-      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
-    </div>
-
-    <main>
-      <div class="content-wrap">
-        <div class="prose">
-          <div class="hero">
-            <h1>CI/CD & AWS Interview Guide</h1>
-            <p class="lead">Pipeline design, deployment strategies that reduce risk, and the AWS building blocks (EC2, S3, CloudFront) most frontend deployments actually touch.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CI/CD & AWS Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link" data-status="planned" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link" data-status="planned" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a
+            class="nav-link"
+            data-status="planned"
+            href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link" data-status="planned" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done" href="testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link" data-status="planned" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done active" href="cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a class="nav-link done" href="design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link" data-status="planned" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done" href="performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link" data-status="planned" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done" href="agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
 
-          <h2 id="overview">1. Overview</h2>
-          <p>CI (Continuous Integration) is about catching problems early — every change is automatically built and tested before it merges. CD (Continuous Delivery/Deployment) is about getting validated changes to users safely and repeatedly, ideally with minimal manual intervention. Given your resume shows hands-on CI/CD pipeline and basic AWS (EC2, S3) exposure across multiple roles, expect practical, workflow-level questions rather than deep infrastructure-engineering ones — the senior-frontend bar here is "can you reason about how your code gets from a merged PR to a live URL, and what could go wrong along the way."</p>
-          <div class="tag">CI vs CD</div><div class="tag">Pipeline Stages</div><div class="tag">Blue-Green / Canary</div><div class="tag">Rollback</div><div class="tag">S3 + CloudFront</div><div class="tag">EC2 Basics</div><div class="tag">Environment Config</div>
-
-          <h2 id="basic">2. Basic questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What's the difference between Continuous Delivery and Continuous Deployment?</summary>
-            <div class="qa-body">
-              <p>Both mean every change that passes the pipeline is production-ready. <strong>Continuous Delivery</strong> stops short of actually deploying automatically — a human clicks "deploy" (often for business/release-timing reasons). <strong>Continuous Deployment</strong> goes all the way — every change that passes all automated gates deploys to production with no manual approval step at all. The distinction is entirely about that last manual gate, not about pipeline quality.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What are the typical stages of a frontend CI/CD pipeline, in order?</summary>
-            <div class="qa-body">
-              <p>Install dependencies (with lockfile-verified, cached installs) → lint/type-check → unit/integration tests → build (bundle for production) → optionally, bundle-size/performance budget checks → deploy to a staging environment → E2E tests against staging → (manual approval, if Continuous Delivery) → deploy to production → smoke tests/health checks against production. Each stage should fail fast — if linting fails, there's no reason to spend time running a full test suite or building.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> At a basic level, what do S3 and CloudFront do for hosting a frontend app, and why are they used together?</summary>
-            <div class="qa-body">
-              <p>S3 (Simple Storage Service) is object storage — for a static frontend build, it holds the actual HTML/CSS/JS/asset files. On its own, S3 serving directly to users would mean every request travels to wherever that S3 bucket's region is, and doesn't benefit from edge caching. CloudFront is AWS's CDN — it caches S3's content at edge locations around the world, so users get the app served from a nearby edge node instead of the origin bucket, and it also handles HTTPS termination and can enforce cache-control behavior centrally. The typical pattern: build artifacts uploaded to S3, CloudFront distribution in front of that bucket as the actual public-facing endpoint.</p>
-            </div>
-          </details>
-
-          <h2 id="intermediate">3. Intermediate questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> Blue-green vs canary deployment — what's the difference, and when would you pick one over the other?</summary>
-            <div class="qa-body">
-              <table>
-                <tr><th></th><th>Blue-Green</th><th>Canary</th></tr>
-                <tr><td>Mechanism</td><td>Two full environments (blue = current, green = new); switch all traffic at once once green is verified</td><td>Roll the new version out to a small % of traffic first, gradually increase if healthy</td></tr>
-                <tr><td>Rollback speed</td><td>Instant — just switch the router back to blue</td><td>Fast — stop the rollout and route remaining traffic back to the old version</td></tr>
-                <tr><td>Risk exposure</td><td>All-or-nothing — a bad deploy affects 100% of users the instant it's switched</td><td>Limited — a bad deploy only affects the small canary cohort before it's caught</td></tr>
-                <tr><td>Cost/complexity</td><td>Requires maintaining two full environments</td><td>Requires traffic-splitting infrastructure and good real-time monitoring to catch issues in the canary cohort quickly</td></tr>
-              </table>
-              <p>For a high-stakes app (financial dashboard) where a bad deploy is expensive, canary's gradual exposure is usually preferred despite the added infra complexity — it catches problems while only a small fraction of users are affected, rather than everyone at once.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you handle environment-specific configuration (dev/staging/prod API URLs, feature flags) safely in a CI/CD pipeline?</summary>
-            <div class="qa-body">
-              <p>Never hardcode environment values into the source or bake secrets into the client bundle (anything shipped to the browser is publicly visible, so no API keys/secrets belong there at all). Use environment variables injected at build time (per-pipeline-stage config, e.g. a different <code>.env.production</code> vs <code>.env.staging</code> consumed during the build step) for anything safe to be public (API base URLs, public feature-flag service keys), and keep genuine secrets (private API keys, database credentials for any server-side pieces) in a dedicated secrets manager (AWS Secrets Manager, or the CI provider's encrypted secrets store), injected only into the specific pipeline steps that need them, never into the client-facing build artifact.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> Why does a CI pipeline run tests again in a clean environment if they already passed on the developer's machine?</summary>
-            <div class="qa-body">
-              <p>"Works on my machine" often means the developer's machine has some implicit state a fresh environment doesn't — a globally installed dependency version, a cached build artifact, an environment variable set once and forgotten, or a different OS/Node version. Running the full pipeline in a clean, reproducible container/VM for every single change is what actually verifies the change is correct in isolation, not just correct given whatever accumulated state happens to be on one developer's laptop — this is precisely the guarantee CI is meant to provide.</p>
-            </div>
-          </details>
-
-          <h2 id="advanced">4. Advanced questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How would you design a rollback strategy for a frontend deployed via S3 + CloudFront, given that a bad deploy is discovered 20 minutes after release?</summary>
-            <div class="qa-body">
-              <p>Keep every deployed build as its own versioned/timestamped folder in S3 (never overwrite "latest" in place) — rollback then becomes simply repointing CloudFront's origin path (or updating an index/manifest object it reads) back to the previous known-good build's folder, which propagates in minutes without needing to rebuild anything. Combine this with a CloudFront cache invalidation for the entry HTML file specifically (so the rollback is visible immediately, not delayed by cached TTLs), while long-lived, content-hashed asset files (JS/CSS with a hash in the filename) don't need invalidation at all since a rollback simply references the old hashed filenames again. The key architectural decision that makes fast rollback possible at all is immutable, versioned deploys — never deploying by overwriting the previous build in place.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> What's the difference between EC2 and a serverless/managed hosting approach for a frontend app, and when might you actually still need EC2?</summary>
-            <div class="qa-body">
-              <p>A static frontend build (HTML/CSS/JS with no server-side rendering) has no real need for EC2 at all — S3 + CloudFront serves it more cheaply and with less operational overhead (no servers to patch, scale, or monitor). EC2 (or a container service) becomes relevant when you need actual server-side compute at request time — an SSR Next.js app that renders per-request, a lightweight API/BFF (backend-for-frontend) layer aggregating calls to internal services, or a WebSocket server for real-time features. The senior-level framing: default to static hosting for anything that can be static, and only reach for compute infrastructure (EC2, containers, Lambda) for the specific pieces that genuinely need server-side execution.</p>
-            </div>
-          </details>
-
-          <h2 id="expert">5. Expert-level & scenario-based</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: a deploy passed every automated test in the pipeline but broke a critical flow in production within minutes. What pipeline gaps would you investigate, and what would you add?</summary>
-            <div class="qa-body">
-              <p>First question: did staging actually mirror production closely enough (same environment config, same data shape/scale, same third-party integrations) — a very common gap is staging using mocked/seeded data that doesn't exercise the real edge case that broke in prod. Second: were the E2E tests covering the actual critical flow that broke, or just a happy-path subset — critical-path E2E coverage should be treated as non-negotiable even if the rest of the suite is thinner. Additions to consider: canary/gradual rollout instead of an all-at-once deploy (so this class of failure only hits a small cohort before being caught by automated health-check monitoring), automated rollback triggers tied to real-time error-rate/latency monitoring rather than relying on someone noticing manually, and a post-incident process that turns this specific gap into a new automated test so the same class of failure can't reach production silently again.</p>
-            </div>
-          </details>
-
-          <h2 id="mistakes">6. Common mistakes & debugging</h2>
-          <div class="callout warn"><strong>Frequent review comments</strong>
-            Overwriting the same S3 "latest" build in place instead of versioned/immutable deploys, making rollback slow or impossible; baking secrets into the client-side bundle; skipping E2E tests against a true staging environment and only running them against mocks; deploying 100% of traffic at once for a high-risk change instead of a canary/gradual rollout; no automated rollback trigger, relying entirely on someone noticing a spike in errors manually.
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> CI/CD & AWS
           </div>
-
-          <h2 id="company">7. Frequently asked at top product companies</h2>
-          <ul>
-            <li><strong>General senior-level:</strong> "Walk me through what happens from merging a PR to it being live for users" — tests full pipeline understanding end to end.</li>
-            <li><strong>Reliability-focused companies:</strong> "How would you design a deployment strategy that minimizes blast radius for a bad release?" — tests canary/blue-green reasoning.</li>
-            <li><strong>Fintech-style (relevant to your background):</strong> "How do you handle secrets and environment-specific config for a regulated application across dev/staging/prod?"</li>
-          </ul>
-
-          <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
-          <table>
-            <tr><th>Concept</th><th>One-line recall</th></tr>
-            <tr><td>Delivery vs Deployment</td><td>Delivery has a manual approval gate; deployment is fully automatic</td></tr>
-            <tr><td>Pipeline order</td><td>Install → lint/type-check → test → build → deploy staging → E2E → deploy prod</td></tr>
-            <tr><td>S3 + CloudFront</td><td>S3 = storage/origin; CloudFront = CDN/edge caching + HTTPS in front of it</td></tr>
-            <tr><td>Blue-green</td><td>Instant full-traffic switch between two environments</td></tr>
-            <tr><td>Canary</td><td>Gradual traffic rollout — limits blast radius of a bad deploy</td></tr>
-            <tr><td>Fast rollback</td><td>Requires immutable/versioned deploys, never overwrite-in-place</td></tr>
-            <tr><td>Secrets</td><td>Never in the client bundle — secrets manager, injected only where needed</td></tr>
-          </table>
-
-          <p class="lead">Related: pairs with <a href="git.html">Git</a> (branching strategy feeding the pipeline) and <a href="testing.html">Testing</a> (what actually runs at each pipeline stage).</p>
-
-          <div class="page-nav">
-            <a class="prev" href="webpack-babel.html"><span class="dir">← Previous</span>Webpack &amp; Babel Interview Guide</a>
-            <a class="next" href="agile-leadership.html"><span class="dir">Next →</span>Agile &amp; Leadership Interview Guide</a>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
           </div>
         </div>
 
-        <nav class="toc">
-          <div class="toc-title">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#basic">Basic</a>
-          <a href="#intermediate">Intermediate</a>
-          <a href="#advanced">Advanced</a>
-          <a href="#expert">Expert & scenarios</a>
-          <a href="#mistakes">Common mistakes</a>
-          <a href="#company">Company questions</a>
-          <a href="#cheatsheet">Cheat sheet</a>
-        </nav>
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>CI/CD & AWS Interview Guide</h1>
+                <p class="lead">
+                  Pipeline design, deployment strategies that reduce risk, and
+                  the AWS building blocks (EC2, S3, CloudFront) most frontend
+                  deployments actually touch.
+                </p>
+              </div>
+
+              <h2 id="overview">1. Overview</h2>
+              <p>
+                CI (Continuous Integration) is about catching problems early —
+                every change is automatically built and tested before it merges.
+                CD (Continuous Delivery/Deployment) is about getting validated
+                changes to users safely and repeatedly, ideally with minimal
+                manual intervention. Given your resume shows hands-on CI/CD
+                pipeline and basic AWS (EC2, S3) exposure across multiple roles,
+                expect practical, workflow-level questions rather than deep
+                infrastructure-engineering ones — the senior-frontend bar here
+                is "can you reason about how your code gets from a merged PR to
+                a live URL, and what could go wrong along the way."
+              </p>
+              <div class="tag">CI vs CD</div>
+              <div class="tag">Pipeline Stages</div>
+              <div class="tag">Blue-Green / Canary</div>
+              <div class="tag">Rollback</div>
+              <div class="tag">S3 + CloudFront</div>
+              <div class="tag">EC2 Basics</div>
+              <div class="tag">Environment Config</div>
+
+              <h2 id="basic">2. Basic questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What's
+                  the difference between Continuous Delivery and Continuous
+                  Deployment?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Both mean every change that passes the pipeline is
+                    production-ready. <strong>Continuous Delivery</strong> stops
+                    short of actually deploying automatically — a human clicks
+                    "deploy" (often for business/release-timing reasons).
+                    <strong>Continuous Deployment</strong> goes all the way —
+                    every change that passes all automated gates deploys to
+                    production with no manual approval step at all. The
+                    distinction is entirely about that last manual gate, not
+                    about pipeline quality.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What are
+                  the typical stages of a frontend CI/CD pipeline, in order?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Install dependencies (with lockfile-verified, cached
+                    installs) → lint/type-check → unit/integration tests → build
+                    (bundle for production) → optionally,
+                    bundle-size/performance budget checks → deploy to a staging
+                    environment → E2E tests against staging → (manual approval,
+                    if Continuous Delivery) → deploy to production → smoke
+                    tests/health checks against production. Each stage should
+                    fail fast — if linting fails, there's no reason to spend
+                    time running a full test suite or building.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> At a
+                  basic level, what do S3 and CloudFront do for hosting a
+                  frontend app, and why are they used together?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    S3 (Simple Storage Service) is object storage — for a static
+                    frontend build, it holds the actual HTML/CSS/JS/asset files.
+                    On its own, S3 serving directly to users would mean every
+                    request travels to wherever that S3 bucket's region is, and
+                    doesn't benefit from edge caching. CloudFront is AWS's CDN —
+                    it caches S3's content at edge locations around the world,
+                    so users get the app served from a nearby edge node instead
+                    of the origin bucket, and it also handles HTTPS termination
+                    and can enforce cache-control behavior centrally. The
+                    typical pattern: build artifacts uploaded to S3, CloudFront
+                    distribution in front of that bucket as the actual
+                    public-facing endpoint.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="intermediate">3. Intermediate questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Blue-green vs canary deployment — what's the difference, and
+                  when would you pick one over the other?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th></th>
+                      <th>Blue-Green</th>
+                      <th>Canary</th>
+                    </tr>
+                    <tr>
+                      <td>Mechanism</td>
+                      <td>
+                        Two full environments (blue = current, green = new);
+                        switch all traffic at once once green is verified
+                      </td>
+                      <td>
+                        Roll the new version out to a small % of traffic first,
+                        gradually increase if healthy
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Rollback speed</td>
+                      <td>Instant — just switch the router back to blue</td>
+                      <td>
+                        Fast — stop the rollout and route remaining traffic back
+                        to the old version
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Risk exposure</td>
+                      <td>
+                        All-or-nothing — a bad deploy affects 100% of users the
+                        instant it's switched
+                      </td>
+                      <td>
+                        Limited — a bad deploy only affects the small canary
+                        cohort before it's caught
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Cost/complexity</td>
+                      <td>Requires maintaining two full environments</td>
+                      <td>
+                        Requires traffic-splitting infrastructure and good
+                        real-time monitoring to catch issues in the canary
+                        cohort quickly
+                      </td>
+                    </tr>
+                  </table>
+                  <p>
+                    For a high-stakes app (financial dashboard) where a bad
+                    deploy is expensive, canary's gradual exposure is usually
+                    preferred despite the added infra complexity — it catches
+                    problems while only a small fraction of users are affected,
+                    rather than everyone at once.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you handle environment-specific configuration
+                  (dev/staging/prod API URLs, feature flags) safely in a CI/CD
+                  pipeline?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Never hardcode environment values into the source or bake
+                    secrets into the client bundle (anything shipped to the
+                    browser is publicly visible, so no API keys/secrets belong
+                    there at all). Use environment variables injected at build
+                    time (per-pipeline-stage config, e.g. a different
+                    <code>.env.production</code> vs
+                    <code>.env.staging</code> consumed during the build step)
+                    for anything safe to be public (API base URLs, public
+                    feature-flag service keys), and keep genuine secrets
+                    (private API keys, database credentials for any server-side
+                    pieces) in a dedicated secrets manager (AWS Secrets Manager,
+                    or the CI provider's encrypted secrets store), injected only
+                    into the specific pipeline steps that need them, never into
+                    the client-facing build artifact.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Why does a CI pipeline run tests again in a clean environment
+                  if they already passed on the developer's machine?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    "Works on my machine" often means the developer's machine
+                    has some implicit state a fresh environment doesn't — a
+                    globally installed dependency version, a cached build
+                    artifact, an environment variable set once and forgotten, or
+                    a different OS/Node version. Running the full pipeline in a
+                    clean, reproducible container/VM for every single change is
+                    what actually verifies the change is correct in isolation,
+                    not just correct given whatever accumulated state happens to
+                    be on one developer's laptop — this is precisely the
+                    guarantee CI is meant to provide.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="advanced">4. Advanced questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  would you design a rollback strategy for a frontend deployed
+                  via S3 + CloudFront, given that a bad deploy is discovered 20
+                  minutes after release?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Keep every deployed build as its own versioned/timestamped
+                    folder in S3 (never overwrite "latest" in place) — rollback
+                    then becomes simply repointing CloudFront's origin path (or
+                    updating an index/manifest object it reads) back to the
+                    previous known-good build's folder, which propagates in
+                    minutes without needing to rebuild anything. Combine this
+                    with a CloudFront cache invalidation for the entry HTML file
+                    specifically (so the rollback is visible immediately, not
+                    delayed by cached TTLs), while long-lived, content-hashed
+                    asset files (JS/CSS with a hash in the filename) don't need
+                    invalidation at all since a rollback simply references the
+                    old hashed filenames again. The key architectural decision
+                    that makes fast rollback possible at all is immutable,
+                    versioned deploys — never deploying by overwriting the
+                    previous build in place.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  What's the difference between EC2 and a serverless/managed
+                  hosting approach for a frontend app, and when might you
+                  actually still need EC2?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    A static frontend build (HTML/CSS/JS with no server-side
+                    rendering) has no real need for EC2 at all — S3 + CloudFront
+                    serves it more cheaply and with less operational overhead
+                    (no servers to patch, scale, or monitor). EC2 (or a
+                    container service) becomes relevant when you need actual
+                    server-side compute at request time — an SSR Next.js app
+                    that renders per-request, a lightweight API/BFF
+                    (backend-for-frontend) layer aggregating calls to internal
+                    services, or a WebSocket server for real-time features. The
+                    senior-level framing: default to static hosting for anything
+                    that can be static, and only reach for compute
+                    infrastructure (EC2, containers, Lambda) for the specific
+                    pieces that genuinely need server-side execution.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  a deploy passed every automated test in the pipeline but broke
+                  a critical flow in production within minutes. What pipeline
+                  gaps would you investigate, and what would you add?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    First question: did staging actually mirror production
+                    closely enough (same environment config, same data
+                    shape/scale, same third-party integrations) — a very common
+                    gap is staging using mocked/seeded data that doesn't
+                    exercise the real edge case that broke in prod. Second: were
+                    the E2E tests covering the actual critical flow that broke,
+                    or just a happy-path subset — critical-path E2E coverage
+                    should be treated as non-negotiable even if the rest of the
+                    suite is thinner. Additions to consider: canary/gradual
+                    rollout instead of an all-at-once deploy (so this class of
+                    failure only hits a small cohort before being caught by
+                    automated health-check monitoring), automated rollback
+                    triggers tied to real-time error-rate/latency monitoring
+                    rather than relying on someone noticing manually, and a
+                    post-incident process that turns this specific gap into a
+                    new automated test so the same class of failure can't reach
+                    production silently again.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">6. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong>
+                Overwriting the same S3 "latest" build in place instead of
+                versioned/immutable deploys, making rollback slow or impossible;
+                baking secrets into the client-side bundle; skipping E2E tests
+                against a true staging environment and only running them against
+                mocks; deploying 100% of traffic at once for a high-risk change
+                instead of a canary/gradual rollout; no automated rollback
+                trigger, relying entirely on someone noticing a spike in errors
+                manually.
+              </div>
+
+              <h2 id="company">7. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>General senior-level:</strong> "Walk me through what
+                  happens from merging a PR to it being live for users" — tests
+                  full pipeline understanding end to end.
+                </li>
+                <li>
+                  <strong>Reliability-focused companies:</strong> "How would you
+                  design a deployment strategy that minimizes blast radius for a
+                  bad release?" — tests canary/blue-green reasoning.
+                </li>
+                <li>
+                  <strong>Fintech-style (relevant to your background):</strong>
+                  "How do you handle secrets and environment-specific config for
+                  a regulated application across dev/staging/prod?"
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>Delivery vs Deployment</td>
+                  <td>
+                    Delivery has a manual approval gate; deployment is fully
+                    automatic
+                  </td>
+                </tr>
+                <tr>
+                  <td>Pipeline order</td>
+                  <td>
+                    Install → lint/type-check → test → build → deploy staging →
+                    E2E → deploy prod
+                  </td>
+                </tr>
+                <tr>
+                  <td>S3 + CloudFront</td>
+                  <td>
+                    S3 = storage/origin; CloudFront = CDN/edge caching + HTTPS
+                    in front of it
+                  </td>
+                </tr>
+                <tr>
+                  <td>Blue-green</td>
+                  <td>Instant full-traffic switch between two environments</td>
+                </tr>
+                <tr>
+                  <td>Canary</td>
+                  <td>
+                    Gradual traffic rollout — limits blast radius of a bad
+                    deploy
+                  </td>
+                </tr>
+                <tr>
+                  <td>Fast rollback</td>
+                  <td>
+                    Requires immutable/versioned deploys, never
+                    overwrite-in-place
+                  </td>
+                </tr>
+                <tr>
+                  <td>Secrets</td>
+                  <td>
+                    Never in the client bundle — secrets manager, injected only
+                    where needed
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: pairs with <a href="git.html">Git</a> (branching
+                strategy feeding the pipeline) and
+                <a href="testing.html">Testing</a> (what actually runs at each
+                pipeline stage).
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="webpack-babel.html"
+                  ><span class="dir">← Previous</span>Webpack &amp; Babel
+                  Interview Guide</a
+                >
+                <a class="next" href="agile-leadership.html"
+                  ><span class="dir">Next →</span>Agile &amp; Leadership
+                  Interview Guide</a
+                >
+              </div>
+            </div>
+
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
+          </div>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
       </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
-  </div>
-</div>
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="../assets/app.js"></script>
-</body>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
 </html>

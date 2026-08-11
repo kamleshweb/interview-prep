@@ -1,202 +1,605 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Security & Auth Interview Guide — Kamlesh Kumar</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="logo">KK</div>
-      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
-    </div>
-    <input id="search-box" type="text" placeholder="Search topics…">
-    <div class="nav-group"><div class="nav-group-title">Start Here</div>
-      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
-    <div class="nav-group"><div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
-    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
-    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
-    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
-    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a>
-      <a class="nav-link done" href="debugging-and-tools.html"><span class="dot"></span> Debugging & Dev Tools</a></div>
-    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
-    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
-    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link done active" href="security.html"><span class="dot"></span> Security & Auth</a></div>
-    <div class="nav-group"><div class="nav-group-title">Process</div>
-      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
-  </aside>
-
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Security & Auth</div>
-      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
-    </div>
-
-    <main>
-      <div class="content-wrap">
-        <div class="prose">
-          <div class="hero">
-            <h1>Security & Auth Interview Guide</h1>
-            <p class="lead">XSS, CSRF, CSP, and token-storage trade-offs — the frontend-facing slice of application security, especially relevant given your background on a regulated financial platform.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Security & Auth Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link done" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link done" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a class="nav-link done" href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link done" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done" href="testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link done" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+          <a class="nav-link done" href="debugging-and-tools.html"
+            ><span class="dot"></span> Debugging & Dev Tools</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done" href="cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a class="nav-link done" href="design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link done" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done" href="performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link done active" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done" href="agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
 
-          <h2 id="overview">1. Overview</h2>
-          <p>Frontend security interviews focus on a specific, well-known set of client-side attack vectors and the concrete defenses against each. For a candidate with banking-domain experience (CFTC/EMIR compliance context on your resume), expect this round to carry real weight — security-conscious teams in regulated industries screen for this explicitly, not just as a box-ticking topic.</p>
-          <div class="tag">XSS</div><div class="tag">CSRF</div><div class="tag">CSP</div><div class="tag">Clickjacking</div><div class="tag">CORS</div><div class="tag">Token Storage</div><div class="tag">Dependency Vulnerabilities</div>
-
-          <h2 id="basic">2. Basic questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What is XSS (Cross-Site Scripting), and how does React protect against it by default?</summary>
-            <div class="qa-body">
-              <p>XSS is injecting attacker-controlled script into a page that then executes in a victim's browser session — typically by getting untrusted user input rendered as live HTML/JS instead of inert text. React escapes any value interpolated into JSX by default (<code>{userInput}</code> is always rendered as text, never parsed as HTML), which closes off the most common injection path automatically. The escape hatch, <code>dangerouslySetInnerHTML</code>, is named the way it is deliberately — using it with any untrusted/user-provided content re-opens exactly this vulnerability, which is why any use of it should go through a sanitization library (like DOMPurify) first.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What is CSRF (Cross-Site Request Forgery), and how is it different from XSS?</summary>
-            <div class="qa-body">
-              <p>XSS runs malicious code inside your site's own origin. CSRF doesn't need to run any code on your site at all — it tricks a victim's browser into making a request to your site (e.g. by submitting a hidden form on a malicious page) while the victim is still authenticated there, so the browser automatically attaches their session cookie, and the server can't tell the request wasn't intentional. Defenses: CSRF tokens (a per-session, unpredictable token the server requires on state-changing requests, which an attacker's page has no way to know), and <code>SameSite</code> cookie attributes that prevent the cookie from being sent on cross-site requests in the first place.</p>
-            </div>
-          </details>
-
-          <h2 id="intermediate">3. Intermediate questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> Where should an auth token be stored: localStorage, sessionStorage, or an httpOnly cookie — and why?</summary>
-            <div class="qa-body">
-              <table>
-                <tr><th></th><th>localStorage/sessionStorage</th><th>httpOnly cookie</th></tr>
-                <tr><td>XSS exposure</td><td>Fully readable by any JS on the page — a single XSS hole leaks every token</td><td>Not accessible to JS at all (that's what <code>httpOnly</code> means) — immune to being read by an XSS payload</td></tr>
-                <tr><td>CSRF exposure</td><td>Not automatically attached to requests — CSRF doesn't apply the same way</td><td>Automatically attached by the browser to matching-origin requests — needs CSRF defenses</td></tr>
-                <tr><td>Convenience</td><td>Simple, manual header attachment</td><td>Automatic, but requires server cooperation (Set-Cookie, SameSite config)</td></tr>
-              </table>
-              <p>The security-conscious default, especially for a financial application: httpOnly, Secure, SameSite cookies for the token itself, paired with CSRF-token defenses on state-changing requests — trading a CSRF surface (well-understood and defensible) for eliminating the XSS-token-theft surface entirely (a much more severe, harder-to-fully-close class of risk). This is a genuine trade-off worth naming explicitly rather than a one-sided "cookies are always better" claim.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> What is Content Security Policy (CSP), and what's a concrete example of what it prevents?</summary>
-            <div class="qa-body">
-<pre><code>Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted-cdn.com</code></pre>
-              <p>CSP is a response header that tells the browser exactly which sources are allowed to load scripts, styles, images, etc. from — anything not on the allowlist is blocked, even if an XSS vulnerability somehow got malicious script into the page's HTML. A strict <code>script-src</code> that excludes <code>'unsafe-inline'</code> means even a successful HTML-injection attack still can't execute an inline <code>&lt;script&gt;</code> tag — CSP acts as a second layer of defense that assumes the first layer (input sanitization) might fail, which is exactly the "defense in depth" principle security reviewers look for. When a React app genuinely needs to load a specific third-party script (an analytics tag, a payment widget), the fix is adding that exact origin to the relevant directive (<code>script-src 'self' https://js.stripe.com</code>) rather than loosening the policy broadly with <code>'unsafe-inline'</code> or a wildcard — a narrowly-scoped allowlist entry preserves almost all of CSP's protection, while a wildcard defeats the point of having one at all.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> What is clickjacking, and how do you prevent it?</summary>
-            <div class="qa-body">
-              <p>Clickjacking loads your page inside an invisible or disguised <code>&lt;iframe&gt;</code> on an attacker's site, tricking a user into clicking something (a "claim your prize" button, say) that's actually positioned over a real, sensitive control on your page underneath (a "transfer funds" or "delete account" button) — the user sees the attacker's fake UI but their click lands on yours. Prevent it with the <code>X-Frame-Options</code> header (<code>DENY</code> or <code>SAMEORIGIN</code>) or the more flexible modern replacement, the CSP <code>frame-ancestors</code> directive (<code>frame-ancestors 'self'</code>), which tells the browser to refuse to render your page inside a frame on any other origin at all. For a banking-style application, this is typically a non-negotiable default header on every response, not something opted into per page.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> What is CORS, and why does it exist as a browser mechanism rather than a server-side-only concern?</summary>
-            <div class="qa-body">
-              <p>CORS (Cross-Origin Resource Sharing) is a browser-enforced check: by default, JS running on one origin can't read the response of a request made to a different origin (the Same-Origin Policy). CORS headers (<code>Access-Control-Allow-Origin</code> and related) are how a server explicitly opts specific origins into being allowed to read its responses. It's enforced by the browser, not the server — the request itself often still reaches the server either way, but the browser withholds the response from the calling JS if CORS doesn't permit it. This is a common point of confusion: CORS is a client-side protection against malicious sites reading data from an API on a victim's behalf, not a server-side access-control mechanism on its own — real authorization still has to happen server-side regardless of CORS configuration.</p>
-            </div>
-          </details>
-
-          <h2 id="advanced">4. Advanced questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How do you handle third-party dependency vulnerabilities in a large frontend codebase, practically?</summary>
-            <div class="qa-body">
-              <p>Automated scanning (<code>npm audit</code>, Snyk, Dependabot, or similar) integrated into CI so a vulnerable dependency fails the build or at minimum flags a PR, rather than being discovered manually or after the fact. Beyond detection: a policy for how quickly different severity levels must be addressed (critical vulnerabilities patched immediately vs lower-severity ones batched into regular maintenance), and — importantly — actually reading the advisory to understand whether the vulnerable code path is even reachable in your usage before treating every finding as equally urgent (a vulnerability in a dev-only build tool is a very different risk than one in a runtime dependency shipped to the browser).</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How would you secure a client-side form that handles sensitive financial data (e.g. entering trade details) beyond basic HTTPS?</summary>
-            <div class="qa-body">
-              <p>HTTPS is the baseline, not the whole answer. Beyond that: strict CSP to limit what can execute even if an injection succeeds; input validation and sanitization on both client (UX) and server (actual enforcement — client-side checks are always bypassable); avoiding autocomplete/browser-storage of sensitive field values where inappropriate (<code>autocomplete="off"</code> on genuinely sensitive fields); ensuring no sensitive data ends up in browser history via GET query strings (covered in the REST APIs guide) or in client-side logs/error-tracking payloads that might inadvertently capture form state; and session timeout/re-authentication for high-value actions, so a briefly unattended, still-logged-in session isn't a standing risk on a shared or unlocked device.</p>
-            </div>
-          </details>
-
-          <h2 id="expert">5. Expert-level & scenario-based</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: a security review flags that your app is vulnerable to XSS via a "rich text" comment/notes field that renders user-submitted HTML (bold, links, etc.). How do you fix it while still supporting rich formatting?</summary>
-            <div class="qa-body">
-              <p>The fix isn't to ban rich text — it's to never trust the raw HTML directly. Sanitize the user-submitted HTML server-side (and again client-side as defense-in-depth) through a well-maintained sanitization library (DOMPurify is the standard client-side choice) configured with an explicit allowlist of safe tags/attributes (<code>&lt;b&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;a href&gt;</code> with a scheme check to block <code>javascript:</code> URLs) rather than a denylist trying to catch every dangerous pattern — allowlists are far more robust against novel attack payloads than trying to enumerate everything to block. Only after sanitization does the content go anywhere near <code>dangerouslySetInnerHTML</code>. A stricter alternative some teams prefer entirely: don't accept raw HTML from users at all — accept a constrained markup format (Markdown, or a custom rich-text JSON structure) and render it through your own trusted renderer, eliminating the raw-HTML attack surface altogether.</p>
-            </div>
-          </details>
-
-          <h2 id="mistakes">6. Common mistakes & debugging</h2>
-          <div class="callout warn"><strong>Frequent review comments</strong>
-            Using <code>dangerouslySetInnerHTML</code> with unsanitized user content; storing auth tokens in localStorage for convenience without weighing the XSS trade-off; assuming CORS is an access-control mechanism rather than a browser-side protection, and skipping real server-side authorization; no CSP at all, removing a valuable defense-in-depth layer; trusting client-side validation as sufficient without server-side enforcement; not rotating/expiring sessions for high-sensitivity actions.
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> Security & Auth
           </div>
-
-          <h2 id="company">7. Frequently asked at top product companies</h2>
-          <ul>
-            <li><strong>General senior-level:</strong> "Where would you store a JWT, and why?" — tests the localStorage-vs-httpOnly-cookie trade-off directly.</li>
-            <li><strong>Security-conscious/regulated companies (highly relevant to your background):</strong> "Walk through how you'd secure a form handling sensitive financial data end to end."</li>
-            <li><strong>General senior-level:</strong> "Explain the difference between XSS and CSRF, and the defense for each" — near-universal frontend security question.</li>
-          </ul>
-
-          <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
-          <table>
-            <tr><th>Concept</th><th>One-line recall</th></tr>
-            <tr><td>XSS</td><td>Injected script executes in your origin — React escapes by default, sanitize anything using dangerouslySetInnerHTML</td></tr>
-            <tr><td>CSRF</td><td>Forged request rides on an existing session — defend with tokens + SameSite cookies</td></tr>
-            <tr><td>Token storage</td><td>httpOnly cookie trades CSRF exposure for closing the XSS-token-theft hole</td></tr>
-            <tr><td>CSP</td><td>Allowlists script/style/resource sources — defense in depth beyond sanitization</td></tr>
-            <tr><td>Clickjacking</td><td>X-Frame-Options or CSP frame-ancestors — block your page from being framed</td></tr>
-            <tr><td>CORS</td><td>Browser-side protection, not a server access-control substitute</td></tr>
-            <tr><td>Rich text from users</td><td>Sanitize with an allowlist (DOMPurify), never trust raw HTML directly</td></tr>
-          </table>
-
-          <p class="lead">Related: builds on <a href="react.html">React.js</a> (default JSX escaping) and <a href="rest-api.html">REST APIs</a> (auth patterns, sensitive data in requests).</p>
-
-          <div class="page-nav">
-            <a class="prev" href="debugging-and-tools.html"><span class="dir">← Previous</span>Debugging &amp; Developer Tools Guide</a>
-            <a class="next" href="micro-frontends.html"><span class="dir">Next →</span>Micro Frontends Interview Guide (Deep Dive)</a>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
           </div>
         </div>
 
-        <nav class="toc">
-          <div class="toc-title">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#basic">Basic</a>
-          <a href="#intermediate">Intermediate</a>
-          <a href="#advanced">Advanced</a>
-          <a href="#expert">Expert & scenarios</a>
-          <a href="#mistakes">Common mistakes</a>
-          <a href="#company">Company questions</a>
-          <a href="#cheatsheet">Cheat sheet</a>
-        </nav>
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>Security & Auth Interview Guide</h1>
+                <p class="lead">
+                  XSS, CSRF, CSP, and token-storage trade-offs — the
+                  frontend-facing slice of application security, especially
+                  relevant given your background on a regulated financial
+                  platform.
+                </p>
+              </div>
+
+              <h2 id="overview">1. Overview</h2>
+              <p>
+                Frontend security interviews focus on a specific, well-known set
+                of client-side attack vectors and the concrete defenses against
+                each. For a candidate with banking-domain experience (CFTC/EMIR
+                compliance context on your resume), expect this round to carry
+                real weight — security-conscious teams in regulated industries
+                screen for this explicitly, not just as a box-ticking topic.
+              </p>
+              <div class="tag">XSS</div>
+              <div class="tag">CSRF</div>
+              <div class="tag">CSP</div>
+              <div class="tag">Clickjacking</div>
+              <div class="tag">CORS</div>
+              <div class="tag">Token Storage</div>
+              <div class="tag">Dependency Vulnerabilities</div>
+
+              <h2 id="basic">2. Basic questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What is
+                  XSS (Cross-Site Scripting), and how does React protect against
+                  it by default?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    XSS is injecting attacker-controlled script into a page that
+                    then executes in a victim's browser session — typically by
+                    getting untrusted user input rendered as live HTML/JS
+                    instead of inert text. React escapes any value interpolated
+                    into JSX by default (<code>{userInput}</code> is always
+                    rendered as text, never parsed as HTML), which closes off
+                    the most common injection path automatically. The escape
+                    hatch, <code>dangerouslySetInnerHTML</code>, is named the
+                    way it is deliberately — using it with any
+                    untrusted/user-provided content re-opens exactly this
+                    vulnerability, which is why any use of it should go through
+                    a sanitization library (like DOMPurify) first.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What is
+                  CSRF (Cross-Site Request Forgery), and how is it different
+                  from XSS?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    XSS runs malicious code inside your site's own origin. CSRF
+                    doesn't need to run any code on your site at all — it tricks
+                    a victim's browser into making a request to your site (e.g.
+                    by submitting a hidden form on a malicious page) while the
+                    victim is still authenticated there, so the browser
+                    automatically attaches their session cookie, and the server
+                    can't tell the request wasn't intentional. Defenses: CSRF
+                    tokens (a per-session, unpredictable token the server
+                    requires on state-changing requests, which an attacker's
+                    page has no way to know), and <code>SameSite</code> cookie
+                    attributes that prevent the cookie from being sent on
+                    cross-site requests in the first place.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="intermediate">3. Intermediate questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Where should an auth token be stored: localStorage,
+                  sessionStorage, or an httpOnly cookie — and why?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th></th>
+                      <th>localStorage/sessionStorage</th>
+                      <th>httpOnly cookie</th>
+                    </tr>
+                    <tr>
+                      <td>XSS exposure</td>
+                      <td>
+                        Fully readable by any JS on the page — a single XSS hole
+                        leaks every token
+                      </td>
+                      <td>
+                        Not accessible to JS at all (that's what
+                        <code>httpOnly</code> means) — immune to being read by
+                        an XSS payload
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>CSRF exposure</td>
+                      <td>
+                        Not automatically attached to requests — CSRF doesn't
+                        apply the same way
+                      </td>
+                      <td>
+                        Automatically attached by the browser to matching-origin
+                        requests — needs CSRF defenses
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Convenience</td>
+                      <td>Simple, manual header attachment</td>
+                      <td>
+                        Automatic, but requires server cooperation (Set-Cookie,
+                        SameSite config)
+                      </td>
+                    </tr>
+                  </table>
+                  <p>
+                    The security-conscious default, especially for a financial
+                    application: httpOnly, Secure, SameSite cookies for the
+                    token itself, paired with CSRF-token defenses on
+                    state-changing requests — trading a CSRF surface
+                    (well-understood and defensible) for eliminating the
+                    XSS-token-theft surface entirely (a much more severe,
+                    harder-to-fully-close class of risk). This is a genuine
+                    trade-off worth naming explicitly rather than a one-sided
+                    "cookies are always better" claim.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  What is Content Security Policy (CSP), and what's a concrete
+                  example of what it prevents?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>Content-Security-Policy: default-src 'self'; script-src 'self' https://trusted-cdn.com</code></pre>
+                  <p>
+                    CSP is a response header that tells the browser exactly
+                    which sources are allowed to load scripts, styles, images,
+                    etc. from — anything not on the allowlist is blocked, even
+                    if an XSS vulnerability somehow got malicious script into
+                    the page's HTML. A strict <code>script-src</code> that
+                    excludes <code>'unsafe-inline'</code> means even a
+                    successful HTML-injection attack still can't execute an
+                    inline <code>&lt;script&gt;</code> tag — CSP acts as a
+                    second layer of defense that assumes the first layer (input
+                    sanitization) might fail, which is exactly the "defense in
+                    depth" principle security reviewers look for. When a React
+                    app genuinely needs to load a specific third-party script
+                    (an analytics tag, a payment widget), the fix is adding that
+                    exact origin to the relevant directive (<code
+                      >script-src 'self' https://js.stripe.com</code
+                    >) rather than loosening the policy broadly with
+                    <code>'unsafe-inline'</code> or a wildcard — a
+                    narrowly-scoped allowlist entry preserves almost all of
+                    CSP's protection, while a wildcard defeats the point of
+                    having one at all.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  What is clickjacking, and how do you prevent it?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Clickjacking loads your page inside an invisible or
+                    disguised <code>&lt;iframe&gt;</code> on an attacker's site,
+                    tricking a user into clicking something (a "claim your
+                    prize" button, say) that's actually positioned over a real,
+                    sensitive control on your page underneath (a "transfer
+                    funds" or "delete account" button) — the user sees the
+                    attacker's fake UI but their click lands on yours. Prevent
+                    it with the <code>X-Frame-Options</code> header (<code
+                      >DENY</code
+                    >
+                    or <code>SAMEORIGIN</code>) or the more flexible modern
+                    replacement, the CSP <code>frame-ancestors</code> directive
+                    (<code>frame-ancestors 'self'</code>), which tells the
+                    browser to refuse to render your page inside a frame on any
+                    other origin at all. For a banking-style application, this
+                    is typically a non-negotiable default header on every
+                    response, not something opted into per page.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  What is CORS, and why does it exist as a browser mechanism
+                  rather than a server-side-only concern?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    CORS (Cross-Origin Resource Sharing) is a browser-enforced
+                    check: by default, JS running on one origin can't read the
+                    response of a request made to a different origin (the
+                    Same-Origin Policy). CORS headers (<code
+                      >Access-Control-Allow-Origin</code
+                    >
+                    and related) are how a server explicitly opts specific
+                    origins into being allowed to read its responses. It's
+                    enforced by the browser, not the server — the request itself
+                    often still reaches the server either way, but the browser
+                    withholds the response from the calling JS if CORS doesn't
+                    permit it. This is a common point of confusion: CORS is a
+                    client-side protection against malicious sites reading data
+                    from an API on a victim's behalf, not a server-side
+                    access-control mechanism on its own — real authorization
+                    still has to happen server-side regardless of CORS
+                    configuration.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="advanced">4. Advanced questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  do you handle third-party dependency vulnerabilities in a
+                  large frontend codebase, practically?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Automated scanning (<code>npm audit</code>, Snyk,
+                    Dependabot, or similar) integrated into CI so a vulnerable
+                    dependency fails the build or at minimum flags a PR, rather
+                    than being discovered manually or after the fact. Beyond
+                    detection: a policy for how quickly different severity
+                    levels must be addressed (critical vulnerabilities patched
+                    immediately vs lower-severity ones batched into regular
+                    maintenance), and — importantly — actually reading the
+                    advisory to understand whether the vulnerable code path is
+                    even reachable in your usage before treating every finding
+                    as equally urgent (a vulnerability in a dev-only build tool
+                    is a very different risk than one in a runtime dependency
+                    shipped to the browser).
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  would you secure a client-side form that handles sensitive
+                  financial data (e.g. entering trade details) beyond basic
+                  HTTPS?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    HTTPS is the baseline, not the whole answer. Beyond that:
+                    strict CSP to limit what can execute even if an injection
+                    succeeds; input validation and sanitization on both client
+                    (UX) and server (actual enforcement — client-side checks are
+                    always bypassable); avoiding autocomplete/browser-storage of
+                    sensitive field values where inappropriate (<code
+                      >autocomplete="off"</code
+                    >
+                    on genuinely sensitive fields); ensuring no sensitive data
+                    ends up in browser history via GET query strings (covered in
+                    the REST APIs guide) or in client-side logs/error-tracking
+                    payloads that might inadvertently capture form state; and
+                    session timeout/re-authentication for high-value actions, so
+                    a briefly unattended, still-logged-in session isn't a
+                    standing risk on a shared or unlocked device.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  a security review flags that your app is vulnerable to XSS via
+                  a "rich text" comment/notes field that renders user-submitted
+                  HTML (bold, links, etc.). How do you fix it while still
+                  supporting rich formatting?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    The fix isn't to ban rich text — it's to never trust the raw
+                    HTML directly. Sanitize the user-submitted HTML server-side
+                    (and again client-side as defense-in-depth) through a
+                    well-maintained sanitization library (DOMPurify is the
+                    standard client-side choice) configured with an explicit
+                    allowlist of safe tags/attributes (<code>&lt;b&gt;</code>,
+                    <code>&lt;i&gt;</code>, <code>&lt;a href&gt;</code> with a
+                    scheme check to block <code>javascript:</code> URLs) rather
+                    than a denylist trying to catch every dangerous pattern —
+                    allowlists are far more robust against novel attack payloads
+                    than trying to enumerate everything to block. Only after
+                    sanitization does the content go anywhere near
+                    <code>dangerouslySetInnerHTML</code>. A stricter alternative
+                    some teams prefer entirely: don't accept raw HTML from users
+                    at all — accept a constrained markup format (Markdown, or a
+                    custom rich-text JSON structure) and render it through your
+                    own trusted renderer, eliminating the raw-HTML attack
+                    surface altogether.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">6. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong> Using
+                <code>dangerouslySetInnerHTML</code> with unsanitized user
+                content; storing auth tokens in localStorage for convenience
+                without weighing the XSS trade-off; assuming CORS is an
+                access-control mechanism rather than a browser-side protection,
+                and skipping real server-side authorization; no CSP at all,
+                removing a valuable defense-in-depth layer; trusting client-side
+                validation as sufficient without server-side enforcement; not
+                rotating/expiring sessions for high-sensitivity actions.
+              </div>
+
+              <h2 id="company">7. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>General senior-level:</strong> "Where would you store
+                  a JWT, and why?" — tests the localStorage-vs-httpOnly-cookie
+                  trade-off directly.
+                </li>
+                <li>
+                  <strong
+                    >Security-conscious/regulated companies (highly relevant to
+                    your background):</strong
+                  >
+                  "Walk through how you'd secure a form handling sensitive
+                  financial data end to end."
+                </li>
+                <li>
+                  <strong>General senior-level:</strong> "Explain the difference
+                  between XSS and CSRF, and the defense for each" —
+                  near-universal frontend security question.
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>XSS</td>
+                  <td>
+                    Injected script executes in your origin — React escapes by
+                    default, sanitize anything using dangerouslySetInnerHTML
+                  </td>
+                </tr>
+                <tr>
+                  <td>CSRF</td>
+                  <td>
+                    Forged request rides on an existing session — defend with
+                    tokens + SameSite cookies
+                  </td>
+                </tr>
+                <tr>
+                  <td>Token storage</td>
+                  <td>
+                    httpOnly cookie trades CSRF exposure for closing the
+                    XSS-token-theft hole
+                  </td>
+                </tr>
+                <tr>
+                  <td>CSP</td>
+                  <td>
+                    Allowlists script/style/resource sources — defense in depth
+                    beyond sanitization
+                  </td>
+                </tr>
+                <tr>
+                  <td>Clickjacking</td>
+                  <td>
+                    X-Frame-Options or CSP frame-ancestors — block your page
+                    from being framed
+                  </td>
+                </tr>
+                <tr>
+                  <td>CORS</td>
+                  <td>
+                    Browser-side protection, not a server access-control
+                    substitute
+                  </td>
+                </tr>
+                <tr>
+                  <td>Rich text from users</td>
+                  <td>
+                    Sanitize with an allowlist (DOMPurify), never trust raw HTML
+                    directly
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: builds on <a href="react.html">React.js</a> (default
+                JSX escaping) and <a href="rest-api.html">REST APIs</a> (auth
+                patterns, sensitive data in requests).
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="debugging-and-tools.html"
+                  ><span class="dir">← Previous</span>Debugging &amp; Developer
+                  Tools Guide</a
+                >
+                <a class="next" href="micro-frontends.html"
+                  ><span class="dir">Next →</span>Micro Frontends Interview
+                  Guide (Deep Dive)</a
+                >
+              </div>
+            </div>
+
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
+          </div>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
       </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
-  </div>
-</div>
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="../assets/app.js"></script>
-</body>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
 </html>

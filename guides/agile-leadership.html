@@ -1,280 +1,945 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Agile & Leadership Interview Guide — Kamlesh Kumar</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="nav-group"><div class="nav-group-title">Start Here</div>
-      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
-    <div class="nav-group"><div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
-    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
-    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
-    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
-    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a></div>
-    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
-    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
-    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
-    <div class="nav-group"><div class="nav-group-title">Process</div>
-      <a class="nav-link done active" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
-  </aside>
-
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Agile & Leadership</div>
-      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
-    </div>
-
-    <main>
-      <div class="content-wrap">
-        <div class="prose">
-          <div class="hero">
-            <h1>Agile & Leadership Interview Guide</h1>
-            <p class="lead">The behavioral and process round — mentoring, code review culture, conflict, and incident ownership. At 12 years and a Frontend Technical Lead title, this round often matters as much as the technical ones.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agile & Leadership Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link done" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link done" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a class="nav-link done" href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link done" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done" href="testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link done" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done" href="cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a class="nav-link done" href="design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link done" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done" href="performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link done" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done active" href="agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
 
-          <h2 id="overview">1. Overview — why this round matters at your level</h2>
-          <p>Below senior level, behavioral rounds mostly check for red flags. At senior/lead/staff, they're actively evaluating whether you can operate as a force multiplier — mentoring others, driving technical decisions across a team, and handling the messy parts of real engineering work (disagreement, incidents, ambiguous priorities) with sound judgment. Your resume already shows this pattern (leading frontend development, mentoring, code reviews, enforcing quality standards) — this guide is about how to talk about it structurally so an interviewer can actually evaluate it.</p>
-          <div class="tag">STAR Method</div><div class="tag">Scrum vs Kanban</div><div class="tag">Code Review Culture</div><div class="tag">Mentoring</div><div class="tag">Conflict Resolution</div><div class="tag">Incident Ownership</div>
-
-          <h2 id="framework">2. A framework for behavioral answers: STAR</h2>
-          <table>
-            <tr><th>Step</th><th>What to cover</th></tr>
-            <tr><td><strong>S</strong>ituation</td><td>Brief context — team size, project, the constraint that made this hard (2-3 sentences, not a project history)</td></tr>
-            <tr><td><strong>T</strong>ask</td><td>What specifically you were responsible for — not what "the team" did in general</td></tr>
-            <tr><td><strong>A</strong>ction</td><td>What YOU actually did, step by step — this is the part interviewers care about most, so it should be the longest</td></tr>
-            <tr><td><strong>R</strong>esult</td><td>The outcome, ideally with a concrete detail (a number, a changed process, what happened next) — and what you'd do differently, if relevant</td></tr>
-          </table>
-          <p>Keep each answer to roughly 2 minutes unless the interviewer explicitly asks you to go deeper.</p>
-          <div class="callout"><strong>Prepare 8-10 stories, not one per possible question</strong>
-            You don't need a unique story per possible question — 8-10 solid stories, mapped to the categories in the story bank below, can flex across nearly every behavioral prompt you'll get, since the underlying skills (communication, ownership, judgment) overlap across questions. A single strong production-incident story, for example, can answer "conflict," "ownership," and "technical decision" prompts with a different emphasis each time.</div>
-
-          <h3>Worked example: filling in the STAR template</h3>
-          <p>Question: <em>"Tell me about a time you disagreed with a technical decision."</em> Here's the shape a strong answer takes — fill your own specifics into the brackets:</p>
-          <div class="callout">
-            <strong>Situation:</strong> "On the [project] I lead frontend for, the team was about to adopt [approach X] for a new module."<br>
-            <strong>Task:</strong> "I believed this would create maintainability/performance risk given [specific reasoning], and needed to raise this without derailing the timeline."<br>
-            <strong>Action:</strong> "I put together a short comparison — current approach vs. my proposal — with a small proof-of-concept and concrete trade-offs (dev time, performance, testability), and brought it to the team rather than just voicing disagreement in the meeting. I made sure to frame it as 'here's a risk and an alternative,' not 'this is wrong.'"<br>
-            <strong>Result:</strong> "The team adopted [outcome], which reduced/improved [measurable result]. Even where I didn't fully get my way, I made sure the decision was made with the trade-offs visible, which mattered more than being right."
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> Agile & Leadership
           </div>
-          <p>Why this works: it's specific, shows initiative (a proof-of-concept, not just an opinion), stays collaborative rather than combative in framing, and closes with a result plus a mature reflection rather than just "and I was right."</p>
-
-          <h2 id="storybank">3. Story bank — map your own real experiences to each</h2>
-          <p>Ten categories worth having a real story ready for, each showing a different trait interviewers are screening for:</p>
-          <ol>
-            <li><strong>A time you disagreed with a technical decision</strong> (architecture/library/approach) and how you handled it — shows influence without authority, communication, willingness to be wrong.</li>
-            <li><strong>A production incident or critical bug you led the resolution of</strong> — shows composure under pressure, root-cause thinking, communication to stakeholders during an outage.</li>
-            <li><strong>A time you mentored a junior/mid-level engineer</strong> — shows leadership, patience, the ability to grow others, which matters specifically at Lead level.</li>
-            <li><strong>A time you pushed back on an unrealistic deadline</strong> — shows technical judgment, negotiation, stakeholder management.</li>
-            <li><strong>A time you made a decision with incomplete information or high ambiguity</strong> — shows judgment and risk assessment.</li>
-            <li><strong>A time you received tough feedback and what you changed as a result</strong> — shows coachability and self-awareness.</li>
-            <li><strong>A time you influenced a cross-functional team</strong> (design, product, backend) toward a technical constraint they didn't initially understand — shows communication and collaboration.</li>
-            <li><strong>A time a project failed or underperformed and what you learned</strong> — shows honesty and a growth mindset; pick something real with a genuine lesson, not something catastrophic.</li>
-            <li><strong>A time you improved a process or system beyond just shipping features</strong> (testing practices, code review standards, performance culture, CI/CD improvements) — shows technical leadership beyond individual tickets.</li>
-            <li><strong>A time you balanced technical debt against shipping speed</strong> — shows pragmatism and long-term thinking.</li>
-          </ol>
-
-          <h3>Frequently asked, by category</h3>
-          <p><strong>Ownership &amp; Initiative:</strong> "Tell me about a time you went beyond your defined role to solve a problem." / "Describe a project you owned end-to-end." — <strong>Conflict &amp; Collaboration:</strong> "Tell me about a disagreement with a teammate or manager and how it was resolved." / "How do you handle code review pushback on your own PRs?" — <strong>Leadership &amp; Mentorship:</strong> "How do you onboard a new engineer onto your team?" / "Describe your approach to code reviews as a lead — what do you focus on?" / "How do you balance hands-on coding with technical leadership responsibilities?" — <strong>Ambiguity &amp; Prioritization:</strong> "How do you prioritize when everything feels urgent?" / "Describe a time requirements changed mid-project — how did you adapt?" — <strong>Failure &amp; Growth:</strong> "Tell me about your biggest technical mistake and what you learned." / "What's a technical opinion you've changed your mind about in the last few years?"</p>
-
-          <h3>Amazon-specific (Leadership Principles) — expect these framed explicitly</h3>
-          <table>
-            <tr><th>Principle</th><th>Typical framing</th></tr>
-            <tr><td>Customer Obsession</td><td>"Tell me about a time you advocated for the user against internal pressure."</td></tr>
-            <tr><td>Ownership</td><td>"Tell me about a time you fixed something that wasn't 'your job.'"</td></tr>
-            <tr><td>Dive Deep</td><td>"Tell me about a time you found a root cause others missed."</td></tr>
-            <tr><td>Bias for Action</td><td>"Tell me about a decision you made quickly with limited data."</td></tr>
-            <tr><td>Earn Trust</td><td>"Tell me about a time you gave difficult feedback to a peer."</td></tr>
-          </table>
-          <p>Amazon interviewers will often name the principle explicitly or probe until they can map your answer to one — having your 8-10 stories pre-tagged against the principles they most naturally demonstrate saves you from reaching for one cold.</p>
-
-          <h2 id="basic">4. Basic questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> Scrum vs Kanban — what's the actual practical difference, not just the textbook definitions?</summary>
-            <div class="qa-body">
-              <table>
-                <tr><th></th><th>Scrum</th><th>Kanban</th></tr>
-                <tr><td>Cadence</td><td>Fixed-length sprints (1-2 weeks), planned upfront</td><td>Continuous flow, no fixed iteration boundary</td></tr>
-                <tr><td>Commitment</td><td>Team commits to a sprint's scope; mid-sprint changes are discouraged</td><td>Work is pulled as capacity frees up; new priorities can enter more fluidly</td></tr>
-                <tr><td>Best fit</td><td>Feature-driven product work with predictable-ish scope</td><td>Support/maintenance-heavy work, ops, or highly interrupt-driven teams</td></tr>
-              </table>
-              <p>In practice, many real teams run a hybrid — sprint-based planning with a Kanban-style board for visualizing flow within the sprint — rather than a textbook-pure version of either.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What makes a code review actually useful, versus just a rubber-stamp or a nitpick session?</summary>
-            <div class="qa-body">
-              <p>A useful review checks correctness (does this actually do what it claims, including edge cases), design (is this the right approach for the codebase, not just "does it work"), and maintainability (will the next person understand this) — while clearly separating must-fix issues from optional style preferences, so the author isn't stuck parsing which comments actually block merging. Nitpick-only reviews (spacing, naming preferences with no functional impact) that ignore real design or correctness issues give a false sense of quality; rubber-stamp approvals with no real reading defeat the purpose entirely. The best reviews also teach — a comment explaining <em>why</em> something should change is more valuable long-term than just stating what to change.</p>
-            </div>
-          </details>
-
-          <h2 id="intermediate">5. Intermediate — common behavioral prompts, with real approach guidance</h2>
-
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Behavioral</span> "Tell me about a time you disagreed with a technical decision."</summary>
-            <div class="qa-body">
-              <p>What interviewers are actually listening for: did you raise the disagreement constructively and with evidence (not just insist), did you know when to escalate vs when to let it go once a decision was made, and did you commit fully to the team's direction afterward rather than quietly resenting it or re-litigating it later ("disagree and commit"). A strong answer names the specific technical trade-off you were weighing (not just "I thought my way was better"), how you presented your case (a prototype, a performance comparison, a written proposal), and — importantly — what happened if you were overruled: did you support the chosen direction fully, and was there a concrete lesson either way.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Behavioral</span> "Tell me about a time you mentored a junior engineer."</summary>
-            <div class="qa-body">
-              <p>Strong answers are specific about the mechanism, not just "I helped them" — pairing sessions, structured code review feedback with explanations rather than corrections, breaking down a task into a learning-appropriate size, or creating a small piece of documentation/checklist that outlived the one interaction. The result should show a change over time (they became more independent on X, they later mentored someone else, they shipped something significant on their own) rather than a single one-off fix. Given your resume shows conducting code reviews and enforcing quality standards across teams, this is a strength to have 1-2 concrete stories ready for, not just a general claim.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Behavioral</span> "Tell me about a time you had to push back on a deadline or reduce scope."</summary>
-            <div class="qa-body">
-              <p>The key signal here is whether you brought data/trade-offs rather than just saying "no" or silently over-committing and burning out the team to hit an unrealistic date. A strong structure: what the original ask was, what you identified as genuinely at risk (quality, a specific class of bug, technical debt with a real future cost), the alternative you proposed (cut scope, phase the release, add resources), and how that was received. Avoid framing it as "I was right and they were wrong" — the better frame is collaborative: you surfaced a risk clearly enough that a real decision could be made, rather than the risk being invisible until it became a production problem.</p>
-            </div>
-          </details>
-
-          <h2 id="advanced">6. Advanced — incident and cross-team scenarios</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Behavioral</span> "Tell me about a production incident you handled — walk me through it."</summary>
-            <div class="qa-body">
-              <p>Interviewers want the full arc: how it was detected (monitoring alert vs a user report — the former is a better signal about your team's observability), your immediate triage priority (stop the bleeding — rollback/mitigate — before root-causing), how you communicated status during the incident (to whom, how often), the actual root cause once found, and critically, what changed afterward so the same class of issue can't recur silently (a new test, a new monitor, a process change) — a strong incident story always ends with a systemic fix, not just "and then it was fixed." If you were the one who caused the original issue, own that plainly rather than glossing over it — how you handled the aftermath matters more than the fact that a mistake happened at all.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Behavioral</span> "How do you handle working with cross-functional teams (backend, QA, product) when priorities conflict?"</summary>
-            <div class="qa-body">
-              <p>Given your background working across frontend/backend/business teams on a regulated financial platform, a strong answer names a concrete mechanism, not just "good communication": how you surface trade-offs in terms the other function cares about (a backend engineer cares about API contract stability, a product manager cares about user impact and timeline, not implementation detail), how you resolve genuine deadlocks (an agreed escalation path, a shared prioritization framework, a documented decision so it isn't re-litigated), and an example where this actually worked — ideally one where you had to translate a technical constraint into terms a non-technical stakeholder could make a real decision on.</p>
-            </div>
-          </details>
-
-          <h2 id="leadership">7. Leadership-specific questions (Technical Lead level)</h2>
-          <p>These probe scope of influence and judgment beyond any single ticket — expect them framed as open discussion, not a single "correct" answer:</p>
-          <ol>
-            <li>"How do you decide what your team should build in-house vs. adopt from a library/framework?"</li>
-            <li>"How do you handle a situation where a senior engineer on your team consistently pushes back on your architectural decisions?"</li>
-            <li>"How do you measure whether your team's frontend architecture is healthy?" — build times, bundle-size trends, flaky-test rate, PR review turnaround, incident frequency, developer satisfaction.</li>
-            <li>"How do you balance mentoring junior engineers with your own delivery responsibilities?"</li>
-            <li>"Describe how you'd introduce a new technology (e.g., migrating to TypeScript, adopting React Query) into an established codebase with a skeptical team."</li>
-            <li>"How do you handle scope creep from product/design mid-sprint?"</li>
-            <li>"What's your approach to technical debt — how do you get buy-in from non-technical stakeholders to invest time in it?"</li>
-          </ol>
-
-          <h2 id="mistakes">8. Common mistakes across every round</h2>
-          <div class="callout warn"><strong>Behavioral rounds</strong>
-            Answering with "the team did X" throughout, never clarifying your own specific role/actions; picking a story with no real conflict, tension, or stakes ("everything went smoothly" isn't a story that demonstrates judgment); rambling through Situation/Task for two minutes and rushing the Action/Result, which is backwards — Action deserves the most detail; badmouthing a former manager/teammate/company, which reads as a red flag regardless of whether the criticism is fair; a rehearsed-sounding answer with no natural depth when the interviewer probes ("tell me more about that") — prepare depth, not just the headline; not having a real answer for "tell me about a failure" (a story with zero real stakes reads as evasive).
-          </div>
-          <div class="callout warn"><strong>Technical (coding) rounds</strong>
-            Jumping to code before clarifying requirements/edge cases — always restate the problem and ask one or two clarifying questions first; going silent while thinking, instead of narrating your reasoning (interviewers grade the reasoning, not just the final answer); over-engineering a simple machine-coding problem instead of shipping a working version first, then refining; not testing your own code before saying "done" — walk through one or two cases by hand; giving up after the first working (often brute-force) solution instead of at least naming the better-complexity approach, even without time to fully implement it.
-          </div>
-          <div class="callout warn"><strong>System design rounds</strong>
-            Diving into implementation details before establishing requirements and scale (the RADIO framework's whole point, from the System Design guide); presenting only one solution with no trade-off discussion; ignoring non-functional requirements (accessibility, i18n, offline support, security) unless explicitly prompted to consider them.
-          </div>
-
-          <h2 id="tips">9. Tips for answering confidently and effectively</h2>
-          <ol>
-            <li><strong>Think out loud, always.</strong> Silence is the single biggest confidence-killer in technical rounds — even "let me think through the edge cases first" keeps the interviewer engaged and gives you partial credit for reasoning.</li>
-            <li><strong>Repeat the question back briefly</strong> before answering — buys thinking time and confirms you understood correctly.</li>
-            <li><strong>Use "headline first" for behavioral answers:</strong> state the outcome/point in one sentence, then unpack with STAR — easier to follow than a long chronological narrative.</li>
-            <li><strong>It's fine to say "I don't know" — then reason toward an answer.</strong> Interviewers strongly prefer structured reasoning from an honest "I haven't used X, but here's how I'd approach it based on Y I do know" over guessing confidently and being wrong.</li>
-            <li><strong>Ask calibrated questions in system design rounds</strong> ("Are we optimizing for read-heavy or write-heavy usage?") — this signals seniority more than any specific tech choice.</li>
-            <li><strong>Bring your own experience into the conversation explicitly</strong> — "In my current role building a financial operations platform, we handled a similar trade-off by..." grounds you as someone speaking from real practice, not textbook answers, which matters a lot at the Lead-level hiring bar.</li>
-            <li><strong>Practice out loud, not just in your head.</strong> Mock interviews (with a peer, or recording yourself) surface filler words and pacing issues you won't otherwise notice.</li>
-            <li><strong>Prepare 2-3 thoughtful questions for the interviewer</strong> at the end of every round — about team structure, technical challenges, how decisions get made — this is itself evaluated as a signal of genuine interest and seniority.</li>
-            <li><strong>Manage pacing in coding rounds:</strong> aim for a working brute-force solution by the halfway mark, leaving time to optimize and test.</li>
-            <li><strong>For "why this company" questions,</strong> be specific about something real about the company's product or engineering culture rather than generic praise — it shows genuine research.</li>
-          </ol>
-
-          <h2 id="company">10. Frequently asked at top product companies</h2>
-          <ul>
-            <li><strong>Amazon-style (Leadership Principles-driven):</strong> Expect very specific STAR-format prompts tied to named principles ("Ownership," "Bias for Action," "Earn Trust") — prepare stories that map cleanly to each, not generic ones.</li>
-            <li><strong>Meta/Google style:</strong> "Tell me about your proudest technical achievement" and "tell me about a time you failed" — both testing self-awareness and growth, not just success stories.</li>
-            <li><strong>Lead/Staff-level (matching your title):</strong> "How do you decide what your team should NOT work on?" and "how do you influence engineers who don't report to you?" — testing scope of influence beyond direct authority.</li>
-          </ul>
-
-          <h2 id="checklist">11. Final pre-interview checklist</h2>
-          <ul>
-            <li>8-10 STAR stories prepared and practiced out loud.</li>
-            <li>Comfortable implementing debounce/throttle/deep-clone/EventEmitter/Promise.all from memory.</li>
-            <li>Practiced 5+ frontend system design prompts end-to-end with a spoken narrative.</li>
-            <li>Reviewed React internals (Fiber, reconciliation, hooks rules, memoization) well enough to explain to a non-expert.</li>
-            <li>Done at least 2 mock interviews (technical + behavioral) with feedback.</li>
-            <li>Prepared 2-3 closing questions per interviewer/round.</li>
-            <li>Reviewed your own resume/projects — ready to go deep on anything listed, including specific metrics/outcomes.</li>
-          </ul>
-
-          <h2 id="cheatsheet">12. Cheat sheet / quick revision</h2>
-          <table>
-            <tr><th>Concept</th><th>One-line recall</th></tr>
-            <tr><td>STAR</td><td>Situation, Task, Action (longest part), Result</td></tr>
-            <tr><td>Scrum vs Kanban</td><td>Fixed sprints & commitment vs continuous flow & pull-based</td></tr>
-            <tr><td>Good code review</td><td>Correctness + design + maintainability, must-fix vs optional clearly separated</td></tr>
-            <tr><td>Disagree and commit</td><td>Argue with evidence, then fully support the team's final decision</td></tr>
-            <tr><td>Incident stories</td><td>Detection → triage/mitigate → root cause → systemic fix, always end with the fix</td></tr>
-            <tr><td>Prep strategy</td><td>8-10 flexible stories mapped to the story-bank categories, not one per question</td></tr>
-            <tr><td>Headline first</td><td>State the outcome in one sentence, then unpack with STAR</td></tr>
-            <tr><td>Think out loud</td><td>Silence is the biggest confidence-killer in technical rounds</td></tr>
-            <tr><td>System design mistakes</td><td>Requirements before implementation; always name a trade-off</td></tr>
-          </table>
-
-          <p class="lead">Related: continues into <a href="html5.html">HTML5</a> and the rest of the Web Fundamentals section.</p>
-
-          <div class="page-nav">
-            <a class="prev" href="cicd-aws.html"><span class="dir">← Previous</span>CI/CD &amp; AWS Interview Guide</a>
-            <a class="next" href="html5.html"><span class="dir">Next →</span>HTML5 Interview Guide</a>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
           </div>
         </div>
 
-        <nav class="toc">
-          <div class="toc-title">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#framework">STAR framework</a>
-          <a href="#storybank">Story bank</a>
-          <a href="#basic">Basic</a>
-          <a href="#intermediate">Behavioral prompts</a>
-          <a href="#advanced">Incident/cross-team</a>
-          <a href="#leadership">Leadership questions</a>
-          <a href="#mistakes">Common mistakes</a>
-          <a href="#tips">Tips</a>
-          <a href="#company">Company questions</a>
-          <a href="#checklist">Pre-interview checklist</a>
-          <a href="#cheatsheet">Cheat sheet</a>
-        </nav>
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>Agile & Leadership Interview Guide</h1>
+                <p class="lead">
+                  The behavioral and process round — mentoring, code review
+                  culture, conflict, and incident ownership. At 12 years and a
+                  Frontend Technical Lead title, this round often matters as
+                  much as the technical ones.
+                </p>
+              </div>
+
+              <h2 id="overview">
+                1. Overview — why this round matters at your level
+              </h2>
+              <p>
+                Below senior level, behavioral rounds mostly check for red
+                flags. At senior/lead/staff, they're actively evaluating whether
+                you can operate as a force multiplier — mentoring others,
+                driving technical decisions across a team, and handling the
+                messy parts of real engineering work (disagreement, incidents,
+                ambiguous priorities) with sound judgment. Your resume already
+                shows this pattern (leading frontend development, mentoring,
+                code reviews, enforcing quality standards) — this guide is about
+                how to talk about it structurally so an interviewer can actually
+                evaluate it.
+              </p>
+              <div class="tag">STAR Method</div>
+              <div class="tag">Scrum vs Kanban</div>
+              <div class="tag">Code Review Culture</div>
+              <div class="tag">Mentoring</div>
+              <div class="tag">Conflict Resolution</div>
+              <div class="tag">Incident Ownership</div>
+
+              <h2 id="framework">
+                2. A framework for behavioral answers: STAR
+              </h2>
+              <table>
+                <tr>
+                  <th>Step</th>
+                  <th>What to cover</th>
+                </tr>
+                <tr>
+                  <td><strong>S</strong>ituation</td>
+                  <td>
+                    Brief context — team size, project, the constraint that made
+                    this hard (2-3 sentences, not a project history)
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>T</strong>ask</td>
+                  <td>
+                    What specifically you were responsible for — not what "the
+                    team" did in general
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>A</strong>ction</td>
+                  <td>
+                    What YOU actually did, step by step — this is the part
+                    interviewers care about most, so it should be the longest
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>R</strong>esult</td>
+                  <td>
+                    The outcome, ideally with a concrete detail (a number, a
+                    changed process, what happened next) — and what you'd do
+                    differently, if relevant
+                  </td>
+                </tr>
+              </table>
+              <p>
+                Keep each answer to roughly 2 minutes unless the interviewer
+                explicitly asks you to go deeper.
+              </p>
+              <div class="callout">
+                <strong
+                  >Prepare 8-10 stories, not one per possible question</strong
+                >
+                You don't need a unique story per possible question — 8-10 solid
+                stories, mapped to the categories in the story bank below, can
+                flex across nearly every behavioral prompt you'll get, since the
+                underlying skills (communication, ownership, judgment) overlap
+                across questions. A single strong production-incident story, for
+                example, can answer "conflict," "ownership," and "technical
+                decision" prompts with a different emphasis each time.
+              </div>
+
+              <h3>Worked example: filling in the STAR template</h3>
+              <p>
+                Question:
+                <em
+                  >"Tell me about a time you disagreed with a technical
+                  decision."</em
+                >
+                Here's the shape a strong answer takes — fill your own specifics
+                into the brackets:
+              </p>
+              <div class="callout">
+                <strong>Situation:</strong> "On the [project] I lead frontend
+                for, the team was about to adopt [approach X] for a new
+                module."<br />
+                <strong>Task:</strong> "I believed this would create
+                maintainability/performance risk given [specific reasoning], and
+                needed to raise this without derailing the timeline."<br />
+                <strong>Action:</strong> "I put together a short comparison —
+                current approach vs. my proposal — with a small proof-of-concept
+                and concrete trade-offs (dev time, performance, testability),
+                and brought it to the team rather than just voicing disagreement
+                in the meeting. I made sure to frame it as 'here's a risk and an
+                alternative,' not 'this is wrong.'"<br />
+                <strong>Result:</strong> "The team adopted [outcome], which
+                reduced/improved [measurable result]. Even where I didn't fully
+                get my way, I made sure the decision was made with the
+                trade-offs visible, which mattered more than being right."
+              </div>
+              <p>
+                Why this works: it's specific, shows initiative (a
+                proof-of-concept, not just an opinion), stays collaborative
+                rather than combative in framing, and closes with a result plus
+                a mature reflection rather than just "and I was right."
+              </p>
+
+              <h2 id="storybank">
+                3. Story bank — map your own real experiences to each
+              </h2>
+              <p>
+                Ten categories worth having a real story ready for, each showing
+                a different trait interviewers are screening for:
+              </p>
+              <ol>
+                <li>
+                  <strong
+                    >A time you disagreed with a technical decision</strong
+                  >
+                  (architecture/library/approach) and how you handled it — shows
+                  influence without authority, communication, willingness to be
+                  wrong.
+                </li>
+                <li>
+                  <strong
+                    >A production incident or critical bug you led the
+                    resolution of</strong
+                  >
+                  — shows composure under pressure, root-cause thinking,
+                  communication to stakeholders during an outage.
+                </li>
+                <li>
+                  <strong
+                    >A time you mentored a junior/mid-level engineer</strong
+                  >
+                  — shows leadership, patience, the ability to grow others,
+                  which matters specifically at Lead level.
+                </li>
+                <li>
+                  <strong
+                    >A time you pushed back on an unrealistic deadline</strong
+                  >
+                  — shows technical judgment, negotiation, stakeholder
+                  management.
+                </li>
+                <li>
+                  <strong
+                    >A time you made a decision with incomplete information or
+                    high ambiguity</strong
+                  >
+                  — shows judgment and risk assessment.
+                </li>
+                <li>
+                  <strong
+                    >A time you received tough feedback and what you changed as
+                    a result</strong
+                  >
+                  — shows coachability and self-awareness.
+                </li>
+                <li>
+                  <strong>A time you influenced a cross-functional team</strong>
+                  (design, product, backend) toward a technical constraint they
+                  didn't initially understand — shows communication and
+                  collaboration.
+                </li>
+                <li>
+                  <strong
+                    >A time a project failed or underperformed and what you
+                    learned</strong
+                  >
+                  — shows honesty and a growth mindset; pick something real with
+                  a genuine lesson, not something catastrophic.
+                </li>
+                <li>
+                  <strong
+                    >A time you improved a process or system beyond just
+                    shipping features</strong
+                  >
+                  (testing practices, code review standards, performance
+                  culture, CI/CD improvements) — shows technical leadership
+                  beyond individual tickets.
+                </li>
+                <li>
+                  <strong
+                    >A time you balanced technical debt against shipping
+                    speed</strong
+                  >
+                  — shows pragmatism and long-term thinking.
+                </li>
+              </ol>
+
+              <h3>Frequently asked, by category</h3>
+              <p>
+                <strong>Ownership &amp; Initiative:</strong> "Tell me about a
+                time you went beyond your defined role to solve a problem." /
+                "Describe a project you owned end-to-end." —
+                <strong>Conflict &amp; Collaboration:</strong> "Tell me about a
+                disagreement with a teammate or manager and how it was
+                resolved." / "How do you handle code review pushback on your own
+                PRs?" — <strong>Leadership &amp; Mentorship:</strong> "How do
+                you onboard a new engineer onto your team?" / "Describe your
+                approach to code reviews as a lead — what do you focus on?" /
+                "How do you balance hands-on coding with technical leadership
+                responsibilities?" —
+                <strong>Ambiguity &amp; Prioritization:</strong> "How do you
+                prioritize when everything feels urgent?" / "Describe a time
+                requirements changed mid-project — how did you adapt?" —
+                <strong>Failure &amp; Growth:</strong> "Tell me about your
+                biggest technical mistake and what you learned." / "What's a
+                technical opinion you've changed your mind about in the last few
+                years?"
+              </p>
+
+              <h3>
+                Amazon-specific (Leadership Principles) — expect these framed
+                explicitly
+              </h3>
+              <table>
+                <tr>
+                  <th>Principle</th>
+                  <th>Typical framing</th>
+                </tr>
+                <tr>
+                  <td>Customer Obsession</td>
+                  <td>
+                    "Tell me about a time you advocated for the user against
+                    internal pressure."
+                  </td>
+                </tr>
+                <tr>
+                  <td>Ownership</td>
+                  <td>
+                    "Tell me about a time you fixed something that wasn't 'your
+                    job.'"
+                  </td>
+                </tr>
+                <tr>
+                  <td>Dive Deep</td>
+                  <td>
+                    "Tell me about a time you found a root cause others missed."
+                  </td>
+                </tr>
+                <tr>
+                  <td>Bias for Action</td>
+                  <td>
+                    "Tell me about a decision you made quickly with limited
+                    data."
+                  </td>
+                </tr>
+                <tr>
+                  <td>Earn Trust</td>
+                  <td>
+                    "Tell me about a time you gave difficult feedback to a
+                    peer."
+                  </td>
+                </tr>
+              </table>
+              <p>
+                Amazon interviewers will often name the principle explicitly or
+                probe until they can map your answer to one — having your 8-10
+                stories pre-tagged against the principles they most naturally
+                demonstrate saves you from reaching for one cold.
+              </p>
+
+              <h2 id="basic">4. Basic questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> Scrum vs
+                  Kanban — what's the actual practical difference, not just the
+                  textbook definitions?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th></th>
+                      <th>Scrum</th>
+                      <th>Kanban</th>
+                    </tr>
+                    <tr>
+                      <td>Cadence</td>
+                      <td>Fixed-length sprints (1-2 weeks), planned upfront</td>
+                      <td>Continuous flow, no fixed iteration boundary</td>
+                    </tr>
+                    <tr>
+                      <td>Commitment</td>
+                      <td>
+                        Team commits to a sprint's scope; mid-sprint changes are
+                        discouraged
+                      </td>
+                      <td>
+                        Work is pulled as capacity frees up; new priorities can
+                        enter more fluidly
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Best fit</td>
+                      <td>
+                        Feature-driven product work with predictable-ish scope
+                      </td>
+                      <td>
+                        Support/maintenance-heavy work, ops, or highly
+                        interrupt-driven teams
+                      </td>
+                    </tr>
+                  </table>
+                  <p>
+                    In practice, many real teams run a hybrid — sprint-based
+                    planning with a Kanban-style board for visualizing flow
+                    within the sprint — rather than a textbook-pure version of
+                    either.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What
+                  makes a code review actually useful, versus just a
+                  rubber-stamp or a nitpick session?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    A useful review checks correctness (does this actually do
+                    what it claims, including edge cases), design (is this the
+                    right approach for the codebase, not just "does it work"),
+                    and maintainability (will the next person understand this) —
+                    while clearly separating must-fix issues from optional style
+                    preferences, so the author isn't stuck parsing which
+                    comments actually block merging. Nitpick-only reviews
+                    (spacing, naming preferences with no functional impact) that
+                    ignore real design or correctness issues give a false sense
+                    of quality; rubber-stamp approvals with no real reading
+                    defeat the purpose entirely. The best reviews also teach — a
+                    comment explaining <em>why</em> something should change is
+                    more valuable long-term than just stating what to change.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="intermediate">
+                5. Intermediate — common behavioral prompts, with real approach
+                guidance
+              </h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate">Behavioral</span>
+                  "Tell me about a time you disagreed with a technical
+                  decision."
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    What interviewers are actually listening for: did you raise
+                    the disagreement constructively and with evidence (not just
+                    insist), did you know when to escalate vs when to let it go
+                    once a decision was made, and did you commit fully to the
+                    team's direction afterward rather than quietly resenting it
+                    or re-litigating it later ("disagree and commit"). A strong
+                    answer names the specific technical trade-off you were
+                    weighing (not just "I thought my way was better"), how you
+                    presented your case (a prototype, a performance comparison,
+                    a written proposal), and — importantly — what happened if
+                    you were overruled: did you support the chosen direction
+                    fully, and was there a concrete lesson either way.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate">Behavioral</span>
+                  "Tell me about a time you mentored a junior engineer."
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Strong answers are specific about the mechanism, not just "I
+                    helped them" — pairing sessions, structured code review
+                    feedback with explanations rather than corrections, breaking
+                    down a task into a learning-appropriate size, or creating a
+                    small piece of documentation/checklist that outlived the one
+                    interaction. The result should show a change over time (they
+                    became more independent on X, they later mentored someone
+                    else, they shipped something significant on their own)
+                    rather than a single one-off fix. Given your resume shows
+                    conducting code reviews and enforcing quality standards
+                    across teams, this is a strength to have 1-2 concrete
+                    stories ready for, not just a general claim.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate">Behavioral</span>
+                  "Tell me about a time you had to push back on a deadline or
+                  reduce scope."
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    The key signal here is whether you brought data/trade-offs
+                    rather than just saying "no" or silently over-committing and
+                    burning out the team to hit an unrealistic date. A strong
+                    structure: what the original ask was, what you identified as
+                    genuinely at risk (quality, a specific class of bug,
+                    technical debt with a real future cost), the alternative you
+                    proposed (cut scope, phase the release, add resources), and
+                    how that was received. Avoid framing it as "I was right and
+                    they were wrong" — the better frame is collaborative: you
+                    surfaced a risk clearly enough that a real decision could be
+                    made, rather than the risk being invisible until it became a
+                    production problem.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="advanced">
+                6. Advanced — incident and cross-team scenarios
+              </h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Behavioral</span>
+                  "Tell me about a production incident you handled — walk me
+                  through it."
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Interviewers want the full arc: how it was detected
+                    (monitoring alert vs a user report — the former is a better
+                    signal about your team's observability), your immediate
+                    triage priority (stop the bleeding — rollback/mitigate —
+                    before root-causing), how you communicated status during the
+                    incident (to whom, how often), the actual root cause once
+                    found, and critically, what changed afterward so the same
+                    class of issue can't recur silently (a new test, a new
+                    monitor, a process change) — a strong incident story always
+                    ends with a systemic fix, not just "and then it was fixed."
+                    If you were the one who caused the original issue, own that
+                    plainly rather than glossing over it — how you handled the
+                    aftermath matters more than the fact that a mistake happened
+                    at all.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Behavioral</span>
+                  "How do you handle working with cross-functional teams
+                  (backend, QA, product) when priorities conflict?"
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Given your background working across
+                    frontend/backend/business teams on a regulated financial
+                    platform, a strong answer names a concrete mechanism, not
+                    just "good communication": how you surface trade-offs in
+                    terms the other function cares about (a backend engineer
+                    cares about API contract stability, a product manager cares
+                    about user impact and timeline, not implementation detail),
+                    how you resolve genuine deadlocks (an agreed escalation
+                    path, a shared prioritization framework, a documented
+                    decision so it isn't re-litigated), and an example where
+                    this actually worked — ideally one where you had to
+                    translate a technical constraint into terms a non-technical
+                    stakeholder could make a real decision on.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="leadership">
+                7. Leadership-specific questions (Technical Lead level)
+              </h2>
+              <p>
+                These probe scope of influence and judgment beyond any single
+                ticket — expect them framed as open discussion, not a single
+                "correct" answer:
+              </p>
+              <ol>
+                <li>
+                  "How do you decide what your team should build in-house vs.
+                  adopt from a library/framework?"
+                </li>
+                <li>
+                  "How do you handle a situation where a senior engineer on your
+                  team consistently pushes back on your architectural
+                  decisions?"
+                </li>
+                <li>
+                  "How do you measure whether your team's frontend architecture
+                  is healthy?" — build times, bundle-size trends, flaky-test
+                  rate, PR review turnaround, incident frequency, developer
+                  satisfaction.
+                </li>
+                <li>
+                  "How do you balance mentoring junior engineers with your own
+                  delivery responsibilities?"
+                </li>
+                <li>
+                  "Describe how you'd introduce a new technology (e.g.,
+                  migrating to TypeScript, adopting React Query) into an
+                  established codebase with a skeptical team."
+                </li>
+                <li>
+                  "How do you handle scope creep from product/design
+                  mid-sprint?"
+                </li>
+                <li>
+                  "What's your approach to technical debt — how do you get
+                  buy-in from non-technical stakeholders to invest time in it?"
+                </li>
+              </ol>
+
+              <h2 id="mistakes">8. Common mistakes across every round</h2>
+              <div class="callout warn">
+                <strong>Behavioral rounds</strong>
+                Answering with "the team did X" throughout, never clarifying
+                your own specific role/actions; picking a story with no real
+                conflict, tension, or stakes ("everything went smoothly" isn't a
+                story that demonstrates judgment); rambling through
+                Situation/Task for two minutes and rushing the Action/Result,
+                which is backwards — Action deserves the most detail;
+                badmouthing a former manager/teammate/company, which reads as a
+                red flag regardless of whether the criticism is fair; a
+                rehearsed-sounding answer with no natural depth when the
+                interviewer probes ("tell me more about that") — prepare depth,
+                not just the headline; not having a real answer for "tell me
+                about a failure" (a story with zero real stakes reads as
+                evasive).
+              </div>
+              <div class="callout warn">
+                <strong>Technical (coding) rounds</strong>
+                Jumping to code before clarifying requirements/edge cases —
+                always restate the problem and ask one or two clarifying
+                questions first; going silent while thinking, instead of
+                narrating your reasoning (interviewers grade the reasoning, not
+                just the final answer); over-engineering a simple machine-coding
+                problem instead of shipping a working version first, then
+                refining; not testing your own code before saying "done" — walk
+                through one or two cases by hand; giving up after the first
+                working (often brute-force) solution instead of at least naming
+                the better-complexity approach, even without time to fully
+                implement it.
+              </div>
+              <div class="callout warn">
+                <strong>System design rounds</strong>
+                Diving into implementation details before establishing
+                requirements and scale (the RADIO framework's whole point, from
+                the System Design guide); presenting only one solution with no
+                trade-off discussion; ignoring non-functional requirements
+                (accessibility, i18n, offline support, security) unless
+                explicitly prompted to consider them.
+              </div>
+
+              <h2 id="tips">
+                9. Tips for answering confidently and effectively
+              </h2>
+              <ol>
+                <li>
+                  <strong>Think out loud, always.</strong> Silence is the single
+                  biggest confidence-killer in technical rounds — even "let me
+                  think through the edge cases first" keeps the interviewer
+                  engaged and gives you partial credit for reasoning.
+                </li>
+                <li>
+                  <strong>Repeat the question back briefly</strong> before
+                  answering — buys thinking time and confirms you understood
+                  correctly.
+                </li>
+                <li>
+                  <strong>Use "headline first" for behavioral answers:</strong>
+                  state the outcome/point in one sentence, then unpack with STAR
+                  — easier to follow than a long chronological narrative.
+                </li>
+                <li>
+                  <strong
+                    >It's fine to say "I don't know" — then reason toward an
+                    answer.</strong
+                  >
+                  Interviewers strongly prefer structured reasoning from an
+                  honest "I haven't used X, but here's how I'd approach it based
+                  on Y I do know" over guessing confidently and being wrong.
+                </li>
+                <li>
+                  <strong
+                    >Ask calibrated questions in system design rounds</strong
+                  >
+                  ("Are we optimizing for read-heavy or write-heavy usage?") —
+                  this signals seniority more than any specific tech choice.
+                </li>
+                <li>
+                  <strong
+                    >Bring your own experience into the conversation
+                    explicitly</strong
+                  >
+                  — "In my current role building a financial operations
+                  platform, we handled a similar trade-off by..." grounds you as
+                  someone speaking from real practice, not textbook answers,
+                  which matters a lot at the Lead-level hiring bar.
+                </li>
+                <li>
+                  <strong>Practice out loud, not just in your head.</strong>
+                  Mock interviews (with a peer, or recording yourself) surface
+                  filler words and pacing issues you won't otherwise notice.
+                </li>
+                <li>
+                  <strong
+                    >Prepare 2-3 thoughtful questions for the
+                    interviewer</strong
+                  >
+                  at the end of every round — about team structure, technical
+                  challenges, how decisions get made — this is itself evaluated
+                  as a signal of genuine interest and seniority.
+                </li>
+                <li>
+                  <strong>Manage pacing in coding rounds:</strong> aim for a
+                  working brute-force solution by the halfway mark, leaving time
+                  to optimize and test.
+                </li>
+                <li>
+                  <strong>For "why this company" questions,</strong> be specific
+                  about something real about the company's product or
+                  engineering culture rather than generic praise — it shows
+                  genuine research.
+                </li>
+              </ol>
+
+              <h2 id="company">
+                10. Frequently asked at top product companies
+              </h2>
+              <ul>
+                <li>
+                  <strong>Amazon-style (Leadership Principles-driven):</strong>
+                  Expect very specific STAR-format prompts tied to named
+                  principles ("Ownership," "Bias for Action," "Earn Trust") —
+                  prepare stories that map cleanly to each, not generic ones.
+                </li>
+                <li>
+                  <strong>Meta/Google style:</strong> "Tell me about your
+                  proudest technical achievement" and "tell me about a time you
+                  failed" — both testing self-awareness and growth, not just
+                  success stories.
+                </li>
+                <li>
+                  <strong>Lead/Staff-level (matching your title):</strong> "How
+                  do you decide what your team should NOT work on?" and "how do
+                  you influence engineers who don't report to you?" — testing
+                  scope of influence beyond direct authority.
+                </li>
+              </ul>
+
+              <h2 id="checklist">11. Final pre-interview checklist</h2>
+              <ul>
+                <li>8-10 STAR stories prepared and practiced out loud.</li>
+                <li>
+                  Comfortable implementing
+                  debounce/throttle/deep-clone/EventEmitter/Promise.all from
+                  memory.
+                </li>
+                <li>
+                  Practiced 5+ frontend system design prompts end-to-end with a
+                  spoken narrative.
+                </li>
+                <li>
+                  Reviewed React internals (Fiber, reconciliation, hooks rules,
+                  memoization) well enough to explain to a non-expert.
+                </li>
+                <li>
+                  Done at least 2 mock interviews (technical + behavioral) with
+                  feedback.
+                </li>
+                <li>Prepared 2-3 closing questions per interviewer/round.</li>
+                <li>
+                  Reviewed your own resume/projects — ready to go deep on
+                  anything listed, including specific metrics/outcomes.
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">12. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>STAR</td>
+                  <td>Situation, Task, Action (longest part), Result</td>
+                </tr>
+                <tr>
+                  <td>Scrum vs Kanban</td>
+                  <td>
+                    Fixed sprints & commitment vs continuous flow & pull-based
+                  </td>
+                </tr>
+                <tr>
+                  <td>Good code review</td>
+                  <td>
+                    Correctness + design + maintainability, must-fix vs optional
+                    clearly separated
+                  </td>
+                </tr>
+                <tr>
+                  <td>Disagree and commit</td>
+                  <td>
+                    Argue with evidence, then fully support the team's final
+                    decision
+                  </td>
+                </tr>
+                <tr>
+                  <td>Incident stories</td>
+                  <td>
+                    Detection → triage/mitigate → root cause → systemic fix,
+                    always end with the fix
+                  </td>
+                </tr>
+                <tr>
+                  <td>Prep strategy</td>
+                  <td>
+                    8-10 flexible stories mapped to the story-bank categories,
+                    not one per question
+                  </td>
+                </tr>
+                <tr>
+                  <td>Headline first</td>
+                  <td>
+                    State the outcome in one sentence, then unpack with STAR
+                  </td>
+                </tr>
+                <tr>
+                  <td>Think out loud</td>
+                  <td>
+                    Silence is the biggest confidence-killer in technical rounds
+                  </td>
+                </tr>
+                <tr>
+                  <td>System design mistakes</td>
+                  <td>
+                    Requirements before implementation; always name a trade-off
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: continues into <a href="html5.html">HTML5</a> and the
+                rest of the Web Fundamentals section.
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="cicd-aws.html"
+                  ><span class="dir">← Previous</span>CI/CD &amp; AWS Interview
+                  Guide</a
+                >
+                <a class="next" href="html5.html"
+                  ><span class="dir">Next →</span>HTML5 Interview Guide</a
+                >
+              </div>
+            </div>
+
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#framework">STAR framework</a>
+              <a href="#storybank">Story bank</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Behavioral prompts</a>
+              <a href="#advanced">Incident/cross-team</a>
+              <a href="#leadership">Leadership questions</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#tips">Tips</a>
+              <a href="#company">Company questions</a>
+              <a href="#checklist">Pre-interview checklist</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
+          </div>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
       </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
-  </div>
-</div>
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="../assets/app.js"></script>
-</body>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
 </html>

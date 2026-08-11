@@ -1,203 +1,644 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Frontend System Design Interview Guide — Kamlesh Kumar</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="nav-group"><div class="nav-group-title">Start Here</div>
-      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
-    <div class="nav-group"><div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
-    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
-    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
-    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
-    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a></div>
-    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
-    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done active" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
-    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
-    <div class="nav-group"><div class="nav-group-title">Process</div>
-      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
-  </aside>
-
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Frontend System Design</div>
-      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
-    </div>
-
-    <main>
-      <div class="content-wrap">
-        <div class="prose">
-          <div class="hero">
-            <h1>Frontend System Design Interview Guide</h1>
-            <p class="lead">A repeatable framework for the open-ended "design a ___" round, plus five worked examples chosen around your actual background — data grids, real-time dashboards, and enterprise-scale UI.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend System Design Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link done" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link done" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a class="nav-link done" href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link done" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done" href="testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link done" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done" href="cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done active" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a class="nav-link done" href="design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link done" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done" href="performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link done" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done" href="agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
 
-          <h2 id="overview">1. What this round actually tests</h2>
-          <p>Unlike coding rounds, there's rarely a single "correct" answer here. Interviewers are evaluating whether you can: gather the right requirements before designing anything, break a fuzzy problem into components with clear responsibilities, reason about data flow and state ownership, and explicitly discuss trade-offs (there is always a trade-off — the interviewer wants to hear you name it, not pretend your design has none). At the 12-year/lead level, you're also expected to talk about team and scale concerns: how multiple engineers work on this without stepping on each other, how it's tested, and how it degrades gracefully under failure.</p>
-
-          <h2 id="framework">2. A framework you can reuse every time (RADIO)</h2>
-          <table>
-            <tr><th>Step</th><th>What you do</th><th>Time budget (45 min round)</th></tr>
-            <tr><td><strong>R</strong>equirements</td><td>Clarify functional requirements (what must it do) and non-functional ones (scale, latency, offline support, accessibility, devices)</td><td>~5 min</td></tr>
-            <tr><td><strong>A</strong>rchitecture</td><td>High-level component tree / module boundaries, sketch the page as boxes</td><td>~10 min</td></tr>
-            <tr><td><strong>D</strong>ata model</td><td>Shape of client-side state, what's server-owned vs client-owned, normalization</td><td>~10 min</td></tr>
-            <tr><td><strong>I</strong>nterface (API)</td><td>Contracts between components/modules and with the backend — props, events, endpoints</td><td>~10 min</td></tr>
-            <tr><td><strong>O</strong>ptimizations</td><td>Performance, accessibility, error handling, edge cases, monitoring</td><td>~10 min</td></tr>
-          </table>
-          <div class="callout"><strong>Don't skip step R</strong>
-            The single most common failure mode is diving into architecture before asking "how many rows/users/concurrent updates are we talking about, and does this need to work offline or on mobile?" Two candidates who both design "a data grid" but one clarifies "50 rows, refreshed hourly" vs "50,000 rows, updating every second" should produce visibly different designs — if yours doesn't change, that's the interviewer's biggest red flag.</div>
-
-          <h2 id="worked1">3. Worked example: Design a high-performance data grid (your AG Grid domain)</h2>
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Worked example</span> "Design a data grid that can display and edit 100,000 rows of trade data."</summary>
-            <div class="qa-body">
-              <h5>Requirements (clarify first)</h5>
-              <p>Read-only or editable? Sortable/filterable per column? Does data update in real time (price ticks) or is it a static snapshot? Row grouping/pinning needed? Must it be accessible (screen-reader-navigable rows)? Desktop-only or must it work on tablet?</p>
-              <h5>Architecture</h5>
-              <p>Virtualized viewport (render only visible rows + overscan buffer, absolutely positioned via <code>transform: translateY()</code>, with a spacer element to preserve real scrollbar height) — see the React guide's virtualization section for the mechanics. Column-virtualization too if there are many columns. A header component decoupled from body scroll but horizontally synced. A dedicated "cell renderer" registry so different columns (currency, date, status badge, editable input) can plug in custom render/edit components without the grid core knowing about domain types.</p>
-              <h5>Data model</h5>
-              <p>Normalized store: <code>rowIds: string[]</code> + <code>rowsById: { [id]: Row }</code>, so a single-row update (one price tick) only touches one map key, not the whole array reference — critical so unrelated rows don't re-render. Sort/filter state kept separate from raw data — compute a derived, memoized <code>visibleRowIds</code> array rather than mutating/reordering the source data.</p>
-              <h5>Interface</h5>
-              <p>Column definitions as a declarative config (field, header, width, renderer, editable flag, comparator) — this is exactly AG Grid's <code>colDefs</code> pattern — so consuming teams configure columns without touching grid internals. Edit events bubble up as <code>onCellValueChanged(rowId, field, newValue)</code> so the host app owns the actual persistence/validation logic.</p>
-              <h5>Optimizations & trade-offs</h5>
-              <p>Debounce/batch high-frequency updates (WebSocket ticks) to animation-frame boundaries instead of dispatching a render per tick. Accessibility trade-off: virtualization removes off-screen rows from the DOM, which breaks native browser find-in-page and can confuse screen readers about total row count — mitigate with ARIA <code>aria-rowcount</code>/<code>aria-rowindex</code> and a live region announcing sort/filter changes. Trade-off to state explicitly: building this in-house vs adopting a mature library (AG Grid) — for most teams, adopting is the right call; only justify building custom for extreme scale or a licensing constraint.</p>
-            </div>
-          </details>
-
-          <h2 id="worked2">4. Worked example: Design a real-time trading/reconciliation dashboard</h2>
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Worked example</span> "Design a dashboard showing live FX/rates positions updating via a market-data feed, with per-user permissions."</summary>
-            <div class="qa-body">
-              <h5>Requirements</h5>
-              <p>Update frequency (per-second? sub-second?), does every user see identical data or a permission-filtered subset, is historical/audit data needed, what happens if the WebSocket connection drops mid-session?</p>
-              <h5>Architecture</h5>
-              <p>A single WebSocket connection manager (not one per widget) that fans out updates to subscribed components via a pub/sub layer — multiple widgets on the same page (blotter, summary tiles, chart) shouldn't each open their own socket. Reconnect-with-backoff logic and a visible "stale data" indicator when the connection is down, rather than silently showing frozen numbers.</p>
-              <h5>Data model</h5>
-              <p>Normalized entity store per instrument/position (same reasoning as the grid example). Permissions applied at the selector layer, not by filtering the raw feed client-side for security — the backend must only ever send data the user's session is authorized for; a client-side filter is UX, not access control.</p>
-              <h5>Interface</h5>
-              <p>Widgets subscribe to specific entity IDs or topics rather than the whole feed, so a summary tile watching 5 instruments isn't re-rendered by updates to the other 9,995.</p>
-              <h5>Optimizations</h5>
-              <p>Throttle UI updates to the browser's paint cadence even if the feed delivers faster; consider whether every tick needs to touch global state at all, versus updating a ref/local subscription for the highest-frequency values and only syncing to the shared store at a reduced interval for cross-widget consistency and audit logging.</p>
-            </div>
-          </details>
-
-          <h2 id="worked3">5. Worked example: Design a typeahead/autocomplete component</h2>
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Worked example</span> "Design a search autocomplete with remote suggestions."</summary>
-            <div class="qa-body">
-              <p><strong>Requirements:</strong> latency budget for suggestions, keyboard navigation (arrow keys, Enter, Escape), does it need to work offline/cache recent queries. <strong>Architecture:</strong> debounced input → request layer with in-flight request cancellation (a newer keystroke should cancel/ignore the previous request's response — the same race condition covered in the JS guide) → a small local cache keyed by query string to avoid re-fetching repeated prefixes. <strong>Interface:</strong> the component accepts a pluggable <code>fetchSuggestions(query)</code> function so it's reusable across different data sources (symbols, addresses, usernames). <strong>Optimizations:</strong> ARIA <code>combobox</code>/<code>listbox</code> roles for accessibility, minimum-character threshold before firing a request, and a clear empty/error state instead of a silently frozen dropdown.</p>
-            </div>
-          </details>
-
-          <h2 id="worked4">6. Worked example: Design a notification system</h2>
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Worked example</span> "Design an in-app notification system (toasts + a notification center)."</summary>
-            <div class="qa-body">
-              <p><strong>Requirements:</strong> transient toasts vs persistent notification history, real-time push vs polling, read/unread state, multiple notifications queued at once. <strong>Architecture:</strong> a single notification queue/store (not one per triggering component) with a render layer (toast stack) subscribing to it — this avoids race conditions where two parts of the app both try to show a toast and one gets lost. <strong>Data model:</strong> notifications as normalized entities with <code>id, type, read, createdAt, payload</code>; unread count as a derived/memoized selector, not a separately-tracked counter that can drift out of sync. <strong>Optimizations:</strong> ARIA live regions so screen readers announce new toasts without stealing focus; a max-visible-toast limit with a queue for the rest, so a burst of events doesn't flood the screen.</p>
-            </div>
-          </details>
-
-          <h2 id="worked5">7. Worked example: Design a resumable file upload with progress</h2>
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Worked example</span> "Design a file upload component supporting large files, progress, and resume after failure."</summary>
-            <div class="qa-body">
-              <p><strong>Requirements:</strong> max file size, single vs multi-file, must uploads survive a page refresh/network drop? <strong>Architecture:</strong> chunked upload (split large files into fixed-size chunks, upload sequentially or with limited parallelism, track per-chunk completion) so a failure only requires retrying the failed chunk, not the whole file. <strong>Data model:</strong> upload state machine per file — <code>queued → uploading → paused → completed → failed</code> — with chunk-level progress tracked separately from file-level status. <strong>Optimizations:</strong> exponential backoff retry per chunk, a persisted upload-session ID (server-side) so refreshing the page can resume rather than restart, and clear, per-file error messaging instead of one generic "upload failed" banner.</p>
-            </div>
-          </details>
-
-          <h2 id="architecture">8. Architecture & team-scale questions</h2>
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Architecture</span> "How would you structure a component library / design system that multiple product teams consume?"</summary>
-            <div class="qa-body">
-              <p>Publish it as a versioned, independently-installable package (npm workspace or private registry) rather than copy-pasting components across repos. Enforce a strict public API per component (props contract) with Storybook as the living documentation and visual-regression testing (Chromatic or similar) to catch unintended visual changes before release. Use semantic versioning and a deprecation policy so consuming teams can upgrade on their own schedule instead of being broken by an unannounced change — this is the single biggest source of friction in shared component libraries at scale.</p>
-            </div>
-          </details>
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Architecture</span> "When would you reach for micro-frontends, and what do you give up by doing so?"</summary>
-            <div class="qa-body">
-              <p>Micro-frontends make sense when genuinely independent teams need to ship on independent timelines with independent tech-stack choices (e.g. a legacy Angular module alongside a new React module during a phased migration), or when different sections of a large app have very different scaling/ownership needs. The cost: duplicated framework runtime bytes shipped to the browser unless carefully shared, harder cross-module state sharing, more complex build/deploy tooling (Module Federation or similar), and inconsistent UX if design-system governance isn't strict. For most single-team or single-org products, a well-organized monolith with clear feature-folder boundaries is simpler and should be the default; micro-frontends are a scaling solution to an organizational problem, not a performance optimization.</p>
-            </div>
-          </details>
-
-          <h2 id="mistakes">9. Common mistakes candidates make in this round</h2>
-          <div class="callout warn"><strong>What actually gets candidates dinged</strong>
-            Jumping straight to component/box diagrams without clarifying scale or requirements first; designing as if there's only one "correct" answer instead of naming trade-offs out loud; ignoring accessibility and error/empty/loading states entirely; forgetting that client-side checks (permissions, validation) are UX only — real enforcement must live server-side; spending the whole round on architecture and leaving no time to discuss performance, testing, or monitoring.
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> Frontend System Design
           </div>
-
-          <h2 id="company">10. Frequently asked at top product companies</h2>
-          <ul>
-            <li><strong>Amazon/Google style:</strong> "Design an infinite-scroll product feed" or "design a real-time collaborative document editor" — tests virtualization + conflict resolution/state ownership.</li>
-            <li><strong>Meta/Airbnb style:</strong> "Design a news feed" or "design a booking calendar" — tests data modeling and optimistic UI updates.</li>
-            <li><strong>Fintech-specific (directly relevant to your background):</strong> "Design a live order/position blotter" or "design a reconciliation dashboard reflecting two data sources (internal ledger vs external confirmation) with mismatches highlighted."</li>
-          </ul>
-
-          <h2 id="cheatsheet">11. Cheat sheet / quick revision</h2>
-          <table>
-            <tr><th>Step</th><th>Ask yourself</th></tr>
-            <tr><td>Requirements</td><td>Scale? Real-time or static? Offline? Accessibility? Devices?</td></tr>
-            <tr><td>Architecture</td><td>What are the 3-6 major components and their single responsibilities?</td></tr>
-            <tr><td>Data model</td><td>Normalized vs nested? Client-owned vs server-owned? Derived vs stored?</td></tr>
-            <tr><td>Interface</td><td>What's the contract between components, and between client and backend?</td></tr>
-            <tr><td>Optimizations</td><td>Performance (virtualize/debounce/memoize), accessibility, error/empty states, monitoring</td></tr>
-            <tr><td>Always name a trade-off</td><td>Build vs buy, normalized vs simple, real-time vs polling, micro-frontend vs monolith</td></tr>
-          </table>
-
-          <p class="lead">Related: draws directly on <a href="react.html">React.js</a> (virtualization, memoization) and <a href="redux.html">Redux/Redux Toolkit</a> (normalization, selector performance) — review those first if any worked example felt unfamiliar.</p>
-
-          <div class="page-nav">
-            <a class="prev" href="nextjs.html"><span class="dir">← Previous</span>Next.js Interview Guide</a>
-            <a class="next" href="nodejs.html"><span class="dir">Next →</span>Node.js &amp; Express Interview Guide</a>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
           </div>
         </div>
 
-        <nav class="toc">
-          <div class="toc-title">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#framework">RADIO framework</a>
-          <a href="#worked1">Data grid</a>
-          <a href="#worked2">Trading dashboard</a>
-          <a href="#worked3">Autocomplete</a>
-          <a href="#worked4">Notifications</a>
-          <a href="#worked5">File upload</a>
-          <a href="#architecture">Architecture/scale</a>
-          <a href="#mistakes">Common mistakes</a>
-          <a href="#company">Company questions</a>
-          <a href="#cheatsheet">Cheat sheet</a>
-        </nav>
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>Frontend System Design Interview Guide</h1>
+                <p class="lead">
+                  A repeatable framework for the open-ended "design a ___"
+                  round, plus five worked examples chosen around your actual
+                  background — data grids, real-time dashboards, and
+                  enterprise-scale UI.
+                </p>
+              </div>
+
+              <h2 id="overview">1. What this round actually tests</h2>
+              <p>
+                Unlike coding rounds, there's rarely a single "correct" answer
+                here. Interviewers are evaluating whether you can: gather the
+                right requirements before designing anything, break a fuzzy
+                problem into components with clear responsibilities, reason
+                about data flow and state ownership, and explicitly discuss
+                trade-offs (there is always a trade-off — the interviewer wants
+                to hear you name it, not pretend your design has none). At the
+                12-year/lead level, you're also expected to talk about team and
+                scale concerns: how multiple engineers work on this without
+                stepping on each other, how it's tested, and how it degrades
+                gracefully under failure.
+              </p>
+
+              <h2 id="framework">
+                2. A framework you can reuse every time (RADIO)
+              </h2>
+              <table>
+                <tr>
+                  <th>Step</th>
+                  <th>What you do</th>
+                  <th>Time budget (45 min round)</th>
+                </tr>
+                <tr>
+                  <td><strong>R</strong>equirements</td>
+                  <td>
+                    Clarify functional requirements (what must it do) and
+                    non-functional ones (scale, latency, offline support,
+                    accessibility, devices)
+                  </td>
+                  <td>~5 min</td>
+                </tr>
+                <tr>
+                  <td><strong>A</strong>rchitecture</td>
+                  <td>
+                    High-level component tree / module boundaries, sketch the
+                    page as boxes
+                  </td>
+                  <td>~10 min</td>
+                </tr>
+                <tr>
+                  <td><strong>D</strong>ata model</td>
+                  <td>
+                    Shape of client-side state, what's server-owned vs
+                    client-owned, normalization
+                  </td>
+                  <td>~10 min</td>
+                </tr>
+                <tr>
+                  <td><strong>I</strong>nterface (API)</td>
+                  <td>
+                    Contracts between components/modules and with the backend —
+                    props, events, endpoints
+                  </td>
+                  <td>~10 min</td>
+                </tr>
+                <tr>
+                  <td><strong>O</strong>ptimizations</td>
+                  <td>
+                    Performance, accessibility, error handling, edge cases,
+                    monitoring
+                  </td>
+                  <td>~10 min</td>
+                </tr>
+              </table>
+              <div class="callout">
+                <strong>Don't skip step R</strong> The single most common
+                failure mode is diving into architecture before asking "how many
+                rows/users/concurrent updates are we talking about, and does
+                this need to work offline or on mobile?" Two candidates who both
+                design "a data grid" but one clarifies "50 rows, refreshed
+                hourly" vs "50,000 rows, updating every second" should produce
+                visibly different designs — if yours doesn't change, that's the
+                interviewer's biggest red flag.
+              </div>
+
+              <h2 id="worked1">
+                3. Worked example: Design a high-performance data grid (your AG
+                Grid domain)
+              </h2>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Worked example</span>
+                  "Design a data grid that can display and edit 100,000 rows of
+                  trade data."
+                </summary>
+                <div class="qa-body">
+                  <h5>Requirements (clarify first)</h5>
+                  <p>
+                    Read-only or editable? Sortable/filterable per column? Does
+                    data update in real time (price ticks) or is it a static
+                    snapshot? Row grouping/pinning needed? Must it be accessible
+                    (screen-reader-navigable rows)? Desktop-only or must it work
+                    on tablet?
+                  </p>
+                  <h5>Architecture</h5>
+                  <p>
+                    Virtualized viewport (render only visible rows + overscan
+                    buffer, absolutely positioned via
+                    <code>transform: translateY()</code>, with a spacer element
+                    to preserve real scrollbar height) — see the React guide's
+                    virtualization section for the mechanics.
+                    Column-virtualization too if there are many columns. A
+                    header component decoupled from body scroll but horizontally
+                    synced. A dedicated "cell renderer" registry so different
+                    columns (currency, date, status badge, editable input) can
+                    plug in custom render/edit components without the grid core
+                    knowing about domain types.
+                  </p>
+                  <h5>Data model</h5>
+                  <p>
+                    Normalized store: <code>rowIds: string[]</code> +
+                    <code>rowsById: { [id]: Row }</code>, so a single-row update
+                    (one price tick) only touches one map key, not the whole
+                    array reference — critical so unrelated rows don't
+                    re-render. Sort/filter state kept separate from raw data —
+                    compute a derived, memoized <code>visibleRowIds</code> array
+                    rather than mutating/reordering the source data.
+                  </p>
+                  <h5>Interface</h5>
+                  <p>
+                    Column definitions as a declarative config (field, header,
+                    width, renderer, editable flag, comparator) — this is
+                    exactly AG Grid's <code>colDefs</code> pattern — so
+                    consuming teams configure columns without touching grid
+                    internals. Edit events bubble up as
+                    <code>onCellValueChanged(rowId, field, newValue)</code> so
+                    the host app owns the actual persistence/validation logic.
+                  </p>
+                  <h5>Optimizations & trade-offs</h5>
+                  <p>
+                    Debounce/batch high-frequency updates (WebSocket ticks) to
+                    animation-frame boundaries instead of dispatching a render
+                    per tick. Accessibility trade-off: virtualization removes
+                    off-screen rows from the DOM, which breaks native browser
+                    find-in-page and can confuse screen readers about total row
+                    count — mitigate with ARIA <code>aria-rowcount</code>/<code
+                      >aria-rowindex</code
+                    >
+                    and a live region announcing sort/filter changes. Trade-off
+                    to state explicitly: building this in-house vs adopting a
+                    mature library (AG Grid) — for most teams, adopting is the
+                    right call; only justify building custom for extreme scale
+                    or a licensing constraint.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="worked2">
+                4. Worked example: Design a real-time trading/reconciliation
+                dashboard
+              </h2>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Worked example</span>
+                  "Design a dashboard showing live FX/rates positions updating
+                  via a market-data feed, with per-user permissions."
+                </summary>
+                <div class="qa-body">
+                  <h5>Requirements</h5>
+                  <p>
+                    Update frequency (per-second? sub-second?), does every user
+                    see identical data or a permission-filtered subset, is
+                    historical/audit data needed, what happens if the WebSocket
+                    connection drops mid-session?
+                  </p>
+                  <h5>Architecture</h5>
+                  <p>
+                    A single WebSocket connection manager (not one per widget)
+                    that fans out updates to subscribed components via a pub/sub
+                    layer — multiple widgets on the same page (blotter, summary
+                    tiles, chart) shouldn't each open their own socket.
+                    Reconnect-with-backoff logic and a visible "stale data"
+                    indicator when the connection is down, rather than silently
+                    showing frozen numbers.
+                  </p>
+                  <h5>Data model</h5>
+                  <p>
+                    Normalized entity store per instrument/position (same
+                    reasoning as the grid example). Permissions applied at the
+                    selector layer, not by filtering the raw feed client-side
+                    for security — the backend must only ever send data the
+                    user's session is authorized for; a client-side filter is
+                    UX, not access control.
+                  </p>
+                  <h5>Interface</h5>
+                  <p>
+                    Widgets subscribe to specific entity IDs or topics rather
+                    than the whole feed, so a summary tile watching 5
+                    instruments isn't re-rendered by updates to the other 9,995.
+                  </p>
+                  <h5>Optimizations</h5>
+                  <p>
+                    Throttle UI updates to the browser's paint cadence even if
+                    the feed delivers faster; consider whether every tick needs
+                    to touch global state at all, versus updating a ref/local
+                    subscription for the highest-frequency values and only
+                    syncing to the shared store at a reduced interval for
+                    cross-widget consistency and audit logging.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="worked3">
+                5. Worked example: Design a typeahead/autocomplete component
+              </h2>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Worked example</span
+                  >
+                  "Design a search autocomplete with remote suggestions."
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <strong>Requirements:</strong> latency budget for
+                    suggestions, keyboard navigation (arrow keys, Enter,
+                    Escape), does it need to work offline/cache recent queries.
+                    <strong>Architecture:</strong> debounced input → request
+                    layer with in-flight request cancellation (a newer keystroke
+                    should cancel/ignore the previous request's response — the
+                    same race condition covered in the JS guide) → a small local
+                    cache keyed by query string to avoid re-fetching repeated
+                    prefixes. <strong>Interface:</strong> the component accepts
+                    a pluggable <code>fetchSuggestions(query)</code> function so
+                    it's reusable across different data sources (symbols,
+                    addresses, usernames). <strong>Optimizations:</strong> ARIA
+                    <code>combobox</code>/<code>listbox</code> roles for
+                    accessibility, minimum-character threshold before firing a
+                    request, and a clear empty/error state instead of a silently
+                    frozen dropdown.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="worked4">
+                6. Worked example: Design a notification system
+              </h2>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Worked example</span
+                  >
+                  "Design an in-app notification system (toasts + a notification
+                  center)."
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <strong>Requirements:</strong> transient toasts vs
+                    persistent notification history, real-time push vs polling,
+                    read/unread state, multiple notifications queued at once.
+                    <strong>Architecture:</strong> a single notification
+                    queue/store (not one per triggering component) with a render
+                    layer (toast stack) subscribing to it — this avoids race
+                    conditions where two parts of the app both try to show a
+                    toast and one gets lost.
+                    <strong>Data model:</strong> notifications as normalized
+                    entities with
+                    <code>id, type, read, createdAt, payload</code>; unread
+                    count as a derived/memoized selector, not a
+                    separately-tracked counter that can drift out of sync.
+                    <strong>Optimizations:</strong> ARIA live regions so screen
+                    readers announce new toasts without stealing focus; a
+                    max-visible-toast limit with a queue for the rest, so a
+                    burst of events doesn't flood the screen.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="worked5">
+                7. Worked example: Design a resumable file upload with progress
+              </h2>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Worked example</span
+                  >
+                  "Design a file upload component supporting large files,
+                  progress, and resume after failure."
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <strong>Requirements:</strong> max file size, single vs
+                    multi-file, must uploads survive a page refresh/network
+                    drop? <strong>Architecture:</strong> chunked upload (split
+                    large files into fixed-size chunks, upload sequentially or
+                    with limited parallelism, track per-chunk completion) so a
+                    failure only requires retrying the failed chunk, not the
+                    whole file. <strong>Data model:</strong> upload state
+                    machine per file —
+                    <code
+                      >queued → uploading → paused → completed → failed</code
+                    >
+                    — with chunk-level progress tracked separately from
+                    file-level status.
+                    <strong>Optimizations:</strong> exponential backoff retry
+                    per chunk, a persisted upload-session ID (server-side) so
+                    refreshing the page can resume rather than restart, and
+                    clear, per-file error messaging instead of one generic
+                    "upload failed" banner.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="architecture">8. Architecture & team-scale questions</h2>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Architecture</span>
+                  "How would you structure a component library / design system
+                  that multiple product teams consume?"
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Publish it as a versioned, independently-installable package
+                    (npm workspace or private registry) rather than copy-pasting
+                    components across repos. Enforce a strict public API per
+                    component (props contract) with Storybook as the living
+                    documentation and visual-regression testing (Chromatic or
+                    similar) to catch unintended visual changes before release.
+                    Use semantic versioning and a deprecation policy so
+                    consuming teams can upgrade on their own schedule instead of
+                    being broken by an unannounced change — this is the single
+                    biggest source of friction in shared component libraries at
+                    scale.
+                  </p>
+                </div>
+              </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Architecture</span>
+                  "When would you reach for micro-frontends, and what do you
+                  give up by doing so?"
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Micro-frontends make sense when genuinely independent teams
+                    need to ship on independent timelines with independent
+                    tech-stack choices (e.g. a legacy Angular module alongside a
+                    new React module during a phased migration), or when
+                    different sections of a large app have very different
+                    scaling/ownership needs. The cost: duplicated framework
+                    runtime bytes shipped to the browser unless carefully
+                    shared, harder cross-module state sharing, more complex
+                    build/deploy tooling (Module Federation or similar), and
+                    inconsistent UX if design-system governance isn't strict.
+                    For most single-team or single-org products, a
+                    well-organized monolith with clear feature-folder boundaries
+                    is simpler and should be the default; micro-frontends are a
+                    scaling solution to an organizational problem, not a
+                    performance optimization.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">
+                9. Common mistakes candidates make in this round
+              </h2>
+              <div class="callout warn">
+                <strong>What actually gets candidates dinged</strong>
+                Jumping straight to component/box diagrams without clarifying
+                scale or requirements first; designing as if there's only one
+                "correct" answer instead of naming trade-offs out loud; ignoring
+                accessibility and error/empty/loading states entirely;
+                forgetting that client-side checks (permissions, validation) are
+                UX only — real enforcement must live server-side; spending the
+                whole round on architecture and leaving no time to discuss
+                performance, testing, or monitoring.
+              </div>
+
+              <h2 id="company">
+                10. Frequently asked at top product companies
+              </h2>
+              <ul>
+                <li>
+                  <strong>Amazon/Google style:</strong> "Design an
+                  infinite-scroll product feed" or "design a real-time
+                  collaborative document editor" — tests virtualization +
+                  conflict resolution/state ownership.
+                </li>
+                <li>
+                  <strong>Meta/Airbnb style:</strong> "Design a news feed" or
+                  "design a booking calendar" — tests data modeling and
+                  optimistic UI updates.
+                </li>
+                <li>
+                  <strong
+                    >Fintech-specific (directly relevant to your
+                    background):</strong
+                  >
+                  "Design a live order/position blotter" or "design a
+                  reconciliation dashboard reflecting two data sources (internal
+                  ledger vs external confirmation) with mismatches highlighted."
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">11. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Step</th>
+                  <th>Ask yourself</th>
+                </tr>
+                <tr>
+                  <td>Requirements</td>
+                  <td>
+                    Scale? Real-time or static? Offline? Accessibility? Devices?
+                  </td>
+                </tr>
+                <tr>
+                  <td>Architecture</td>
+                  <td>
+                    What are the 3-6 major components and their single
+                    responsibilities?
+                  </td>
+                </tr>
+                <tr>
+                  <td>Data model</td>
+                  <td>
+                    Normalized vs nested? Client-owned vs server-owned? Derived
+                    vs stored?
+                  </td>
+                </tr>
+                <tr>
+                  <td>Interface</td>
+                  <td>
+                    What's the contract between components, and between client
+                    and backend?
+                  </td>
+                </tr>
+                <tr>
+                  <td>Optimizations</td>
+                  <td>
+                    Performance (virtualize/debounce/memoize), accessibility,
+                    error/empty states, monitoring
+                  </td>
+                </tr>
+                <tr>
+                  <td>Always name a trade-off</td>
+                  <td>
+                    Build vs buy, normalized vs simple, real-time vs polling,
+                    micro-frontend vs monolith
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: draws directly on
+                <a href="react.html">React.js</a> (virtualization, memoization)
+                and <a href="redux.html">Redux/Redux Toolkit</a> (normalization,
+                selector performance) — review those first if any worked example
+                felt unfamiliar.
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="nextjs.html"
+                  ><span class="dir">← Previous</span>Next.js Interview Guide</a
+                >
+                <a class="next" href="nodejs.html"
+                  ><span class="dir">Next →</span>Node.js &amp; Express
+                  Interview Guide</a
+                >
+              </div>
+            </div>
+
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#framework">RADIO framework</a>
+              <a href="#worked1">Data grid</a>
+              <a href="#worked2">Trading dashboard</a>
+              <a href="#worked3">Autocomplete</a>
+              <a href="#worked4">Notifications</a>
+              <a href="#worked5">File upload</a>
+              <a href="#architecture">Architecture/scale</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
+          </div>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
       </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
-  </div>
-</div>
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="../assets/app.js"></script>
-</body>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
 </html>
