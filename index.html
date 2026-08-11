@@ -1,294 +1,600 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kamlesh Kumar — Senior Frontend Interview Prep</title>
-<link rel="stylesheet" href="assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="logo">KK</div>
-      <div>
-        <div class="name">Interview Prep</div>
-        <div class="role">Senior / Lead / Staff Frontend</div>
-      </div>
-    </div>
-    <input id="search-box" type="text" placeholder="Search topics (e.g. closures, hooks)…">
-
-    <div class="nav-group">
-      <div class="nav-group-title">Start Here</div>
-      <a class="nav-link active" href="index.html"><span class="dot"></span> Home / Roadmap</a>
-      <a class="nav-link done" href="guides/my-project.html"><span class="dot"></span> My Project Walkthrough</a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="guides/javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done" href="guides/typescript.html"><span class="dot"></span> TypeScript</a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="guides/react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="guides/redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="guides/react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="guides/nextjs.html"><span class="dot"></span> Next.js</a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link done" href="guides/html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link done" href="guides/css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link done" href="guides/browser-internals.html"><span class="dot"></span> Browser Internals</a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="guides/nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="guides/rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link done" href="guides/graphql.html"><span class="dot"></span> GraphQL</a>
-      <a class="nav-link done" href="guides/ai-integration.html"><span class="dot"></span> AI / LLM Integration</a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="guides/git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done" href="guides/webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done" href="guides/testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link done" href="guides/storybook.html"><span class="dot"></span> Storybook</a>
-      <a class="nav-link done" href="guides/debugging-and-tools.html"><span class="dot"></span> Debugging & Dev Tools</a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done" href="guides/cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done" href="guides/system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="guides/design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link done" href="guides/micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done" href="guides/performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link done" href="guides/security.html"><span class="dot"></span> Security & Auth</a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-group-title">Process</div>
-      <a class="nav-link done" href="guides/agile-leadership.html"><span class="dot"></span> Agile & Leadership</a>
-    </div>
-  </aside>
-
-  <!-- MAIN -->
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs">Interview Prep <span class="sep">/</span> Home</div>
-      <div class="topbar-actions">
-        <button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button>
-      </div>
-    </div>
-
-    <main>
-      <div class="content-wrap no-toc">
-        <div class="prose">
-          <div class="hero">
-            <h1>Senior Frontend Interview Preparation</h1>
-            <p class="lead">Built around your actual profile — 12+ years, React.js/Next.js specialist, AG Grid & data-heavy banking UIs (US Bank / AIB), Jest + RTL + Cypress, CI/CD, AWS (EC2/S3 basic), team leadership. Target roles: Senior / Lead / Staff Frontend Engineer at product companies.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kamlesh Kumar — Senior Frontend Interview Prep</title>
+    <link rel="stylesheet" href="assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
-
-          <h2 id="your-project">Your Project &amp; Introduction</h2>
-          <p class="lead">Ready-to-use material for "tell me about yourself" and "walk me through your current project" — the two questions that open almost every interview.</p>
-
-          <h3>Self-introduction (ready to recite)</h3>
-          <div class="callout">
-            Hello, my name is Kamlesh Kumar. I have 12 years of overall experience in software development, including 7 years of hands-on experience in React.js. Throughout my career, I've worked across multiple domains — Banking, E-commerce, and E-learning — which has given me exposure to different business requirements and application architectures. Currently, I'm working as an Associate Specialist at Synechron, on the U.S. Bank client engagement.
-          </div>
-
-          <h3>Current project overview</h3>
-          <p>The application is a <strong>regulatory reporting platform</strong> used by banks to report financial trades to regulators, supporting multiple asset classes — Foreign Exchange (FX), Interest Rates, Commodities, and Collateral.</p>
-          <table>
-            <tr><th>Step</th><th>What happens</th></tr>
-            <tr><td>1. Trade executed</td><td>The bank is required to submit trade details to the regulator</td></tr>
-            <tr><td>2. Regulator validates</td><td>Returns either an <strong>ACK</strong> (accepted) or a <strong>NACK</strong> (rejected)</td></tr>
-            <tr><td>3. If rejected (NACK)</td><td>The bank identifies the rejection reason, corrects the trade details, and replays the report</td></tr>
-          </table>
-          <p>The application provides dashboards and reports for monitoring ACKs, NACKs, Data Mismatches, and Trade Mismatches, plus a dedicated Reconciliation page for trade validation.</p>
-
-          <h3>Key responsibilities</h3>
-          <ul>
-            <li>Developing new features using React.js</li>
-            <li>Integrating REST APIs with the frontend</li>
-            <li>Implementing searching, filtering, sorting, and pagination using AG Grid</li>
-            <li>Writing end-to-end automation test cases using Cypress</li>
-            <li>Collaborating closely with backend developers to finalize API contracts and resolve integration issues</li>
-            <li>Fixing production issues and providing quick support during releases</li>
-            <li>Deploying applications through the Shield Pipeline</li>
-          </ul>
-
-          <h3>Signature challenge — AG Grid Server-Side Row Model (STAR)</h3>
-          <p>This is one of your strongest "tell me about a challenging technical problem" answers — it has a real architectural decision, cross-team coordination, and a measurable result. Structured using the <a href="guides/agile-leadership.html#framework">STAR framework</a> from the Agile &amp; Leadership guide:</p>
-          <details class="qa" open>
-            <summary>AG Grid Server-Side Row Model implementation</summary>
-            <div class="qa-body">
-              <h5>Situation</h5>
-              <p>The application needed to display large trade datasets efficiently, but loading the entire dataset client-side didn't scale — the frontend and backend needed to work together for true server-side pagination, filtering, and sorting rather than client-side operations on an already-fetched dataset.</p>
-              <h5>Task</h5>
-              <p>Implement AG Grid's Server-Side Row Model so the grid requests only the data it actually needs per page/filter/sort state, instead of the whole dataset.</p>
-              <h5>Action</h5>
-              <p>Studied the AG Grid documentation in depth, created a detailed implementation document, and worked with the backend team to define the required API changes (the request/response contract for server-driven pagination, filtering, and sorting). Once the backend APIs were updated, implemented the frontend integration — server-side pagination, sorting, filtering, and data loading wired into AG Grid's server-side row model.</p>
-              <h5>Result</h5>
-              <p>The feature worked successfully and significantly improved application performance by loading only the required data instead of the entire dataset.</p>
-            </div>
-          </details>
-
-          <p class="lead">You genuinely enjoy solving complex frontend problems, improving application performance, and building scalable React applications while collaborating effectively with cross-functional teams — that's a strong closing line for the self-intro above.</p>
-          <div class="callout"><strong>Full rehearsal version</strong>
-            The <a href="guides/my-project.html">My Project Walkthrough</a> page has this same material laid out as a complete, deliverable-length script — with a timing guide, likely interviewer follow-ups (and which guide answers each one), and delivery tips for making it sound natural rather than memorized.</div>
-
-          <h2 id="how-to-use">How to use this guide</h2>
-          <p>Each technology has its own standalone HTML file — open it directly, or use the sidebar / search on the left. Every guide follows the same structure: overview → basic → intermediate → advanced → expert → scenario-based → architecture → performance → best practices → common mistakes → company-style questions → cheat sheet. Click any question to expand it; nothing is hidden behind pagination.</p>
-
-          <div class="callout">
-            <strong>Status of this package — complete</strong>
-            All twenty-five guides are now live at full depth. Every technology on your resume — including AI/LLM integration — the surrounding ecosystem, system design, architecture, debugging/tooling, and the behavioral round are covered. Start with <a href="guides/javascript.html">JavaScript (ES6+)</a> and work straight through via the Previous/Next links, or jump anywhere via the sidebar/search.
-          </div>
-
-          <h2 id="roadmap">Roadmap at a glance</h2>
-          <div class="card-grid">
-            <div class="card">
-              <h4>✅ JavaScript (ES6+)</h4>
-              <div class="stat">Closures, event loop, prototypes, async/await, debouncing/throttling, polyfills, coding challenges</div>
-            </div>
-            <div class="card">
-              <h4>✅ TypeScript</h4>
-              <div class="stat">Generics, discriminated unions, utility types, type guards, typing React components & hooks</div>
-            </div>
-            <div class="card">
-              <h4>✅ React.js</h4>
-              <div class="stat">Hooks, reconciliation, memoization, custom hooks, HOCs vs hooks, Context, performance, architecture</div>
-            </div>
-            <div class="card">
-              <h4>✅ Redux / Redux Toolkit</h4>
-              <div class="stat">createSlice, thunks vs sagas, RTK Query, normalization, selector memoization</div>
-            </div>
-            <div class="card">
-              <h4>✅ React Router</h4>
-              <div class="stat">Nested routes, protected routes, data loaders, code-splitting, deep-link debugging</div>
-            </div>
-            <div class="card">
-              <h4>✅ Next.js</h4>
-              <div class="stat">SSR/SSG/ISR, App Router Server vs Client Components, middleware, image optimization</div>
-            </div>
-            <div class="card">
-              <h4>✅ HTML5</h4>
-              <div class="stat">Semantic elements, forms/validation, storage APIs, Canvas vs SVG, Web Workers</div>
-            </div>
-            <div class="card">
-              <h4>✅ CSS3 / SASS</h4>
-              <div class="stat">Box model, specificity, Flexbox vs Grid, BEM, CSS-in-JS trade-offs, animation performance</div>
-            </div>
-            <div class="card">
-              <h4>✅ Browser Internals</h4>
-              <div class="stat">Rendering pipeline, multi-process architecture, reflow vs repaint, V8 JIT, bfcache</div>
-            </div>
-            <div class="card">
-              <h4>✅ Node.js & Express</h4>
-              <div class="stat">Event loop internals, middleware, streams, worker threads, JWT vs sessions</div>
-            </div>
-            <div class="card">
-              <h4>✅ REST APIs</h4>
-              <div class="stat">HTTP semantics, pagination, versioning, idempotency, ETags/optimistic concurrency</div>
-            </div>
-            <div class="card">
-              <h4>✅ GraphQL</h4>
-              <div class="stat">Schema/resolvers, N+1 problem, normalized caching, fragments, optimistic updates</div>
-            </div>
-            <div class="card">
-              <h4>✅ AI / LLM Integration</h4>
-              <div class="stat">Chatbot architecture, streaming, prompt engineering, RAG, function calling, cost control</div>
-            </div>
-            <div class="card">
-              <h4>✅ Git</h4>
-              <div class="stat">Merge vs rebase policy, cherry-pick, bisect, reflog recovery, branching strategy</div>
-            </div>
-            <div class="card">
-              <h4>✅ Webpack & Babel</h4>
-              <div class="stat">Loaders vs plugins, tree shaking, code splitting, vendor chunking, Webpack vs Vite</div>
-            </div>
-            <div class="card">
-              <h4>✅ Testing (Jest, RTL, Cypress)</h4>
-              <div class="stat">Testing pyramid, RTL query strategy, mocking, flaky E2E debugging</div>
-            </div>
-            <div class="card">
-              <h4>✅ Storybook</h4>
-              <div class="stat">Component-driven development, decorators, addons, visual regression testing</div>
-            </div>
-            <div class="card">
-              <h4>✅ Debugging & Dev Tools</h4>
-              <div class="stat">React/Redux DevTools, Chrome DevTools, network debugging, profiling, VS Code, worked scenarios</div>
-            </div>
-            <div class="card">
-              <h4>✅ CI/CD & AWS</h4>
-              <div class="stat">Pipeline stages, blue-green vs canary, S3 + CloudFront, immutable/versioned rollback</div>
-            </div>
-            <div class="card">
-              <h4>✅ Frontend System Design</h4>
-              <div class="stat">RADIO framework, data grid, real-time dashboard, autocomplete, notifications, file upload</div>
-            </div>
-            <div class="card">
-              <h4>✅ Design Patterns & Architecture</h4>
-              <div class="stat">Compound components, render props → hooks, provider pattern, feature-folder structure, monorepo</div>
-            </div>
-            <div class="card">
-              <h4>✅ Micro Frontends (deep dive)</h4>
-              <div class="stat">Module Federation mechanics, shared deps, cross-MFE routing, CSS isolation, contract versioning</div>
-            </div>
-            <div class="card">
-              <h4>✅ Performance & Accessibility</h4>
-              <div class="stat">Core Web Vitals, bundle size, WCAG POUR, ARIA, focus management, RUM vs lab data</div>
-            </div>
-            <div class="card">
-              <h4>✅ Security & Auth</h4>
-              <div class="stat">XSS, CSRF, CSP, CORS, token storage trade-offs, dependency vulnerability management</div>
-            </div>
-            <div class="card">
-              <h4>✅ Agile & Leadership</h4>
-              <div class="stat">STAR framework, mentoring, code review culture, incident ownership, cross-team conflict</div>
-            </div>
-          </div>
-
-          <h2 id="interview-loop">A typical loop at these companies</h2>
-          <table>
-            <tr><th>Round</th><th>Focus</th><th>Guides to review</th></tr>
-            <tr><td>Recruiter screen</td><td>Resume walkthrough, level calibration</td><td>—</td></tr>
-            <tr><td>Coding (JS)</td><td>Algorithms, DOM/array manipulation, output-based JS</td><td>JavaScript</td></tr>
-            <tr><td>Coding (React / machine coding)</td><td>Build a component from scratch (autocomplete, data grid, infinite scroll)</td><td>React.js, Testing</td></tr>
-            <tr><td>Frontend System Design</td><td>Architecture trade-offs at scale</td><td>Frontend System Design, Design Patterns & Architecture</td></tr>
-            <tr><td>Deep-dive technical (varies by company)</td><td>Whatever the role emphasizes — APIs, performance, security, tooling</td><td>REST APIs / GraphQL, Performance & Accessibility, Security & Auth</td></tr>
-            <tr><td>Behavioral / Leadership</td><td>Ownership, mentoring, conflict, incidents</td><td>Agile & Leadership</td></tr>
-            <tr><td>Bar raiser / hiring manager</td><td>Deep dive on your strongest project (US Bank / AIB)</td><td>Your resume + all guides</td></tr>
-          </table>
-
-          <h2 id="get-started">Get started</h2>
-          <p>Use the sidebar or search to jump to any guide — all twenty-five are cross-linked with Previous/Next navigation, so you can also just start with <a href="guides/javascript.html">JavaScript (ES6+)</a> and work straight through in the suggested order.</p>
         </div>
-      </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar · built for Senior/Lead/Staff Frontend interviews</footer>
-  </div>
-</div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
 
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="assets/app.js"></script>
-</body>
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link active" href="index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="guides/my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="guides/javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="guides/typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="guides/react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="guides/redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="guides/react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="guides/nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link done" href="guides/html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link done" href="guides/css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a class="nav-link done" href="guides/browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="guides/nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="guides/rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link done" href="guides/graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+          <a class="nav-link done" href="guides/ai-integration.html"
+            ><span class="dot"></span> AI / LLM Integration</a
+          >
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="guides/git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done" href="guides/webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done" href="guides/testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link done" href="guides/storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+          <a class="nav-link done" href="guides/debugging-and-tools.html"
+            ><span class="dot"></span> Debugging & Dev Tools</a
+          >
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done" href="guides/cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="guides/system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a
+            class="nav-link done"
+            href="guides/design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link done" href="guides/micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done" href="guides/performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link done" href="guides/security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done" href="guides/agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
+
+      <!-- MAIN -->
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            Interview Prep <span class="sep">/</span> Home
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
+          </div>
+        </div>
+
+        <main>
+          <div class="content-wrap no-toc">
+            <div class="prose">
+              <div class="hero">
+                <h1>Senior Frontend Interview Preparation</h1>
+                <p class="lead">
+                  Built around your actual profile — 12+ years, React.js/Next.js
+                  specialist, AG Grid & data-heavy banking UIs (US Bank / AIB),
+                  Jest + RTL + Cypress, CI/CD, AWS (EC2/S3 basic), team
+                  leadership. Target roles: Senior / Lead / Staff Frontend
+                  Engineer at product companies.
+                </p>
+              </div>
+
+              <h2 id="your-project">Your Project &amp; Introduction</h2>
+              <p class="lead">
+                Ready-to-use material for "tell me about yourself" and "walk me
+                through your current project" — the two questions that open
+                almost every interview.
+              </p>
+
+              <h3>Self-introduction (ready to recite)</h3>
+              <div class="callout">
+                Hello, my name is Kamlesh Kumar. I have 12 years of overall
+                experience in software development, including 7 years of
+                hands-on experience in React.js. Throughout my career, I've
+                worked across multiple domains — Banking, E-commerce, and
+                E-learning — which has given me exposure to different business
+                requirements and application architectures. Currently, I'm
+                working as an Associate Specialist at Synechron, on the U.S.
+                Bank client engagement.
+              </div>
+
+              <h3>Current project overview</h3>
+              <p>
+                The application is a
+                <strong>regulatory reporting platform</strong> used by banks to
+                report financial trades to regulators, supporting multiple asset
+                classes — Foreign Exchange (FX), Interest Rates, Commodities,
+                and Collateral.
+              </p>
+              <table>
+                <tr>
+                  <th>Step</th>
+                  <th>What happens</th>
+                </tr>
+                <tr>
+                  <td>1. Trade executed</td>
+                  <td>
+                    The bank is required to submit trade details to the
+                    regulator
+                  </td>
+                </tr>
+                <tr>
+                  <td>2. Regulator validates</td>
+                  <td>
+                    Returns either an <strong>ACK</strong> (accepted) or a
+                    <strong>NACK</strong> (rejected)
+                  </td>
+                </tr>
+                <tr>
+                  <td>3. If rejected (NACK)</td>
+                  <td>
+                    The bank identifies the rejection reason, corrects the trade
+                    details, and replays the report
+                  </td>
+                </tr>
+              </table>
+              <p>
+                The application provides dashboards and reports for monitoring
+                ACKs, NACKs, Data Mismatches, and Trade Mismatches, plus a
+                dedicated Reconciliation page for trade validation.
+              </p>
+
+              <h3>Key responsibilities</h3>
+              <ul>
+                <li>Developing new features using React.js</li>
+                <li>Integrating REST APIs with the frontend</li>
+                <li>
+                  Implementing searching, filtering, sorting, and pagination
+                  using AG Grid
+                </li>
+                <li>Writing end-to-end automation test cases using Cypress</li>
+                <li>
+                  Collaborating closely with backend developers to finalize API
+                  contracts and resolve integration issues
+                </li>
+                <li>
+                  Fixing production issues and providing quick support during
+                  releases
+                </li>
+                <li>Deploying applications through the Shield Pipeline</li>
+              </ul>
+
+              <h3>
+                Signature challenge — AG Grid Server-Side Row Model (STAR)
+              </h3>
+              <p>
+                This is one of your strongest "tell me about a challenging
+                technical problem" answers — it has a real architectural
+                decision, cross-team coordination, and a measurable result.
+                Structured using the
+                <a href="guides/agile-leadership.html#framework"
+                  >STAR framework</a
+                >
+                from the Agile &amp; Leadership guide:
+              </p>
+              <details class="qa" open>
+                <summary>AG Grid Server-Side Row Model implementation</summary>
+                <div class="qa-body">
+                  <h5>Situation</h5>
+                  <p>
+                    The application needed to display large trade datasets
+                    efficiently, but loading the entire dataset client-side
+                    didn't scale — the frontend and backend needed to work
+                    together for true server-side pagination, filtering, and
+                    sorting rather than client-side operations on an
+                    already-fetched dataset.
+                  </p>
+                  <h5>Task</h5>
+                  <p>
+                    Implement AG Grid's Server-Side Row Model so the grid
+                    requests only the data it actually needs per
+                    page/filter/sort state, instead of the whole dataset.
+                  </p>
+                  <h5>Action</h5>
+                  <p>
+                    Studied the AG Grid documentation in depth, created a
+                    detailed implementation document, and worked with the
+                    backend team to define the required API changes (the
+                    request/response contract for server-driven pagination,
+                    filtering, and sorting). Once the backend APIs were updated,
+                    implemented the frontend integration — server-side
+                    pagination, sorting, filtering, and data loading wired into
+                    AG Grid's server-side row model.
+                  </p>
+                  <h5>Result</h5>
+                  <p>
+                    The feature worked successfully and significantly improved
+                    application performance by loading only the required data
+                    instead of the entire dataset.
+                  </p>
+                </div>
+              </details>
+
+              <p class="lead">
+                You genuinely enjoy solving complex frontend problems, improving
+                application performance, and building scalable React
+                applications while collaborating effectively with
+                cross-functional teams — that's a strong closing line for the
+                self-intro above.
+              </p>
+              <div class="callout">
+                <strong>Full rehearsal version</strong> The
+                <a href="guides/my-project.html">My Project Walkthrough</a> page
+                has this same material laid out as a complete,
+                deliverable-length script — with a timing guide, likely
+                interviewer follow-ups (and which guide answers each one), and
+                delivery tips for making it sound natural rather than memorized.
+              </div>
+
+              <h2 id="how-to-use">How to use this guide</h2>
+              <p>
+                Each technology has its own standalone HTML file — open it
+                directly, or use the sidebar / search on the left. Every guide
+                follows the same structure: overview → basic → intermediate →
+                advanced → expert → scenario-based → architecture → performance
+                → best practices → common mistakes → company-style questions →
+                cheat sheet. Click any question to expand it; nothing is hidden
+                behind pagination.
+              </p>
+
+              <div class="callout">
+                <strong>Status of this package — complete</strong>
+                All twenty-five guides are now live at full depth. Every
+                technology on your resume — including AI/LLM integration — the
+                surrounding ecosystem, system design, architecture,
+                debugging/tooling, and the behavioral round are covered. Start
+                with <a href="guides/javascript.html">JavaScript (ES6+)</a> and
+                work straight through via the Previous/Next links, or jump
+                anywhere via the sidebar/search.
+              </div>
+
+              <h2 id="roadmap">Roadmap at a glance</h2>
+              <div class="card-grid">
+                <div class="card">
+                  <h4>✅ JavaScript (ES6+)</h4>
+                  <div class="stat">
+                    Closures, event loop, prototypes, async/await,
+                    debouncing/throttling, polyfills, coding challenges
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ TypeScript</h4>
+                  <div class="stat">
+                    Generics, discriminated unions, utility types, type guards,
+                    typing React components & hooks
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ React.js</h4>
+                  <div class="stat">
+                    Hooks, reconciliation, memoization, custom hooks, HOCs vs
+                    hooks, Context, performance, architecture
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Redux / Redux Toolkit</h4>
+                  <div class="stat">
+                    createSlice, thunks vs sagas, RTK Query, normalization,
+                    selector memoization
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ React Router</h4>
+                  <div class="stat">
+                    Nested routes, protected routes, data loaders,
+                    code-splitting, deep-link debugging
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Next.js</h4>
+                  <div class="stat">
+                    SSR/SSG/ISR, App Router Server vs Client Components,
+                    middleware, image optimization
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ HTML5</h4>
+                  <div class="stat">
+                    Semantic elements, forms/validation, storage APIs, Canvas vs
+                    SVG, Web Workers
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ CSS3 / SASS</h4>
+                  <div class="stat">
+                    Box model, specificity, Flexbox vs Grid, BEM, CSS-in-JS
+                    trade-offs, animation performance
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Browser Internals</h4>
+                  <div class="stat">
+                    Rendering pipeline, multi-process architecture, reflow vs
+                    repaint, V8 JIT, bfcache
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Node.js & Express</h4>
+                  <div class="stat">
+                    Event loop internals, middleware, streams, worker threads,
+                    JWT vs sessions
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ REST APIs</h4>
+                  <div class="stat">
+                    HTTP semantics, pagination, versioning, idempotency,
+                    ETags/optimistic concurrency
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ GraphQL</h4>
+                  <div class="stat">
+                    Schema/resolvers, N+1 problem, normalized caching,
+                    fragments, optimistic updates
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ AI / LLM Integration</h4>
+                  <div class="stat">
+                    Chatbot architecture, streaming, prompt engineering, RAG,
+                    function calling, cost control
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Git</h4>
+                  <div class="stat">
+                    Merge vs rebase policy, cherry-pick, bisect, reflog
+                    recovery, branching strategy
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Webpack & Babel</h4>
+                  <div class="stat">
+                    Loaders vs plugins, tree shaking, code splitting, vendor
+                    chunking, Webpack vs Vite
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Testing (Jest, RTL, Cypress)</h4>
+                  <div class="stat">
+                    Testing pyramid, RTL query strategy, mocking, flaky E2E
+                    debugging
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Storybook</h4>
+                  <div class="stat">
+                    Component-driven development, decorators, addons, visual
+                    regression testing
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Debugging & Dev Tools</h4>
+                  <div class="stat">
+                    React/Redux DevTools, Chrome DevTools, network debugging,
+                    profiling, VS Code, worked scenarios
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ CI/CD & AWS</h4>
+                  <div class="stat">
+                    Pipeline stages, blue-green vs canary, S3 + CloudFront,
+                    immutable/versioned rollback
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Frontend System Design</h4>
+                  <div class="stat">
+                    RADIO framework, data grid, real-time dashboard,
+                    autocomplete, notifications, file upload
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Design Patterns & Architecture</h4>
+                  <div class="stat">
+                    Compound components, render props → hooks, provider pattern,
+                    feature-folder structure, monorepo
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Micro Frontends (deep dive)</h4>
+                  <div class="stat">
+                    Module Federation mechanics, shared deps, cross-MFE routing,
+                    CSS isolation, contract versioning
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Performance & Accessibility</h4>
+                  <div class="stat">
+                    Core Web Vitals, bundle size, WCAG POUR, ARIA, focus
+                    management, RUM vs lab data
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Security & Auth</h4>
+                  <div class="stat">
+                    XSS, CSRF, CSP, CORS, token storage trade-offs, dependency
+                    vulnerability management
+                  </div>
+                </div>
+                <div class="card">
+                  <h4>✅ Agile & Leadership</h4>
+                  <div class="stat">
+                    STAR framework, mentoring, code review culture, incident
+                    ownership, cross-team conflict
+                  </div>
+                </div>
+              </div>
+
+              <h2 id="interview-loop">A typical loop at these companies</h2>
+              <table>
+                <tr>
+                  <th>Round</th>
+                  <th>Focus</th>
+                  <th>Guides to review</th>
+                </tr>
+                <tr>
+                  <td>Recruiter screen</td>
+                  <td>Resume walkthrough, level calibration</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Coding (JS)</td>
+                  <td>Algorithms, DOM/array manipulation, output-based JS</td>
+                  <td>JavaScript</td>
+                </tr>
+                <tr>
+                  <td>Coding (React / machine coding)</td>
+                  <td>
+                    Build a component from scratch (autocomplete, data grid,
+                    infinite scroll)
+                  </td>
+                  <td>React.js, Testing</td>
+                </tr>
+                <tr>
+                  <td>Frontend System Design</td>
+                  <td>Architecture trade-offs at scale</td>
+                  <td>
+                    Frontend System Design, Design Patterns & Architecture
+                  </td>
+                </tr>
+                <tr>
+                  <td>Deep-dive technical (varies by company)</td>
+                  <td>
+                    Whatever the role emphasizes — APIs, performance, security,
+                    tooling
+                  </td>
+                  <td>
+                    REST APIs / GraphQL, Performance & Accessibility, Security &
+                    Auth
+                  </td>
+                </tr>
+                <tr>
+                  <td>Behavioral / Leadership</td>
+                  <td>Ownership, mentoring, conflict, incidents</td>
+                  <td>Agile & Leadership</td>
+                </tr>
+                <tr>
+                  <td>Bar raiser / hiring manager</td>
+                  <td>Deep dive on your strongest project (US Bank / AIB)</td>
+                  <td>Your resume + all guides</td>
+                </tr>
+              </table>
+
+              <h2 id="get-started">Get started</h2>
+              <p>
+                Use the sidebar or search to jump to any guide — all twenty-five
+                are cross-linked with Previous/Next navigation, so you can also
+                just start with
+                <a href="guides/javascript.html">JavaScript (ES6+)</a> and work
+                straight through in the suggested order.
+              </p>
+            </div>
+          </div>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar · built for Senior/Lead/Staff
+          Frontend interviews
+        </footer>
+      </div>
+    </div>
+
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="assets/app.js"></script>
+  </body>
 </html>

@@ -1,167 +1,418 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TypeScript Interview Guide — Kamlesh Kumar</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="nav-group"><div class="nav-group-title">Start Here</div>
-      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
-    <div class="nav-group"><div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done active" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
-    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
-    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
-    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
-    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a></div>
-    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
-    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
-    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
-    <div class="nav-group"><div class="nav-group-title">Process</div>
-      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
-  </aside>
-
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> TypeScript</div>
-      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
-    </div>
-
-    <main>
-      <div class="content-wrap">
-        <div class="prose">
-          <div class="hero">
-            <h1>TypeScript Interview Guide</h1>
-            <p class="lead">Static typing on top of the JavaScript you already know — generics, utility types, and the typing patterns that show up constantly in React codebases and API layers.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypeScript Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done active" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link done" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link done" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a class="nav-link done" href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link done" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done" href="testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link done" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done" href="cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a class="nav-link done" href="design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link done" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done" href="performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link done" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done" href="agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
 
-          <h2 id="overview">1. Technology overview</h2>
-          <p>TypeScript is a structurally-typed superset of JavaScript that compiles (via <code>tsc</code> or a transpiler like Babel/SWC) to plain JS — types exist only at compile time and are fully erased at runtime. For a senior candidate, interviewers use TypeScript questions to test whether you can model real domain data precisely (e.g. a trade/reconciliation payload with optional fields, discriminated statuses, nested arrays) and whether you understand structural typing well enough to avoid the common "any-typed escape hatch" anti-pattern under deadline pressure.</p>
-          <div class="tag">Structural Typing</div><div class="tag">Generics</div><div class="tag">Utility Types</div><div class="tag">Discriminated Unions</div><div class="tag">Type Guards</div><div class="tag">Interfaces vs Types</div><div class="tag">keyof / Branded Types</div><div class="tag">React + TS</div>
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> TypeScript
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
+          </div>
+        </div>
 
-          <h2 id="basic">2. Basic questions</h2>
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>TypeScript Interview Guide</h1>
+                <p class="lead">
+                  Static typing on top of the JavaScript you already know —
+                  generics, utility types, and the typing patterns that show up
+                  constantly in React codebases and API layers.
+                </p>
+              </div>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What is structural typing, and how is it different from nominal typing (Java/C#)?</summary>
-            <div class="qa-body">
-              <h5>What</h5>
-              <p>TypeScript compares types by their <em>shape</em> — if an object has all the properties a type requires (with compatible types), it's assignable to that type, regardless of name or declared inheritance. Nominal typing (Java, C#) requires an explicit declared relationship (implements/extends).</p>
-<pre><code>interface Point { x: number; y: number; }
+              <h2 id="overview">1. Technology overview</h2>
+              <p>
+                TypeScript is a structurally-typed superset of JavaScript that
+                compiles (via <code>tsc</code> or a transpiler like Babel/SWC)
+                to plain JS — types exist only at compile time and are fully
+                erased at runtime. For a senior candidate, interviewers use
+                TypeScript questions to test whether you can model real domain
+                data precisely (e.g. a trade/reconciliation payload with
+                optional fields, discriminated statuses, nested arrays) and
+                whether you understand structural typing well enough to avoid
+                the common "any-typed escape hatch" anti-pattern under deadline
+                pressure.
+              </p>
+              <div class="tag">Structural Typing</div>
+              <div class="tag">Generics</div>
+              <div class="tag">Utility Types</div>
+              <div class="tag">Discriminated Unions</div>
+              <div class="tag">Type Guards</div>
+              <div class="tag">Interfaces vs Types</div>
+              <div class="tag">keyof / Branded Types</div>
+              <div class="tag">React + TS</div>
+
+              <h2 id="basic">2. Basic questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What is
+                  structural typing, and how is it different from nominal typing
+                  (Java/C#)?
+                </summary>
+                <div class="qa-body">
+                  <h5>What</h5>
+                  <p>
+                    TypeScript compares types by their <em>shape</em> — if an
+                    object has all the properties a type requires (with
+                    compatible types), it's assignable to that type, regardless
+                    of name or declared inheritance. Nominal typing (Java, C#)
+                    requires an explicit declared relationship
+                    (implements/extends).
+                  </p>
+                  <pre><code>interface Point { x: number; y: number; }
 function log(p: Point) { console.log(p.x, p.y); }
 log({ x: 1, y: 2, z: 3 }); // OK — has at least x and y (extra props allowed via inference, not object literals)</code></pre>
-              <h5>Common mistake</h5>
-              <p>Assuming two differently-named interfaces with identical shapes are incompatible — they're not; TypeScript only cares about structure.</p>
-            </div>
-          </details>
+                  <h5>Common mistake</h5>
+                  <p>
+                    Assuming two differently-named interfaces with identical
+                    shapes are incompatible — they're not; TypeScript only cares
+                    about structure.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> <code>interface</code> vs <code>type</code> — when do you actually need one over the other?</summary>
-            <div class="qa-body">
-              <table>
-                <tr><th>Capability</th><th><code>interface</code></th><th><code>type</code></th></tr>
-                <tr><td>Declaration merging (reopen & extend)</td><td>Yes</td><td>No</td></tr>
-                <tr><td>Union / intersection types</td><td>No</td><td>Yes</td></tr>
-                <tr><td>Primitives, tuples, mapped/conditional types</td><td>No</td><td>Yes</td></tr>
-                <tr><td>Extending</td><td><code>extends</code></td><td><code>&amp;</code> intersection</td></tr>
-              </table>
-              <p>Practical rule: use <code>interface</code> for public object shapes (component props, API response contracts) since consumers can extend them; use <code>type</code> for unions, tuples, and anything computed (mapped/conditional types).</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span>
+                  <code>interface</code> vs <code>type</code> — when do you
+                  actually need one over the other?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th>Capability</th>
+                      <th><code>interface</code></th>
+                      <th><code>type</code></th>
+                    </tr>
+                    <tr>
+                      <td>Declaration merging (reopen & extend)</td>
+                      <td>Yes</td>
+                      <td>No</td>
+                    </tr>
+                    <tr>
+                      <td>Union / intersection types</td>
+                      <td>No</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Primitives, tuples, mapped/conditional types</td>
+                      <td>No</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Extending</td>
+                      <td><code>extends</code></td>
+                      <td><code>&amp;</code> intersection</td>
+                    </tr>
+                  </table>
+                  <p>
+                    Practical rule: use <code>interface</code> for public object
+                    shapes (component props, API response contracts) since
+                    consumers can extend them; use <code>type</code> for unions,
+                    tuples, and anything computed (mapped/conditional types).
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What does <code>any</code> vs <code>unknown</code> vs <code>never</code> mean?</summary>
-            <div class="qa-body">
-              <p><code>any</code> disables type checking entirely (escape hatch — avoid in production code). <code>unknown</code> is the type-safe counterpart: you can assign anything to it, but you must narrow it (via a type guard) before using it. <code>never</code> represents a value that can never occur — the return type of a function that always throws, or the exhaustive "impossible" branch of a discriminated union switch.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What
+                  does <code>any</code> vs <code>unknown</code> vs
+                  <code>never</code> mean?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <code>any</code> disables type checking entirely (escape
+                    hatch — avoid in production code). <code>unknown</code> is
+                    the type-safe counterpart: you can assign anything to it,
+                    but you must narrow it (via a type guard) before using it.
+                    <code>never</code> represents a value that can never occur —
+                    the return type of a function that always throws, or the
+                    exhaustive "impossible" branch of a discriminated union
+                    switch.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What are tuples and enums, and why do many teams avoid numeric enums?</summary>
-            <div class="qa-body">
-              <h5>Tuples</h5>
-              <p>A tuple is a fixed-length array where each position has its own specific type: <code>[string, number]</code> means "exactly two elements — a string then a number," unlike <code>string[]</code> which allows any length of strings. Useful for things like <code>useState</code>'s return value (<code>[value, setValue]</code>) where position carries meaning.</p>
-              <h5>Enums</h5>
-<pre><code>enum Status { Idle, Loading, Success, Error }       // numeric — values are 0,1,2,3
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What are
+                  tuples and enums, and why do many teams avoid numeric enums?
+                </summary>
+                <div class="qa-body">
+                  <h5>Tuples</h5>
+                  <p>
+                    A tuple is a fixed-length array where each position has its
+                    own specific type: <code>[string, number]</code> means
+                    "exactly two elements — a string then a number," unlike
+                    <code>string[]</code> which allows any length of strings.
+                    Useful for things like <code>useState</code>'s return value
+                    (<code>[value, setValue]</code>) where position carries
+                    meaning.
+                  </p>
+                  <h5>Enums</h5>
+                  <pre><code>enum Status { Idle, Loading, Success, Error }       // numeric — values are 0,1,2,3
 enum Role { Admin = 'admin', Viewer = 'viewer' }    // string enum — safer
 
 type Role2 = 'admin' | 'viewer';                     // union of string literals — most teams prefer this</code></pre>
-              <p>Numeric enums are risky because their underlying values are just numbers — a value of <code>0</code> could silently be any enum member depending on declaration order, and enums compile to real runtime JS objects (unlike a union of string literals, which is erased entirely at compile time, adding zero runtime cost). Most modern teams prefer a plain union of string literals over enums for exactly these reasons — same compile-time safety, no runtime footprint, no ordering fragility.</p>
-              <h5>Type inference (related)</h5>
-              <p>TypeScript infers types from initializers automatically (<code>let x = 5</code> is inferred as <code>number</code>) — the idiomatic style relies on inference for local variables and only annotates function signatures and exported values explicitly, since annotating every variable is noisy without adding real safety.</p>
-            </div>
-          </details>
+                  <p>
+                    Numeric enums are risky because their underlying values are
+                    just numbers — a value of <code>0</code> could silently be
+                    any enum member depending on declaration order, and enums
+                    compile to real runtime JS objects (unlike a union of string
+                    literals, which is erased entirely at compile time, adding
+                    zero runtime cost). Most modern teams prefer a plain union
+                    of string literals over enums for exactly these reasons —
+                    same compile-time safety, no runtime footprint, no ordering
+                    fragility.
+                  </p>
+                  <h5>Type inference (related)</h5>
+                  <p>
+                    TypeScript infers types from initializers automatically
+                    (<code>let x = 5</code> is inferred as <code>number</code>)
+                    — the idiomatic style relies on inference for local
+                    variables and only annotates function signatures and
+                    exported values explicitly, since annotating every variable
+                    is noisy without adding real safety.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What's the difference between <code>readonly</code> and <code>const</code>, and what does <code>as const</code> do?</summary>
-            <div class="qa-body">
-              <p><code>const</code> prevents reassigning a variable <em>binding</em>. <code>readonly</code> prevents reassigning a <em>property</em> after construction — but only at the type-checking level, and only shallowly (a readonly property holding an object doesn't make that object's own nested properties readonly, unless you make them readonly recursively too).</p>
-<pre><code>interface Config { readonly apiUrl: string; }
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What's
+                  the difference between <code>readonly</code> and
+                  <code>const</code>, and what does <code>as const</code> do?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <code>const</code> prevents reassigning a variable
+                    <em>binding</em>. <code>readonly</code> prevents reassigning
+                    a <em>property</em> after construction — but only at the
+                    type-checking level, and only shallowly (a readonly property
+                    holding an object doesn't make that object's own nested
+                    properties readonly, unless you make them readonly
+                    recursively too).
+                  </p>
+                  <pre><code>interface Config { readonly apiUrl: string; }
 const cfg: Config = { apiUrl: '/api' };
 cfg.apiUrl = '/v2';  // compile error — readonly
 
 let value = 'Hello' as const;         // const assertion → type is the literal 'Hello', deeply readonly
 let length = (value as string).length; // type assertion → treat it as string instead</code></pre>
-              <p><code>as const</code> tells TypeScript to infer the most specific literal type for an expression instead of widening it to a general type — useful for object/array literals used as fixed configuration or enum-like values.</p>
-            </div>
-          </details>
+                  <p>
+                    <code>as const</code> tells TypeScript to infer the most
+                    specific literal type for an expression instead of widening
+                    it to a general type — useful for object/array literals used
+                    as fixed configuration or enum-like values.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What is a type assertion (<code>as</code>), and why is it dangerous?</summary>
-            <div class="qa-body">
-              <p>A type assertion overrides TypeScript's inferred type with one you specify — used when you have more information than the compiler does (e.g. you know a DOM query returns a specific element type). It performs <strong>no runtime check</strong> — an incorrect assertion compiles cleanly and only fails later, at runtime, often far from where the actual mistake was made.</p>
-<pre><code>let value: any = 'Hello';
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What is
+                  a type assertion (<code>as</code>), and why is it dangerous?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    A type assertion overrides TypeScript's inferred type with
+                    one you specify — used when you have more information than
+                    the compiler does (e.g. you know a DOM query returns a
+                    specific element type). It performs
+                    <strong>no runtime check</strong> — an incorrect assertion
+                    compiles cleanly and only fails later, at runtime, often far
+                    from where the actual mistake was made.
+                  </p>
+                  <pre><code>let value: any = 'Hello';
 let length = (value as string).length; // compiles fine even if value were actually a number</code></pre>
-              <p><strong>Common mistake:</strong> treating <code>as SomeType</code> as if it validates the data — it's purely a compiler instruction, not a runtime check. For data crossing a real boundary (an API response), validate with a runtime schema library instead, exactly as covered in the API-contract-drift scenario later in this guide.</p>
-            </div>
-          </details>
+                  <p>
+                    <strong>Common mistake:</strong> treating
+                    <code>as SomeType</code> as if it validates the data — it's
+                    purely a compiler instruction, not a runtime check. For data
+                    crossing a real boundary (an API response), validate with a
+                    runtime schema library instead, exactly as covered in the
+                    API-contract-drift scenario later in this guide.
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="intermediate">3. Intermediate questions</h2>
+              <h2 id="intermediate">3. Intermediate questions</h2>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> Explain generics with a real example from an API layer.</summary>
-            <div class="qa-body">
-              <h5>What</h5>
-              <p>Generics let a function/type be parameterized over a type, preserving type information instead of widening to <code>any</code>.</p>
-<pre><code>async function fetchJson&lt;T&gt;(url: string): Promise&lt;T&gt; {
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Explain generics with a real example from an API layer.
+                </summary>
+                <div class="qa-body">
+                  <h5>What</h5>
+                  <p>
+                    Generics let a function/type be parameterized over a type,
+                    preserving type information instead of widening to
+                    <code>any</code>.
+                  </p>
+                  <pre><code>async function fetchJson&lt;T&gt;(url: string): Promise&lt;T&gt; {
   const res = await fetch(url);
   return res.json() as T;
 }
 interface Trade { id: string; notional: number; ccyPair: string; }
 const trades = await fetchJson&lt;Trade[]&gt;('/api/trades'); // trades is Trade[], fully typed</code></pre>
-              <h5>Common mistake</h5>
-              <p>Casting with <code>as T</code> and assuming that makes the data safe — it's a compile-time assertion only; the response could still be malformed at runtime. For real safety, validate with a schema library (Zod/io-ts) and infer the type from the schema.</p>
-            </div>
-          </details>
+                  <h5>Common mistake</h5>
+                  <p>
+                    Casting with <code>as T</code> and assuming that makes the
+                    data safe — it's a compile-time assertion only; the response
+                    could still be malformed at runtime. For real safety,
+                    validate with a schema library (Zod/io-ts) and infer the
+                    type from the schema.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> Discriminated unions — why are they the preferred pattern over optional fields?</summary>
-            <div class="qa-body">
-<pre><code>type RequestState&lt;T&gt; =
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Discriminated unions — why are they the preferred pattern over
+                  optional fields?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>type RequestState&lt;T&gt; =
   | { status: 'idle' }
   | { status: 'loading' }
   | { status: 'success'; data: T }
@@ -173,14 +424,31 @@ function render&lt;T&gt;(state: RequestState&lt;T&gt;) {
     case 'error':   return state.error;  // TS knows `error` exists here
   }
 }</code></pre>
-              <p>A single object with <code>data?: T; error?: string; loading?: boolean</code> allows invalid states (e.g. <code>loading: true</code> and <code>data</code> present at once) — the type system can't stop that. A discriminated union makes invalid states unrepresentable: the compiler narrows the type inside each <code>case</code> automatically, which is exactly the pattern behind React Query's/RTK Query's status objects.</p>
-            </div>
-          </details>
+                  <p>
+                    A single object with
+                    <code>data?: T; error?: string; loading?: boolean</code>
+                    allows invalid states (e.g. <code>loading: true</code> and
+                    <code>data</code> present at once) — the type system can't
+                    stop that. A discriminated union makes invalid states
+                    unrepresentable: the compiler narrows the type inside each
+                    <code>case</code> automatically, which is exactly the
+                    pattern behind React Query's/RTK Query's status objects.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How does TypeScript narrow union types with <code>typeof</code>, <code>in</code>, and <code>instanceof</code> — and how is that different from a discriminated union?</summary>
-            <div class="qa-body">
-<pre><code>function format(value: string | number) {
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How does TypeScript narrow union types with
+                  <code>typeof</code>, <code>in</code>, and
+                  <code>instanceof</code> — and how is that different from a
+                  discriminated union?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>function format(value: string | number) {
   if (typeof value === 'string') return value.toUpperCase(); // narrowed to string
   return value.toFixed(2);                                    // narrowed to number
 }
@@ -191,59 +459,153 @@ function move(animal: Bird | Fish) {
   if ('fly' in animal) animal.fly();   // narrowed to Bird
   else animal.swim();                  // narrowed to Fish
 }</code></pre>
-              <p><code>typeof</code> narrows primitives, <code>instanceof</code> narrows class instances, and <code>in</code> narrows based on whether a property exists on the shape — all three work by checking something about the value <em>at the call site</em>. A discriminated union (covered above) is a different, more deliberate design choice: you add an explicit tag field up front specifically so narrowing is trivial and exhaustive everywhere the union is used, rather than relying on ad hoc structural checks each time.</p>
-            </div>
-          </details>
+                  <p>
+                    <code>typeof</code> narrows primitives,
+                    <code>instanceof</code> narrows class instances, and
+                    <code>in</code> narrows based on whether a property exists
+                    on the shape — all three work by checking something about
+                    the value <em>at the call site</em>. A discriminated union
+                    (covered above) is a different, more deliberate design
+                    choice: you add an explicit tag field up front specifically
+                    so narrowing is trivial and exhaustive everywhere the union
+                    is used, rather than relying on ad hoc structural checks
+                    each time.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> Most-used utility types — what do they do?</summary>
-            <div class="qa-body">
-              <table>
-                <tr><th>Utility</th><th>Does</th></tr>
-                <tr><td><code>Partial&lt;T&gt;</code></td><td>All properties optional (patch/update payloads)</td></tr>
-                <tr><td><code>Required&lt;T&gt;</code></td><td>All properties required</td></tr>
-                <tr><td><code>Pick&lt;T, K&gt;</code></td><td>Subset of keys</td></tr>
-                <tr><td><code>Omit&lt;T, K&gt;</code></td><td>All keys except K</td></tr>
-                <tr><td><code>Record&lt;K, V&gt;</code></td><td>Object type with keys K, values V</td></tr>
-                <tr><td><code>ReturnType&lt;F&gt;</code></td><td>Extracts a function's return type</td></tr>
-                <tr><td><code>Awaited&lt;T&gt;</code></td><td>Unwraps a Promise's resolved type</td></tr>
-              </table>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Most-used utility types — what do they do?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th>Utility</th>
+                      <th>Does</th>
+                    </tr>
+                    <tr>
+                      <td><code>Partial&lt;T&gt;</code></td>
+                      <td>All properties optional (patch/update payloads)</td>
+                    </tr>
+                    <tr>
+                      <td><code>Required&lt;T&gt;</code></td>
+                      <td>All properties required</td>
+                    </tr>
+                    <tr>
+                      <td><code>Pick&lt;T, K&gt;</code></td>
+                      <td>Subset of keys</td>
+                    </tr>
+                    <tr>
+                      <td><code>Omit&lt;T, K&gt;</code></td>
+                      <td>All keys except K</td>
+                    </tr>
+                    <tr>
+                      <td><code>Record&lt;K, V&gt;</code></td>
+                      <td>Object type with keys K, values V</td>
+                    </tr>
+                    <tr>
+                      <td><code>ReturnType&lt;F&gt;</code></td>
+                      <td>Extracts a function's return type</td>
+                    </tr>
+                    <tr>
+                      <td><code>Awaited&lt;T&gt;</code></td>
+                      <td>Unwraps a Promise's resolved type</td>
+                    </tr>
+                  </table>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> Explain TypeScript's access modifiers (<code>public</code>/<code>private</code>/<code>protected</code>) — and how they differ from real runtime privacy.</summary>
-            <div class="qa-body">
-              <p><code>public</code> (the default) is accessible from anywhere. <code>private</code> is accessible only within the declaring class. <code>protected</code> is accessible within the class and its subclasses. These are <strong>compile-time only</strong> — they don't produce actual runtime privacy; the property still exists on the object and is reachable from plain JavaScript or by bypassing the type checker (<code>(instance as any).privateField</code>). For real runtime privacy, use native <code>#field</code> private class fields instead, which JavaScript itself enforces.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Explain TypeScript's access modifiers
+                  (<code>public</code>/<code>private</code>/<code>protected</code>)
+                  — and how they differ from real runtime privacy.
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <code>public</code> (the default) is accessible from
+                    anywhere. <code>private</code> is accessible only within the
+                    declaring class. <code>protected</code> is accessible within
+                    the class and its subclasses. These are
+                    <strong>compile-time only</strong> — they don't produce
+                    actual runtime privacy; the property still exists on the
+                    object and is reachable from plain JavaScript or by
+                    bypassing the type checker (<code
+                      >(instance as any).privateField</code
+                    >). For real runtime privacy, use native
+                    <code>#field</code> private class fields instead, which
+                    JavaScript itself enforces.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> <code>interface</code> vs <code>class</code> — what's the actual difference?</summary>
-            <div class="qa-body">
-              <p>An <code>interface</code> is a compile-time-only contract describing a shape — it generates zero JavaScript output; it's erased entirely by the time the code runs. A <code>class</code> is a runtime construct — it compiles to an actual constructor function/prototype and can be instantiated with <code>new</code>. A class can <code>implement</code> one or more interfaces, and TypeScript checks that it actually satisfies each one's shape.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  <code>interface</code> vs <code>class</code> — what's the
+                  actual difference?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    An <code>interface</code> is a compile-time-only contract
+                    describing a shape — it generates zero JavaScript output;
+                    it's erased entirely by the time the code runs. A
+                    <code>class</code> is a runtime construct — it compiles to
+                    an actual constructor function/prototype and can be
+                    instantiated with <code>new</code>. A class can
+                    <code>implement</code> one or more interfaces, and
+                    TypeScript checks that it actually satisfies each one's
+                    shape.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> What does the <code>keyof</code> operator do?</summary>
-            <div class="qa-body">
-<pre><code>interface Person { name: string; age: number; }
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  What does the <code>keyof</code> operator do?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>interface Person { name: string; age: number; }
 type PersonKey = keyof Person; // "name" | "age"
 
 function getProp&lt;T, K extends keyof T&gt;(obj: T, key: K): T[K] {
   return obj[key];
 }</code></pre>
-              <p><code>keyof</code> produces a union of a type's property names as string-literal types. It's most useful combined with generics and indexed access (<code>T[K]</code>) to write type-safe "get/set a property by name" utilities that stay correct even as the underlying type changes — this is exactly the mechanism behind the type-safe <code>pick</code> function in the coding challenges section below.</p>
-            </div>
-          </details>
+                  <p>
+                    <code>keyof</code> produces a union of a type's property
+                    names as string-literal types. It's most useful combined
+                    with generics and indexed access (<code>T[K]</code>) to
+                    write type-safe "get/set a property by name" utilities that
+                    stay correct even as the underlying type changes — this is
+                    exactly the mechanism behind the type-safe
+                    <code>pick</code> function in the coding challenges section
+                    below.
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="advanced">4. Advanced questions</h2>
+              <h2 id="advanced">4. Advanced questions</h2>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> Write a custom type guard and explain why it's needed over a plain boolean check.</summary>
-            <div class="qa-body">
-<pre><code>interface Cat { kind: 'cat'; meow(): void; }
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> Write
+                  a custom type guard and explain why it's needed over a plain
+                  boolean check.
+                </summary>
+                <div class="qa-body">
+                  <pre><code>interface Cat { kind: 'cat'; meow(): void; }
 interface Dog { kind: 'dog'; bark(): void; }
 
 function isCat(pet: Cat | Dog): pet is Cat {
@@ -254,24 +616,46 @@ function speak(pet: Cat | Dog) {
   if (isCat(pet)) pet.meow(); // narrowed to Cat inside this block
   else pet.bark();            // narrowed to Dog
 }</code></pre>
-              <p>The <code>pet is Cat</code> return type ("type predicate") is what tells the compiler to actually narrow the type in the calling scope — a function that just returns <code>boolean</code> checks the same condition at runtime but gives the compiler no narrowing information, so you'd still need a cast afterward.</p>
-            </div>
-          </details>
+                  <p>
+                    The <code>pet is Cat</code> return type ("type predicate")
+                    is what tells the compiler to actually narrow the type in
+                    the calling scope — a function that just returns
+                    <code>boolean</code> checks the same condition at runtime
+                    but gives the compiler no narrowing information, so you'd
+                    still need a cast afterward.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> Mapped types and conditional types — build a <code>DeepPartial&lt;T&gt;</code>.</summary>
-            <div class="qa-body">
-<pre><code>type DeepPartial&lt;T&gt; = T extends object
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  Mapped types and conditional types — build a
+                  <code>DeepPartial&lt;T&gt;</code>.
+                </summary>
+                <div class="qa-body">
+                  <pre><code>type DeepPartial&lt;T&gt; = T extends object
   ? { [K in keyof T]?: DeepPartial&lt;T[K]&gt; }
   : T;</code></pre>
-              <p>The conditional (<code>T extends object ? ... : T</code>) stops recursion at primitives; the mapped type (<code>[K in keyof T]</code>) iterates every key and recursively applies the same rule to nested objects — useful for typing a "patch" function against a deeply nested settings/config object.</p>
-            </div>
-          </details>
+                  <p>
+                    The conditional (<code>T extends object ? ... : T</code>)
+                    stops recursion at primitives; the mapped type (<code
+                      >[K in keyof T]</code
+                    >) iterates every key and recursively applies the same rule
+                    to nested objects — useful for typing a "patch" function
+                    against a deeply nested settings/config object.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How do you type React function components, hooks, and event handlers correctly (not just <code>React.FC</code>)?</summary>
-            <div class="qa-body">
-<pre><code>interface ButtonProps {
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  do you type React function components, hooks, and event
+                  handlers correctly (not just <code>React.FC</code>)?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>interface ButtonProps {
   label: string;
   onClick: (event: React.MouseEvent&lt;HTMLButtonElement&gt;) =&gt; void;
   variant?: 'primary' | 'secondary';
@@ -285,69 +669,201 @@ function useToggle(initial = false): [boolean, () =&gt; void] {
   const toggle = useCallback(() =&gt; setValue(v =&gt; !v), []);
   return [value, toggle];
 }</code></pre>
-              <p>Prefer typing props with a plain function signature (<code>function Button(props: ButtonProps)</code>) over <code>React.FC&lt;ButtonProps&gt;</code> — <code>React.FC</code> implicitly adds <code>children</code> (not always wanted) and complicates generic components; most modern codebases and the React team's own guidance have moved away from it. When a component genuinely does accept children, type it explicitly instead of relying on <code>React.FC</code>'s implicit version: <code>interface CardProps { title: string; }</code> combined with <code>function Card({ title, children }: React.PropsWithChildren&lt;CardProps&gt;)</code> — this documents that children are expected without pulling in everything else <code>React.FC</code> bundles.</p>
-            </div>
-          </details>
+                  <p>
+                    Prefer typing props with a plain function signature (<code
+                      >function Button(props: ButtonProps)</code
+                    >) over <code>React.FC&lt;ButtonProps&gt;</code> —
+                    <code>React.FC</code> implicitly adds
+                    <code>children</code> (not always wanted) and complicates
+                    generic components; most modern codebases and the React
+                    team's own guidance have moved away from it. When a
+                    component genuinely does accept children, type it explicitly
+                    instead of relying on <code>React.FC</code>'s implicit
+                    version:
+                    <code>interface CardProps { title: string; }</code> combined
+                    with
+                    <code
+                      >function Card({ title, children }:
+                      React.PropsWithChildren&lt;CardProps&gt;)</code
+                    >
+                    — this documents that children are expected without pulling
+                    in everything else <code>React.FC</code> bundles.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> Abstract classes vs interfaces — when do you reach for one over the other?</summary>
-            <div class="qa-body">
-              <p>An interface can never contain implementation — only shape. An <strong>abstract class</strong> can provide real, partial implementations that subclasses inherit, alongside abstract members that subclasses are forced to implement, and it can't be instantiated directly on its own. Reach for an abstract class specifically when subclasses should share concrete, reusable behavior (not just a contract) — e.g. a base <code>Widget</code> class with a working <code>render()</code> orchestration method but an abstract <code>getContent()</code> each subclass must define. If there's no shared implementation to inherit, an interface is the simpler, more flexible choice (a class can implement several interfaces, but only extend one class).</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  Abstract classes vs interfaces — when do you reach for one
+                  over the other?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    An interface can never contain implementation — only shape.
+                    An <strong>abstract class</strong> can provide real, partial
+                    implementations that subclasses inherit, alongside abstract
+                    members that subclasses are forced to implement, and it
+                    can't be instantiated directly on its own. Reach for an
+                    abstract class specifically when subclasses should share
+                    concrete, reusable behavior (not just a contract) — e.g. a
+                    base <code>Widget</code> class with a working
+                    <code>render()</code> orchestration method but an abstract
+                    <code>getContent()</code> each subclass must define. If
+                    there's no shared implementation to inherit, an interface is
+                    the simpler, more flexible choice (a class can implement
+                    several interfaces, but only extend one class).
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> What is variance (covariance/contravariance) in TypeScript, and why does it matter for function parameters specifically?</summary>
-            <div class="qa-body">
-              <p><strong>Covariance</strong> means a more specific type can be used where a more general one is expected — this is how TypeScript treats function <em>return</em> types: a function returning <code>Dog</code> is assignable where a function returning <code>Animal</code> is expected, because a caller getting a <code>Dog</code> back is still perfectly happy receiving "an <code>Animal</code>." <strong>Contravariance</strong> is the reverse, and it's how <em>parameter</em> types should ideally behave for real type safety: a function that can handle <em>any</em> <code>Animal</code> parameter should be assignable where a function handling only <code>Dog</code> is expected — accepting a wider range of input is safe, accepting a narrower range is not.</p>
-<pre><code>type AnimalHandler = (a: Animal) =&gt; void;
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> What
+                  is variance (covariance/contravariance) in TypeScript, and why
+                  does it matter for function parameters specifically?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <strong>Covariance</strong> means a more specific type can
+                    be used where a more general one is expected — this is how
+                    TypeScript treats function <em>return</em> types: a function
+                    returning <code>Dog</code> is assignable where a function
+                    returning <code>Animal</code> is expected, because a caller
+                    getting a <code>Dog</code> back is still perfectly happy
+                    receiving "an <code>Animal</code>."
+                    <strong>Contravariance</strong> is the reverse, and it's how
+                    <em>parameter</em> types should ideally behave for real type
+                    safety: a function that can handle <em>any</em>
+                    <code>Animal</code> parameter should be assignable where a
+                    function handling only <code>Dog</code> is expected —
+                    accepting a wider range of input is safe, accepting a
+                    narrower range is not.
+                  </p>
+                  <pre><code>type AnimalHandler = (a: Animal) =&gt; void;
 type DogHandler = (d: Dog) =&gt; void;
 
 let handler: AnimalHandler;
 const dogHandler: DogHandler = (d) =&gt; console.log(d.bark());
 handler = dogHandler; // unsound if allowed unchecked — handler may be called with a Cat,
                        // but dogHandler assumes it always gets a Dog</code></pre>
-              <p>TypeScript's function parameters are <strong>bivariant</strong> by default for historical compatibility with older JS callback patterns (method parameters specifically), which is technically unsound — the snippet above compiles without error even though it isn't fully safe. Enabling <code>strictFunctionTypes</code> in <code>tsconfig.json</code> makes standalone function type parameters properly contravariant (catching cases like this), though method shorthand syntax remains bivariant even then, which is a real, frequently-cited gotcha at this depth.</p>
-            </div>
-          </details>
+                  <p>
+                    TypeScript's function parameters are
+                    <strong>bivariant</strong> by default for historical
+                    compatibility with older JS callback patterns (method
+                    parameters specifically), which is technically unsound — the
+                    snippet above compiles without error even though it isn't
+                    fully safe. Enabling <code>strictFunctionTypes</code> in
+                    <code>tsconfig.json</code> makes standalone function type
+                    parameters properly contravariant (catching cases like
+                    this), though method shorthand syntax remains bivariant even
+                    then, which is a real, frequently-cited gotcha at this
+                    depth.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How would you simulate nominal typing in TypeScript using branded types?</summary>
-            <div class="qa-body">
-              <h5>The problem</h5>
-              <p>Because TypeScript is structurally typed, two differently-named types with the same shape are interchangeable — <code>UserId</code> and <code>OrderId</code> both typed as plain <code>string</code> can be passed to each other's functions with no compile error, even though mixing them is a real bug.</p>
-              <h5>The fix</h5>
-<pre><code>type UserId = string & { readonly __brand: 'UserId' };
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  would you simulate nominal typing in TypeScript using branded
+                  types?
+                </summary>
+                <div class="qa-body">
+                  <h5>The problem</h5>
+                  <p>
+                    Because TypeScript is structurally typed, two
+                    differently-named types with the same shape are
+                    interchangeable — <code>UserId</code> and
+                    <code>OrderId</code> both typed as plain
+                    <code>string</code> can be passed to each other's functions
+                    with no compile error, even though mixing them is a real
+                    bug.
+                  </p>
+                  <h5>The fix</h5>
+                  <pre><code>type UserId = string & { readonly __brand: 'UserId' };
 type OrderId = string & { readonly __brand: 'OrderId' };
 
 function getUser(id: UserId) { /* ... */ }
 
 const orderId = 'ord_123' as OrderId;
 getUser(orderId); // compile error — OrderId is not assignable to UserId</code></pre>
-              <p>Intersecting the base type with a unique, unused "brand" property makes each branded type structurally distinct from the others, even though they're all just strings at runtime — the brand only exists at the type level and costs nothing in the compiled output. This is the standard workaround for simulating nominal typing in an otherwise structural type system.</p>
-            </div>
-          </details>
+                  <p>
+                    Intersecting the base type with a unique, unused "brand"
+                    property makes each branded type structurally distinct from
+                    the others, even though they're all just strings at runtime
+                    — the brand only exists at the type level and costs nothing
+                    in the compiled output. This is the standard workaround for
+                    simulating nominal typing in an otherwise structural type
+                    system.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> Decorators, namespaces, and ambient declarations — do you need these in a React codebase?</summary>
-            <div class="qa-body">
-              <p>Rarely written directly in plain React code, but worth recognizing: <strong>decorators</strong> (<code>@Component</code>, <code>@Injectable</code>) attach metadata/behavior to classes or members at declaration time — common in Angular and NestJS, uncommon in React. <strong>Namespaces</strong> (<code>namespace Foo { ... }</code>) are an older TS-only way to group code under a shared name; ES modules (<code>import</code>/<code>export</code>) are the modern standard, and recommending namespaces for new code is an outdated-practice flag in review. <strong>Ambient declarations</strong> (<code>.d.ts</code> files) describe the shape of code that isn't itself written in TypeScript — an untyped npm package, or a global injected by a <code>&lt;script&gt;</code> tag — so the compiler can type-check usages of it without needing the original source.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  Decorators, namespaces, and ambient declarations — do you need
+                  these in a React codebase?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Rarely written directly in plain React code, but worth
+                    recognizing:
+                    <strong>decorators</strong> (<code>@Component</code>,
+                    <code>@Injectable</code>) attach metadata/behavior to
+                    classes or members at declaration time — common in Angular
+                    and NestJS, uncommon in React.
+                    <strong>Namespaces</strong> (<code
+                      >namespace Foo { ... }</code
+                    >) are an older TS-only way to group code under a shared
+                    name; ES modules (<code>import</code>/<code>export</code>)
+                    are the modern standard, and recommending namespaces for new
+                    code is an outdated-practice flag in review.
+                    <strong>Ambient declarations</strong> (<code>.d.ts</code>
+                    files) describe the shape of code that isn't itself written
+                    in TypeScript — an untyped npm package, or a global injected
+                    by a <code>&lt;script&gt;</code> tag — so the compiler can
+                    type-check usages of it without needing the original source.
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="expert">5. Expert-level & scenario-based</h2>
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: your team keeps typing API responses by hand and they drift from the real backend contract, causing runtime errors TypeScript didn't catch. How do you fix the process, not just the code?</summary>
-            <div class="qa-body">
-              <p>TypeScript types are erased at compile time — they give zero runtime protection against a backend contract change. Fixes, in order of investment: (1) generate types directly from the API contract (OpenAPI/Swagger codegen, or GraphQL codegen) so the type <em>is</em> the contract, not a hand-maintained guess; (2) for critical payloads, validate at the network boundary with a runtime schema library (Zod) and infer the static type from the schema (<code>z.infer&lt;typeof schema&gt;</code>) so compile-time and runtime checks can never drift apart; (3) add contract tests against a staging backend in CI.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  your team keeps typing API responses by hand and they drift
+                  from the real backend contract, causing runtime errors
+                  TypeScript didn't catch. How do you fix the process, not just
+                  the code?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    TypeScript types are erased at compile time — they give zero
+                    runtime protection against a backend contract change. Fixes,
+                    in order of investment: (1) generate types directly from the
+                    API contract (OpenAPI/Swagger codegen, or GraphQL codegen)
+                    so the type <em>is</em> the contract, not a hand-maintained
+                    guess; (2) for critical payloads, validate at the network
+                    boundary with a runtime schema library (Zod) and infer the
+                    static type from the schema (<code
+                      >z.infer&lt;typeof schema&gt;</code
+                    >) so compile-time and runtime checks can never drift apart;
+                    (3) add contract tests against a staging backend in CI.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Output-based: why does this fail to compile, and what's the fix?</summary>
-            <div class="qa-body">
-<pre><code>function merge&lt;T, U&gt;(a: T, b: U): T &amp; U {
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span>
+                  Output-based: why does this fail to compile, and what's the
+                  fix?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>function merge&lt;T, U&gt;(a: T, b: U): T &amp; U {
   return { ...a, ...b };
 }
 interface Base { id: string; }
@@ -355,23 +871,47 @@ interface Extra { id: number; } // conflicting `id` type
 const x = merge&lt;Base, Extra&gt;({ id: '1' }, { id: 2 });
 // x.id has type `string & number` — the intersection of incompatible
 // primitive types collapses to `never`, so x.id is unusable</code></pre>
-              <p>Intersections of object types combine <em>all</em> properties, but when the same key has incompatible primitive types across both, the resulting property type is <code>never</code> — a signal the two shapes shouldn't have been merged in the first place. The fix is to redesign the types so overlapping keys are compatible, or use a discriminated union instead of an intersection.</p>
-            </div>
-          </details>
+                  <p>
+                    Intersections of object types combine
+                    <em>all</em> properties, but when the same key has
+                    incompatible primitive types across both, the resulting
+                    property type is <code>never</code> — a signal the two
+                    shapes shouldn't have been merged in the first place. The
+                    fix is to redesign the types so overlapping keys are
+                    compatible, or use a discriminated union instead of an
+                    intersection.
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="coding">6. Coding challenges</h2>
-          <div class="qa">
-            <div class="qa-body" style="margin-top:0;border-top:none;padding-top:0;">
-              <h5>Problem: implement a type-safe <code>pick</code> function</h5>
-<pre><code>function pick&lt;T, K extends keyof T&gt;(obj: T, keys: K[]): Pick&lt;T, K&gt; {
+              <h2 id="coding">6. Coding challenges</h2>
+              <div class="qa">
+                <div
+                  class="qa-body"
+                  style="margin-top: 0; border-top: none; padding-top: 0"
+                >
+                  <h5>
+                    Problem: implement a type-safe <code>pick</code> function
+                  </h5>
+                  <pre><code>function pick&lt;T, K extends keyof T&gt;(obj: T, keys: K[]): Pick&lt;T, K&gt; {
   const result = {} as Pick&lt;T, K&gt;;
   keys.forEach(key =&gt; { result[key] = obj[key]; });
   return result;
 }</code></pre>
-              <p><strong>Follow-up:</strong> "Why <code>K extends keyof T</code> instead of just <code>string[]</code>?" — it constrains the caller to only pass keys that actually exist on <code>T</code>, and lets the return type be computed precisely via the built-in <code>Pick</code> utility rather than widened to <code>Partial&lt;T&gt;</code>.</p>
+                  <p>
+                    <strong>Follow-up:</strong> "Why
+                    <code>K extends keyof T</code> instead of just
+                    <code>string[]</code>?" — it constrains the caller to only
+                    pass keys that actually exist on <code>T</code>, and lets
+                    the return type be computed precisely via the built-in
+                    <code>Pick</code> utility rather than widened to
+                    <code>Partial&lt;T&gt;</code>.
+                  </p>
 
-              <h5>Problem: type a reducer with a discriminated action union</h5>
-<pre><code>type Action =
+                  <h5>
+                    Problem: type a reducer with a discriminated action union
+                  </h5>
+                  <pre><code>type Action =
   | { type: 'increment'; payload: number }
   | { type: 'reset' };
 
@@ -385,10 +925,19 @@ function reducer(state: number, action: Action): number {
     }
   }
 }</code></pre>
-              <p><strong>Common mistake:</strong> skipping the <code>never</code> exhaustiveness check in the <code>default</code> branch — without it, adding a new action type later won't produce a compile error anywhere, silently breaking the reducer.</p>
+                  <p>
+                    <strong>Common mistake:</strong> skipping the
+                    <code>never</code> exhaustiveness check in the
+                    <code>default</code> branch — without it, adding a new
+                    action type later won't produce a compile error anywhere,
+                    silently breaking the reducer.
+                  </p>
 
-              <h5>Problem: type a generic <code>useLocalStorage&lt;T&gt;</code> hook</h5>
-<pre><code>function useLocalStorage&lt;T&gt;(
+                  <h5>
+                    Problem: type a generic
+                    <code>useLocalStorage&lt;T&gt;</code> hook
+                  </h5>
+                  <pre><code>function useLocalStorage&lt;T&gt;(
   key: string,
   initialValue: T
 ): [T, (value: T) =&gt; void] {
@@ -408,68 +957,199 @@ function reducer(state: number, action: Action): number {
 
   return [value, setStoredValue];
 }</code></pre>
-              <p>The generic <code>T</code> flows from the caller's <code>initialValue</code> into both the state type and the setter's parameter type, giving full type safety without callers ever specifying <code>T</code> explicitly — it's inferred. <strong>Common mistakes:</strong> not lazy-initializing state (the non-lazy form would read <code>localStorage</code> on every single render); not wrapping <code>JSON.parse</code> in a try/catch (corrupted storage crashes the app on mount). <strong>Follow-up:</strong> "How would you sync this value across browser tabs?" — listen for the window's <code>storage</code> event, which fires in other tabs (not the originating one) whenever <code>localStorage</code> changes.</p>
+                  <p>
+                    The generic <code>T</code> flows from the caller's
+                    <code>initialValue</code> into both the state type and the
+                    setter's parameter type, giving full type safety without
+                    callers ever specifying <code>T</code> explicitly — it's
+                    inferred. <strong>Common mistakes:</strong> not
+                    lazy-initializing state (the non-lazy form would read
+                    <code>localStorage</code> on every single render); not
+                    wrapping <code>JSON.parse</code> in a try/catch (corrupted
+                    storage crashes the app on mount).
+                    <strong>Follow-up:</strong> "How would you sync this value
+                    across browser tabs?" — listen for the window's
+                    <code>storage</code> event, which fires in other tabs (not
+                    the originating one) whenever
+                    <code>localStorage</code> changes.
+                  </p>
+                </div>
+              </div>
+
+              <h2 id="mistakes">7. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong> Reaching for
+                <code>any</code> under deadline pressure instead of
+                <code>unknown</code> + narrowing; using non-null assertions
+                (<code>value!</code>) to silence errors instead of fixing the
+                actual null-handling; enabling TypeScript but leaving
+                <code>strict: false</code>, which quietly disables most of the
+                safety it's meant to provide; typing Redux/Context state with
+                broad <code>any</code>-ish shapes instead of discriminated
+                unions, losing exhaustiveness checking.
+              </div>
+
+              <h2 id="company">8. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>Microsoft/Google style:</strong> "Write a generic
+                  <code>DeepReadonly&lt;T&gt;</code>" or "explain variance
+                  (covariance/contravariance) in function parameters."
+                </li>
+                <li>
+                  <strong>Meta style:</strong> Typing a real component's props
+                  precisely, including polymorphic <code>as</code> props (render
+                  a <code>Button</code> as an <code>&lt;a&gt;</code> or
+                  <code>&lt;button&gt;</code>).
+                </li>
+                <li>
+                  <strong>Amazon/Adobe style:</strong> "Design types for a
+                  paginated API response" — tests generics + utility types
+                  together.
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">9. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>Structural typing</td>
+                  <td>Shape matters, not declared name/inheritance</td>
+                </tr>
+                <tr>
+                  <td>interface vs type</td>
+                  <td>
+                    interface = extendable object shapes; type = unions/computed
+                    types
+                  </td>
+                </tr>
+                <tr>
+                  <td>interface vs class</td>
+                  <td>
+                    interface = compile-time only, zero output; class = real
+                    runtime construct
+                  </td>
+                </tr>
+                <tr>
+                  <td>unknown vs any</td>
+                  <td>
+                    unknown forces narrowing before use; any disables checking
+                  </td>
+                </tr>
+                <tr>
+                  <td>Enums</td>
+                  <td>
+                    Numeric enums are fragile — most teams prefer string-literal
+                    unions
+                  </td>
+                </tr>
+                <tr>
+                  <td>as const</td>
+                  <td>Infers the narrowest literal type, deeply readonly</td>
+                </tr>
+                <tr>
+                  <td>Type assertion (as)</td>
+                  <td>Compiler instruction only — zero runtime check</td>
+                </tr>
+                <tr>
+                  <td>Discriminated union</td>
+                  <td>
+                    Tag field + switch = exhaustive, invalid states
+                    unrepresentable
+                  </td>
+                </tr>
+                <tr>
+                  <td>typeof/in/instanceof</td>
+                  <td>
+                    Ad hoc narrowing per call site vs a discriminated union's
+                    deliberate tag
+                  </td>
+                </tr>
+                <tr>
+                  <td>Generics</td>
+                  <td>
+                    Preserve type info through a function/type instead of
+                    widening
+                  </td>
+                </tr>
+                <tr>
+                  <td>Variance</td>
+                  <td>
+                    Return types are covariant; params should be contravariant
+                    (strictFunctionTypes)
+                  </td>
+                </tr>
+                <tr>
+                  <td>keyof</td>
+                  <td>
+                    Union of a type's property names — pairs with generics for
+                    safe property access
+                  </td>
+                </tr>
+                <tr>
+                  <td>Type guard</td>
+                  <td>
+                    <code>x is T</code> return type narrows in the caller's
+                    scope
+                  </td>
+                </tr>
+                <tr>
+                  <td>Branded types</td>
+                  <td>
+                    Simulates nominal typing via an unused "brand" intersection
+                    property
+                  </td>
+                </tr>
+                <tr>
+                  <td>Types are erased</td>
+                  <td>
+                    Zero runtime safety — validate API boundaries with a schema
+                    lib
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: builds directly on
+                <a href="javascript.html">JavaScript (ES6+)</a>, and is used
+                throughout the <a href="react.html">React.js</a> guide's
+                component/hook typing examples.
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="javascript.html"
+                  ><span class="dir">← Previous</span>JavaScript (ES6+)
+                  Interview Guide</a
+                >
+                <a class="next" href="react.html"
+                  ><span class="dir">Next →</span>React.js Interview Guide</a
+                >
+              </div>
             </div>
+
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#coding">Coding challenges</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
           </div>
-
-          <h2 id="mistakes">7. Common mistakes & debugging</h2>
-          <div class="callout warn"><strong>Frequent review comments</strong>
-            Reaching for <code>any</code> under deadline pressure instead of <code>unknown</code> + narrowing; using non-null assertions (<code>value!</code>) to silence errors instead of fixing the actual null-handling; enabling TypeScript but leaving <code>strict: false</code>, which quietly disables most of the safety it's meant to provide; typing Redux/Context state with broad <code>any</code>-ish shapes instead of discriminated unions, losing exhaustiveness checking.
-          </div>
-
-          <h2 id="company">8. Frequently asked at top product companies</h2>
-          <ul>
-            <li><strong>Microsoft/Google style:</strong> "Write a generic <code>DeepReadonly&lt;T&gt;</code>" or "explain variance (covariance/contravariance) in function parameters."</li>
-            <li><strong>Meta style:</strong> Typing a real component's props precisely, including polymorphic <code>as</code> props (render a <code>Button</code> as an <code>&lt;a&gt;</code> or <code>&lt;button&gt;</code>).</li>
-            <li><strong>Amazon/Adobe style:</strong> "Design types for a paginated API response" — tests generics + utility types together.</li>
-          </ul>
-
-          <h2 id="cheatsheet">9. Cheat sheet / quick revision</h2>
-          <table>
-            <tr><th>Concept</th><th>One-line recall</th></tr>
-            <tr><td>Structural typing</td><td>Shape matters, not declared name/inheritance</td></tr>
-            <tr><td>interface vs type</td><td>interface = extendable object shapes; type = unions/computed types</td></tr>
-            <tr><td>interface vs class</td><td>interface = compile-time only, zero output; class = real runtime construct</td></tr>
-            <tr><td>unknown vs any</td><td>unknown forces narrowing before use; any disables checking</td></tr>
-            <tr><td>Enums</td><td>Numeric enums are fragile — most teams prefer string-literal unions</td></tr>
-            <tr><td>as const</td><td>Infers the narrowest literal type, deeply readonly</td></tr>
-            <tr><td>Type assertion (as)</td><td>Compiler instruction only — zero runtime check</td></tr>
-            <tr><td>Discriminated union</td><td>Tag field + switch = exhaustive, invalid states unrepresentable</td></tr>
-            <tr><td>typeof/in/instanceof</td><td>Ad hoc narrowing per call site vs a discriminated union's deliberate tag</td></tr>
-            <tr><td>Generics</td><td>Preserve type info through a function/type instead of widening</td></tr>
-            <tr><td>Variance</td><td>Return types are covariant; params should be contravariant (strictFunctionTypes)</td></tr>
-            <tr><td>keyof</td><td>Union of a type's property names — pairs with generics for safe property access</td></tr>
-            <tr><td>Type guard</td><td><code>x is T</code> return type narrows in the caller's scope</td></tr>
-            <tr><td>Branded types</td><td>Simulates nominal typing via an unused "brand" intersection property</td></tr>
-            <tr><td>Types are erased</td><td>Zero runtime safety — validate API boundaries with a schema lib</td></tr>
-          </table>
-
-          <p class="lead">Related: builds directly on <a href="javascript.html">JavaScript (ES6+)</a>, and is used throughout the <a href="react.html">React.js</a> guide's component/hook typing examples.</p>
-
-          <div class="page-nav">
-            <a class="prev" href="javascript.html"><span class="dir">← Previous</span>JavaScript (ES6+) Interview Guide</a>
-            <a class="next" href="react.html"><span class="dir">Next →</span>React.js Interview Guide</a>
-          </div>
-        </div>
-
-        <nav class="toc">
-          <div class="toc-title">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#basic">Basic</a>
-          <a href="#intermediate">Intermediate</a>
-          <a href="#advanced">Advanced</a>
-          <a href="#expert">Expert & scenarios</a>
-          <a href="#coding">Coding challenges</a>
-          <a href="#mistakes">Common mistakes</a>
-          <a href="#company">Company questions</a>
-          <a href="#cheatsheet">Cheat sheet</a>
-        </nav>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
       </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
-  </div>
-</div>
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="../assets/app.js"></script>
-</body>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
 </html>

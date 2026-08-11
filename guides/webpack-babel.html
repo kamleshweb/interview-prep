@@ -1,87 +1,214 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Webpack & Babel Interview Guide — Kamlesh Kumar</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="logo">KK</div>
-      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
-    </div>
-    <input id="search-box" type="text" placeholder="Search topics…">
-    <div class="nav-group"><div class="nav-group-title">Start Here</div>
-      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
-    <div class="nav-group"><div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
-    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
-    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link" data-status="planned" href="html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link" data-status="planned" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link" data-status="planned" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
-    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link" data-status="planned" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
-    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done active" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link" data-status="planned" href="storybook.html"><span class="dot"></span> Storybook</a></div>
-    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
-    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link" data-status="planned" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
-    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link" data-status="planned" href="security.html"><span class="dot"></span> Security & Auth</a></div>
-    <div class="nav-group"><div class="nav-group-title">Process</div>
-      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
-  </aside>
-
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Webpack & Babel</div>
-      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
-    </div>
-
-    <main>
-      <div class="content-wrap">
-        <div class="prose">
-          <div class="hero">
-            <h1>Webpack & Babel Interview Guide</h1>
-            <p class="lead">What actually happens between writing modern JS/JSX and shipping an optimized bundle to the browser — module resolution, transpilation, tree shaking, and code splitting.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Webpack & Babel Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link" data-status="planned" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link" data-status="planned" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a
+            class="nav-link"
+            data-status="planned"
+            href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link" data-status="planned" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done active" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done" href="testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link" data-status="planned" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done" href="cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a class="nav-link done" href="design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link" data-status="planned" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done" href="performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link" data-status="planned" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done" href="agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
 
-          <h2 id="overview">1. Overview</h2>
-          <p>Babel transpiles modern/non-standard JS syntax (JSX, newer ES features, TypeScript) into JS the target browsers can run. Webpack (or a similar bundler) resolves the module dependency graph starting from an entry point and packages everything into one or more output bundles, transforming files along the way via loaders and extending its own behavior via plugins. Most teams today reach for a pre-configured toolchain (Create React App historically, Vite, Next.js) rather than hand-writing webpack config — but understanding what's happening underneath is exactly what separates "I copy config from Stack Overflow" from genuinely being able to diagnose a build problem.</p>
-          <div class="tag">Loaders vs Plugins</div><div class="tag">Tree Shaking</div><div class="tag">Code Splitting</div><div name="tag">Babel Presets/Plugins</div><div class="tag">Source Maps</div><div class="tag">Module Resolution</div>
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> Webpack & Babel
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
+          </div>
+        </div>
 
-          <h2 id="basic">2. Basic questions</h2>
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>Webpack & Babel Interview Guide</h1>
+                <p class="lead">
+                  What actually happens between writing modern JS/JSX and
+                  shipping an optimized bundle to the browser — module
+                  resolution, transpilation, tree shaking, and code splitting.
+                </p>
+              </div>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What's the difference between a Webpack loader and a plugin?</summary>
-            <div class="qa-body">
-              <p>A <strong>loader</strong> transforms individual files as they're loaded into the dependency graph — e.g. <code>babel-loader</code> transpiles JS/JSX, <code>css-loader</code>/<code>style-loader</code> handle CSS imports, <code>file-loader</code> handles images. Loaders operate at the per-file level, chained in a pipeline. A <strong>plugin</strong> hooks into the broader build lifecycle and can act on the whole compilation — optimizing/minifying the final bundle, extracting CSS into separate files, generating the HTML file that references the output bundles, or injecting environment variables. The short version: loaders change what a file becomes; plugins change what the build does.</p>
-            </div>
-          </details>
+              <h2 id="overview">1. Overview</h2>
+              <p>
+                Babel transpiles modern/non-standard JS syntax (JSX, newer ES
+                features, TypeScript) into JS the target browsers can run.
+                Webpack (or a similar bundler) resolves the module dependency
+                graph starting from an entry point and packages everything into
+                one or more output bundles, transforming files along the way via
+                loaders and extending its own behavior via plugins. Most teams
+                today reach for a pre-configured toolchain (Create React App
+                historically, Vite, Next.js) rather than hand-writing webpack
+                config — but understanding what's happening underneath is
+                exactly what separates "I copy config from Stack Overflow" from
+                genuinely being able to diagnose a build problem.
+              </p>
+              <div class="tag">Loaders vs Plugins</div>
+              <div class="tag">Tree Shaking</div>
+              <div class="tag">Code Splitting</div>
+              <div name="tag">Babel Presets/Plugins</div>
+              <div class="tag">Source Maps</div>
+              <div class="tag">Module Resolution</div>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What does Babel actually do to a piece of modern JS?</summary>
-            <div class="qa-body">
-<pre><code>// Input (modern JS/JSX)
+              <h2 id="basic">2. Basic questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What's
+                  the difference between a Webpack loader and a plugin?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    A <strong>loader</strong> transforms individual files as
+                    they're loaded into the dependency graph — e.g.
+                    <code>babel-loader</code> transpiles JS/JSX,
+                    <code>css-loader</code>/<code>style-loader</code> handle CSS
+                    imports, <code>file-loader</code> handles images. Loaders
+                    operate at the per-file level, chained in a pipeline. A
+                    <strong>plugin</strong> hooks into the broader build
+                    lifecycle and can act on the whole compilation —
+                    optimizing/minifying the final bundle, extracting CSS into
+                    separate files, generating the HTML file that references the
+                    output bundles, or injecting environment variables. The
+                    short version: loaders change what a file becomes; plugins
+                    change what the build does.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What
+                  does Babel actually do to a piece of modern JS?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>// Input (modern JS/JSX)
 const Greeting = ({ name }) =&gt; &lt;div&gt;Hello, {name}&lt;/div&gt;;
 
 // Roughly what Babel outputs for older browser targets
@@ -89,112 +216,327 @@ var Greeting = function Greeting(_ref) {
   var name = _ref.name;
   return React.createElement("div", null, "Hello, ", name);
 };</code></pre>
-              <p>Babel parses the source into an AST (abstract syntax tree), applies a pipeline of plugins/presets that transform that tree (arrow functions → regular functions, destructuring → explicit property access, JSX → <code>React.createElement</code> calls), then generates JS code from the transformed tree. Presets (like <code>@babel/preset-env</code>) are just curated bundles of plugins targeting a specific goal (e.g. "compile down to what these specific browser versions support").</p>
-            </div>
-          </details>
+                  <p>
+                    Babel parses the source into an AST (abstract syntax tree),
+                    applies a pipeline of plugins/presets that transform that
+                    tree (arrow functions → regular functions, destructuring →
+                    explicit property access, JSX →
+                    <code>React.createElement</code> calls), then generates JS
+                    code from the transformed tree. Presets (like
+                    <code>@babel/preset-env</code>) are just curated bundles of
+                    plugins targeting a specific goal (e.g. "compile down to
+                    what these specific browser versions support").
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="intermediate">3. Intermediate questions</h2>
+              <h2 id="intermediate">3. Intermediate questions</h2>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> What is tree shaking, and why does it require ES Modules (not CommonJS) to work well?</summary>
-            <div class="qa-body">
-              <p>Tree shaking removes exported code that's never actually imported/used anywhere in the bundle. It relies on ES Module <code>import</code>/<code>export</code> being <em>statically analyzable</em> — the bundler can determine, without running any code, exactly what's imported from where, because imports/exports are declared at the top level and can't be conditionally computed at runtime. CommonJS's <code>require()</code> can be called conditionally, with a dynamically computed path, and <code>module.exports</code> can be mutated at runtime — none of which a bundler can safely analyze ahead of time, so it generally can't tree-shake CommonJS modules with the same confidence. This is exactly why importing a whole CommonJS-only utility library for one function bloats a bundle in a way that a modern ESM-authored, tree-shakeable library wouldn't.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  What is tree shaking, and why does it require ES Modules (not
+                  CommonJS) to work well?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Tree shaking removes exported code that's never actually
+                    imported/used anywhere in the bundle. It relies on ES Module
+                    <code>import</code>/<code>export</code> being
+                    <em>statically analyzable</em> — the bundler can determine,
+                    without running any code, exactly what's imported from
+                    where, because imports/exports are declared at the top level
+                    and can't be conditionally computed at runtime. CommonJS's
+                    <code>require()</code> can be called conditionally, with a
+                    dynamically computed path, and
+                    <code>module.exports</code> can be mutated at runtime — none
+                    of which a bundler can safely analyze ahead of time, so it
+                    generally can't tree-shake CommonJS modules with the same
+                    confidence. This is exactly why importing a whole
+                    CommonJS-only utility library for one function bloats a
+                    bundle in a way that a modern ESM-authored, tree-shakeable
+                    library wouldn't.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How does dynamic <code>import()</code> trigger code splitting, and what does Webpack actually produce?</summary>
-            <div class="qa-body">
-<pre><code>// Static import — bundled into the main chunk
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How does dynamic <code>import()</code> trigger code splitting,
+                  and what does Webpack actually produce?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>// Static import — bundled into the main chunk
 import HeavyChart from './HeavyChart';
 
 // Dynamic import — Webpack creates a SEPARATE chunk, loaded on demand
 const HeavyChart = React.lazy(() =&gt; import('./HeavyChart'));</code></pre>
-              <p>Wherever Webpack sees a dynamic <code>import()</code> call, it splits that module (and its own unique dependencies) into a separate output file (a "chunk") instead of bundling it into the main entry chunk. At runtime, that chunk is fetched via an injected <code>&lt;script&gt;</code> tag only when the <code>import()</code> is actually called — this is the underlying mechanism behind <code>React.lazy</code> and route-based code splitting covered in the React and Next.js guides.</p>
+                  <p>
+                    Wherever Webpack sees a dynamic <code>import()</code> call,
+                    it splits that module (and its own unique dependencies) into
+                    a separate output file (a "chunk") instead of bundling it
+                    into the main entry chunk. At runtime, that chunk is fetched
+                    via an injected <code>&lt;script&gt;</code> tag only when
+                    the <code>import()</code> is actually called — this is the
+                    underlying mechanism behind <code>React.lazy</code> and
+                    route-based code splitting covered in the React and Next.js
+                    guides.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  What are source maps, and what's the trade-off in producing
+                  them for production builds?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    A source map is a file mapping positions in the
+                    minified/transpiled output back to the original source code,
+                    so browser DevTools and error-tracking tools (Sentry, etc.)
+                    can show you the original file/line for a stack trace
+                    instead of an unreadable minified position. Trade-off:
+                    generating detailed source maps adds build time and, if
+                    deployed publicly alongside the bundle, exposes your
+                    original source code to anyone who looks — a common
+                    production practice is to generate source maps but upload
+                    them privately to an error-tracking service rather than
+                    serving them publicly alongside the app.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="advanced">4. Advanced questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  would you split vendor code (React, lodash, etc.) into a
+                  separate cacheable chunk from your app code, and why does that
+                  matter for repeat visitors?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Webpack's
+                    <code>optimization.splitChunks</code> configuration can be
+                    set to extract shared/vendor dependencies (anything from
+                    <code>node_modules</code>, or anything imported by multiple
+                    entry points) into a separate chunk. This matters because
+                    vendor code changes far less often than your application
+                    code — if they're bundled together, every app deploy
+                    invalidates the browser's cached copy of React itself,
+                    forcing a full re-download. Splitting them means a repeat
+                    visitor's browser can serve the (content-hashed) vendor
+                    chunk straight from cache across most deploys, only
+                    re-downloading the smaller app-code chunk that actually
+                    changed.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  Webpack vs Vite (or esbuild-based tooling) — what's the actual
+                  architectural difference in dev mode, not just "Vite is
+                  faster"?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Webpack's dev server bundles the <em>entire</em> application
+                    dependency graph before serving anything, and re-bundles on
+                    change — so as an app grows, dev-server startup and rebuild
+                    times grow with it. Vite serves modules natively over ESM in
+                    the browser during development (no full bundling step at all
+                    — the browser itself resolves each <code>import</code> as a
+                    separate network request), using the browser's own module
+                    system instead of a bundler's simulation of one, and only
+                    actually bundles for the production build (traditionally via
+                    Rollup, though newer Vite versions are moving toward
+                    Rollup's successor). This is why Vite's dev-server cold
+                    start and hot-reload feel near-instant even on large apps —
+                    it's not doing the same amount of upfront work Webpack's dev
+                    mode does.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  your production bundle size grew significantly after adding
+                  one new dependency for a single small feature. How do you find
+                  exactly what's bloating it, and what are your options once you
+                  find it?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Run a bundle analyzer (webpack-bundle-analyzer or similar)
+                    to get a visual, size-proportional treemap of what's
+                    actually in the output — this usually immediately reveals
+                    whether the new dependency itself is large, or whether it
+                    pulled in a large transitive dependency you didn't expect (a
+                    common surprise: a small utility library that internally
+                    depends on a full date/localization library). Options once
+                    identified: (1) check if the library is tree-shakeable and
+                    you're only importing the pieces you need (<code
+                      >import { debounce } from 'lodash-es'</code
+                    >
+                    instead of the whole default export); (2) look for a
+                    smaller, purpose-built alternative if the library brings far
+                    more than your feature needs; (3) dynamically
+                    <code>import()</code> the feature so its cost is isolated to
+                    a separate chunk loaded only when that feature is actually
+                    used, rather than inflating every user's initial load; (4)
+                    add a bundle-size budget check to CI so a regression like
+                    this fails the build automatically next time, instead of
+                    being caught after the fact.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">6. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong>
+                Importing an entire library's default export for one function,
+                defeating tree shaking; not splitting vendor code from app code,
+                so every deploy invalidates the browser cache for dependencies
+                that never changed; shipping unminified or unmapped production
+                bundles, making both performance and error debugging worse;
+                adding a new heavy dependency without checking bundle-analyzer
+                impact first; misconfiguring Babel targets too conservatively
+                (transpiling down to ES5 for all users) when the actual audience
+                is on modern evergreen browsers, shipping unnecessary
+                polyfills/larger code to everyone.
+              </div>
+
+              <h2 id="company">7. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>General senior-level:</strong> "How would you reduce
+                  this app's initial bundle size?" — often paired with an actual
+                  bundle-analyzer screenshot to react to.
+                </li>
+                <li>
+                  <strong>Performance-focused companies:</strong> "Explain tree
+                  shaking and why it sometimes doesn't work the way people
+                  expect" — tests the ESM/CommonJS distinction specifically.
+                </li>
+                <li>
+                  <strong>Tooling-savvy interviewers:</strong> "Why might you
+                  choose Vite over Webpack for a new project, and when would you
+                  still choose Webpack?" (mature plugin ecosystem, existing team
+                  expertise, or specific loader/plugin requirements not yet
+                  available in the newer tooling).
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>Loader vs plugin</td>
+                  <td>
+                    Loader transforms individual files; plugin hooks into the
+                    whole build
+                  </td>
+                </tr>
+                <tr>
+                  <td>Babel</td>
+                  <td>
+                    Parses to an AST, transforms it, regenerates code — modern
+                    syntax → target-compatible JS
+                  </td>
+                </tr>
+                <tr>
+                  <td>Tree shaking</td>
+                  <td>
+                    Needs static ESM imports/exports — CommonJS mostly defeats
+                    it
+                  </td>
+                </tr>
+                <tr>
+                  <td>Dynamic import()</td>
+                  <td>
+                    Creates a separate chunk, fetched on demand — the mechanism
+                    behind lazy loading
+                  </td>
+                </tr>
+                <tr>
+                  <td>Source maps</td>
+                  <td>
+                    Readable stack traces in exchange for build time / source
+                    exposure risk
+                  </td>
+                </tr>
+                <tr>
+                  <td>splitChunks (vendor split)</td>
+                  <td>
+                    Keeps rarely-changing deps cacheable across app deploys
+                  </td>
+                </tr>
+                <tr>
+                  <td>Webpack vs Vite (dev)</td>
+                  <td>
+                    Webpack bundles everything upfront; Vite serves native ESM,
+                    no bundling in dev
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: pairs with
+                <a href="react.html">React.js</a>
+                (<code>React.lazy</code>/Suspense) and
+                <a href="nextjs.html">Next.js</a> (automatic route-based
+                splitting) for how these bundler mechanics show up in
+                application code.
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="git.html"
+                  ><span class="dir">← Previous</span>Git Interview Guide</a
+                >
+                <a class="next" href="cicd-aws.html"
+                  ><span class="dir">Next →</span>CI/CD &amp; AWS Interview
+                  Guide</a
+                >
+              </div>
             </div>
-          </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> What are source maps, and what's the trade-off in producing them for production builds?</summary>
-            <div class="qa-body">
-              <p>A source map is a file mapping positions in the minified/transpiled output back to the original source code, so browser DevTools and error-tracking tools (Sentry, etc.) can show you the original file/line for a stack trace instead of an unreadable minified position. Trade-off: generating detailed source maps adds build time and, if deployed publicly alongside the bundle, exposes your original source code to anyone who looks — a common production practice is to generate source maps but upload them privately to an error-tracking service rather than serving them publicly alongside the app.</p>
-            </div>
-          </details>
-
-          <h2 id="advanced">4. Advanced questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How would you split vendor code (React, lodash, etc.) into a separate cacheable chunk from your app code, and why does that matter for repeat visitors?</summary>
-            <div class="qa-body">
-              <p>Webpack's <code>optimization.splitChunks</code> configuration can be set to extract shared/vendor dependencies (anything from <code>node_modules</code>, or anything imported by multiple entry points) into a separate chunk. This matters because vendor code changes far less often than your application code — if they're bundled together, every app deploy invalidates the browser's cached copy of React itself, forcing a full re-download. Splitting them means a repeat visitor's browser can serve the (content-hashed) vendor chunk straight from cache across most deploys, only re-downloading the smaller app-code chunk that actually changed.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> Webpack vs Vite (or esbuild-based tooling) — what's the actual architectural difference in dev mode, not just "Vite is faster"?</summary>
-            <div class="qa-body">
-              <p>Webpack's dev server bundles the <em>entire</em> application dependency graph before serving anything, and re-bundles on change — so as an app grows, dev-server startup and rebuild times grow with it. Vite serves modules natively over ESM in the browser during development (no full bundling step at all — the browser itself resolves each <code>import</code> as a separate network request), using the browser's own module system instead of a bundler's simulation of one, and only actually bundles for the production build (traditionally via Rollup, though newer Vite versions are moving toward Rollup's successor). This is why Vite's dev-server cold start and hot-reload feel near-instant even on large apps — it's not doing the same amount of upfront work Webpack's dev mode does.</p>
-            </div>
-          </details>
-
-          <h2 id="expert">5. Expert-level & scenario-based</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: your production bundle size grew significantly after adding one new dependency for a single small feature. How do you find exactly what's bloating it, and what are your options once you find it?</summary>
-            <div class="qa-body">
-              <p>Run a bundle analyzer (webpack-bundle-analyzer or similar) to get a visual, size-proportional treemap of what's actually in the output — this usually immediately reveals whether the new dependency itself is large, or whether it pulled in a large transitive dependency you didn't expect (a common surprise: a small utility library that internally depends on a full date/localization library). Options once identified: (1) check if the library is tree-shakeable and you're only importing the pieces you need (<code>import { debounce } from 'lodash-es'</code> instead of the whole default export); (2) look for a smaller, purpose-built alternative if the library brings far more than your feature needs; (3) dynamically <code>import()</code> the feature so its cost is isolated to a separate chunk loaded only when that feature is actually used, rather than inflating every user's initial load; (4) add a bundle-size budget check to CI so a regression like this fails the build automatically next time, instead of being caught after the fact.</p>
-            </div>
-          </details>
-
-          <h2 id="mistakes">6. Common mistakes & debugging</h2>
-          <div class="callout warn"><strong>Frequent review comments</strong>
-            Importing an entire library's default export for one function, defeating tree shaking; not splitting vendor code from app code, so every deploy invalidates the browser cache for dependencies that never changed; shipping unminified or unmapped production bundles, making both performance and error debugging worse; adding a new heavy dependency without checking bundle-analyzer impact first; misconfiguring Babel targets too conservatively (transpiling down to ES5 for all users) when the actual audience is on modern evergreen browsers, shipping unnecessary polyfills/larger code to everyone.
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
           </div>
-
-          <h2 id="company">7. Frequently asked at top product companies</h2>
-          <ul>
-            <li><strong>General senior-level:</strong> "How would you reduce this app's initial bundle size?" — often paired with an actual bundle-analyzer screenshot to react to.</li>
-            <li><strong>Performance-focused companies:</strong> "Explain tree shaking and why it sometimes doesn't work the way people expect" — tests the ESM/CommonJS distinction specifically.</li>
-            <li><strong>Tooling-savvy interviewers:</strong> "Why might you choose Vite over Webpack for a new project, and when would you still choose Webpack?" (mature plugin ecosystem, existing team expertise, or specific loader/plugin requirements not yet available in the newer tooling).</li>
-          </ul>
-
-          <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
-          <table>
-            <tr><th>Concept</th><th>One-line recall</th></tr>
-            <tr><td>Loader vs plugin</td><td>Loader transforms individual files; plugin hooks into the whole build</td></tr>
-            <tr><td>Babel</td><td>Parses to an AST, transforms it, regenerates code — modern syntax → target-compatible JS</td></tr>
-            <tr><td>Tree shaking</td><td>Needs static ESM imports/exports — CommonJS mostly defeats it</td></tr>
-            <tr><td>Dynamic import()</td><td>Creates a separate chunk, fetched on demand — the mechanism behind lazy loading</td></tr>
-            <tr><td>Source maps</td><td>Readable stack traces in exchange for build time / source exposure risk</td></tr>
-            <tr><td>splitChunks (vendor split)</td><td>Keeps rarely-changing deps cacheable across app deploys</td></tr>
-            <tr><td>Webpack vs Vite (dev)</td><td>Webpack bundles everything upfront; Vite serves native ESM, no bundling in dev</td></tr>
-          </table>
-
-          <p class="lead">Related: pairs with <a href="react.html">React.js</a> (<code>React.lazy</code>/Suspense) and <a href="nextjs.html">Next.js</a> (automatic route-based splitting) for how these bundler mechanics show up in application code.</p>
-
-          <div class="page-nav">
-            <a class="prev" href="git.html"><span class="dir">← Previous</span>Git Interview Guide</a>
-            <a class="next" href="cicd-aws.html"><span class="dir">Next →</span>CI/CD &amp; AWS Interview Guide</a>
-          </div>
-        </div>
-
-        <nav class="toc">
-          <div class="toc-title">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#basic">Basic</a>
-          <a href="#intermediate">Intermediate</a>
-          <a href="#advanced">Advanced</a>
-          <a href="#expert">Expert & scenarios</a>
-          <a href="#mistakes">Common mistakes</a>
-          <a href="#company">Company questions</a>
-          <a href="#cheatsheet">Cheat sheet</a>
-        </nav>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
       </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
-  </div>
-</div>
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="../assets/app.js"></script>
-</body>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
 </html>

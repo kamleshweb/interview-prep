@@ -1,104 +1,286 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Testing Interview Guide (Jest, RTL, Cypress) — Kamlesh Kumar</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="nav-group"><div class="nav-group-title">Start Here</div>
-      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
-    <div class="nav-group"><div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
-    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
-    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
-    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
-    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done active" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a></div>
-    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
-    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
-    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
-    <div class="nav-group"><div class="nav-group-title">Process</div>
-      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
-  </aside>
-
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Testing</div>
-      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
-    </div>
-
-    <main>
-      <div class="content-wrap">
-        <div class="prose">
-          <div class="hero">
-            <h1>Testing Interview Guide — Jest, React Testing Library & Cypress</h1>
-            <p class="lead">The testing pyramid, behavior-driven component testing, mocking strategy, and debugging flaky E2E suites — grounded in your Jest/RTL/Cypress production experience.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testing Interview Guide (Jest, RTL, Cypress) — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link done" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link done" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a class="nav-link done" href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link done" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done active" href="testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link done" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done" href="cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a class="nav-link done" href="design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link done" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done" href="performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link done" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done" href="agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
 
-          <h2 id="overview">1. Technology overview</h2>
-          <p>Jest is the test runner/assertion framework; React Testing Library (RTL) is a testing philosophy and API layered on top for testing components the way a user actually interacts with them (by visible text, roles, labels — not implementation details like internal state or class names); Cypress is a browser-based end-to-end (E2E) testing tool that drives a real (or headless) browser against a running app. Interviewers at the senior level care less about API syntax and more about testing <em>strategy</em>: what to test at which layer, how to avoid brittle tests, and how to keep a large suite fast and reliable in CI.</p>
-          <div class="tag">Testing Pyramid</div><div class="tag">RTL Queries</div><div class="tag">Mocking / Spies</div><div class="tag">Async Testing</div><div class="tag">E2E (Cypress)</div><div class="tag">Flaky Tests</div><div class="tag">Coverage</div>
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> Testing
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
+          </div>
+        </div>
 
-          <h2 id="basic">2. Basic questions</h2>
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>
+                  Testing Interview Guide — Jest, React Testing Library &
+                  Cypress
+                </h1>
+                <p class="lead">
+                  The testing pyramid, behavior-driven component testing,
+                  mocking strategy, and debugging flaky E2E suites — grounded in
+                  your Jest/RTL/Cypress production experience.
+                </p>
+              </div>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What is the testing pyramid, and how should the ratio actually look in a real frontend project?</summary>
-            <div class="qa-body">
-              <p>A large base of fast, cheap <strong>unit tests</strong> (pure functions, small isolated pieces of logic), a smaller layer of <strong>integration tests</strong> (a component tree with its real children, testing a user flow within one feature), and a thin top layer of <strong>E2E tests</strong> (full browser, real or realistic backend, covering critical user journeys only). E2E tests are the slowest, most brittle, and most expensive to maintain — so they should cover the handful of flows that matter most (login, checkout, submitting a trade), not every possible interaction. A common anti-pattern is an "ice cream cone" — too many slow E2E tests and too few fast unit tests — which makes the whole suite slow and flaky.</p>
-            </div>
-          </details>
+              <h2 id="overview">1. Technology overview</h2>
+              <p>
+                Jest is the test runner/assertion framework; React Testing
+                Library (RTL) is a testing philosophy and API layered on top for
+                testing components the way a user actually interacts with them
+                (by visible text, roles, labels — not implementation details
+                like internal state or class names); Cypress is a browser-based
+                end-to-end (E2E) testing tool that drives a real (or headless)
+                browser against a running app. Interviewers at the senior level
+                care less about API syntax and more about testing
+                <em>strategy</em>: what to test at which layer, how to avoid
+                brittle tests, and how to keep a large suite fast and reliable
+                in CI.
+              </p>
+              <div class="tag">Testing Pyramid</div>
+              <div class="tag">RTL Queries</div>
+              <div class="tag">Mocking / Spies</div>
+              <div class="tag">Async Testing</div>
+              <div class="tag">E2E (Cypress)</div>
+              <div class="tag">Flaky Tests</div>
+              <div class="tag">Coverage</div>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What's RTL's core philosophy, and why does it discourage testing implementation details?</summary>
-            <div class="qa-body">
-              <p>RTL's guiding principle: "the more your tests resemble the way your software is used, the more confidence they can give you." It queries the DOM the way a user or assistive technology would — by role, label, text — rather than by component internals (state values, prop names, CSS class selectors). This means refactoring a component's internal implementation (switching from local state to a reducer, renaming an internal variable) shouldn't break its tests, as long as the user-visible behavior is unchanged — tests that do break on pure refactors are a sign they were coupled to implementation, not behavior.</p>
-            </div>
-          </details>
+              <h2 id="basic">2. Basic questions</h2>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> <code>getBy</code> vs <code>queryBy</code> vs <code>findBy</code> in RTL — when do you use each?</summary>
-            <div class="qa-body">
-              <table>
-                <tr><th>Query</th><th>Behavior when not found</th><th>Use for</th></tr>
-                <tr><td><code>getBy...</code></td><td>Throws immediately</td><td>Asserting an element IS present right now</td></tr>
-                <tr><td><code>queryBy...</code></td><td>Returns <code>null</code></td><td>Asserting an element is ABSENT</td></tr>
-                <tr><td><code>findBy...</code></td><td>Returns a Promise, retries until timeout</td><td>Asserting an element WILL appear (after an async action)</td></tr>
-              </table>
-              <p><strong>Common mistake:</strong> using <code>getBy</code> to assert something isn't rendered — it throws before your assertion even runs, giving a confusing error instead of a clean failed expectation. Use <code>queryBy</code> + <code>expect(...).not.toBeInTheDocument()</code> instead.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What is
+                  the testing pyramid, and how should the ratio actually look in
+                  a real frontend project?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    A large base of fast, cheap
+                    <strong>unit tests</strong> (pure functions, small isolated
+                    pieces of logic), a smaller layer of
+                    <strong>integration tests</strong> (a component tree with
+                    its real children, testing a user flow within one feature),
+                    and a thin top layer of <strong>E2E tests</strong> (full
+                    browser, real or realistic backend, covering critical user
+                    journeys only). E2E tests are the slowest, most brittle, and
+                    most expensive to maintain — so they should cover the
+                    handful of flows that matter most (login, checkout,
+                    submitting a trade), not every possible interaction. A
+                    common anti-pattern is an "ice cream cone" — too many slow
+                    E2E tests and too few fast unit tests — which makes the
+                    whole suite slow and flaky.
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="intermediate">3. Intermediate questions</h2>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What's
+                  RTL's core philosophy, and why does it discourage testing
+                  implementation details?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    RTL's guiding principle: "the more your tests resemble the
+                    way your software is used, the more confidence they can give
+                    you." It queries the DOM the way a user or assistive
+                    technology would — by role, label, text — rather than by
+                    component internals (state values, prop names, CSS class
+                    selectors). This means refactoring a component's internal
+                    implementation (switching from local state to a reducer,
+                    renaming an internal variable) shouldn't break its tests, as
+                    long as the user-visible behavior is unchanged — tests that
+                    do break on pure refactors are a sign they were coupled to
+                    implementation, not behavior.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you test a component that fetches data asynchronously on mount?</summary>
-            <div class="qa-body">
-<pre><code>test('shows trades after loading', async () =&gt; {
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span>
+                  <code>getBy</code> vs <code>queryBy</code> vs
+                  <code>findBy</code> in RTL — when do you use each?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th>Query</th>
+                      <th>Behavior when not found</th>
+                      <th>Use for</th>
+                    </tr>
+                    <tr>
+                      <td><code>getBy...</code></td>
+                      <td>Throws immediately</td>
+                      <td>Asserting an element IS present right now</td>
+                    </tr>
+                    <tr>
+                      <td><code>queryBy...</code></td>
+                      <td>Returns <code>null</code></td>
+                      <td>Asserting an element is ABSENT</td>
+                    </tr>
+                    <tr>
+                      <td><code>findBy...</code></td>
+                      <td>Returns a Promise, retries until timeout</td>
+                      <td>
+                        Asserting an element WILL appear (after an async action)
+                      </td>
+                    </tr>
+                  </table>
+                  <p>
+                    <strong>Common mistake:</strong> using <code>getBy</code> to
+                    assert something isn't rendered — it throws before your
+                    assertion even runs, giving a confusing error instead of a
+                    clean failed expectation. Use <code>queryBy</code> +
+                    <code>expect(...).not.toBeInTheDocument()</code> instead.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="intermediate">3. Intermediate questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you test a component that fetches data asynchronously
+                  on mount?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>test('shows trades after loading', async () =&gt; {
   render(&lt;TradeList /&gt;);
   expect(screen.getByText(/loading/i)).toBeInTheDocument();
 
@@ -106,35 +288,104 @@
   expect(row).toBeInTheDocument();
   expect(screen.queryByText(/loading/i)).not.toBeInTheDocument();
 });</code></pre>
-              <p><code>findBy</code> internally wraps <code>waitFor</code> polling, so you don't need arbitrary <code>setTimeout</code>s in tests. For the actual network call, mock it at the boundary — either mocking the fetch function/module directly, or (preferred for realism) intercepting at the network layer with Mock Service Worker (MSW), which lets the component's real fetch/axios code run unmodified against a fake server.</p>
-            </div>
-          </details>
+                  <p>
+                    <code>findBy</code> internally wraps
+                    <code>waitFor</code> polling, so you don't need arbitrary
+                    <code>setTimeout</code>s in tests. For the actual network
+                    call, mock it at the boundary — either mocking the fetch
+                    function/module directly, or (preferred for realism)
+                    intercepting at the network layer with Mock Service Worker
+                    (MSW), which lets the component's real fetch/axios code run
+                    unmodified against a fake server.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> <code>fireEvent</code> vs <code>userEvent</code> — why does RTL now recommend <code>userEvent</code>?</summary>
-            <div class="qa-body">
-              <p><code>fireEvent</code> dispatches a single low-level DOM event (e.g. one <code>click</code> event). <code>userEvent</code> simulates the full sequence of events a real browser would fire for that interaction — for a click, that includes <code>pointerdown</code>, <code>mousedown</code>, <code>focus</code>, <code>pointerup</code>, <code>mouseup</code>, <code>click</code>, in order, with realistic state transitions in between (e.g. hover state, focus state). This catches bugs that only manifest with the full event sequence — e.g. a component relying on a blur event firing before a click handler runs — that <code>fireEvent.click</code> alone would miss.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  <code>fireEvent</code> vs <code>userEvent</code> — why does
+                  RTL now recommend <code>userEvent</code>?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <code>fireEvent</code> dispatches a single low-level DOM
+                    event (e.g. one <code>click</code> event).
+                    <code>userEvent</code> simulates the full sequence of events
+                    a real browser would fire for that interaction — for a
+                    click, that includes <code>pointerdown</code>,
+                    <code>mousedown</code>, <code>focus</code>,
+                    <code>pointerup</code>, <code>mouseup</code>,
+                    <code>click</code>, in order, with realistic state
+                    transitions in between (e.g. hover state, focus state). This
+                    catches bugs that only manifest with the full event sequence
+                    — e.g. a component relying on a blur event firing before a
+                    click handler runs — that <code>fireEvent.click</code> alone
+                    would miss.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> Mocking strategy: when do you mock a module vs mock at the network layer vs not mock at all?</summary>
-            <div class="qa-body">
-              <table>
-                <tr><th>Approach</th><th>Use when</th><th>Risk</th></tr>
-                <tr><td>Mock the module (<code>jest.mock('./api')</code>)</td><td>Unit-testing a component in isolation, don't care about the actual request shape</td><td>Can drift from the real API contract undetected</td></tr>
-                <tr><td>Mock at the network layer (MSW)</td><td>Integration tests — want the real fetch/axios code to run</td><td>Slightly more setup, but far more realistic</td></tr>
-                <tr><td>No mocking (real backend/test env)</td><td>E2E tests only</td><td>Slow, requires a running backend, more flaky</td></tr>
-              </table>
-              <p>For component/integration tests, MSW is generally preferred over deep module mocking because it tests your actual data-fetching code path (headers, error handling, response parsing) instead of assuming it works.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Mocking strategy: when do you mock a module vs mock at the
+                  network layer vs not mock at all?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th>Approach</th>
+                      <th>Use when</th>
+                      <th>Risk</th>
+                    </tr>
+                    <tr>
+                      <td>Mock the module (<code>jest.mock('./api')</code>)</td>
+                      <td>
+                        Unit-testing a component in isolation, don't care about
+                        the actual request shape
+                      </td>
+                      <td>Can drift from the real API contract undetected</td>
+                    </tr>
+                    <tr>
+                      <td>Mock at the network layer (MSW)</td>
+                      <td>
+                        Integration tests — want the real fetch/axios code to
+                        run
+                      </td>
+                      <td>Slightly more setup, but far more realistic</td>
+                    </tr>
+                    <tr>
+                      <td>No mocking (real backend/test env)</td>
+                      <td>E2E tests only</td>
+                      <td>Slow, requires a running backend, more flaky</td>
+                    </tr>
+                  </table>
+                  <p>
+                    For component/integration tests, MSW is generally preferred
+                    over deep module mocking because it tests your actual
+                    data-fetching code path (headers, error handling, response
+                    parsing) instead of assuming it works.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you test a custom hook in isolation, and how do you test a component that depends on Router/Redux Provider context?</summary>
-            <div class="qa-body">
-              <h5>Testing a hook directly</h5>
-<pre><code>import { renderHook, act } from '@testing-library/react';
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you test a custom hook in isolation, and how do you
+                  test a component that depends on Router/Redux Provider
+                  context?
+                </summary>
+                <div class="qa-body">
+                  <h5>Testing a hook directly</h5>
+                  <pre><code>import { renderHook, act } from '@testing-library/react';
 
 test('useToggle flips its value', () =&gt; {
   const { result } = renderHook(() =&gt; useToggle());
@@ -142,9 +393,14 @@ test('useToggle flips its value', () =&gt; {
   act(() =&gt; result.current.toggle());
   expect(result.current.on).toBe(true);
 });</code></pre>
-              <p><code>renderHook</code> mounts a hook inside a minimal throwaway component so you can assert on its return value directly, without needing a real component tree just to exercise the hook's logic.</p>
-              <h5>Custom render wrapper pattern</h5>
-<pre><code>function renderWithProviders(ui, { route = '/', store = mockStore } = {}) {
+                  <p>
+                    <code>renderHook</code> mounts a hook inside a minimal
+                    throwaway component so you can assert on its return value
+                    directly, without needing a real component tree just to
+                    exercise the hook's logic.
+                  </p>
+                  <h5>Custom render wrapper pattern</h5>
+                  <pre><code>function renderWithProviders(ui, { route = '/', store = mockStore } = {}) {
   window.history.pushState({}, '', route);
   return render(
     &lt;Provider store={store}&gt;
@@ -153,46 +409,175 @@ test('useToggle flips its value', () =&gt; {
   );
 }
 // Usage: renderWithProviders(&lt;TradeForm /&gt;, { route: '/trades/new' });</code></pre>
-              <p>Rather than wrapping every single test's <code>render()</code> call in the same Redux <code>Provider</code>/Router boilerplate, most codebases define one shared <code>renderWithProviders</code> helper (often re-exporting RTL's own APIs alongside it) so every test gets a consistent, realistic app context with one line — the same idea as the Storybook guide's decorators, applied to tests instead of the component-browsing UI.</p>
-            </div>
-          </details>
+                  <p>
+                    Rather than wrapping every single test's
+                    <code>render()</code> call in the same Redux
+                    <code>Provider</code>/Router boilerplate, most codebases
+                    define one shared <code>renderWithProviders</code> helper
+                    (often re-exporting RTL's own APIs alongside it) so every
+                    test gets a consistent, realistic app context with one line
+                    — the same idea as the Storybook guide's decorators, applied
+                    to tests instead of the component-browsing UI.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> Why do <code>act()</code> warnings happen, and how do you fix them properly instead of suppressing them?</summary>
-            <div class="qa-body">
-              <p>React expects every state update that affects the rendered output to happen inside an <code>act()</code> boundary during a test, so RTL/testing-library can flush effects and re-renders before your assertions run — <code>render()</code> and <code>userEvent</code> calls already wrap themselves in <code>act()</code> automatically. The warning shows up when a state update happens <em>outside</em> that boundary — most often a promise that resolves and calls <code>setState</code> after the test has already moved on to its assertions, without the test having awaited it first.</p>
-              <p><strong>The proper fix is almost always to await the actual async work</strong> — <code>await screen.findByText(...)</code> instead of <code>getByText</code>, or <code>await waitFor(() =&gt; expect(...))</code> — so the test genuinely waits for the update to land inside an act-wrapped flush, rather than wrapping the offending code in a manual <code>act(async () =&gt; {...})</code> block or silencing the console warning outright. Suppressing the warning without fixing the underlying race just hides a real signal that the test and the component's actual async timing are out of sync.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Why do <code>act()</code> warnings happen, and how do you fix
+                  them properly instead of suppressing them?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    React expects every state update that affects the rendered
+                    output to happen inside an <code>act()</code> boundary
+                    during a test, so RTL/testing-library can flush effects and
+                    re-renders before your assertions run —
+                    <code>render()</code> and <code>userEvent</code> calls
+                    already wrap themselves in <code>act()</code> automatically.
+                    The warning shows up when a state update happens
+                    <em>outside</em> that boundary — most often a promise that
+                    resolves and calls <code>setState</code> after the test has
+                    already moved on to its assertions, without the test having
+                    awaited it first.
+                  </p>
+                  <p>
+                    <strong
+                      >The proper fix is almost always to await the actual async
+                      work</strong
+                    >
+                    — <code>await screen.findByText(...)</code> instead of
+                    <code>getByText</code>, or
+                    <code>await waitFor(() =&gt; expect(...))</code> — so the
+                    test genuinely waits for the update to land inside an
+                    act-wrapped flush, rather than wrapping the offending code
+                    in a manual <code>act(async () =&gt; {...})</code> block or
+                    silencing the console warning outright. Suppressing the
+                    warning without fixing the underlying race just hides a real
+                    signal that the test and the component's actual async timing
+                    are out of sync.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you test debounced or delayed async behavior deterministically, without slowing down the test suite?</summary>
-            <div class="qa-body">
-              <p>Use Jest's fake timers (<code>jest.useFakeTimers()</code>) instead of waiting real wall-clock milliseconds — the test controls time explicitly via <code>jest.advanceTimersByTime(ms)</code>, making the assertion both instant and deterministic instead of flaky under CI load. Pair this with <code>userEvent.setup({ delay: null })</code> so simulated typing itself doesn't introduce real delays that fight the fake timers. Always call <code>jest.useRealTimers()</code> in a cleanup step afterward — forgetting it leaks fake timers into unrelated tests that run after it in the same file.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you test debounced or delayed async behavior
+                  deterministically, without slowing down the test suite?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Use Jest's fake timers (<code>jest.useFakeTimers()</code>)
+                    instead of waiting real wall-clock milliseconds — the test
+                    controls time explicitly via
+                    <code>jest.advanceTimersByTime(ms)</code>, making the
+                    assertion both instant and deterministic instead of flaky
+                    under CI load. Pair this with
+                    <code>userEvent.setup({ delay: null })</code> so simulated
+                    typing itself doesn't introduce real delays that fight the
+                    fake timers. Always call
+                    <code>jest.useRealTimers()</code> in a cleanup step
+                    afterward — forgetting it leaks fake timers into unrelated
+                    tests that run after it in the same file.
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="advanced">4. Advanced questions</h2>
+              <h2 id="advanced">4. Advanced questions</h2>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How do you debug and fix a flaky Cypress test that passes locally but fails intermittently in CI?</summary>
-            <div class="qa-body">
-              <p>Most flakiness comes from timing assumptions, not real bugs in the test framework. Checklist: (1) replace any hardcoded <code>cy.wait(1000)</code> with assertions that retry automatically (<code>cy.get(...).should('be.visible')</code> — Cypress commands already retry until timeout, so an explicit wait is usually a smell); (2) intercept and explicitly wait on network requests (<code>cy.intercept</code> + <code>cy.wait('@getTrades')</code>) instead of hoping the UI updates before the next assertion runs; (3) check for test-order dependency — a test that only fails when run after another test usually means shared state (localStorage, a database seed) isn't being reset between tests; (4) CI environments are often slower/resource-constrained than local machines, so animation/transition timing that "just works" locally can genuinely race in CI — disable CSS animations in the test environment where they're not the thing under test.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  do you debug and fix a flaky Cypress test that passes locally
+                  but fails intermittently in CI?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Most flakiness comes from timing assumptions, not real bugs
+                    in the test framework. Checklist: (1) replace any hardcoded
+                    <code>cy.wait(1000)</code> with assertions that retry
+                    automatically (<code>cy.get(...).should('be.visible')</code>
+                    — Cypress commands already retry until timeout, so an
+                    explicit wait is usually a smell); (2) intercept and
+                    explicitly wait on network requests (<code
+                      >cy.intercept</code
+                    >
+                    + <code>cy.wait('@getTrades')</code>) instead of hoping the
+                    UI updates before the next assertion runs; (3) check for
+                    test-order dependency — a test that only fails when run
+                    after another test usually means shared state (localStorage,
+                    a database seed) isn't being reset between tests; (4) CI
+                    environments are often slower/resource-constrained than
+                    local machines, so animation/transition timing that "just
+                    works" locally can genuinely race in CI — disable CSS
+                    animations in the test environment where they're not the
+                    thing under test.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> What's the difference between a unit test, an integration test, and a Cypress E2E test for the same "submit a trade" feature — write one of each conceptually.</summary>
-            <div class="qa-body">
-              <p><strong>Unit:</strong> test the pure validation function in isolation — <code>validateTrade({notional: -100})</code> returns the expected error, no rendering involved. <strong>Integration (RTL):</strong> render the <code>TradeForm</code> component with mocked network calls, fill in fields via <code>userEvent</code>, submit, and assert the success message appears and the mocked API was called with the right payload — tests the component tree working together, but the network and routing are faked. <strong>E2E (Cypress):</strong> load the actual running app in a browser, log in, navigate to the trade form, submit a real (test-environment) trade, and assert it now appears in the blotter — tests the entire stack (routing, API, database) end to end, closest to what a real user experiences, but slowest and most expensive to maintain. The same reasoning extends to deciding what to E2E-test at all for something like a checkout flow: cover the one or two critical happy-path journeys end to end, and push every edge case (declined card, out-of-stock item, validation error) down into integration tests instead — E2E coverage should be a small, deliberately-chosen set of flows, not an attempt to E2E-test everything integration tests already cover more cheaply.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  What's the difference between a unit test, an integration
+                  test, and a Cypress E2E test for the same "submit a trade"
+                  feature — write one of each conceptually.
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <strong>Unit:</strong> test the pure validation function in
+                    isolation —
+                    <code>validateTrade({notional: -100})</code> returns the
+                    expected error, no rendering involved.
+                    <strong>Integration (RTL):</strong> render the
+                    <code>TradeForm</code> component with mocked network calls,
+                    fill in fields via <code>userEvent</code>, submit, and
+                    assert the success message appears and the mocked API was
+                    called with the right payload — tests the component tree
+                    working together, but the network and routing are faked.
+                    <strong>E2E (Cypress):</strong> load the actual running app
+                    in a browser, log in, navigate to the trade form, submit a
+                    real (test-environment) trade, and assert it now appears in
+                    the blotter — tests the entire stack (routing, API,
+                    database) end to end, closest to what a real user
+                    experiences, but slowest and most expensive to maintain. The
+                    same reasoning extends to deciding what to E2E-test at all
+                    for something like a checkout flow: cover the one or two
+                    critical happy-path journeys end to end, and push every edge
+                    case (declined card, out-of-stock item, validation error)
+                    down into integration tests instead — E2E coverage should be
+                    a small, deliberately-chosen set of flows, not an attempt to
+                    E2E-test everything integration tests already cover more
+                    cheaply.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How would you test accessibility automatically in CI, and what does that catch vs. miss?</summary>
-            <div class="qa-body">
-              <p><code>jest-axe</code> (for RTL/unit-level component tests) and <code>cypress-axe</code>/<code>@axe-core/playwright</code> (for E2E) run the same underlying axe-core ruleset used by browser accessibility scanners, but wired directly into the test suite so a violation fails the build automatically instead of relying on someone remembering to run a manual audit.</p>
-<pre><code>import { axe, toHaveNoViolations } from 'jest-axe';
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  would you test accessibility automatically in CI, and what
+                  does that catch vs. miss?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <code>jest-axe</code> (for RTL/unit-level component tests)
+                    and <code>cypress-axe</code>/<code
+                      >@axe-core/playwright</code
+                    >
+                    (for E2E) run the same underlying axe-core ruleset used by
+                    browser accessibility scanners, but wired directly into the
+                    test suite so a violation fails the build automatically
+                    instead of relying on someone remembering to run a manual
+                    audit.
+                  </p>
+                  <pre><code>import { axe, toHaveNoViolations } from 'jest-axe';
 expect.extend(toHaveNoViolations);
 
 test('trade form has no automatically-detectable a11y violations', async () =&gt; {
@@ -200,36 +585,97 @@ test('trade form has no automatically-detectable a11y violations', async () =&gt
   const results = await axe(container);
   expect(results).toHaveNoViolations();
 });</code></pre>
-              <p>This closes the gap where accessibility regressions ship silently because nobody happened to run a manual check on that particular PR — but per the Performance &amp; Accessibility guide, automated tools only reliably catch roughly 30–40% of WCAG success criteria (missing labels, insufficient contrast, invalid ARIA). They can't judge whether the reading order matches the visual order, or whether a multi-step flow's focus management genuinely works for a keyboard/screen-reader user — automated CI checks are a floor that prevents easy regressions, not a substitute for periodic manual keyboard-only and screen-reader testing.</p>
-            </div>
-          </details>
+                  <p>
+                    This closes the gap where accessibility regressions ship
+                    silently because nobody happened to run a manual check on
+                    that particular PR — but per the Performance &amp;
+                    Accessibility guide, automated tools only reliably catch
+                    roughly 30–40% of WCAG success criteria (missing labels,
+                    insufficient contrast, invalid ARIA). They can't judge
+                    whether the reading order matches the visual order, or
+                    whether a multi-step flow's focus management genuinely works
+                    for a keyboard/screen-reader user — automated CI checks are
+                    a floor that prevents easy regressions, not a substitute for
+                    periodic manual keyboard-only and screen-reader testing.
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="expert">5. Expert-level & scenario-based</h2>
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: your team's Cypress suite takes 45 minutes in CI and developers have started skipping it before merging. How do you fix the process, not just individual tests?</summary>
-            <div class="qa-body">
-              <p>1) <strong>Parallelize</strong> — split the suite across multiple CI workers/machines running concurrently rather than sequentially; most CI providers and Cypress's own dashboard support this directly. 2) <strong>Audit the pyramid</strong> — if E2E tests are covering things an RTL integration test could cover just as well (and faster), move them down the pyramid; E2E should be reserved for genuinely cross-system critical paths. 3) <strong>Tag and stage</strong> — run a fast "smoke" subset on every PR and the full suite on merge to main or nightly, so PR feedback loops stay fast without dropping coverage entirely. 4) <strong>Fix flakiness first</strong> — if tests are being skipped because they're unreliable, no amount of speed-up will fix trust in the suite; flaky tests need to be fixed or quarantined, not left in the main run degrading everyone's confidence.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  your team's Cypress suite takes 45 minutes in CI and
+                  developers have started skipping it before merging. How do you
+                  fix the process, not just individual tests?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    1) <strong>Parallelize</strong> — split the suite across
+                    multiple CI workers/machines running concurrently rather
+                    than sequentially; most CI providers and Cypress's own
+                    dashboard support this directly. 2)
+                    <strong>Audit the pyramid</strong> — if E2E tests are
+                    covering things an RTL integration test could cover just as
+                    well (and faster), move them down the pyramid; E2E should be
+                    reserved for genuinely cross-system critical paths. 3)
+                    <strong>Tag and stage</strong> — run a fast "smoke" subset
+                    on every PR and the full suite on merge to main or nightly,
+                    so PR feedback loops stay fast without dropping coverage
+                    entirely. 4) <strong>Fix flakiness first</strong> — if tests
+                    are being skipped because they're unreliable, no amount of
+                    speed-up will fix trust in the suite; flaky tests need to be
+                    fixed or quarantined, not left in the main run degrading
+                    everyone's confidence.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Output-based: why does this RTL test fail even though the component visibly works when you click the button manually?</summary>
-            <div class="qa-body">
-<pre><code>test('shows confirmation after save', () =&gt; {
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span>
+                  Output-based: why does this RTL test fail even though the
+                  component visibly works when you click the button manually?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>test('shows confirmation after save', () =&gt; {
   render(&lt;TradeForm /&gt;);
   userEvent.click(screen.getByRole('button', { name: /save/i }));
   expect(screen.getByText(/saved/i)).toBeInTheDocument(); // fails
 });</code></pre>
-              <p>If the save handler is asynchronous (an API call before the "saved" message renders), the assertion runs synchronously right after the click, before the promise resolves and React re-renders. The fix is either awaiting <code>userEvent.click</code> (modern <code>userEvent</code> v14 returns a promise) combined with <code>findByText</code> instead of <code>getByText</code>, since <code>findBy</code> polls/retries until the async update lands: <code>expect(await screen.findByText(/saved/i)).toBeInTheDocument();</code>.</p>
-            </div>
-          </details>
+                  <p>
+                    If the save handler is asynchronous (an API call before the
+                    "saved" message renders), the assertion runs synchronously
+                    right after the click, before the promise resolves and React
+                    re-renders. The fix is either awaiting
+                    <code>userEvent.click</code> (modern
+                    <code>userEvent</code> v14 returns a promise) combined with
+                    <code>findByText</code> instead of <code>getByText</code>,
+                    since <code>findBy</code> polls/retries until the async
+                    update lands:
+                    <code
+                      >expect(await
+                      screen.findByText(/saved/i)).toBeInTheDocument();</code
+                    >.
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="coding">6. Coding challenge</h2>
-          <div class="qa">
-            <div class="qa-body" style="margin-top:0;border-top:none;padding-top:0;">
-              <h5>Problem: given <code>&lt;Search onSearch={fn} /&gt;</code> that calls <code>onSearch</code> 300ms after the user stops typing, write a test that actually verifies the debounce behavior — not just that it eventually fires</h5>
-<pre><code>import { render, screen } from '@testing-library/react';
+              <h2 id="coding">6. Coding challenge</h2>
+              <div class="qa">
+                <div
+                  class="qa-body"
+                  style="margin-top: 0; border-top: none; padding-top: 0"
+                >
+                  <h5>
+                    Problem: given
+                    <code>&lt;Search onSearch={fn} /&gt;</code> that calls
+                    <code>onSearch</code> 300ms after the user stops typing,
+                    write a test that actually verifies the debounce behavior —
+                    not just that it eventually fires
+                  </h5>
+                  <pre><code>import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 test('calls onSearch only after debounce delay with final value', async () =&gt; {
@@ -249,66 +695,187 @@ test('calls onSearch only after debounce delay with final value', async () =&gt;
 
   jest.useRealTimers();
 });</code></pre>
-              <p><strong>Explanation:</strong> fake timers let the test control time deterministically instead of waiting real milliseconds — fast and non-flaky regardless of CI load. Asserting <code>not.toHaveBeenCalled()</code> <em>before</em> advancing the timer is the part that actually proves debouncing is happening, not just that the callback eventually fires — a test that skips straight to the final assertion would pass even if debouncing were completely broken. <code>userEvent</code> with <code>delay: null</code> types synchronously so it doesn't fight the fake timers.</p>
-              <p><strong>Common mistakes:</strong> using a real <code>setTimeout</code>/waiting actual wall-clock time in the test instead of fake timers (slow, and flaky under CI load); forgetting the <code>jest.useRealTimers()</code> cleanup, which leaks fake timers into unrelated tests that run afterward in the same file; asserting only the final call and skipping the "not called too early" assertion — which is the actual behavior under test, not an afterthought.</p>
-              <p><strong>Follow-up:</strong> "How would you test that a stale in-flight request gets cancelled when the user types again?" — mock <code>AbortController</code> and assert its <code>abort()</code> method was called, tying directly back to the <code>useFetch</code> cancellation pattern from the React guide's coding challenges.</p>
+                  <p>
+                    <strong>Explanation:</strong> fake timers let the test
+                    control time deterministically instead of waiting real
+                    milliseconds — fast and non-flaky regardless of CI load.
+                    Asserting <code>not.toHaveBeenCalled()</code>
+                    <em>before</em> advancing the timer is the part that
+                    actually proves debouncing is happening, not just that the
+                    callback eventually fires — a test that skips straight to
+                    the final assertion would pass even if debouncing were
+                    completely broken. <code>userEvent</code> with
+                    <code>delay: null</code> types synchronously so it doesn't
+                    fight the fake timers.
+                  </p>
+                  <p>
+                    <strong>Common mistakes:</strong> using a real
+                    <code>setTimeout</code>/waiting actual wall-clock time in
+                    the test instead of fake timers (slow, and flaky under CI
+                    load); forgetting the
+                    <code>jest.useRealTimers()</code> cleanup, which leaks fake
+                    timers into unrelated tests that run afterward in the same
+                    file; asserting only the final call and skipping the "not
+                    called too early" assertion — which is the actual behavior
+                    under test, not an afterthought.
+                  </p>
+                  <p>
+                    <strong>Follow-up:</strong> "How would you test that a stale
+                    in-flight request gets cancelled when the user types again?"
+                    — mock <code>AbortController</code> and assert its
+                    <code>abort()</code> method was called, tying directly back
+                    to the <code>useFetch</code> cancellation pattern from the
+                    React guide's coding challenges.
+                  </p>
+                </div>
+              </div>
+
+              <h2 id="mistakes">7. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong> Querying by CSS class
+                or test-id when a semantic role/label query would work (couples
+                tests to markup, not behavior); using <code>getBy</code> where
+                <code>findBy</code> is needed for async UI, causing intermittent
+                failures; snapshot tests so large they're rubber-stamped without
+                real review on every diff; chasing 100% coverage instead of
+                testing the highest-risk logic (coverage percentage is a signal,
+                not a goal in itself); not resetting mocks/state between tests,
+                causing order-dependent failures.
+              </div>
+
+              <h2 id="company">8. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>General senior-level:</strong> "How do you decide what
+                  to unit test vs integration test vs E2E test for a new
+                  feature?" — tests your grasp of the pyramid, not API trivia.
+                </li>
+                <li>
+                  <strong>Amazon/Meta style:</strong> "Given this flaky test,
+                  find the bug" — usually an async timing issue (missing
+                  <code>await</code>/`findBy`) planted deliberately.
+                </li>
+                <li>
+                  <strong
+                    >Team-leadership style (relevant to your 12 years):</strong
+                  >
+                  "How would you introduce testing discipline to a team/codebase
+                  that currently has little to none?" — expects a pragmatic
+                  answer: start with the highest-risk/most-changed code paths,
+                  add tests alongside new features and bug fixes rather than a
+                  big-bang rewrite, and set a realistic incremental coverage
+                  goal.
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">9. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>Testing pyramid</td>
+                  <td>
+                    Many unit, fewer integration, few E2E — not the reverse
+                  </td>
+                </tr>
+                <tr>
+                  <td>RTL philosophy</td>
+                  <td>
+                    Query by role/text like a user, not by implementation
+                    details
+                  </td>
+                </tr>
+                <tr>
+                  <td>getBy / queryBy / findBy</td>
+                  <td>Throws now / null now / retries async</td>
+                </tr>
+                <tr>
+                  <td>userEvent &gt; fireEvent</td>
+                  <td>Simulates the full realistic event sequence</td>
+                </tr>
+                <tr>
+                  <td>MSW over deep mocking</td>
+                  <td>Tests your real fetch code path, not an assumption</td>
+                </tr>
+                <tr>
+                  <td>renderHook</td>
+                  <td>
+                    Test a custom hook's return value directly, no throwaway
+                    component needed
+                  </td>
+                </tr>
+                <tr>
+                  <td>act() warnings</td>
+                  <td>
+                    Fix by awaiting the real async work (findBy/waitFor), don't
+                    suppress
+                  </td>
+                </tr>
+                <tr>
+                  <td>Fake timers</td>
+                  <td>
+                    Deterministic debounce/delay testing — advanceTimersByTime,
+                    not real waits
+                  </td>
+                </tr>
+                <tr>
+                  <td>jest-axe / cypress-axe</td>
+                  <td>
+                    CI-enforced floor for a11y — still only ~30-40% of WCAG, not
+                    a substitute for manual checks
+                  </td>
+                </tr>
+                <tr>
+                  <td>Flaky Cypress tests</td>
+                  <td>Usually a hardcoded wait or missing network intercept</td>
+                </tr>
+                <tr>
+                  <td>Coverage %</td>
+                  <td>A signal, not the goal — test risk, not just lines</td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: pairs with <a href="react.html">React.js</a> (component
+                behavior under test) and
+                <a href="rest-api.html">REST APIs</a> (what you're
+                mocking/intercepting).
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="rest-api.html"
+                  ><span class="dir">← Previous</span>REST APIs Interview
+                  Guide</a
+                >
+                <a class="next" href="performance-accessibility.html"
+                  ><span class="dir">Next →</span>Web Performance &amp;
+                  Accessibility Interview Guide</a
+                >
+              </div>
             </div>
+
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#coding">Coding challenge</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
           </div>
-
-          <h2 id="mistakes">7. Common mistakes & debugging</h2>
-          <div class="callout warn"><strong>Frequent review comments</strong>
-            Querying by CSS class or test-id when a semantic role/label query would work (couples tests to markup, not behavior); using <code>getBy</code> where <code>findBy</code> is needed for async UI, causing intermittent failures; snapshot tests so large they're rubber-stamped without real review on every diff; chasing 100% coverage instead of testing the highest-risk logic (coverage percentage is a signal, not a goal in itself); not resetting mocks/state between tests, causing order-dependent failures.
-          </div>
-
-          <h2 id="company">8. Frequently asked at top product companies</h2>
-          <ul>
-            <li><strong>General senior-level:</strong> "How do you decide what to unit test vs integration test vs E2E test for a new feature?" — tests your grasp of the pyramid, not API trivia.</li>
-            <li><strong>Amazon/Meta style:</strong> "Given this flaky test, find the bug" — usually an async timing issue (missing <code>await</code>/`findBy`) planted deliberately.</li>
-            <li><strong>Team-leadership style (relevant to your 12 years):</strong> "How would you introduce testing discipline to a team/codebase that currently has little to none?" — expects a pragmatic answer: start with the highest-risk/most-changed code paths, add tests alongside new features and bug fixes rather than a big-bang rewrite, and set a realistic incremental coverage goal.</li>
-          </ul>
-
-          <h2 id="cheatsheet">9. Cheat sheet / quick revision</h2>
-          <table>
-            <tr><th>Concept</th><th>One-line recall</th></tr>
-            <tr><td>Testing pyramid</td><td>Many unit, fewer integration, few E2E — not the reverse</td></tr>
-            <tr><td>RTL philosophy</td><td>Query by role/text like a user, not by implementation details</td></tr>
-            <tr><td>getBy / queryBy / findBy</td><td>Throws now / null now / retries async</td></tr>
-            <tr><td>userEvent &gt; fireEvent</td><td>Simulates the full realistic event sequence</td></tr>
-            <tr><td>MSW over deep mocking</td><td>Tests your real fetch code path, not an assumption</td></tr>
-            <tr><td>renderHook</td><td>Test a custom hook's return value directly, no throwaway component needed</td></tr>
-            <tr><td>act() warnings</td><td>Fix by awaiting the real async work (findBy/waitFor), don't suppress</td></tr>
-            <tr><td>Fake timers</td><td>Deterministic debounce/delay testing — advanceTimersByTime, not real waits</td></tr>
-            <tr><td>jest-axe / cypress-axe</td><td>CI-enforced floor for a11y — still only ~30-40% of WCAG, not a substitute for manual checks</td></tr>
-            <tr><td>Flaky Cypress tests</td><td>Usually a hardcoded wait or missing network intercept</td></tr>
-            <tr><td>Coverage %</td><td>A signal, not the goal — test risk, not just lines</td></tr>
-          </table>
-
-          <p class="lead">Related: pairs with <a href="react.html">React.js</a> (component behavior under test) and <a href="rest-api.html">REST APIs</a> (what you're mocking/intercepting).</p>
-
-          <div class="page-nav">
-            <a class="prev" href="rest-api.html"><span class="dir">← Previous</span>REST APIs Interview Guide</a>
-            <a class="next" href="performance-accessibility.html"><span class="dir">Next →</span>Web Performance &amp; Accessibility Interview Guide</a>
-          </div>
-        </div>
-
-        <nav class="toc">
-          <div class="toc-title">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#basic">Basic</a>
-          <a href="#intermediate">Intermediate</a>
-          <a href="#advanced">Advanced</a>
-          <a href="#expert">Expert & scenarios</a>
-          <a href="#coding">Coding challenge</a>
-          <a href="#mistakes">Common mistakes</a>
-          <a href="#company">Company questions</a>
-          <a href="#cheatsheet">Cheat sheet</a>
-        </nav>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
       </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
-  </div>
-</div>
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="../assets/app.js"></script>
-</body>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
 </html>

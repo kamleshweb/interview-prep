@@ -1,235 +1,712 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTML5 Interview Guide — Kamlesh Kumar</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <div class="logo">KK</div>
-      <div><div class="name">Interview Prep</div><div class="role">Senior / Lead / Staff Frontend</div></div>
-    </div>
-    <input id="search-box" type="text" placeholder="Search topics…">
-    <div class="nav-group"><div class="nav-group-title">Start Here</div>
-      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
-    <div class="nav-group"><div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
-    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
-    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link done active" href="html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
-    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
-    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a></div>
-    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
-    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
-    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
-    <div class="nav-group"><div class="nav-group-title">Process</div>
-      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
-  </aside>
-
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> HTML5</div>
-      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
-    </div>
-
-    <main>
-      <div class="content-wrap">
-        <div class="prose">
-          <div class="hero">
-            <h1>HTML5 Interview Guide</h1>
-            <p class="lead">Semantic markup, forms, storage APIs, and the structural decisions that make everything downstream — accessibility, SEO, performance — easier or harder.</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML5 Interview Guide — Kamlesh Kumar</title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link done active" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link done" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a class="nav-link done" href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link done" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done" href="testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link done" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done" href="cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a class="nav-link done" href="design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link done" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done" href="performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link done" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done" href="agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
 
-          <h2 id="overview">1. Overview</h2>
-          <p>HTML5 questions in a senior interview rarely test raw syntax — they test whether semantic markup and web platform primitives are a genuine habit, since so much of accessibility and SEO is "free" if you reach for the right element from the start, and expensive to retrofit later. This guide focuses on the areas that keep surfacing at the senior level: semantics, forms, and the storage/offline APIs.</p>
-          <div class="tag">Semantic Elements</div><div class="tag">Forms & Validation</div><div class="tag">localStorage / sessionStorage / IndexedDB</div><div class="tag">Web Workers</div><div class="tag">Canvas / SVG</div>
-
-          <h2 id="basic">2. Basic questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> Why use <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;section&gt;</code> instead of just <code>&lt;div&gt;</code> everywhere?</summary>
-            <div class="qa-body">
-              <p>Semantic elements communicate document structure and meaning to browsers, search engines, and assistive technology — a screen reader can announce "navigation landmark" or let a user jump directly to the <code>&lt;main&gt;</code> content, none of which is possible with an undifferentiated tree of <code>&lt;div&gt;</code>s. They also give you meaningful hooks for styling and testing without inventing custom class names for structure that HTML already has a word for.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> <code>&lt;section&gt;</code> vs <code>&lt;article&gt;</code> vs <code>&lt;div&gt;</code> — what's the actual distinction?</summary>
-            <div class="qa-body">
-              <p><code>&lt;article&gt;</code> is for self-contained content that would make sense distributed/syndicated on its own (a blog post, a news story, a single product card). <code>&lt;section&gt;</code> groups thematically related content, typically with its own heading, but isn't necessarily standalone. <code>&lt;div&gt;</code> carries no semantic meaning at all — reach for it only when neither of the above (nor any other semantic element) fits, purely for styling/layout grouping.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What does <code>&lt;!DOCTYPE html&gt;</code> actually do?</summary>
-            <div class="qa-body">
-              <p>It tells the browser to render the page in standards mode rather than "quirks mode" — a legacy compatibility mode that emulates old, non-standard rendering behavior from 1990s browsers (different box-model math, different CSS parsing quirks). Omitting it, or getting it wrong, can trigger quirks mode and produce inconsistent, hard-to-debug layout behavior across browsers.</p>
-            </div>
-          </details>
-
-          <h2 id="intermediate">3. Intermediate questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> localStorage vs sessionStorage vs cookies vs IndexedDB — how do you choose?</summary>
-            <div class="qa-body">
-              <table>
-                <tr><th></th><th>Capacity</th><th>Lifetime</th><th>Sent to server?</th><th>Best for</th></tr>
-                <tr><td>Cookies</td><td>~4KB</td><td>Configurable expiry</td><td>Yes, every request (unless flagged otherwise)</td><td>Auth tokens needing server visibility (esp. httpOnly)</td></tr>
-                <tr><td>localStorage</td><td>~5-10MB</td><td>Until explicitly cleared</td><td>No</td><td>Small, non-sensitive client-only preferences</td></tr>
-                <tr><td>sessionStorage</td><td>~5-10MB</td><td>Until tab closes</td><td>No</td><td>Per-tab transient state (a multi-step form draft)</td></tr>
-                <tr><td>IndexedDB</td><td>Much larger, browser-dependent</td><td>Until explicitly cleared</td><td>No</td><td>Structured/large client-side data, offline-first apps</td></tr>
-              </table>
-              <p><strong>Common mistake:</strong> storing an auth token in localStorage for convenience — it's readable by any JS running on the page, making it directly vulnerable to XSS in a way an httpOnly cookie is not (covered further in the Security guide).</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How does native HTML form validation work, and when do you still need JavaScript validation on top of it?</summary>
-            <div class="qa-body">
-<pre><code>&lt;input type="email" required minlength="5" /&gt;</code></pre>
-              <p>Attributes like <code>required</code>, <code>type="email"</code>, <code>pattern</code>, <code>min</code>/<code>max</code> trigger the browser's built-in validation UI and the Constraint Validation API (<code>element.validity</code>, <code>element.checkValidity()</code>) with zero JS. This is good for basic format checks and free accessibility (announced correctly by screen readers, works without JS at all). You still need JS/server-side validation for anything the native attributes can't express — cross-field validation (password confirmation matching), async checks (username availability), and — critically — server-side validation is non-negotiable regardless, since client-side validation of any kind can be bypassed entirely by a direct API call.</p>
-              <h5>Grouping related fields</h5>
-              <p><code>&lt;fieldset&gt;</code> groups related form controls together, with <code>&lt;legend&gt;</code> providing a caption a screen reader announces before reading any control inside — e.g. wrapping a set of radio buttons for "delivery method" in a fieldset means each option is announced as "delivery method: standard" instead of just "standard," which is otherwise ambiguous out of context.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> <code>&lt;script&gt;</code> loading: plain vs <code>defer</code> vs <code>async</code> — what's the timeline difference?</summary>
-            <div class="qa-body">
-              <table>
-                <tr><th>Attribute</th><th>Blocks HTML parsing?</th><th>Execution order</th><th>Runs when</th></tr>
-                <tr><td>Plain <code>&lt;script src&gt;</code></td><td>Yes — parsing pauses until downloaded and executed</td><td>In document order</td><td>Immediately, wherever it appears</td></tr>
-                <tr><td><code>defer</code></td><td>No — downloads in parallel with parsing</td><td>In document order, guaranteed</td><td>After the DOM is fully parsed, before <code>DOMContentLoaded</code></td></tr>
-                <tr><td><code>async</code></td><td>No — downloads in parallel with parsing</td><td>Not guaranteed — whichever finishes downloading first runs first</td><td>As soon as it's downloaded, which can interrupt parsing mid-way</td></tr>
-              </table>
-              <p><strong>Practical rule:</strong> use <code>defer</code> for your main application bundle (order matters, and it shouldn't block the initial render) — this is exactly what bundlers/frameworks inject by default. Reserve <code>async</code> for independent, order-agnostic scripts like analytics tags that don't need to coordinate with anything else on the page.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> <code>&lt;img&gt;</code> vs a CSS <code>background-image</code> — when does the choice actually matter?</summary>
-            <div class="qa-body">
-              <p>An <code>&lt;img&gt;</code> is content — it's part of the accessibility tree, takes an <code>alt</code> attribute screen readers announce, is indexed by search engines, and supports native lazy-loading via <code>loading="lazy"</code> with zero JS. A CSS <code>background-image</code> is presentation — invisible to screen readers and search engines, and not natively lazy-loadable (the browser doesn't defer background images the way it can defer <code>&lt;img&gt;</code>). Rule of thumb: if the image conveys real content or meaning (a product photo, a chart, a user's avatar), use <code>&lt;img&gt;</code> with meaningful <code>alt</code> text; if it's purely decorative (a repeating texture, a decorative gradient overlay), CSS <code>background-image</code> is the correct, more honest choice.</p>
-            </div>
-          </details>
-
-          <h2 id="advanced">4. Advanced questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> What's the difference between Canvas and SVG, and how would you choose for a data visualization in a trading dashboard?</summary>
-            <div class="qa-body">
-              <table>
-                <tr><th></th><th>Canvas</th><th>SVG</th></tr>
-                <tr><td>Model</td><td>Pixel-based, immediate-mode drawing — no per-shape DOM nodes</td><td>Retained-mode — every shape is a real, inspectable/stylable DOM node</td></tr>
-                <tr><td>Performance at high element counts</td><td>Better — thousands of points render without DOM overhead</td><td>Degrades — thousands of DOM nodes gets expensive</td></tr>
-                <tr><td>Interactivity / accessibility</td><td>Manual — no built-in per-shape events or ARIA</td><td>Native — each element supports events, CSS, ARIA directly</td></tr>
-              </table>
-              <p>For a high-density real-time price chart with thousands of updating points, Canvas (or WebGL for even higher volume) usually wins on raw rendering performance. For a dashboard with a moderate number of interactive, individually-styleable/accessible chart elements (a bar chart with tooltips per bar), SVG's DOM-native interactivity is usually the better trade-off.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> What is the critical rendering path, at a summary level?</summary>
-            <div class="qa-body">
-              <p>The sequence the browser follows to turn HTML/CSS/JS into pixels: parse HTML into the <strong>DOM</strong>, parse CSS into the <strong>CSSOM</strong>, combine them into a <strong>render tree</strong> (visible elements only, with computed styles), <strong>layout</strong> (compute exact position/size of everything), <strong>paint</strong> (fill in pixels), and <strong>composite</strong> (layers combined on screen via the GPU). Anything blocking this pipeline early — a render-blocking <code>&lt;script&gt;</code> in the <code>&lt;head&gt;</code>, an unoptimized CSS file — directly delays first paint. For the full mechanics (including reflow/repaint costs and why animating certain CSS properties is cheaper than others), see the <a href="browser-internals.html">Browser Internals</a> guide.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How do Web Workers help with a CPU-heavy frontend task, and what are the constraints?</summary>
-            <div class="qa-body">
-              <p>A Web Worker runs JS on a genuinely separate OS thread, communicating with the main thread only via message passing (<code>postMessage</code>/<code>onmessage</code>) — no shared memory or direct DOM access. This is the browser-side equivalent of Node's <code>worker_threads</code> (from the Node.js guide): offload a CPU-intensive computation (parsing/transforming a very large dataset client-side, complex client-side calculations) to a worker so the main thread stays free to keep the UI responsive. The constraint: workers can't touch the DOM directly, so any UI update based on the worker's result still has to flow back through a message to the main thread.</p>
-            </div>
-          </details>
-
-          <h2 id="expert">5. Expert-level & scenario-based</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: "Your team's Lighthouse accessibility score is low. Walk through your first 5 fixes."</summary>
-            <div class="qa-body">
-              <p>In rough priority order: (1) <strong>semantic landmarks</strong> — swap div-soup for <code>&lt;header&gt;</code>/<code>&lt;nav&gt;</code>/<code>&lt;main&gt;</code>/<code>&lt;footer&gt;</code> so assistive tech can navigate the page structurally; (2) <strong>alt text audit</strong> — every meaningful <code>&lt;img&gt;</code> gets a real description, purely decorative ones get <code>alt=""</code> so they're skipped, not announced by filename; (3) <strong>color contrast</strong> — run an automated contrast check (Lighthouse flags this directly) and fix any text/background combination below WCAG AA's 4.5:1 ratio; (4) <strong>focus order and visible focus states</strong> — confirm the DOM/tab order matches the visual order, and that <code>outline: none</code> hasn't been removed without a replacement focus style; (5) <strong>form label associations</strong> — every input has a properly linked <code>&lt;label for&gt;</code>, with ARIA reserved only for the cases native semantics genuinely can't express. This ordering front-loads the fixes that are both high-impact and typically fast to ship, before moving into slower, more experiential fixes (full keyboard-flow testing, screen-reader walkthroughs).</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: an internal audit finds your app's forms are unusable with a screen reader, despite passing an automated accessibility scan. What HTML-level issues would you specifically check first?</summary>
-            <div class="qa-body">
-              <p>Automated scanners catch missing <code>&lt;label&gt;</code> associations and missing <code>alt</code> text, but miss experiential issues: whether error messages are programmatically associated with their field (<code>aria-describedby</code> pointing at the error text, not just visually positioned nearby), whether the DOM order matches the visual/tab order (a CSS-only reorder can visually look right while confusing a screen reader following DOM order), whether required-field indicators are conveyed to assistive tech and not just via a red asterisk, and whether focus moves sensibly after a validation error (ideally to the first invalid field). This is the same automated-vs-manual-testing gap covered in the Accessibility guide — form UX in particular is where that gap shows up most concretely.</p>
-            </div>
-          </details>
-
-          <h2 id="mistakes">6. Common mistakes & debugging</h2>
-          <div class="callout warn"><strong>Frequent review comments</strong>
-            Div-soup instead of semantic elements, losing free accessibility/SEO structure; storing sensitive tokens in localStorage; relying only on client-side form validation with no server-side enforcement; missing or mismatched <code>&lt;label for&gt;</code>/input <code>id</code> pairs; images without meaningful <code>alt</code> text (or decorative images missing <code>alt=""</code>, forcing screen readers to announce the filename).
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> HTML5
           </div>
-
-          <h2 id="company">7. Frequently asked at top product companies</h2>
-          <ul>
-            <li><strong>General senior-level:</strong> "Why would you use semantic HTML over a div-based layout, concretely?" — tests whether it's a real habit or lip service.</li>
-            <li><strong>Performance-focused companies:</strong> "When would you use a Web Worker, and what can't it do?"</li>
-            <li><strong>Data-viz-heavy companies (relevant to your dashboard background):</strong> "Canvas or SVG for this chart, and why?"</li>
-          </ul>
-
-          <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
-          <table>
-            <tr><th>Concept</th><th>One-line recall</th></tr>
-            <tr><td>Semantic elements</td><td>Free structure for accessibility, SEO, and readability</td></tr>
-            <tr><td>localStorage</td><td>Never for sensitive tokens — readable by any JS on the page</td></tr>
-            <tr><td>Native form validation</td><td>Free UX + accessibility, but never a substitute for server-side checks</td></tr>
-            <tr><td>Canvas vs SVG</td><td>Canvas scales to huge element counts; SVG gives native per-element interactivity</td></tr>
-            <tr><td>Web Workers</td><td>True parallel thread for CPU work — no DOM access, message-passing only</td></tr>
-          </table>
-
-          <p class="lead">Related: pairs with <a href="performance-accessibility.html">Performance &amp; Accessibility</a> and <a href="security.html">Security &amp; Auth</a> (storage choices for tokens).</p>
-
-          <div class="page-nav">
-            <a class="prev" href="agile-leadership.html"><span class="dir">← Previous</span>Agile &amp; Leadership Interview Guide</a>
-            <a class="next" href="css3.html"><span class="dir">Next →</span>CSS3 / SASS Interview Guide</a>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
           </div>
         </div>
 
-        <nav class="toc">
-          <div class="toc-title">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#basic">Basic</a>
-          <a href="#intermediate">Intermediate</a>
-          <a href="#advanced">Advanced</a>
-          <a href="#expert">Expert & scenarios</a>
-          <a href="#mistakes">Common mistakes</a>
-          <a href="#company">Company questions</a>
-          <a href="#cheatsheet">Cheat sheet</a>
-        </nav>
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>HTML5 Interview Guide</h1>
+                <p class="lead">
+                  Semantic markup, forms, storage APIs, and the structural
+                  decisions that make everything downstream — accessibility,
+                  SEO, performance — easier or harder.
+                </p>
+              </div>
+
+              <h2 id="overview">1. Overview</h2>
+              <p>
+                HTML5 questions in a senior interview rarely test raw syntax —
+                they test whether semantic markup and web platform primitives
+                are a genuine habit, since so much of accessibility and SEO is
+                "free" if you reach for the right element from the start, and
+                expensive to retrofit later. This guide focuses on the areas
+                that keep surfacing at the senior level: semantics, forms, and
+                the storage/offline APIs.
+              </p>
+              <div class="tag">Semantic Elements</div>
+              <div class="tag">Forms & Validation</div>
+              <div class="tag">localStorage / sessionStorage / IndexedDB</div>
+              <div class="tag">Web Workers</div>
+              <div class="tag">Canvas / SVG</div>
+
+              <h2 id="basic">2. Basic questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> Why use
+                  <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code>,
+                  <code>&lt;section&gt;</code> instead of just
+                  <code>&lt;div&gt;</code> everywhere?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Semantic elements communicate document structure and meaning
+                    to browsers, search engines, and assistive technology — a
+                    screen reader can announce "navigation landmark" or let a
+                    user jump directly to the <code>&lt;main&gt;</code> content,
+                    none of which is possible with an undifferentiated tree of
+                    <code>&lt;div&gt;</code>s. They also give you meaningful
+                    hooks for styling and testing without inventing custom class
+                    names for structure that HTML already has a word for.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span>
+                  <code>&lt;section&gt;</code> vs
+                  <code>&lt;article&gt;</code> vs <code>&lt;div&gt;</code> —
+                  what's the actual distinction?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <code>&lt;article&gt;</code> is for self-contained content
+                    that would make sense distributed/syndicated on its own (a
+                    blog post, a news story, a single product card).
+                    <code>&lt;section&gt;</code> groups thematically related
+                    content, typically with its own heading, but isn't
+                    necessarily standalone. <code>&lt;div&gt;</code> carries no
+                    semantic meaning at all — reach for it only when neither of
+                    the above (nor any other semantic element) fits, purely for
+                    styling/layout grouping.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What
+                  does <code>&lt;!DOCTYPE html&gt;</code> actually do?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    It tells the browser to render the page in standards mode
+                    rather than "quirks mode" — a legacy compatibility mode that
+                    emulates old, non-standard rendering behavior from 1990s
+                    browsers (different box-model math, different CSS parsing
+                    quirks). Omitting it, or getting it wrong, can trigger
+                    quirks mode and produce inconsistent, hard-to-debug layout
+                    behavior across browsers.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="intermediate">3. Intermediate questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  localStorage vs sessionStorage vs cookies vs IndexedDB — how
+                  do you choose?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th></th>
+                      <th>Capacity</th>
+                      <th>Lifetime</th>
+                      <th>Sent to server?</th>
+                      <th>Best for</th>
+                    </tr>
+                    <tr>
+                      <td>Cookies</td>
+                      <td>~4KB</td>
+                      <td>Configurable expiry</td>
+                      <td>Yes, every request (unless flagged otherwise)</td>
+                      <td>
+                        Auth tokens needing server visibility (esp. httpOnly)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>localStorage</td>
+                      <td>~5-10MB</td>
+                      <td>Until explicitly cleared</td>
+                      <td>No</td>
+                      <td>Small, non-sensitive client-only preferences</td>
+                    </tr>
+                    <tr>
+                      <td>sessionStorage</td>
+                      <td>~5-10MB</td>
+                      <td>Until tab closes</td>
+                      <td>No</td>
+                      <td>Per-tab transient state (a multi-step form draft)</td>
+                    </tr>
+                    <tr>
+                      <td>IndexedDB</td>
+                      <td>Much larger, browser-dependent</td>
+                      <td>Until explicitly cleared</td>
+                      <td>No</td>
+                      <td>
+                        Structured/large client-side data, offline-first apps
+                      </td>
+                    </tr>
+                  </table>
+                  <p>
+                    <strong>Common mistake:</strong> storing an auth token in
+                    localStorage for convenience — it's readable by any JS
+                    running on the page, making it directly vulnerable to XSS in
+                    a way an httpOnly cookie is not (covered further in the
+                    Security guide).
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How does native HTML form validation work, and when do you
+                  still need JavaScript validation on top of it?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>&lt;input type="email" required minlength="5" /&gt;</code></pre>
+                  <p>
+                    Attributes like <code>required</code>,
+                    <code>type="email"</code>, <code>pattern</code>,
+                    <code>min</code>/<code>max</code> trigger the browser's
+                    built-in validation UI and the Constraint Validation API
+                    (<code>element.validity</code>,
+                    <code>element.checkValidity()</code>) with zero JS. This is
+                    good for basic format checks and free accessibility
+                    (announced correctly by screen readers, works without JS at
+                    all). You still need JS/server-side validation for anything
+                    the native attributes can't express — cross-field validation
+                    (password confirmation matching), async checks (username
+                    availability), and — critically — server-side validation is
+                    non-negotiable regardless, since client-side validation of
+                    any kind can be bypassed entirely by a direct API call.
+                  </p>
+                  <h5>Grouping related fields</h5>
+                  <p>
+                    <code>&lt;fieldset&gt;</code> groups related form controls
+                    together, with <code>&lt;legend&gt;</code> providing a
+                    caption a screen reader announces before reading any control
+                    inside — e.g. wrapping a set of radio buttons for "delivery
+                    method" in a fieldset means each option is announced as
+                    "delivery method: standard" instead of just "standard,"
+                    which is otherwise ambiguous out of context.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  <code>&lt;script&gt;</code> loading: plain vs
+                  <code>defer</code> vs <code>async</code> — what's the timeline
+                  difference?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th>Attribute</th>
+                      <th>Blocks HTML parsing?</th>
+                      <th>Execution order</th>
+                      <th>Runs when</th>
+                    </tr>
+                    <tr>
+                      <td>Plain <code>&lt;script src&gt;</code></td>
+                      <td>
+                        Yes — parsing pauses until downloaded and executed
+                      </td>
+                      <td>In document order</td>
+                      <td>Immediately, wherever it appears</td>
+                    </tr>
+                    <tr>
+                      <td><code>defer</code></td>
+                      <td>No — downloads in parallel with parsing</td>
+                      <td>In document order, guaranteed</td>
+                      <td>
+                        After the DOM is fully parsed, before
+                        <code>DOMContentLoaded</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>async</code></td>
+                      <td>No — downloads in parallel with parsing</td>
+                      <td>
+                        Not guaranteed — whichever finishes downloading first
+                        runs first
+                      </td>
+                      <td>
+                        As soon as it's downloaded, which can interrupt parsing
+                        mid-way
+                      </td>
+                    </tr>
+                  </table>
+                  <p>
+                    <strong>Practical rule:</strong> use <code>defer</code> for
+                    your main application bundle (order matters, and it
+                    shouldn't block the initial render) — this is exactly what
+                    bundlers/frameworks inject by default. Reserve
+                    <code>async</code> for independent, order-agnostic scripts
+                    like analytics tags that don't need to coordinate with
+                    anything else on the page.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  <code>&lt;img&gt;</code> vs a CSS
+                  <code>background-image</code> — when does the choice actually
+                  matter?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    An <code>&lt;img&gt;</code> is content — it's part of the
+                    accessibility tree, takes an <code>alt</code> attribute
+                    screen readers announce, is indexed by search engines, and
+                    supports native lazy-loading via
+                    <code>loading="lazy"</code> with zero JS. A CSS
+                    <code>background-image</code> is presentation — invisible to
+                    screen readers and search engines, and not natively
+                    lazy-loadable (the browser doesn't defer background images
+                    the way it can defer <code>&lt;img&gt;</code>). Rule of
+                    thumb: if the image conveys real content or meaning (a
+                    product photo, a chart, a user's avatar), use
+                    <code>&lt;img&gt;</code> with meaningful
+                    <code>alt</code> text; if it's purely decorative (a
+                    repeating texture, a decorative gradient overlay), CSS
+                    <code>background-image</code> is the correct, more honest
+                    choice.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="advanced">4. Advanced questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  What's the difference between Canvas and SVG, and how would
+                  you choose for a data visualization in a trading dashboard?
+                </summary>
+                <div class="qa-body">
+                  <table>
+                    <tr>
+                      <th></th>
+                      <th>Canvas</th>
+                      <th>SVG</th>
+                    </tr>
+                    <tr>
+                      <td>Model</td>
+                      <td>
+                        Pixel-based, immediate-mode drawing — no per-shape DOM
+                        nodes
+                      </td>
+                      <td>
+                        Retained-mode — every shape is a real,
+                        inspectable/stylable DOM node
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>Performance at high element counts</td>
+                      <td>
+                        Better — thousands of points render without DOM overhead
+                      </td>
+                      <td>Degrades — thousands of DOM nodes gets expensive</td>
+                    </tr>
+                    <tr>
+                      <td>Interactivity / accessibility</td>
+                      <td>Manual — no built-in per-shape events or ARIA</td>
+                      <td>
+                        Native — each element supports events, CSS, ARIA
+                        directly
+                      </td>
+                    </tr>
+                  </table>
+                  <p>
+                    For a high-density real-time price chart with thousands of
+                    updating points, Canvas (or WebGL for even higher volume)
+                    usually wins on raw rendering performance. For a dashboard
+                    with a moderate number of interactive,
+                    individually-styleable/accessible chart elements (a bar
+                    chart with tooltips per bar), SVG's DOM-native interactivity
+                    is usually the better trade-off.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> What
+                  is the critical rendering path, at a summary level?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    The sequence the browser follows to turn HTML/CSS/JS into
+                    pixels: parse HTML into the <strong>DOM</strong>, parse CSS
+                    into the <strong>CSSOM</strong>, combine them into a
+                    <strong>render tree</strong> (visible elements only, with
+                    computed styles), <strong>layout</strong> (compute exact
+                    position/size of everything), <strong>paint</strong> (fill
+                    in pixels), and <strong>composite</strong> (layers combined
+                    on screen via the GPU). Anything blocking this pipeline
+                    early — a render-blocking <code>&lt;script&gt;</code> in the
+                    <code>&lt;head&gt;</code>, an unoptimized CSS file —
+                    directly delays first paint. For the full mechanics
+                    (including reflow/repaint costs and why animating certain
+                    CSS properties is cheaper than others), see the
+                    <a href="browser-internals.html">Browser Internals</a>
+                    guide.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  do Web Workers help with a CPU-heavy frontend task, and what
+                  are the constraints?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    A Web Worker runs JS on a genuinely separate OS thread,
+                    communicating with the main thread only via message passing
+                    (<code>postMessage</code>/<code>onmessage</code>) — no
+                    shared memory or direct DOM access. This is the browser-side
+                    equivalent of Node's <code>worker_threads</code> (from the
+                    Node.js guide): offload a CPU-intensive computation
+                    (parsing/transforming a very large dataset client-side,
+                    complex client-side calculations) to a worker so the main
+                    thread stays free to keep the UI responsive. The constraint:
+                    workers can't touch the DOM directly, so any UI update based
+                    on the worker's result still has to flow back through a
+                    message to the main thread.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="expert">5. Expert-level & scenario-based</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  "Your team's Lighthouse accessibility score is low. Walk
+                  through your first 5 fixes."
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    In rough priority order: (1)
+                    <strong>semantic landmarks</strong> — swap div-soup for
+                    <code>&lt;header&gt;</code
+                    >/<code>&lt;nav&gt;</code>/<code>&lt;main&gt;</code>/<code
+                      >&lt;footer&gt;</code
+                    >
+                    so assistive tech can navigate the page structurally; (2)
+                    <strong>alt text audit</strong> — every meaningful
+                    <code>&lt;img&gt;</code> gets a real description, purely
+                    decorative ones get <code>alt=""</code> so they're skipped,
+                    not announced by filename; (3)
+                    <strong>color contrast</strong> — run an automated contrast
+                    check (Lighthouse flags this directly) and fix any
+                    text/background combination below WCAG AA's 4.5:1 ratio; (4)
+                    <strong>focus order and visible focus states</strong> —
+                    confirm the DOM/tab order matches the visual order, and that
+                    <code>outline: none</code> hasn't been removed without a
+                    replacement focus style; (5)
+                    <strong>form label associations</strong> — every input has a
+                    properly linked <code>&lt;label for&gt;</code>, with ARIA
+                    reserved only for the cases native semantics genuinely can't
+                    express. This ordering front-loads the fixes that are both
+                    high-impact and typically fast to ship, before moving into
+                    slower, more experiential fixes (full keyboard-flow testing,
+                    screen-reader walkthroughs).
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  an internal audit finds your app's forms are unusable with a
+                  screen reader, despite passing an automated accessibility
+                  scan. What HTML-level issues would you specifically check
+                  first?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Automated scanners catch missing
+                    <code>&lt;label&gt;</code> associations and missing
+                    <code>alt</code> text, but miss experiential issues: whether
+                    error messages are programmatically associated with their
+                    field (<code>aria-describedby</code> pointing at the error
+                    text, not just visually positioned nearby), whether the DOM
+                    order matches the visual/tab order (a CSS-only reorder can
+                    visually look right while confusing a screen reader
+                    following DOM order), whether required-field indicators are
+                    conveyed to assistive tech and not just via a red asterisk,
+                    and whether focus moves sensibly after a validation error
+                    (ideally to the first invalid field). This is the same
+                    automated-vs-manual-testing gap covered in the Accessibility
+                    guide — form UX in particular is where that gap shows up
+                    most concretely.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">6. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong> Div-soup instead of
+                semantic elements, losing free accessibility/SEO structure;
+                storing sensitive tokens in localStorage; relying only on
+                client-side form validation with no server-side enforcement;
+                missing or mismatched <code>&lt;label for&gt;</code>/input
+                <code>id</code> pairs; images without meaningful
+                <code>alt</code> text (or decorative images missing
+                <code>alt=""</code>, forcing screen readers to announce the
+                filename).
+              </div>
+
+              <h2 id="company">7. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>General senior-level:</strong> "Why would you use
+                  semantic HTML over a div-based layout, concretely?" — tests
+                  whether it's a real habit or lip service.
+                </li>
+                <li>
+                  <strong>Performance-focused companies:</strong> "When would
+                  you use a Web Worker, and what can't it do?"
+                </li>
+                <li>
+                  <strong
+                    >Data-viz-heavy companies (relevant to your dashboard
+                    background):</strong
+                  >
+                  "Canvas or SVG for this chart, and why?"
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">8. Cheat sheet / quick revision</h2>
+              <table>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>Semantic elements</td>
+                  <td>
+                    Free structure for accessibility, SEO, and readability
+                  </td>
+                </tr>
+                <tr>
+                  <td>localStorage</td>
+                  <td>
+                    Never for sensitive tokens — readable by any JS on the page
+                  </td>
+                </tr>
+                <tr>
+                  <td>Native form validation</td>
+                  <td>
+                    Free UX + accessibility, but never a substitute for
+                    server-side checks
+                  </td>
+                </tr>
+                <tr>
+                  <td>Canvas vs SVG</td>
+                  <td>
+                    Canvas scales to huge element counts; SVG gives native
+                    per-element interactivity
+                  </td>
+                </tr>
+                <tr>
+                  <td>Web Workers</td>
+                  <td>
+                    True parallel thread for CPU work — no DOM access,
+                    message-passing only
+                  </td>
+                </tr>
+              </table>
+
+              <p class="lead">
+                Related: pairs with
+                <a href="performance-accessibility.html"
+                  >Performance &amp; Accessibility</a
+                >
+                and <a href="security.html">Security &amp; Auth</a> (storage
+                choices for tokens).
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="agile-leadership.html"
+                  ><span class="dir">← Previous</span>Agile &amp; Leadership
+                  Interview Guide</a
+                >
+                <a class="next" href="css3.html"
+                  ><span class="dir">Next →</span>CSS3 / SASS Interview Guide</a
+                >
+              </div>
+            </div>
+
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
+          </div>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
       </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
-  </div>
-</div>
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="../assets/app.js"></script>
-</body>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
 </html>

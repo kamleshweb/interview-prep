@@ -1,120 +1,357 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Web Performance & Accessibility Interview Guide — Kamlesh Kumar</title>
-<link rel="stylesheet" href="../assets/style.css">
-</head>
-<body>
-<div class="app-shell">
-  <aside class="sidebar">
-    <div class="nav-group"><div class="nav-group-title">Start Here</div>
-      <a class="nav-link" href="../index.html"><span class="dot"></span> Home / Roadmap</a></div>
-    <div class="nav-group"><div class="nav-group-title">Core Language</div>
-      <a class="nav-link done" href="javascript.html"><span class="dot"></span> JavaScript (ES6+)</a>
-      <a class="nav-link done" href="typescript.html"><span class="dot"></span> TypeScript</a></div>
-    <div class="nav-group"><div class="nav-group-title">React Ecosystem</div>
-      <a class="nav-link done" href="react.html"><span class="dot"></span> React.js</a>
-      <a class="nav-link done" href="redux.html"><span class="dot"></span> Redux / Redux Toolkit</a>
-      <a class="nav-link done" href="react-router.html"><span class="dot"></span> React Router</a>
-      <a class="nav-link done" href="nextjs.html"><span class="dot"></span> Next.js</a></div>
-    <div class="nav-group"><div class="nav-group-title">Web Fundamentals</div>
-      <a class="nav-link done" href="html5.html"><span class="dot"></span> HTML5</a>
-      <a class="nav-link done" href="css3.html"><span class="dot"></span> CSS3 / SASS</a>
-      <a class="nav-link done" href="browser-internals.html"><span class="dot"></span> Browser Internals</a></div>
-    <div class="nav-group"><div class="nav-group-title">Backend & Data</div>
-      <a class="nav-link done" href="nodejs.html"><span class="dot"></span> Node.js & Express</a>
-      <a class="nav-link done" href="rest-api.html"><span class="dot"></span> REST APIs</a>
-      <a class="nav-link done" href="graphql.html"><span class="dot"></span> GraphQL</a></div>
-    <div class="nav-group"><div class="nav-group-title">Tooling & Quality</div>
-      <a class="nav-link done" href="git.html"><span class="dot"></span> Git</a>
-      <a class="nav-link done" href="webpack-babel.html"><span class="dot"></span> Webpack & Babel</a>
-      <a class="nav-link done" href="testing.html"><span class="dot"></span> Testing (Jest, RTL, Cypress)</a>
-      <a class="nav-link done" href="storybook.html"><span class="dot"></span> Storybook</a></div>
-    <div class="nav-group"><div class="nav-group-title">Cloud & CI/CD</div>
-      <a class="nav-link done" href="cicd-aws.html"><span class="dot"></span> CI/CD & AWS</a></div>
-    <div class="nav-group"><div class="nav-group-title">Architecture & Systems</div>
-      <a class="nav-link done" href="system-design.html"><span class="dot"></span> Frontend System Design</a>
-      <a class="nav-link done" href="design-patterns-architecture.html"><span class="dot"></span> Design Patterns & Architecture</a>
-      <a class="nav-link done" href="micro-frontends.html"><span class="dot"></span> Micro Frontends (deep dive)</a></div>
-    <div class="nav-group"><div class="nav-group-title">Quality of Experience</div>
-      <a class="nav-link done active" href="performance-accessibility.html"><span class="dot"></span> Performance & Accessibility</a>
-      <a class="nav-link done" href="security.html"><span class="dot"></span> Security & Auth</a></div>
-    <div class="nav-group"><div class="nav-group-title">Process</div>
-      <a class="nav-link done" href="agile-leadership.html"><span class="dot"></span> Agile & Leadership</a></div>
-  </aside>
-
-  <div>
-    <div class="topbar">
-      <button class="menu-toggle icon-btn" onclick="toggleSidebar()">☰</button>
-      <div class="breadcrumbs"><a href="../index.html">Interview Prep</a><span class="sep">/</span> Performance & Accessibility</div>
-      <div class="topbar-actions"><button class="icon-btn" onclick="toggleTheme()">🌓 <span id="theme-label">Dark mode</span></button></div>
-    </div>
-
-    <main>
-      <div class="content-wrap">
-        <div class="prose">
-          <div class="hero">
-            <h1>Web Performance & Accessibility Interview Guide</h1>
-            <p class="lead">Core Web Vitals, the optimization techniques that actually move them, and WCAG accessibility — treated together because in a real audit they're solved with overlapping techniques (semantic HTML, lazy loading, careful DOM management).</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Web Performance & Accessibility Interview Guide — Kamlesh Kumar
+    </title>
+    <link rel="stylesheet" href="../assets/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="logo">KK</div>
+          <div>
+            <div class="name">Interview Prep</div>
+            <div class="role">Senior / Lead / Staff Frontend</div>
           </div>
+        </div>
+        <input id="search-box" type="text" placeholder="Search topics…" />
+        <div class="nav-group">
+          <div class="nav-group-title">Start Here</div>
+          <a class="nav-link" href="../index.html"
+            ><span class="dot"></span> Home / Roadmap</a
+          >
+          <a class="nav-link done" href="my-project.html"
+            ><span class="dot"></span> My Project Walkthrough</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Core Language</div>
+          <a class="nav-link done" href="javascript.html"
+            ><span class="dot"></span> JavaScript (ES6+)</a
+          >
+          <a class="nav-link done" href="typescript.html"
+            ><span class="dot"></span> TypeScript</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">React Ecosystem</div>
+          <a class="nav-link done" href="react.html"
+            ><span class="dot"></span> React.js</a
+          >
+          <a class="nav-link done" href="redux.html"
+            ><span class="dot"></span> Redux / Redux Toolkit</a
+          >
+          <a class="nav-link done" href="react-router.html"
+            ><span class="dot"></span> React Router</a
+          >
+          <a class="nav-link done" href="nextjs.html"
+            ><span class="dot"></span> Next.js</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Web Fundamentals</div>
+          <a class="nav-link done" href="html5.html"
+            ><span class="dot"></span> HTML5</a
+          >
+          <a class="nav-link done" href="css3.html"
+            ><span class="dot"></span> CSS3 / SASS</a
+          >
+          <a class="nav-link done" href="browser-internals.html"
+            ><span class="dot"></span> Browser Internals</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Backend & Data</div>
+          <a class="nav-link done" href="nodejs.html"
+            ><span class="dot"></span> Node.js & Express</a
+          >
+          <a class="nav-link done" href="rest-api.html"
+            ><span class="dot"></span> REST APIs</a
+          >
+          <a class="nav-link done" href="graphql.html"
+            ><span class="dot"></span> GraphQL</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Tooling & Quality</div>
+          <a class="nav-link done" href="git.html"
+            ><span class="dot"></span> Git</a
+          >
+          <a class="nav-link done" href="webpack-babel.html"
+            ><span class="dot"></span> Webpack & Babel</a
+          >
+          <a class="nav-link done" href="testing.html"
+            ><span class="dot"></span> Testing (Jest, RTL, Cypress)</a
+          >
+          <a class="nav-link done" href="storybook.html"
+            ><span class="dot"></span> Storybook</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Cloud & CI/CD</div>
+          <a class="nav-link done" href="cicd-aws.html"
+            ><span class="dot"></span> CI/CD & AWS</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Architecture & Systems</div>
+          <a class="nav-link done" href="system-design.html"
+            ><span class="dot"></span> Frontend System Design</a
+          >
+          <a class="nav-link done" href="design-patterns-architecture.html"
+            ><span class="dot"></span> Design Patterns & Architecture</a
+          >
+          <a class="nav-link done" href="micro-frontends.html"
+            ><span class="dot"></span> Micro Frontends (deep dive)</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Quality of Experience</div>
+          <a class="nav-link done active" href="performance-accessibility.html"
+            ><span class="dot"></span> Performance & Accessibility</a
+          >
+          <a class="nav-link done" href="security.html"
+            ><span class="dot"></span> Security & Auth</a
+          >
+        </div>
+        <div class="nav-group">
+          <div class="nav-group-title">Process</div>
+          <a class="nav-link done" href="agile-leadership.html"
+            ><span class="dot"></span> Agile & Leadership</a
+          >
+        </div>
+      </aside>
 
-          <h2 id="overview">1. Overview</h2>
-          <p>Performance and accessibility are two of the "quality" axes senior candidates are expected to own without being told to — nobody writes a ticket saying "please make this accessible," it has to be built in. Interviewers test whether these are habits, not afterthoughts: do you reach for semantic HTML by default, do you know what Core Web Vitals actually measure and why, and can you diagnose a real performance or accessibility bug rather than just recite definitions.</p>
-          <div class="tag">LCP / INP / CLS</div><div class="tag">Code Splitting</div><div class="tag">Lazy Loading</div><div class="tag">Bundle Size</div><div class="tag">WCAG POUR</div><div class="tag">ARIA</div><div class="tag">Keyboard Navigation</div><div class="tag">Screen Readers</div>
+      <div>
+        <div class="topbar">
+          <button class="menu-toggle icon-btn" onclick="toggleSidebar()">
+            ☰
+          </button>
+          <div class="breadcrumbs">
+            <a href="../index.html">Interview Prep</a
+            ><span class="sep">/</span> Performance & Accessibility
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-btn" onclick="toggleTheme()">
+              🌓 <span id="theme-label">Dark mode</span>
+            </button>
+          </div>
+        </div>
 
-          <h2 id="cwv">2. Core Web Vitals — the metrics that matter</h2>
-          <table>
-            <tr><th>Metric</th><th>Measures</th><th>Good threshold</th><th>Main causes when poor</th></tr>
-            <tr><td><strong>LCP</strong> (Largest Contentful Paint)</td><td>Time until the largest visible element renders</td><td>&lt; 2.5s</td><td>Slow server response, render-blocking CSS/JS, unoptimized hero images, late-loading fonts</td></tr>
-            <tr><td><strong>INP</strong> (Interaction to Next Paint — replaced FID in 2024)</td><td>Responsiveness of the page to user interactions, across the whole session</td><td>&lt; 200ms</td><td>Long JS tasks blocking the main thread during/after an interaction, excessive re-renders</td></tr>
-            <tr><td><strong>CLS</strong> (Cumulative Layout Shift)</td><td>Visual stability — how much content unexpectedly shifts</td><td>&lt; 0.1</td><td>Images/ads/embeds without reserved dimensions, late-injected banners, web fonts causing text reflow (FOUT/FOIT)</td></tr>
-          </table>
+        <main>
+          <div class="content-wrap">
+            <div class="prose">
+              <div class="hero">
+                <h1>Web Performance & Accessibility Interview Guide</h1>
+                <p class="lead">
+                  Core Web Vitals, the optimization techniques that actually
+                  move them, and WCAG accessibility — treated together because
+                  in a real audit they're solved with overlapping techniques
+                  (semantic HTML, lazy loading, careful DOM management).
+                </p>
+              </div>
 
-          <h2 id="basic">3. Basic questions</h2>
+              <h2 id="overview">1. Overview</h2>
+              <p>
+                Performance and accessibility are two of the "quality" axes
+                senior candidates are expected to own without being told to —
+                nobody writes a ticket saying "please make this accessible," it
+                has to be built in. Interviewers test whether these are habits,
+                not afterthoughts: do you reach for semantic HTML by default, do
+                you know what Core Web Vitals actually measure and why, and can
+                you diagnose a real performance or accessibility bug rather than
+                just recite definitions.
+              </p>
+              <div class="tag">LCP / INP / CLS</div>
+              <div class="tag">Code Splitting</div>
+              <div class="tag">Lazy Loading</div>
+              <div class="tag">Bundle Size</div>
+              <div class="tag">WCAG POUR</div>
+              <div class="tag">ARIA</div>
+              <div class="tag">Keyboard Navigation</div>
+              <div class="tag">Screen Readers</div>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> Why did Google replace FID with INP as a Core Web Vital?</summary>
-            <div class="qa-body">
-              <p>FID (First Input Delay) only measured the delay before the <em>first</em> interaction started processing — it said nothing about how long that processing took, or about any interaction after the first one. INP measures the full responsiveness of <em>every</em> interaction throughout the page's lifetime (input delay + processing time + time to next paint), reporting a representative worst-case — a much more honest picture of whether a page stays responsive as a session goes on, not just at first touch.</p>
-            </div>
-          </details>
+              <h2 id="cwv">2. Core Web Vitals — the metrics that matter</h2>
+              <table>
+                <tr>
+                  <th>Metric</th>
+                  <th>Measures</th>
+                  <th>Good threshold</th>
+                  <th>Main causes when poor</th>
+                </tr>
+                <tr>
+                  <td><strong>LCP</strong> (Largest Contentful Paint)</td>
+                  <td>Time until the largest visible element renders</td>
+                  <td>&lt; 2.5s</td>
+                  <td>
+                    Slow server response, render-blocking CSS/JS, unoptimized
+                    hero images, late-loading fonts
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <strong>INP</strong> (Interaction to Next Paint — replaced
+                    FID in 2024)
+                  </td>
+                  <td>
+                    Responsiveness of the page to user interactions, across the
+                    whole session
+                  </td>
+                  <td>&lt; 200ms</td>
+                  <td>
+                    Long JS tasks blocking the main thread during/after an
+                    interaction, excessive re-renders
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>CLS</strong> (Cumulative Layout Shift)</td>
+                  <td>
+                    Visual stability — how much content unexpectedly shifts
+                  </td>
+                  <td>&lt; 0.1</td>
+                  <td>
+                    Images/ads/embeds without reserved dimensions, late-injected
+                    banners, web fonts causing text reflow (FOUT/FOIT)
+                  </td>
+                </tr>
+              </table>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What causes Cumulative Layout Shift, and what's the single most common fix?</summary>
-            <div class="qa-body">
-              <p>CLS happens when visible elements move after the user has already started perceiving the page — most often images/iframes without explicit dimensions (the browser doesn't know how much space to reserve until the resource loads, so content jumps once it arrives), or content injected above existing content (a banner, a cookie notice) without reserved space. The single most common fix: always set explicit <code>width</code>/<code>height</code> (or an aspect-ratio box) on images and embeds so the browser reserves the correct space before the resource loads.</p>
-            </div>
-          </details>
+              <h2 id="basic">3. Basic questions</h2>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-beginner">Basic</span> What are the four WCAG principles (POUR)?</summary>
-            <div class="qa-body">
-              <p><strong>P</strong>erceivable (content must be presentable in ways users can perceive — alt text for images, captions for video, sufficient color contrast), <strong>O</strong>perable (all functionality available via keyboard, no content that traps focus or requires precise timing users can't control), <strong>U</strong>nderstandable (readable, predictable, with clear input error messages), <strong>R</strong>obust (works with a wide range of assistive technologies, valid/semantic markup they can parse reliably).</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> Why did
+                  Google replace FID with INP as a Core Web Vital?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    FID (First Input Delay) only measured the delay before the
+                    <em>first</em> interaction started processing — it said
+                    nothing about how long that processing took, or about any
+                    interaction after the first one. INP measures the full
+                    responsiveness of <em>every</em> interaction throughout the
+                    page's lifetime (input delay + processing time + time to
+                    next paint), reporting a representative worst-case — a much
+                    more honest picture of whether a page stays responsive as a
+                    session goes on, not just at first touch.
+                  </p>
+                </div>
+              </details>
 
-          <h2 id="intermediate">4. Intermediate questions</h2>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What
+                  causes Cumulative Layout Shift, and what's the single most
+                  common fix?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    CLS happens when visible elements move after the user has
+                    already started perceiving the page — most often
+                    images/iframes without explicit dimensions (the browser
+                    doesn't know how much space to reserve until the resource
+                    loads, so content jumps once it arrives), or content
+                    injected above existing content (a banner, a cookie notice)
+                    without reserved space. The single most common fix: always
+                    set explicit <code>width</code>/<code>height</code> (or an
+                    aspect-ratio box) on images and embeds so the browser
+                    reserves the correct space before the resource loads.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> Walk through the concrete techniques you'd apply to reduce a slow LCP.</summary>
-            <div class="qa-body">
-              <p>1) Preload the LCP resource itself (<code>&lt;link rel="preload" as="image"&gt;</code> for a hero image, or preloading critical fonts) so the browser fetches it earlier instead of discovering it late in the HTML/CSS parse. 2) Eliminate render-blocking resources — defer non-critical CSS/JS, inline critical above-the-fold CSS. 3) Optimize the image itself — correct format (WebP/AVIF), correct size for the viewport (responsive <code>srcset</code>), and a CDN. 4) Reduce server response time (TTFB) — caching, edge rendering, faster backend queries. 5) Avoid client-side-only rendering for the LCP element if possible — if it depends on a client-side fetch-then-render waterfall, consider SSR/SSG for that content instead.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-beginner">Basic</span> What are
+                  the four WCAG principles (POUR)?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <strong>P</strong>erceivable (content must be presentable in
+                    ways users can perceive — alt text for images, captions for
+                    video, sufficient color contrast), <strong>O</strong>perable
+                    (all functionality available via keyboard, no content that
+                    traps focus or requires precise timing users can't control),
+                    <strong>U</strong>nderstandable (readable, predictable, with
+                    clear input error messages), <strong>R</strong>obust (works
+                    with a wide range of assistive technologies, valid/semantic
+                    markup they can parse reliably).
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you reduce a large JS bundle size in a React app?</summary>
-            <div class="qa-body">
-              <p>Route-based code splitting (<code>React.lazy</code> + <code>Suspense</code>, or Next.js's automatic per-route splitting) so users only download the code for the page they're on. Analyze the bundle (webpack-bundle-analyzer or similar) to find unexpectedly large dependencies — a common surprise is an entire date/utility library imported for one function; switch to a tree-shakeable import (<code>import { format } from 'date-fns'</code> instead of the whole library) or a lighter alternative. Dynamically <code>import()</code> heavy, rarely-used features (a chart library only needed on one admin page) instead of bundling them into the main chunk. Audit and remove unused dependencies and dead code paths.</p>
-            </div>
-          </details>
+              <h2 id="intermediate">4. Intermediate questions</h2>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> When is a <code>&lt;div onClick&gt;</code> not accessible, and how do you fix it properly?</summary>
-            <div class="qa-body">
-<pre><code>{/* Bad: not focusable, not announced as interactive, no keyboard support */}
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Walk through the concrete techniques you'd apply to reduce a
+                  slow LCP.
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    1) Preload the LCP resource itself (<code
+                      >&lt;link rel="preload" as="image"&gt;</code
+                    >
+                    for a hero image, or preloading critical fonts) so the
+                    browser fetches it earlier instead of discovering it late in
+                    the HTML/CSS parse. 2) Eliminate render-blocking resources —
+                    defer non-critical CSS/JS, inline critical above-the-fold
+                    CSS. 3) Optimize the image itself — correct format
+                    (WebP/AVIF), correct size for the viewport (responsive
+                    <code>srcset</code>), and a CDN. 4) Reduce server response
+                    time (TTFB) — caching, edge rendering, faster backend
+                    queries. 5) Avoid client-side-only rendering for the LCP
+                    element if possible — if it depends on a client-side
+                    fetch-then-render waterfall, consider SSR/SSG for that
+                    content instead.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you reduce a large JS bundle size in a React app?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Route-based code splitting (<code>React.lazy</code> +
+                    <code>Suspense</code>, or Next.js's automatic per-route
+                    splitting) so users only download the code for the page
+                    they're on. Analyze the bundle (webpack-bundle-analyzer or
+                    similar) to find unexpectedly large dependencies — a common
+                    surprise is an entire date/utility library imported for one
+                    function; switch to a tree-shakeable import (<code
+                      >import { format } from 'date-fns'</code
+                    >
+                    instead of the whole library) or a lighter alternative.
+                    Dynamically <code>import()</code> heavy, rarely-used
+                    features (a chart library only needed on one admin page)
+                    instead of bundling them into the main chunk. Audit and
+                    remove unused dependencies and dead code paths.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  When is a <code>&lt;div onClick&gt;</code> not accessible, and
+                  how do you fix it properly?
+                </summary>
+                <div class="qa-body">
+                  <pre><code>{/* Bad: not focusable, not announced as interactive, no keyboard support */}
 &lt;div onClick={handleSave}&gt;Save&lt;/div&gt;
 
 {/* Good: use the semantic element built for this */}
@@ -129,140 +366,496 @@
 &gt;
   Save
 &lt;/div&gt;</code></pre>
-              <p>A native <code>&lt;button&gt;</code> is focusable by default, announced as "button" by screen readers, and already responds to both Enter and Space — reaching for the semantic HTML element is almost always simpler and more correct than re-implementing all of that with ARIA and manual key handlers, which is why the accessibility community's mantra is "no ARIA is better than bad ARIA."</p>
-            </div>
-          </details>
+                  <p>
+                    A native <code>&lt;button&gt;</code> is focusable by
+                    default, announced as "button" by screen readers, and
+                    already responds to both Enter and Space — reaching for the
+                    semantic HTML element is almost always simpler and more
+                    correct than re-implementing all of that with ARIA and
+                    manual key handlers, which is why the accessibility
+                    community's mantra is "no ARIA is better than bad ARIA."
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you identify unnecessary re-renders in a React app before deciding what to optimize?</summary>
-            <div class="qa-body">
-              <p>Start with the React DevTools Profiler — record an interaction, and its flame graph shows exactly which components re-rendered and (with "why did this render" enabled) what prop or state change triggered each one. This turns "I think this re-renders too much" into a concrete, measured claim instead of a guess — the same profile-first discipline the React guide's memoization questions rely on. For a recurring, systemic problem (a component that shouldn't re-render but keeps doing so across many interactions), a library like <code>why-did-you-render</code> can patch React to log every avoidable re-render automatically during development, which is more practical than manually profiling every single interaction by hand.</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you identify unnecessary re-renders in a React app
+                  before deciding what to optimize?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Start with the React DevTools Profiler — record an
+                    interaction, and its flame graph shows exactly which
+                    components re-rendered and (with "why did this render"
+                    enabled) what prop or state change triggered each one. This
+                    turns "I think this re-renders too much" into a concrete,
+                    measured claim instead of a guess — the same profile-first
+                    discipline the React guide's memoization questions rely on.
+                    For a recurring, systemic problem (a component that
+                    shouldn't re-render but keeps doing so across many
+                    interactions), a library like
+                    <code>why-did-you-render</code> can patch React to log every
+                    avoidable re-render automatically during development, which
+                    is more practical than manually profiling every single
+                    interaction by hand.
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> Code-splitting has trade-offs too — when can splitting too aggressively actually hurt performance?</summary>
-            <div class="qa-body">
-              <p>Every additional chunk is a separate network request — over-splitting (a separate chunk per tiny component instead of splitting at meaningful route or feature boundaries) can mean the browser fires off dozens of small requests instead of a few well-sized ones, and each request carries its own overhead (even with HTTP/2 multiplexing reducing connection overhead, there's still per-request processing cost). The practical guidance: split at route boundaries by default (from the React Router and Next.js guides), and add component-level splitting only for genuinely heavy, conditionally-rendered widgets (a large charting library, a rich text editor) — not reflexively for every component, which trades one performance problem (a large initial bundle) for another (request waterfall overhead and more cache-invalidation surface area).</p>
-            </div>
-          </details>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  Code-splitting has trade-offs too — when can splitting too
+                  aggressively actually hurt performance?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Every additional chunk is a separate network request —
+                    over-splitting (a separate chunk per tiny component instead
+                    of splitting at meaningful route or feature boundaries) can
+                    mean the browser fires off dozens of small requests instead
+                    of a few well-sized ones, and each request carries its own
+                    overhead (even with HTTP/2 multiplexing reducing connection
+                    overhead, there's still per-request processing cost). The
+                    practical guidance: split at route boundaries by default
+                    (from the React Router and Next.js guides), and add
+                    component-level splitting only for genuinely heavy,
+                    conditionally-rendered widgets (a large charting library, a
+                    rich text editor) — not reflexively for every component,
+                    which trades one performance problem (a large initial
+                    bundle) for another (request waterfall overhead and more
+                    cache-invalidation surface area).
+                  </p>
+                </div>
+              </details>
 
-          <details class="qa">
-            <summary><span class="badge-level badge-intermediate">Intermediate</span> How do you make a custom dropdown/combobox accessible, and what's the difference between <code>aria-label</code>, <code>aria-labelledby</code>, and <code>aria-describedby</code>?</summary>
-            <div class="qa-body">
-              <h5>Accessible combobox pattern</h5>
-              <p>A custom dropdown needs the ARIA combobox pattern layered on top of correct keyboard handling: the input gets <code>role="combobox"</code> with <code>aria-expanded</code> reflecting whether the option list is open, and <code>aria-activedescendant</code> pointing at the <code>id</code> of the currently-highlighted option (rather than moving actual DOM focus into the list, which would leave the text input unable to keep receiving keystrokes). The option list itself gets <code>role="listbox"</code>, each option <code>role="option"</code>, and arrow keys move the "active" highlighted option while <code>Enter</code> selects it and <code>Escape</code> closes the list — all of this on top of the semantic-HTML-first instinct from the question above; ARIA here is filling a real gap native elements can't express, not replacing something semantic HTML already handles.</p>
-              <h5>The three ARIA labeling attributes</h5>
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-intermediate"
+                    >Intermediate</span
+                  >
+                  How do you make a custom dropdown/combobox accessible, and
+                  what's the difference between <code>aria-label</code>,
+                  <code>aria-labelledby</code>, and
+                  <code>aria-describedby</code>?
+                </summary>
+                <div class="qa-body">
+                  <h5>Accessible combobox pattern</h5>
+                  <p>
+                    A custom dropdown needs the ARIA combobox pattern layered on
+                    top of correct keyboard handling: the input gets
+                    <code>role="combobox"</code> with
+                    <code>aria-expanded</code> reflecting whether the option
+                    list is open, and
+                    <code>aria-activedescendant</code> pointing at the
+                    <code>id</code> of the currently-highlighted option (rather
+                    than moving actual DOM focus into the list, which would
+                    leave the text input unable to keep receiving keystrokes).
+                    The option list itself gets <code>role="listbox"</code>,
+                    each option <code>role="option"</code>, and arrow keys move
+                    the "active" highlighted option while
+                    <code>Enter</code> selects it and <code>Escape</code> closes
+                    the list — all of this on top of the semantic-HTML-first
+                    instinct from the question above; ARIA here is filling a
+                    real gap native elements can't express, not replacing
+                    something semantic HTML already handles.
+                  </p>
+                  <h5>The three ARIA labeling attributes</h5>
+                  <table>
+                    <tr>
+                      <th>Attribute</th>
+                      <th>Use when</th>
+                    </tr>
+                    <tr>
+                      <td><code>aria-label</code></td>
+                      <td>
+                        No visible text label exists at all — provides one
+                        directly as a string (an icon-only close button)
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>aria-labelledby</code></td>
+                      <td>
+                        Visible text already exists elsewhere on the page that
+                        should serve as the label — references that element's
+                        <code>id</code>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td><code>aria-describedby</code></td>
+                      <td>
+                        Additional supplementary description beyond the label —
+                        e.g. pointing at a validation error or hint text
+                        associated with a field
+                      </td>
+                    </tr>
+                  </table>
+                  <p>
+                    <strong>Common mistake:</strong> using
+                    <code>aria-label</code> to override a visible label with
+                    different text than what's displayed — this creates a
+                    mismatch between what a sighted user reads and what a screen
+                    reader announces, which is disorienting for anyone using
+                    both (a low-vision user with partial screen-reader
+                    assistance, for example).
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="advanced">5. Advanced questions</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> A
+                  data grid virtualizes rows so only visible ones exist in the
+                  DOM (from the System Design guide). How do you keep that
+                  accessible for screen-reader users, who now perceive far fewer
+                  rows than logically exist?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Set <code>role="grid"</code> on the container with
+                    <code>aria-rowcount</code> reflecting the
+                    <em>total logical</em> row count, and
+                    <code>aria-rowindex</code> on each rendered row reflecting
+                    its true position — so assistive technology can announce
+                    "row 4,521 of 100,000" even though only ~30 rows are
+                    physically in the DOM at once. Provide a way to jump/search
+                    rather than relying purely on scrolling (a "go to row" or
+                    filter input), since screen-reader users can't efficiently
+                    scroll through a virtualized list the way sighted
+                    mouse-users do. This is a genuine trade-off to name
+                    explicitly in a system design interview: virtualization for
+                    performance vs the extra ARIA bookkeeping it requires for
+                    equivalent accessibility.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span>
+                  Explain how you'd audit and fix focus management in a
+                  single-page app with modals and route transitions.
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    <strong>Modals:</strong> on open, move focus into the modal
+                    (typically the first focusable element or the modal's
+                    heading), trap Tab/Shift+Tab cycling within it (focus trap)
+                    so keyboard users can't tab out to the obscured background
+                    content, and on close, return focus to the element that
+                    originally triggered the modal — not to
+                    <code>document.body</code>, which disorients
+                    keyboard/screen-reader users.
+                    <strong>Route transitions:</strong> in a client-rendered
+                    SPA, the browser doesn't automatically move focus or
+                    announce the new page the way a full page load does — move
+                    focus to the new page's main heading (or a designated "skip
+                    to content" landmark) on navigation, and consider an ARIA
+                    live region announcing the new page title, so screen-reader
+                    users get the same "new page" signal sighted users get from
+                    the visual change.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-advanced">Advanced</span> How
+                  would you reduce Time to Interactive on a large SSR page with
+                  heavy hydration cost?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    The core problem: a fully server-rendered page shows content
+                    immediately (good LCP), but stays non-interactive until
+                    React has hydrated the <em>entire</em> tree — on a large,
+                    component-heavy page, that hydration work can itself become
+                    a long main-thread task that delays INP even though the page
+                    visually looks ready. Three complementary fixes, all
+                    variations on "don't hydrate everything eagerly": (1)
+                    <strong>selective/partial hydration</strong> — hydrate
+                    above-the-fold, immediately-interactive pieces first and
+                    defer the rest; React's Suspense-based streaming SSR
+                    supports this natively today. (2)
+                    <strong>Islands architecture</strong> (the pattern behind
+                    frameworks like Astro) — most of the page ships as static,
+                    non-hydrated HTML, and only specific "islands" of genuine
+                    interactivity (a cart widget, a comment form) ship their own
+                    JS and hydrate independently, rather than treating the whole
+                    page as one React tree that must hydrate together. (3)
+                    <strong>Below-the-fold code splitting</strong> — wrap
+                    non-critical, below-the-fold interactive sections in
+                    <code>React.lazy</code> so their JS doesn't even download
+                    until the user scrolls near them. All three share the same
+                    underlying idea from the System Design guide: not every
+                    pixel on the page needs the same priority, and hydration
+                    cost should scale with actual interactivity needs, not total
+                    page size.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="expert">6. Expert-level & scenario-based</h2>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  "Lighthouse score dropped after a recent release — walk
+                  through your triage process."
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Work from most-likely to least-likely, using the release
+                    itself as the primary lead rather than starting a generic
+                    performance audit from scratch: (1)
+                    <strong>diff the bundle size</strong> between the previous
+                    and current release — a bundle analyzer comparison (from the
+                    Webpack &amp; Babel guide) usually surfaces an unexpectedly
+                    large new dependency immediately. (2) Check for
+                    <strong>newly added synchronous, heavy computation</strong>
+                    on the main thread, or a new third-party script (analytics,
+                    a chat widget, an ad tag) that's blocking rendering — these
+                    often ship without the team realizing the perf cost. (3)
+                    Check for a
+                    <strong>new large above-the-fold image</strong> without
+                    explicit dimensions or a responsive <code>srcset</code> — a
+                    classic, easy-to-miss cause of both an LCP and a CLS
+                    regression in the same release. (4) If none of the above
+                    turns up the cause quickly,
+                    <strong><code>git bisect</code></strong> (from the Git
+                    guide) through the commits in the release against a
+                    repeatable Lighthouse run, narrowing down to the exact
+                    commit that introduced the regression. The key discipline
+                    being tested here: use the fact that something specific just
+                    changed as a shortcut, rather than re-auditing the whole
+                    page from zero every time a score regresses.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  Lighthouse scores are good in the lab, but real-user
+                  monitoring (RUM) shows LCP is much worse for actual users. Why
+                  might these disagree, and how do you investigate?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Lab tools (Lighthouse) run a single synthetic test on a
+                    fixed network/CPU profile and a cold cache — they don't
+                    capture the diversity of real users: slower devices,
+                    throttled/variable networks, ad blockers or extensions
+                    injecting scripts, third-party tags (analytics, chat
+                    widgets) that vary in load timing, or geographic latency to
+                    your CDN's edge nodes. Investigate with field data broken
+                    down by device class, connection type, and geography (via
+                    the CrUX report or your own RUM tooling) to find which
+                    segment is actually dragging the aggregate down, rather than
+                    continuing to optimize against a lab score that may already
+                    look fine. A common finding: a third-party script (chat
+                    widget, ad tag) that wasn't present in the lab test is
+                    blocking the main thread for real users.
+                  </p>
+                </div>
+              </details>
+
+              <details class="qa">
+                <summary>
+                  <span class="badge-level badge-expert">Expert</span> Scenario:
+                  an automated accessibility scanner (axe/Lighthouse) reports
+                  zero violations, but a real screen-reader user still can't
+                  complete the checkout flow. Why, and what's missing from
+                  automated testing?
+                </summary>
+                <div class="qa-body">
+                  <p>
+                    Automated tools catch structural/markup-level issues
+                    (missing alt text, insufficient contrast, missing labels,
+                    invalid ARIA) — roughly 30-40% of WCAG success criteria are
+                    reliably automatable. They cannot evaluate whether the
+                    actual <em>experience</em> makes sense: whether the reading
+                    order matches the visual order, whether an error message is
+                    announced at the right moment relative to form submission,
+                    whether a multi-step flow's focus management genuinely lets
+                    a keyboard/screen-reader user progress without getting
+                    stuck. This is exactly why manual testing — actually
+                    navigating the flow with a screen reader
+                    (VoiceOver/NVDA/JAWS) and keyboard-only, ideally involving
+                    people who use assistive technology daily — remains
+                    necessary; automated scanning is a floor, not a substitute
+                    for it.
+                  </p>
+                </div>
+              </details>
+
+              <h2 id="mistakes">7. Common mistakes & debugging</h2>
+              <div class="callout warn">
+                <strong>Frequent review comments</strong> Images/iframes without
+                explicit dimensions, causing layout shift; relying on color
+                alone to convey meaning (a red input border with no text/icon
+                for colorblind users); interactive <code>&lt;div&gt;</code>s
+                instead of semantic elements; removing focus outlines (<code
+                  >outline: none</code
+                >) without providing a visible alternative focus style; treating
+                a green Lighthouse score as proof of "done" instead of a
+                starting signal; optimizing bundle size once at launch and never
+                re-auditing as dependencies accumulate over time.
+              </div>
+
+              <h2 id="company">8. Frequently asked at top product companies</h2>
+              <ul>
+                <li>
+                  <strong>General senior-level:</strong> "Walk me through how
+                  you'd improve this page's LCP/CLS" — often given an actual URL
+                  or Lighthouse report to react to live.
+                </li>
+                <li>
+                  <strong
+                    >Accessibility-focused companies (and any regulated
+                    industry, including banking):</strong
+                  >
+                  "How do you make a custom dropdown/autocomplete component
+                  accessible?" — tests ARIA combobox pattern knowledge plus
+                  keyboard interaction design.
+                </li>
+                <li>
+                  <strong>Performance-focused companies:</strong> "Bundle size
+                  grew 40% over six months with no single big change — how do
+                  you find out why, and how do you prevent it going forward?"
+                  (bundle analyzer + CI budget/threshold checks that fail a
+                  build if size regresses past a set limit).
+                </li>
+              </ul>
+
+              <h2 id="cheatsheet">9. Cheat sheet / quick revision</h2>
               <table>
-                <tr><th>Attribute</th><th>Use when</th></tr>
-                <tr><td><code>aria-label</code></td><td>No visible text label exists at all — provides one directly as a string (an icon-only close button)</td></tr>
-                <tr><td><code>aria-labelledby</code></td><td>Visible text already exists elsewhere on the page that should serve as the label — references that element's <code>id</code></td></tr>
-                <tr><td><code>aria-describedby</code></td><td>Additional supplementary description beyond the label — e.g. pointing at a validation error or hint text associated with a field</td></tr>
+                <tr>
+                  <th>Concept</th>
+                  <th>One-line recall</th>
+                </tr>
+                <tr>
+                  <td>LCP</td>
+                  <td>
+                    Largest visible element render time — preload it, cut
+                    render-blocking resources
+                  </td>
+                </tr>
+                <tr>
+                  <td>INP</td>
+                  <td>
+                    Responsiveness across the whole session, not just first
+                    click
+                  </td>
+                </tr>
+                <tr>
+                  <td>CLS</td>
+                  <td>
+                    Reserve space (width/height) for anything that loads late
+                  </td>
+                </tr>
+                <tr>
+                  <td>POUR</td>
+                  <td>Perceivable, Operable, Understandable, Robust</td>
+                </tr>
+                <tr>
+                  <td>Semantic HTML first</td>
+                  <td>
+                    Native elements beat re-built ARIA widgets almost every time
+                  </td>
+                </tr>
+                <tr>
+                  <td>Unnecessary re-renders</td>
+                  <td>
+                    Profile first (DevTools/why-did-you-render), then fix —
+                    never guess
+                  </td>
+                </tr>
+                <tr>
+                  <td>Over-splitting</td>
+                  <td>
+                    Too many tiny chunks = request-waterfall overhead — split at
+                    route/feature boundaries
+                  </td>
+                </tr>
+                <tr>
+                  <td>aria-label vs labelledby vs describedby</td>
+                  <td>
+                    No visible label / points to an existing visible label /
+                    supplementary description
+                  </td>
+                </tr>
+                <tr>
+                  <td>Islands architecture</td>
+                  <td>
+                    Only interactive "islands" hydrate — most of the page stays
+                    static HTML
+                  </td>
+                </tr>
+                <tr>
+                  <td>Focus management</td>
+                  <td>
+                    Move focus in on modal open, return it on close; move it on
+                    route change
+                  </td>
+                </tr>
+                <tr>
+                  <td>Automated a11y scan</td>
+                  <td>
+                    Catches ~30-40% of issues — manual screen-reader testing
+                    still required
+                  </td>
+                </tr>
               </table>
-              <p><strong>Common mistake:</strong> using <code>aria-label</code> to override a visible label with different text than what's displayed — this creates a mismatch between what a sighted user reads and what a screen reader announces, which is disorienting for anyone using both (a low-vision user with partial screen-reader assistance, for example).</p>
+
+              <p class="lead">
+                Related: virtualization trade-offs build on
+                <a href="system-design.html">Frontend System Design</a>;
+                code-splitting mechanics build on
+                <a href="react.html">React.js</a> and
+                <a href="nextjs.html">Next.js</a>.
+              </p>
+
+              <div class="page-nav">
+                <a class="prev" href="testing.html"
+                  ><span class="dir">← Previous</span>Testing Interview Guide
+                  (Jest, RTL, Cypress)</a
+                >
+                <a class="next" href="design-patterns-architecture.html"
+                  ><span class="dir">Next →</span>Design Patterns &amp; Frontend
+                  Architecture Interview Guide</a
+                >
+              </div>
             </div>
-          </details>
 
-          <h2 id="advanced">5. Advanced questions</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> A data grid virtualizes rows so only visible ones exist in the DOM (from the System Design guide). How do you keep that accessible for screen-reader users, who now perceive far fewer rows than logically exist?</summary>
-            <div class="qa-body">
-              <p>Set <code>role="grid"</code> on the container with <code>aria-rowcount</code> reflecting the <em>total logical</em> row count, and <code>aria-rowindex</code> on each rendered row reflecting its true position — so assistive technology can announce "row 4,521 of 100,000" even though only ~30 rows are physically in the DOM at once. Provide a way to jump/search rather than relying purely on scrolling (a "go to row" or filter input), since screen-reader users can't efficiently scroll through a virtualized list the way sighted mouse-users do. This is a genuine trade-off to name explicitly in a system design interview: virtualization for performance vs the extra ARIA bookkeeping it requires for equivalent accessibility.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> Explain how you'd audit and fix focus management in a single-page app with modals and route transitions.</summary>
-            <div class="qa-body">
-              <p><strong>Modals:</strong> on open, move focus into the modal (typically the first focusable element or the modal's heading), trap Tab/Shift+Tab cycling within it (focus trap) so keyboard users can't tab out to the obscured background content, and on close, return focus to the element that originally triggered the modal — not to <code>document.body</code>, which disorients keyboard/screen-reader users. <strong>Route transitions:</strong> in a client-rendered SPA, the browser doesn't automatically move focus or announce the new page the way a full page load does — move focus to the new page's main heading (or a designated "skip to content" landmark) on navigation, and consider an ARIA live region announcing the new page title, so screen-reader users get the same "new page" signal sighted users get from the visual change.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-advanced">Advanced</span> How would you reduce Time to Interactive on a large SSR page with heavy hydration cost?</summary>
-            <div class="qa-body">
-              <p>The core problem: a fully server-rendered page shows content immediately (good LCP), but stays non-interactive until React has hydrated the <em>entire</em> tree — on a large, component-heavy page, that hydration work can itself become a long main-thread task that delays INP even though the page visually looks ready. Three complementary fixes, all variations on "don't hydrate everything eagerly": (1) <strong>selective/partial hydration</strong> — hydrate above-the-fold, immediately-interactive pieces first and defer the rest; React's Suspense-based streaming SSR supports this natively today. (2) <strong>Islands architecture</strong> (the pattern behind frameworks like Astro) — most of the page ships as static, non-hydrated HTML, and only specific "islands" of genuine interactivity (a cart widget, a comment form) ship their own JS and hydrate independently, rather than treating the whole page as one React tree that must hydrate together. (3) <strong>Below-the-fold code splitting</strong> — wrap non-critical, below-the-fold interactive sections in <code>React.lazy</code> so their JS doesn't even download until the user scrolls near them. All three share the same underlying idea from the System Design guide: not every pixel on the page needs the same priority, and hydration cost should scale with actual interactivity needs, not total page size.</p>
-            </div>
-          </details>
-
-          <h2 id="expert">6. Expert-level & scenario-based</h2>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: "Lighthouse score dropped after a recent release — walk through your triage process."</summary>
-            <div class="qa-body">
-              <p>Work from most-likely to least-likely, using the release itself as the primary lead rather than starting a generic performance audit from scratch: (1) <strong>diff the bundle size</strong> between the previous and current release — a bundle analyzer comparison (from the Webpack &amp; Babel guide) usually surfaces an unexpectedly large new dependency immediately. (2) Check for <strong>newly added synchronous, heavy computation</strong> on the main thread, or a new third-party script (analytics, a chat widget, an ad tag) that's blocking rendering — these often ship without the team realizing the perf cost. (3) Check for a <strong>new large above-the-fold image</strong> without explicit dimensions or a responsive <code>srcset</code> — a classic, easy-to-miss cause of both an LCP and a CLS regression in the same release. (4) If none of the above turns up the cause quickly, <strong><code>git bisect</code></strong> (from the Git guide) through the commits in the release against a repeatable Lighthouse run, narrowing down to the exact commit that introduced the regression. The key discipline being tested here: use the fact that something specific just changed as a shortcut, rather than re-auditing the whole page from zero every time a score regresses.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: Lighthouse scores are good in the lab, but real-user monitoring (RUM) shows LCP is much worse for actual users. Why might these disagree, and how do you investigate?</summary>
-            <div class="qa-body">
-              <p>Lab tools (Lighthouse) run a single synthetic test on a fixed network/CPU profile and a cold cache — they don't capture the diversity of real users: slower devices, throttled/variable networks, ad blockers or extensions injecting scripts, third-party tags (analytics, chat widgets) that vary in load timing, or geographic latency to your CDN's edge nodes. Investigate with field data broken down by device class, connection type, and geography (via the CrUX report or your own RUM tooling) to find which segment is actually dragging the aggregate down, rather than continuing to optimize against a lab score that may already look fine. A common finding: a third-party script (chat widget, ad tag) that wasn't present in the lab test is blocking the main thread for real users.</p>
-            </div>
-          </details>
-
-          <details class="qa">
-            <summary><span class="badge-level badge-expert">Expert</span> Scenario: an automated accessibility scanner (axe/Lighthouse) reports zero violations, but a real screen-reader user still can't complete the checkout flow. Why, and what's missing from automated testing?</summary>
-            <div class="qa-body">
-              <p>Automated tools catch structural/markup-level issues (missing alt text, insufficient contrast, missing labels, invalid ARIA) — roughly 30-40% of WCAG success criteria are reliably automatable. They cannot evaluate whether the actual <em>experience</em> makes sense: whether the reading order matches the visual order, whether an error message is announced at the right moment relative to form submission, whether a multi-step flow's focus management genuinely lets a keyboard/screen-reader user progress without getting stuck. This is exactly why manual testing — actually navigating the flow with a screen reader (VoiceOver/NVDA/JAWS) and keyboard-only, ideally involving people who use assistive technology daily — remains necessary; automated scanning is a floor, not a substitute for it.</p>
-            </div>
-          </details>
-
-          <h2 id="mistakes">7. Common mistakes & debugging</h2>
-          <div class="callout warn"><strong>Frequent review comments</strong>
-            Images/iframes without explicit dimensions, causing layout shift; relying on color alone to convey meaning (a red input border with no text/icon for colorblind users); interactive <code>&lt;div&gt;</code>s instead of semantic elements; removing focus outlines (<code>outline: none</code>) without providing a visible alternative focus style; treating a green Lighthouse score as proof of "done" instead of a starting signal; optimizing bundle size once at launch and never re-auditing as dependencies accumulate over time.
+            <nav class="toc">
+              <div class="toc-title">On this page</div>
+              <a href="#overview">Overview</a>
+              <a href="#cwv">Core Web Vitals</a>
+              <a href="#basic">Basic</a>
+              <a href="#intermediate">Intermediate</a>
+              <a href="#advanced">Advanced</a>
+              <a href="#expert">Expert & scenarios</a>
+              <a href="#mistakes">Common mistakes</a>
+              <a href="#company">Company questions</a>
+              <a href="#cheatsheet">Cheat sheet</a>
+            </nav>
           </div>
-
-          <h2 id="company">8. Frequently asked at top product companies</h2>
-          <ul>
-            <li><strong>General senior-level:</strong> "Walk me through how you'd improve this page's LCP/CLS" — often given an actual URL or Lighthouse report to react to live.</li>
-            <li><strong>Accessibility-focused companies (and any regulated industry, including banking):</strong> "How do you make a custom dropdown/autocomplete component accessible?" — tests ARIA combobox pattern knowledge plus keyboard interaction design.</li>
-            <li><strong>Performance-focused companies:</strong> "Bundle size grew 40% over six months with no single big change — how do you find out why, and how do you prevent it going forward?" (bundle analyzer + CI budget/threshold checks that fail a build if size regresses past a set limit).</li>
-          </ul>
-
-          <h2 id="cheatsheet">9. Cheat sheet / quick revision</h2>
-          <table>
-            <tr><th>Concept</th><th>One-line recall</th></tr>
-            <tr><td>LCP</td><td>Largest visible element render time — preload it, cut render-blocking resources</td></tr>
-            <tr><td>INP</td><td>Responsiveness across the whole session, not just first click</td></tr>
-            <tr><td>CLS</td><td>Reserve space (width/height) for anything that loads late</td></tr>
-            <tr><td>POUR</td><td>Perceivable, Operable, Understandable, Robust</td></tr>
-            <tr><td>Semantic HTML first</td><td>Native elements beat re-built ARIA widgets almost every time</td></tr>
-            <tr><td>Unnecessary re-renders</td><td>Profile first (DevTools/why-did-you-render), then fix — never guess</td></tr>
-            <tr><td>Over-splitting</td><td>Too many tiny chunks = request-waterfall overhead — split at route/feature boundaries</td></tr>
-            <tr><td>aria-label vs labelledby vs describedby</td><td>No visible label / points to an existing visible label / supplementary description</td></tr>
-            <tr><td>Islands architecture</td><td>Only interactive "islands" hydrate — most of the page stays static HTML</td></tr>
-            <tr><td>Focus management</td><td>Move focus in on modal open, return it on close; move it on route change</td></tr>
-            <tr><td>Automated a11y scan</td><td>Catches ~30-40% of issues — manual screen-reader testing still required</td></tr>
-          </table>
-
-          <p class="lead">Related: virtualization trade-offs build on <a href="system-design.html">Frontend System Design</a>; code-splitting mechanics build on <a href="react.html">React.js</a> and <a href="nextjs.html">Next.js</a>.</p>
-
-          <div class="page-nav">
-            <a class="prev" href="testing.html"><span class="dir">← Previous</span>Testing Interview Guide (Jest, RTL, Cypress)</a>
-            <a class="next" href="design-patterns-architecture.html"><span class="dir">Next →</span>Design Patterns &amp; Frontend Architecture Interview Guide</a>
-          </div>
-        </div>
-
-        <nav class="toc">
-          <div class="toc-title">On this page</div>
-          <a href="#overview">Overview</a>
-          <a href="#cwv">Core Web Vitals</a>
-          <a href="#basic">Basic</a>
-          <a href="#intermediate">Intermediate</a>
-          <a href="#advanced">Advanced</a>
-          <a href="#expert">Expert & scenarios</a>
-          <a href="#mistakes">Common mistakes</a>
-          <a href="#company">Company questions</a>
-          <a href="#cheatsheet">Cheat sheet</a>
-        </nav>
+        </main>
+        <footer class="site-footer">
+          Personal interview prep — Kamlesh Kumar
+        </footer>
       </div>
-    </main>
-    <footer class="site-footer">Personal interview prep — Kamlesh Kumar</footer>
-  </div>
-</div>
-<button id="back-to-top" title="Back to top">↑</button>
-<script src="../assets/app.js"></script>
-</body>
+    </div>
+    <button id="back-to-top" title="Back to top">↑</button>
+    <script src="../assets/app.js"></script>
+  </body>
 </html>
