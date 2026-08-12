@@ -1,0 +1,12 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5"/>
+      <stop offset="100%" stop-color="#0ea5a3"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="132" fill="url(#logoGrad)"/>
+  <path d="M176 147 L90 256 L176 365" fill="none" stroke="#ffffff" stroke-opacity="0.88" stroke-width="29" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M336 147 L422 256 L336 365" fill="none" stroke="#ffffff" stroke-opacity="0.88" stroke-width="29" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="256" y="326" text-anchor="middle" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="198" font-weight="800" fill="#ffffff">K</text>
+</svg>
